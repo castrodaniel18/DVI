@@ -4,16 +4,48 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<script>src="./lib/phaser.js"</script>
+
+	<script src="./lib/phaser.js"></script>
 	<title>FOLKLORE HUNTERS</title>
+
+	
+	<link rel="stylesheet" href="Web/css/header.css">
+	<link href='https://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
+
+	<header class="header-fixed">
+
+		<div class="header-limiter">
+	
+			<h1><a href="#">Company<span>logo</span></a></h1>
+	
+			<nav>
+				<a href="#" class="selected">Página Principal</a>
+				<a href="Web/views/Instructions.php">Instrucciones</a>
+				<a href="Web/views/Description.php">Descripción</a>
+				<a href="Web/views/Authors.php">Autores y Créditos</a>
+				<a href="Web/views/Contact.php">Contacto</a>
+			</nav>
+	
+		</div>
+	
+	</header>
+	
+	<!-- You need this element to prevent the content of the page from jumping up -->
+	<div class="header-fixed-placeholder"></div>
+	
+	<!-- The content of your page would go here. -->
+
     <h1>Visual Studio Games</h1>
     <div>
         <h2>¡Aquí podrás jugar a nuestro juego!</h2>
     </div>
 	<div id="juego"></div>
 	<script type="module" src="src/main.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="Web/js/header.js"></script>
 </body>
 </html>
