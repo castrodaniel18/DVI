@@ -10,7 +10,7 @@ constructor(scene,x,y){
         super(scene,x,y,'player');
         this.scene.add.existing(this);
         this.setScale(2);
-        this.speed=50;
+        this.speed=100;
 
         this.scene.anims.create({
             key:'S',
@@ -60,6 +60,12 @@ constructor(scene,x,y){
             frameRate: 5,
             repeat: -1
         });
+        this.scene.anims.create({
+            key:'idle',
+            frames: scene.anims.generateFrameNumbers('player',{start:4,end:4}),
+            frameRate: 0,
+            repeat: -1
+        });
         
         this.play('S');
 
@@ -78,69 +84,80 @@ constructor(scene,x,y){
     preUpdate(t,dt){
         super.preUpdate(t,dt);
 
-        if(this.aKey.isDown && this.sKey.isUp  && this.dKey.isUp && this.wKey.isUp){
-            if(this.anims.currentAnim.key !== 'W'){
+        if(this.aKey.isDown ){
+            if(this.wKey.isDown || this.sKey.isDown || this.dKey.isDown){}
+            else if(this.anims.currentAnim.key !== ('W')){
                 this.play('W');
             }
-            // @ts-ignore
-            this.body.setVelocityX(-this.speed);
+            this.body.velocity.x=-this.speed;
         }
-        if(this.sKey.isDown && this.aKey.isUp && this.dKey.isUp && this.wKey.isUp){
-            if(this.anims.currentAnim.key !== 'S'){
+        if(this.sKey.isDown ){
+            if(this.aKey.isDown || this.dKey.isDown || this.wKey.isDown){}
+            else if(this.anims.currentAnim.key !== ('S')){
                 this.play('S');
             }
-            // @ts-ignore
-            this.body.setVelocityY(+this.speed);
+            this.body.velocity.y=this.speed;
         }
         if(this.dKey.isDown){
-            if(this.anims.currentAnim.key !== 'E'){
+            if(this.wKey.isDown || this.sKey.isDown || this.aKey.isDown){}
+            else if(this.anims.currentAnim.key !== ('E')){
                 this.play('E');
             }
-            // @ts-ignore
-            this.body.setVelocityX(+this.speed);
+            this.body.velocity.x=this.speed;
         }
-        if(this.wKey.isDown){
-            if(this.anims.currentAnim.key !== 'N'){
+        if(this.wKey.isDown ){
+            if(this.aKey.isDown || this.dKey.isDown || this.sKey.isDown){}
+            else if(this.anims.currentAnim.key !== ('N')){
                 this.play('N');
             }
-            // @ts-ignore
-            this.body.setVelocityY(-this.speed);
+            this.body.velocity.y=-this.speed;
         }
-        console.log(this.anims.currentAnim.key)
+        
         if(this.aKey.isDown && this.sKey.isDown){
-            if(this.anims.currentAnim.key !== 'SW'){
+            if(this.wKey.isDown || this.dKey.isDown){}
+            else if(this.anims.currentAnim.key !== 'SW'){
                 this.play('SW');
-                
             }
-            let aux = new Phaser.Math.Vector2(this.body.velocity.x,this.body.velocity.y); 
-            aux.normalize();
-            // @ts-ignore
-            this.body.setVelocity(this.speed*aux.x,this.speed*aux.y);
         }
-        if(this.sKey.isDown && this.dKey.isDown){
-            if(this.anims.currentAnim.key !== 'SE'){
+        if(this.sKey.isDown && this.dKey.isDown ){
+            if(this.wKey.isDown || this.aKey.isDown){}
+            else if(this.anims.currentAnim.key !== 'SE'){
                 this.play('SE');
             }
-            let aux = new Phaser.Math.Vector2(this.body.velocity.x,this.body.velocity.y); 
-            aux.normalize();
-            // @ts-ignore
-            this.body.setVelocity(this.speed*aux.x,this.speed*aux.y);
         }
-        console.log(this.anims.currentAnim.key)
-        if(Phaser.Input.Keyboard.JustUp(this.aKey) || Phaser.Input.Keyboard.JustUp(this.dKey)){
+        if(this.wKey.isDown && this.dKey.isDown ){
+            if(this.aKey.isDown || this.sKey.isDown){}
+            else if(this.anims.currentAnim.key !== 'NE'){
+                this.play('NE');
+            }
+        }
+        if(this.wKey.isDown && this.aKey.isDown ){
+            if(this.dKey.isDown || this.sKey.isDown){}
+            else if(this.anims.currentAnim.key !== 'NW'){
+                this.play('NW');
+            }
+        }
+        let aux = new Phaser.Math.Vector2(this.body.velocity.x,this.body.velocity.y); 
+        aux.normalize();
+        // @ts-ignore
+        this.body.setVelocity(this.speed*aux.x,this.speed*aux.y);
+
+        if(Phaser.Input.Keyboard.JustUp(this.aKey)||Phaser.Input.Keyboard.JustUp(this.dKey) || (this.aKey.isDown && this.dKey.isDown)){
 			if(this.anims.isPlaying === true){
-				this.play('');
+				//this.play('idle');
 			}
-			// @ts-ignore
-			this.body.setVelocityX(0);
+            this.body.velocity.x=0;
 		}
-        if(Phaser.Input.Keyboard.JustUp(this.wKey) || Phaser.Input.Keyboard.JustUp(this.sKey)){
+        if(Phaser.Input.Keyboard.JustUp(this.wKey) || Phaser.Input.Keyboard.JustUp(this.sKey) || (this.wKey.isDown && this.sKey.isDown)){
 			if(this.anims.isPlaying === true){
-				this.play('');
+				//this.play('idle');
 			}
-			// @ts-ignore
-			this.body.setVelocityY(0);
+            this.body.velocity.y=0;
 		}
+        if((this.wKey.isDown && this.aKey.isDown && this.dKey.isDown)||(this.sKey.isDown && this.dKey.isDown && this.aKey.isDown)){
+            this.body.velocity.x=0;
+            this.body.velocity.y=0;
+        }
     }
 
 }
