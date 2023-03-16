@@ -75,6 +75,7 @@ constructor(scene,x,y){
         this.dKey = this.scene.input.keyboard.addKey('D');
         
         scene.physics.add.existing(this);
+        // @ts-ignore
         this.body.setCollideWorldBounds();
     }
     /**
@@ -158,6 +159,7 @@ constructor(scene,x,y){
             this.body.velocity.x=0;
             this.body.velocity.y=0;
         }
+        console.log(this.body.position.x)
     }
 
 }
