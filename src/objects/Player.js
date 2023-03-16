@@ -75,7 +75,7 @@ constructor(scene,x,y){
         this.dKey = this.scene.input.keyboard.addKey('D');
         
         scene.physics.add.existing(this);
-
+        this.body.setCollideWorldBounds();
     }
     /**
      * @param {number} t
