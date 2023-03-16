@@ -24,4 +24,4 @@ const config = {
 	transparent:false
 	
 };
- export default new Phaser.Game(config)
+ new Phaser.Game(config)
