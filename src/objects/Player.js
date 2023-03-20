@@ -1,4 +1,5 @@
 import { Scene } from "phaser";
+import Fireball from "./Fireball";
 
 export default class Player extends Phaser.GameObjects.Sprite{
 /** 
@@ -11,6 +12,9 @@ constructor(scene,x,y){
         this.scene.add.existing(this);
         this.setScale(2);
         this.speed=100;
+
+        //Variable para saber cuando puede volver a atacar
+        this.isAttacking = false;
 
         this.scene.anims.create({
             key:'S',
@@ -73,8 +77,16 @@ constructor(scene,x,y){
         this.aKey = this.scene.input.keyboard.addKey('A');
         this.sKey = this.scene.input.keyboard.addKey('S');
         this.dKey = this.scene.input.keyboard.addKey('D');
+
+        //Para detectar el click del ratón para disparar
+		this.click = scene.input.activePointer;
+
+		//Escuchar el ratón para saber hacia dónde disparar
+		this.scene.input.on('pointerdown', this.handlePointerDown, this);
+
         
         scene.physics.add.existing(this);
+        // @ts-ignore
         this.body.setCollideWorldBounds();
     }
     /**
@@ -158,6 +170,47 @@ constructor(scene,x,y){
             this.body.velocity.x=0;
             this.body.velocity.y=0;
         }
+
+        if (this.click.isDown /*&& !this.isAttackInProcess()*/) {
+			this.attack();
+		}
     }
+
+    handlePointerDown(pointer) {
+		this.ratonX = pointer.worldX;
+		this.ratonY = pointer.worldY;
+		//const sourceX = this.x;
+		//const sourceY = this.y;
+	}
+
+	attack(){
+
+        console.log(this.isAttacking);
+		
+		this.isAttacking = true;
+
+		const angle = Phaser.Math.Angle.Between(this.x, this.y, this.ratonX, this.ratonY);
+		const degrees = Phaser.Math.RadToDeg(angle);
+		//this.setRotation(degrees);
+
+		this.fireball = new Fireball(this.scene, this.x, this.y);
+			
+		this.fireball.attack(this.speed, angle);
+		
+		this.play('S');
+	}
+
+	/**
+	 * Terminamos el ataque
+	 */
+	stopAttack(){
+		this.stop()
+		this.play('idle');
+		this.isAttacking = false;
+	}
+
+	isAttackInProcess(){
+		return this.isAttacking;
+	}
 
 }
