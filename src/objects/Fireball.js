@@ -1,17 +1,12 @@
-import { Scene } from "phaser";
+export default class FireballGroup extends Phaser.Physics.Arcade.Sprite{
+    
+    constructor(scene, x, y){
+        super(scene, x, y, 'fireball');
 
-export default class Fireball extends Phaser.GameObjects.Sprite {
-	/**
-	 * Constructor de Box, nuestras cajas destructibles
-	 * @param {Scene} scene - escena en la que aparece
-	 * @param {number} x - coordenada x
-	 * @param {number} y - coordenada y
-	 */
-	constructor(scene, x, y, colliderGroup) {
-		super(scene, x, y, 'fireball');
         this.scene.add.existing(this);
+        this.setScale(0.5);
 
-		//Metemos la animación de la fireball
+        //Metemos la animación de la fireball
         this.scene.anims.create({
 			key: 'none',
 			frames: scene.anims.generateFrameNumbers('fireball', {start:11, end:11}),
@@ -26,58 +21,31 @@ export default class Fireball extends Phaser.GameObjects.Sprite {
 			repeat: 0
         });
 
-		// Si la animación de ataque se completa pasamos a ejecutar la animación 'idle'
-		this.on('animationcomplete', end => {
-			if (this.anims.currentAnim.key === 'fire_attack'){
-				//this.setActive(false).setVisible(false);
-				this.toDestroy = true;
-			}
-		})
-
         this.play("none")
+    }
 
-		// Agregamos la caja a las físicas para que Phaser lo tenga en cuenta
-		scene.physics.add.existing(this);
-
-		// Decimos que la caja colisiona con los límites del mundo
-		// @ts-ignore
-		this.body.setCollideWorldBounds();
-
-		//colliderGroup.add(this);
-	}
-
-	/**
-	 * Bucle principal de la caja, comprobamos la velocidad para reducirla y setearla a 0 en ciertos umbrales
-	 * Así no se movera de manera infinita cuando la golpeemos
-	 * @param {number} t - Tiempo total
-	 * @param {number} dt - Tiempo entre frames
-	 */
-	preUpdate(t, dt) {
-		super.preUpdate(t, dt);
-
-	}
-
-	/**
-	 * Cambiamos la propiedad jumpDisabled a true para indicar que el personaje no puede saltar
-	 */
-	destroyMe(){
-		this.stop();
-
-	}
-
-    attack(speed, angle){
-
-        // Calcular la dirección del ataque en función del ángulo de rotación
-		//let direccionX = Math.cos(rotation);
-		//let direccionY = Math.sin(rotation);
+    fire(playerX, playerY, speed, angle){
+        //Reseteamos la posición de la bola de fuego para que aparezca desde donde está player
+        this.body.reset(playerX + 10, playerY);
         
-		// Posicionar el nuevo sprite relativo al sprite actual
-		//this.x = x;
-		//this.y = y;
+        //Activamos la bola de fuego
+        this.setActive(true);
+        this.setVisible(true);
 
-		// @ts-ignore
-		this.body.setVelocity(speed * Math.cos(angle), speed * Math.sin(angle));
+        //Activamos la animación
+        this.play('fire_attack');
 
-        this.play("fire_attack");
+        //Establecemos la velocidad según los valores que obtuvimos con el listener del ratón
+        this.setVelocity(speed * Math.cos(angle), speed * Math.sin(angle));
+    }
+
+    preUpdate(time, delta){
+        super.preUpdate(time, delta);
+
+        //Cuando la bola de fuego sale del canvas se desactiva para que se puedan lanzar más
+        if(this.y <= 0 || this.y >= 600 || this.x <= 0 || this.x >= 800){
+            this.setActive(false);
+            this.setVisible(false);
+        }
     }
 }
