@@ -2,6 +2,7 @@ import Phaser from 'phaser'
 
 import HelloWorldScene from './scenes/HelloWorldScene'
 import Level1Scene from './scenes/Level1Scene'
+import StartScene from './scenes/StartScene'
 
 const config = {
 	type: Phaser.AUTO,
@@ -14,7 +15,10 @@ const config = {
 	mode: Phaser.Scale.FIT,
 	zoom:1
 	},
-	scene: [Level1Scene],
+	dom: {
+		createContainer: true
+	},
+	scene: [StartScene,Level1Scene],
 	physics: {
 		default: 'arcade',
 		arcade: {

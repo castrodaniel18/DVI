@@ -5,7 +5,7 @@ import FireballGroup from "../objects/FireballGroup";
 
 export default class Level1Scene extends Phaser.Scene{
     constructor() {
-		super('level1')
+		super({ key: 'Level1Scene' });
 
 	}
     preload(){
