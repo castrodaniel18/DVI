@@ -10,7 +10,8 @@ export default class Level1Scene extends Phaser.Scene{
 	}
     preload(){
         this.load.spritesheet('player','assets/loose sprites.png',{frameWidth:16, frameHeight:16});
-        this.load.spritesheet('fireball', 'assets/Charge.png', {frameWidth: 64, frameHeight: 64})
+        this.load.spritesheet('fireball', 'assets/Charge.png', {frameWidth: 64, frameHeight: 64});
+        this.load.image('goblin','assets/snoopy.png')
         this.load.image('fondo','assets/fondo.png');
     }
     create(){
