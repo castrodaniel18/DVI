@@ -14,14 +14,14 @@
 
         <div class="header-limiter">
 
-            <h1><a href="#">Company<span>logo</span></a></h1>
+            <h1><a href="../../index.html"><span>Folklore</span><span id="white">Hunters</span></a></h1>
 
             <nav>
-                <a href="../../index.html">Página principal</a>
-                <a href="Instructions.php">Instrucciones</a>
-                <a href="#" class="selected">Descripción</a>
-                <a href="Authors.php">Autores y créditos</a>
-                <a href="Contact.php">Contacto</a>
+                <a href="../../index.html">Game</a>
+                <a href="Instructions.php">Controls</a>
+                <a href="#" class="selected">Description</a>
+                <a href="Authors.php">About us</a>
+                <a href="Contact.php">GitHub</a>
             </nav>
 
         </div>

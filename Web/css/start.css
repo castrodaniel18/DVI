@@ -1,6 +1,7 @@
-body {
+html {
     font-family: 'Roboto Condensed', sans-serif;
     font-style: italic;
+    scroll-behavior: smooth;
 }
 
 .button {
@@ -20,4 +21,5 @@ body {
     color: white;
     text-shadow: 2px 2px black;
     font-weight: bolder;
+    text-decoration: underline;
 }

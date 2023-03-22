@@ -13,7 +13,7 @@ export default class StartScene extends Phaser.Scene {
     create() {
         // Titulo del juego
         const title = document.createElement('h1');
-        title.textContent = 'Folklore Hunters';
+        title.textContent = 'Main Menu';
         title.classList.add('title');
         this.add.dom(400, 100, title);
 
