@@ -18,7 +18,7 @@ export default class Level1Scene extends Phaser.Scene{
         let bg = this.add.image(0,0,'fondo').setOrigin(0,0);
         this.player = new Player(this,this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2)
         this.fireballGroup = new FireballGroup(this);
-        this.goblin = new Goblin(this, 50, 500)
+        this.goblin = new Goblin(this, 50, 500,'goblin')
         this.physics.world.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.startFollow(this.player);
@@ -41,9 +41,16 @@ export default class Level1Scene extends Phaser.Scene{
                 gameObject2.destroy();
 			}
 		});
-        	
+        	this.physics.add.overlap(this.player,this.goblin,this.attack,null,this);
     }
 
+    attack(player,goblin){
+        console.log(player.vida)
+        console.log(goblin.damage)
+        player.vida=player.vida-goblin.damage;
+
+    }
+   
     addEvents(){
         //Para guardar las coordenadas del ratón y saber hacia donde disparar las bolas de fuego
         this.input.on('pointermove', pointer => {
@@ -66,10 +73,19 @@ export default class Level1Scene extends Phaser.Scene{
     }
 
     enemyFollows () {
+        if(Phaser.Math.Distance.Between(this.player.body.position.x,this.player.body.position.y,this.goblin.body.position.x,this.goblin.body.position.y)>40){
 		this.physics.moveToObject(this.goblin, this.player, 100);
+        }
+        else{
+            this.goblin.body.velocity.x=0;
+            this.goblin.body.velocity.y=0;
+        }
 	}
+    
 
 	update(){
+
 		this.enemyFollows();
 	}
+
 }

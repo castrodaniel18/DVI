@@ -11,9 +11,7 @@ constructor(scene,x,y){
         this.scene.add.existing(this);
         this.setScale(2);
         this.speed=100;
-
-        //Variable para saber cuando puede volver a atacar
-        this.isAttacking = false;
+        this.vida = 100;
 
         this.scene.anims.create({
             key:'S',
@@ -81,6 +79,7 @@ constructor(scene,x,y){
         scene.physics.add.existing(this);
         // @ts-ignore
         this.body.setCollideWorldBounds();
+
     }
     /**
      * @param {number} t

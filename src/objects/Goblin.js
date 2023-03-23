@@ -1,3 +1,4 @@
+import { Scene } from 'phaser';
 import Enemy from './Enemy.js';
 
 export default class Goblin extends Enemy {
@@ -10,5 +11,6 @@ export default class Goblin extends Enemy {
 	constructor(scene, x, y, imgKey) {
 		super(scene, x, y, 200, 'goblin');
 		this.setDisplaySize(50,50);
+    this.damage=10;
 	}
 }
