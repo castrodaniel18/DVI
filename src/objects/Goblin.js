@@ -12,7 +12,7 @@ export default class Goblin extends Enemy {
 		super(scene, x, y, 200, 'goblin');
 		this.setDisplaySize(50,50);
     this.damage=10;
-
+    this.vida = 5;
     this.scene.anims.create({
       key:'up',
       frames: scene.anims.generateFrameNumbers('goblin',{start:104,end:112}),
@@ -62,6 +62,9 @@ export default class Goblin extends Enemy {
         animation = 'down';
     }
     //Ejecutamos la animación solo si no es la que se estaba ejecutando ya
-    this.play(animation, true);
+    if(this.vida > 0)
+      this.play(animation, true);
+    else 
+      this.destroy()
   }
 }

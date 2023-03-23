@@ -5,7 +5,7 @@ export default class FireballGroup extends Phaser.Physics.Arcade.Sprite{
 
         this.scene.add.existing(this);
         this.setScale(0.5);
-
+        this.damage = 1;
         //Metemos la animación de la fireball
         this.scene.anims.create({
 			key: 'none',
