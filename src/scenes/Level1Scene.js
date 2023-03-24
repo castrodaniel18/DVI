@@ -17,6 +17,7 @@ export default class Level1Scene extends Phaser.Scene{
     create(){
         let bg = this.add.image(0,0,'fondo').setOrigin(0,0);
         this.player = new Player(this,this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2)
+        this.player.play('idleS')
         this.fireballGroup = new FireballGroup(this);
         this.goblin = new Goblin(this, 50, 500,'goblin')
         this.physics.world.setBounds(0, 0, bg.width, bg.height);

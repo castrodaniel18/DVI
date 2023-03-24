@@ -12,7 +12,6 @@ constructor(scene,x,y){
         this.setScale(2);
         this.speed=100;
         this.vida = 100;
-
         this.scene.anims.create({
             key:'S',
             frames: scene.anims.generateFrameNumbers('player',{start:0,end:3}),
@@ -62,12 +61,29 @@ constructor(scene,x,y){
             repeat: -1
         });
         this.scene.anims.create({
-            key:'idle',
-            frames: scene.anims.generateFrameNumbers('player',{start:4,end:4}),
+            key:'idleS',
+            frames: scene.anims.generateFrameNumbers('player',{start:2,end:2}),
             frameRate: 0,
             repeat: -1
         });
-        
+        this.scene.anims.create({
+            key:'idleW',
+            frames: scene.anims.generateFrameNumbers('player',{start:16,end:16}),
+            frameRate: 0,
+            repeat: -1
+        });
+        this.scene.anims.create({
+            key:'idleA',
+            frames: scene.anims.generateFrameNumbers('player',{start:8,end:8}),
+            frameRate: 0,
+            repeat: -1
+        });
+        this.scene.anims.create({
+            key:'idleD',
+            frames: scene.anims.generateFrameNumbers('player',{start:24,end:24}),
+            frameRate: 0,
+            repeat: -1
+        });
         this.play('S');
 
         this.wKey = this.scene.input.keyboard.addKey('W');
@@ -87,7 +103,6 @@ constructor(scene,x,y){
      */
     preUpdate(t,dt){
         super.preUpdate(t,dt);
-
         if(this.aKey.isDown ){
             if(this.wKey.isDown || this.sKey.isDown || this.dKey.isDown){}
             else if(this.anims.currentAnim.key !== ('W')){
@@ -146,16 +161,20 @@ constructor(scene,x,y){
         // @ts-ignore
         this.body.setVelocity(this.speed*aux.x,this.speed*aux.y);
 
-        if(Phaser.Input.Keyboard.JustUp(this.aKey)||Phaser.Input.Keyboard.JustUp(this.dKey) || (this.aKey.isDown && this.dKey.isDown)){
-			if(this.anims.isPlaying === true){
-				//this.play('idle');
-			}
+        if(Phaser.Input.Keyboard.JustUp(this.aKey)|| (this.aKey.isDown && this.dKey.isDown)){
+			if(this.anims.isPlaying) this.play('idleA');
             this.body.velocity.x=0;
 		}
-        if(Phaser.Input.Keyboard.JustUp(this.wKey) || Phaser.Input.Keyboard.JustUp(this.sKey) || (this.wKey.isDown && this.sKey.isDown)){
-			if(this.anims.isPlaying === true){
-				//this.play('idle');
-			}
+        if(Phaser.Input.Keyboard.JustUp(this.dKey) || (this.aKey.isDown && this.dKey.isDown)){
+			if(this.anims.isPlaying) this.play('idleD');
+            this.body.velocity.x=0;
+		}
+        if(Phaser.Input.Keyboard.JustUp(this.wKey) || (this.wKey.isDown && this.sKey.isDown)){
+			if(this.anims.isPlaying) this.play('idleW');
+            this.body.velocity.y=0;
+		}
+        if(Phaser.Input.Keyboard.JustUp(this.sKey) || (this.wKey.isDown && this.sKey.isDown)){
+			if(this.anims.isPlaying) this.play('idleS');
             this.body.velocity.y=0;
 		}
         if((this.wKey.isDown && this.aKey.isDown && this.dKey.isDown)||(this.sKey.isDown && this.dKey.isDown && this.aKey.isDown)){
