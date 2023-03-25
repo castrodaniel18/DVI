@@ -7,6 +7,7 @@
     <title>Autores y Créditos</title>
 
     <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/index.css">
 	<link href='https://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -32,7 +33,16 @@
     <div class="header-fixed-placeholder"></div>
 
     <h1>Autores y Créditos</h1>
-    <p></p>
+    <p>
+        Este videojuego es un proyecto realizado para la asignatura de Desarrollo De Videojuegos mediante Tecnologías Web, de la Universidad Complutense de Madrid.
+        Autores:
+        <ul>
+            <li>Iulius Guerasim</li>
+            <li>Rogger Huayllasco de la Cruz</li>
+            <li>Daniel Castro López</li>
+            <li>Miguel Zayas Boíza</li>
+        </ul>
+    </p>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="../js/header.js"></script>

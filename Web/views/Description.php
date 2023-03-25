@@ -7,6 +7,7 @@
     <title>Descripción</title>
 
     <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/index.css">
 	<link href='https://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -32,7 +33,11 @@
     <div class="header-fixed-placeholder"></div>
 
     <h1>Descripción</h1>
-    <p>Esta es la descripción del juego</p>
+    <p>Folklore Hunters es un juego de tipo shooter por oleadas en el que tendrás que enfrentarte a una gran cantidad de enemigos, cada uno con una fortalezas y debilidades distintas que tendrás que aprovechar.
+        Tendrás que recorrer toda España derrotando a todos los mostruos que encuentres. En cada región por la que pases tendrás que derrotar monstruos normales hasta estar lo suficientemente preparado para enfrentarte al boss de esa región para poder liberarla.
+        Al derrotar monstruos irás consiguiendo experiencia con la que irás aumentando tu nivel, lo que te permitirá conseguir nuevas habilidades y armas y mejorar las que ya tengas.
+        Por otro lado, también tendrás que estar atento a los consumibles que hay repartidos por el mapa, ya que te proporcionarán mejoras temporales que pueden salvarte la vida en un momento crítico.
+    </p>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="../js/header.js"></script>

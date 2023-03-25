@@ -7,6 +7,7 @@
     <title>Instrucciones</title>
 
     <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css//index.css">
 	<link href='https://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -31,8 +32,25 @@
     <!-- You need this element to prevent the content of the page from jumping up -->
     <div class="header-fixed-placeholder"></div>
 
-    <h1>Instrucciones</h1>
-    <p></p>
+    <h1>Objetivos: </h1>
+    <p>
+        <ul>
+            <li>Derrota enemigos</li>
+            <li>Sube de nivel</li>
+            <li>Consigue nuevo equipamiento y mejóralo</li>
+            <li>Y sobre todo SOBREVIVE</li>
+        </ul>
+    </p>
+
+    <h1>Controles</h1>
+    <ul>
+        <li>W: desplazamiento hacia arriba</li>
+        <li>A: desplazamiento hacia la izquierda</li>
+        <li>S: desplazamiento hacia abajo</li>
+        <li>D: desplazamiento hacia la derecha</li>
+        <li>Movimiento con el ratón: apuntar</li>
+        <li>Click izquierda ratón: disparar</li>
+    </ul>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="../js/header.js"></script>
