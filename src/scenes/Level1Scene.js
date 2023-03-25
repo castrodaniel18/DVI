@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import Goblin from "../objects/Goblin";
 import Player from "../objects/Player";
+import HealthBar from "../objects/HealthBar";
 import FireballGroup from "../objects/FireballGroup";
 import Potion from "../objects/Potion";
 
@@ -10,6 +11,7 @@ export default class Level1Scene extends Phaser.Scene{
 
 	}
     preload(){
+        this.load.spritesheet('healthBar', 'assets/health.png',{frameWidth:640, frameHeight:128})
         this.load.spritesheet('player','assets/loose sprites.png',{frameWidth:16, frameHeight:16});
         this.load.spritesheet('fireball', 'assets/fireball.png', {frameWidth: 25.6, frameHeight: 25.5});
         this.load.spritesheet('goblin', 'assets/goblin.png', {frameWidth: 64, frameHeight: 64});
@@ -19,7 +21,7 @@ export default class Level1Scene extends Phaser.Scene{
     create(){
         let bg = this.add.image(0,0,'fondo').setOrigin(0,0);
         this.player = new Player(this,this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2)
-        this.player.play('idleS')
+        this.healthBar = new HealthBar(this,this.player.x,this.player.y -25) 
         this.fireballGroup = new FireballGroup(this);
         this.goblin = new Goblin(this, 50, 500,'goblin')
         this.potion = new Potion(this, 800, 600);
@@ -43,11 +45,14 @@ export default class Level1Scene extends Phaser.Scene{
     }
 
     attack(player,goblin){
+        console.log(player.vida)
         player.vida=player.vida-goblin.damage;
+        this.healthBar.currentHealth = player.vida
     }
     hitGoblin(fireball, goblin) {
         fireball.destroy();
-        goblin.vida = goblin.vida - fireball.damage
+        goblin.vida -= fireball.damage
+
     }
     addEvents(){
         //Para guardar las coordenadas del ratón y saber hacia donde disparar las bolas de fuego
@@ -80,6 +85,7 @@ export default class Level1Scene extends Phaser.Scene{
     
 
 	update(){
+        this.healthBar.updateHealth();
         if(this.goblin.vida > 0)
 		    this.enemyFollows();
         else

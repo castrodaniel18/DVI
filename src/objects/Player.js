@@ -11,7 +11,7 @@ constructor(scene,x,y){
         this.scene.add.existing(this);
         this.setScale(2);
         this.speed=100;
-        this.vida = 100;
+        this.vida = 90;
         //Sirve como temporizador para el efecto de la poción
         this.tiempoEfecto = 0;
         this.scene.anims.create({
@@ -86,7 +86,7 @@ constructor(scene,x,y){
             frameRate: 0,
             repeat: -1
         });
-        this.play('S');
+        this.play('idleS');
 
         this.wKey = this.scene.input.keyboard.addKey('W');
         this.aKey = this.scene.input.keyboard.addKey('A');
