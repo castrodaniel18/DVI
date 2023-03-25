@@ -4,20 +4,20 @@ export default class FireballGroup extends Phaser.Physics.Arcade.Sprite{
         super(scene, x, y, 'fireball');
 
         this.scene.add.existing(this);
-        this.setScale(0.5);
+        //this.setScale(3);
         this.damage = 1;
         //Metemos la animación de la fireball
         this.scene.anims.create({
 			key: 'none',
-			frames: scene.anims.generateFrameNumbers('fireball', {start:11, end:11}),
+			frames: scene.anims.generateFrameNumbers('fireball', {start:18, end:18}),
 			frameRate: 5,
 			repeat: -1
 		});
 
 		this.scene.anims.create({
             key: 'fire_attack',
-			frames: scene.anims.generateFrameNumbers('fireball', {start:0, end:11}),
-			frameRate: 10,
+			frames: scene.anims.generateFrameNumbers('fireball', {start:0, end:19}),
+			frameRate: 15,
 			repeat: 0
         });
 
@@ -43,7 +43,7 @@ export default class FireballGroup extends Phaser.Physics.Arcade.Sprite{
         super.preUpdate(time, delta);
 
         //Cuando la bola de fuego sale del canvas se desactiva para que se puedan lanzar más
-        if(this.y <= 0 || this.y >= 600 || this.x <= 0 || this.x >= 800){
+        if(this.y <= 0 || this.y >= 960 || this.x <= 0 || this.x >= 960){
             this.setActive(false);
             this.setVisible(false);
         }
