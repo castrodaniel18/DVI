@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import Goblin from "../objects/Goblin";
 import Player from "../objects/Player";
 import FireballGroup from "../objects/FireballGroup";
+import Potion from "../objects/Potion";
 
 export default class Level1Scene extends Phaser.Scene{
     constructor() {
@@ -11,7 +12,8 @@ export default class Level1Scene extends Phaser.Scene{
     preload(){
         this.load.spritesheet('player','assets/loose sprites.png',{frameWidth:16, frameHeight:16});
         this.load.spritesheet('fireball', 'assets/fireball.png', {frameWidth: 25.6, frameHeight: 25.5});
-        this.load.spritesheet('goblin', 'assets/goblin.png', {frameWidth: 64, frameHeight: 64})
+        this.load.spritesheet('goblin', 'assets/goblin.png', {frameWidth: 64, frameHeight: 64});
+        this.load.spritesheet('potion', 'assets/potion.png', {frameWidth: 128, frameHeight: 128});
         this.load.image('fondo','assets/fondo.png');
     }
     create(){
@@ -20,6 +22,7 @@ export default class Level1Scene extends Phaser.Scene{
         this.player.play('idleS')
         this.fireballGroup = new FireballGroup(this);
         this.goblin = new Goblin(this, 50, 500,'goblin')
+        this.potion = new Potion(this, 800, 600);
         this.physics.world.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.startFollow(this.player);

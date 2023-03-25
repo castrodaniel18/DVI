@@ -12,6 +12,8 @@ constructor(scene,x,y){
         this.setScale(2);
         this.speed=100;
         this.vida = 100;
+        //Sirve como temporizador para el efecto de la poción
+        this.tiempoEfecto = 0;
         this.scene.anims.create({
             key:'S',
             frames: scene.anims.generateFrameNumbers('player',{start:0,end:3}),
@@ -181,6 +183,30 @@ constructor(scene,x,y){
             this.body.velocity.x=0;
             this.body.velocity.y=0;
         }
+
+        if(this.tiempoEfecto > 0){
+            this.tiempoEfecto -= dt/1000;
+            var minutos = Math.floor(this.tiempoEfecto / 60);
+            var segundos = Math.floor(this.tiempoEfecto - (minutos * 60));
+            if (this.tiempoEfecto > 0)
+                this.tiempoTexto.setText(minutos.toString().padStart(2, '0') + ':' + segundos.toString().padStart(2, '0'));
+            else
+                this.tiempoTexto.setText('');
+            this.tiempoTexto.x = this.x - 30;
+            this.tiempoTexto.y = this.y - 30;
+
+            if (this.tiempoEfecto <= 0){
+                this.speed -= 100;
+            }
+        }
+    }
+
+    potion(){
+        console.log("Poción cogida");
+        this.speed += 100;
+        this.tiempoEfecto = 10;
+        //Para mostrar el temporizador en el juego
+        this.tiempoTexto = this.scene.add.text(this.x - 30, this.y - 30, '00:10', { font: '10px Arial', fill: '#FFFFFF' });
     }
 
 }
