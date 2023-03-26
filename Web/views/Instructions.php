@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css//index.css">
+    <link rel="stylesheet" href="../css/web.css">
 	<link href='https://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -22,35 +23,48 @@
                 <a href="#"  class="selected">Controls</a>
                 <a href="Description.php">Description</a>
                 <a href="Authors.php">About us</a>
-                <a href="Contact.php">GitHub</a>
+                <a href="https://github.com/castrodaniel18/DVI">GitHub</a>
             </nav>
 
         </div>
 
     </header>
 
-    <!-- You need this element to prevent the content of the page from jumping up -->
-    <div class="header-fixed-placeholder"></div>
-
-    <h1>Objetivos: </h1>
-    <p>
-        <ul>
-            <li>Derrota enemigos</li>
-            <li>Sube de nivel</li>
-            <li>Consigue nuevo equipamiento y mejóralo</li>
-            <li>Y sobre todo SOBREVIVE</li>
-        </ul>
-    </p>
-
-    <h1>Controles</h1>
-    <ul>
-        <li>W: desplazamiento hacia arriba</li>
-        <li>A: desplazamiento hacia la izquierda</li>
-        <li>S: desplazamiento hacia abajo</li>
-        <li>D: desplazamiento hacia la derecha</li>
-        <li>Movimiento con el ratón: apuntar</li>
-        <li>Click izquierda ratón: disparar</li>
-    </ul>
+    <div class="general">
+        <div class="container__trust container__card-primary">
+                <div class="box trust card__primary">
+                    <div class="text__trust text__card-primary">
+                        <h1>CONTROLES</h1>
+                    </div>
+                    <div class="container__trust container__box-cardPrimary">
+                        <div class="card__trust box__card-primary">
+                            <img src="../../assets/awsd.png" alt="">
+                            <h2>Desplazamiento</h2>
+                            <p>Desaplazamiento en ocho direcciones</p>
+                        </div>
+                        <div class="card__trust box__card-primary">
+                            <img id="mouseMoving" src="../../assets/mouse.png" alt="">
+                            <h2>Apuntar</h2>
+                            <p>Utiliza el ratón para apuntar en la dirección a la que quieras disparar</p>
+                        </div>
+                        <div class="card__trust box__card-primary">
+                            <img id="mouseClick" src="../../assets/mouseClick.png" alt="">
+                            <h2>Disparar</h2>
+                            <p>Pulsa o manten pulsado el botón izquierdo de ratón para disparar</p>
+                        </div>
+                    </div></br>
+                    <div class="text__trust text__card-primary">
+                        <h1>OBJETIVOS</h1>
+                        <ol id="alineado">
+                            <li>Derrota enemigos</li>
+                            <li>Sube de nivel</li>
+                            <li>Consigue y mejora tu equipo</li>
+                            <li>Y sobre todo SOBREVIVE</li>
+                        </ol>
+                    </div>
+                </div>
+        </div>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="../js/header.js"></script>
