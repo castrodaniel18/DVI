@@ -1,5 +1,5 @@
 import { Scene } from "phaser";
-export default class HealhBar extends Phaser.GameObjects.Sprite{
+export default class HealhtBar extends Phaser.GameObjects.Sprite{
 /** 
 *  @param {Scene} scene - escena en la que aparece
 *  @param {number} x - coordenada x de spawn
@@ -9,7 +9,6 @@ export default class HealhBar extends Phaser.GameObjects.Sprite{
         super(scene,x,y,"healthbar");
         this.scene.add.existing(this);   
         this.setScale(0.12)
-        this.currentHealth = 90;
         this.scene.anims.create({
             key:'90',
             frames: scene.anims.generateFrameNumbers('healthBar',{start:0,end:0}),
@@ -59,16 +58,7 @@ export default class HealhBar extends Phaser.GameObjects.Sprite{
     }
     updateHealth() {
         this.x = this.scene.player.x;
-        this.y = this.scene.player.y - 30;
-        if(this.currentHealth == 9 )this.play('90')
-        else if(this.currentHealth == 8)this.play('80')
-        else if(this.currentHealth == 7)this.play('70')
-        else if(this.currentHealth == 6)this.play('60')
-        else if(this.currentHealth == 5)this.play('50')
-        else if(this.currentHealth == 4)this.play('40')
-        else if(this.currentHealth == 3)this.play('30')
-        else if(this.currentHealth == 2)this.play('20')
-        else if(this.currentHealth == 1)this.play('10')
+         this.y = this.scene.player.y - 35;
+        this.play(String(this.scene.player.vida))
     }
-
 }

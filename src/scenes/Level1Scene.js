@@ -21,7 +21,7 @@ export default class Level1Scene extends Phaser.Scene{
     create(){
         let bg = this.add.image(0,0,'fondo').setOrigin(0,0);
         this.player = new Player(this,this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2)
-        this.healthBar = new HealthBar(this,this.player.x,this.player.y -25) 
+        this.healthBar = new HealthBar(this,this.player.x,this.player.y -35) 
         this.fireballGroup = new FireballGroup(this);
         this.goblin = new Goblin(this, 50, 500,'goblin')
         this.potion = new Potion(this, 800, 600);
@@ -45,9 +45,7 @@ export default class Level1Scene extends Phaser.Scene{
     }
 
     attack(player,goblin){
-        console.log(player.vida)
-        player.vida=player.vida-goblin.damage;
-        this.healthBar.currentHealth = player.vida
+        player.vida-=goblin.damage;
     }
     hitGoblin(fireball, goblin) {
         fireball.destroy();
@@ -82,13 +80,8 @@ export default class Level1Scene extends Phaser.Scene{
             this.goblin.body.velocity.y=0;
         }
 	}
-    
-
 	update(){
-        this.healthBar.updateHealth();
-        if(this.goblin.vida > 0)
-		    this.enemyFollows();
-        else
-            this.goblin.destroy()
+        this.goblin.vida ? this.enemyFollows() : this.goblin.destroy();
+        this.healthBar.updateHealth() 
 	}
 }
