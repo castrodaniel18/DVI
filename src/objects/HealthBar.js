@@ -10,55 +10,60 @@ export default class HealhtBar extends Phaser.GameObjects.Sprite{
         this.scene.add.existing(this);   
         this.setScale(0.12)
         this.scene.anims.create({
-            key:'90',
+            key:'100',
             frames: scene.anims.generateFrameNumbers('healthBar',{start:0,end:0}),
             repeat: -1
         });
         this.scene.anims.create({
-            key:'80',
+            key:'90',
             frames: scene.anims.generateFrameNumbers('healthBar',{start:1,end:1}),
             repeat: -1
         });
         this.scene.anims.create({
-            key:'70',
+            key:'80',
             frames: scene.anims.generateFrameNumbers('healthBar',{start:2,end:2}),
             repeat: -1
         });
         this.scene.anims.create({
-            key:'60',
+            key:'70',
             frames: scene.anims.generateFrameNumbers('healthBar',{start:3,end:3}),
             repeat: -1
         });
         this.scene.anims.create({
-            key:'50',
+            key:'60',
             frames: scene.anims.generateFrameNumbers('healthBar',{start:4,end:4}),
             repeat: -1
         });
         this.scene.anims.create({
-            key:'40',
+            key:'50',
             frames: scene.anims.generateFrameNumbers('healthBar',{start:5,end:5}),
             repeat: -1
         });
         this.scene.anims.create({
-            key:'30',
+            key:'40',
             frames: scene.anims.generateFrameNumbers('healthBar',{start:6,end:6}),
             repeat: -1
         });
         this.scene.anims.create({
-            key:'20',
+            key:'30',
             frames: scene.anims.generateFrameNumbers('healthBar',{start:7,end:7}),
             repeat: -1
         });
         this.scene.anims.create({
-            key:'10',
+            key:'20',
             frames: scene.anims.generateFrameNumbers('healthBar',{start:8,end:8}),
+            repeat: -1
+        });
+        this.scene.anims.create({
+            key:'10',
+            frames: scene.anims.generateFrameNumbers('healthBar',{start:9,end:9}),
             repeat: -1
         });
         this.play('90');
     }
     updateHealth() {
         this.x = this.scene.player.x;
-         this.y = this.scene.player.y - 35;
+        this.y = this.scene.player.y - 35;
         this.play(String(this.scene.player.vida))
     }
 }
