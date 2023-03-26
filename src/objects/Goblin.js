@@ -2,6 +2,7 @@ import { Scene } from 'phaser';
 import Enemy from './Enemy.js';
 
 export default class Goblin extends Enemy {
+
   /**
    * Constructor de Goblin
    * @param {Scene} scene Escena en la que aparece la estrella
@@ -13,6 +14,8 @@ export default class Goblin extends Enemy {
 		this.setDisplaySize(50,50);
     this.damage=10;
     this.vida = 5;
+    this.lastAttackTime = 0;
+    this.attackCooldown = 2000;
     this.scene.anims.create({
       key:'up',
       frames: scene.anims.generateFrameNumbers('goblin',{start:104,end:112}),

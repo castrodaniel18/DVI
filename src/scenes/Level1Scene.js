@@ -44,7 +44,10 @@ export default class Level1Scene extends Phaser.Scene{
     }
 
     attack(player,goblin){
-        player.vida-=goblin.damage;
+        if(Date.now() - goblin.lastAttackTime > goblin.attackCooldown){
+            player.vida-=goblin.damage;
+            goblin.lastAttackTime = Date.now();
+        }
     }
     hitGoblin(fireball, goblin) {
         fireball.destroy();
