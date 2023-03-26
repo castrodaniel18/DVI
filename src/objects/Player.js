@@ -6,12 +6,14 @@ export default class Player extends Phaser.GameObjects.Sprite{
 *  @param {number} x - coordenada x de spawn
 *  @param {number} y - coordeada y de spawn
 */
+
 constructor(scene,x,y){
         super(scene,x,y,'player');
         this.scene.add.existing(this);
         this.setScale(2);
         this.speed=100;
         this.vida = 100;
+        this.playerDied = false;
         //Sirve como temporizador para el efecto de la poción
         this.tiempoEfecto = 0;
         this.scene.anims.create({
@@ -207,6 +209,11 @@ constructor(scene,x,y){
         this.tiempoEfecto = 10;
         //Para mostrar el temporizador en el juego
         this.tiempoTexto = this.scene.add.text(this.x - 30, this.y - 30, '00:10', { font: '10px Arial', fill: '#FFFFFF' });
+    }
+
+    playerDie() {
+        this.playerDied = true;
+        this.destroy()
     }
 
 }

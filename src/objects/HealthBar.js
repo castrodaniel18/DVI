@@ -66,4 +66,8 @@ export default class HealhtBar extends Phaser.GameObjects.Sprite{
         this.y = this.scene.player.y - 35;
         this.play(String(this.scene.player.vida))
     }
+
+    playerDie() {
+        this.destroy()
+    }
 }

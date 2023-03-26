@@ -87,5 +87,9 @@ export default class Level1Scene extends Phaser.Scene{
             goblin.vida ? this.enemyFollows(goblin) : goblin.destroy();
         })
         this.healthBar.updateHealth() 
+        if(this.player.vida <= 0){
+            this.player.playerDie()
+            this.healthBar.playerDie()
+        }
 	}
 }
