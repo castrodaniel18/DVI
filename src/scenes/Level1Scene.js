@@ -4,6 +4,7 @@ import Player from "../objects/Player";
 import HealthBar from "../objects/HealthBar";
 import FireballGroup from "../objects/FireballGroup";
 import Potion from "../objects/Potion";
+import GoblinGroup from "../objects/GoblinGroup";
 
 export default class Level1Scene extends Phaser.Scene{
     constructor() {
@@ -23,25 +24,23 @@ export default class Level1Scene extends Phaser.Scene{
         this.player = new Player(this,this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2)
         this.healthBar = new HealthBar(this,this.player.x,this.player.y -35) 
         this.fireballGroup = new FireballGroup(this);
-        this.goblin = new Goblin(this, 50, 500,'goblin')
+        this.goblinGroup = new GoblinGroup(this)
         this.potion = new Potion(this, 800, 600);
         this.physics.world.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.startFollow(this.player);
-
         this.addEvents();
-
         let scene = this;
         
         //Se crea una variable para grupos de elementos que tengan física
         let fireballs = this.add.group();
-
         //Le añadimos todas las bolas de fireballGroup
         fireballs.addMultiple(this.fireballGroup.getChildren());
-
         //Añadimos un collider para detectar las colisiones entre las bolas de fuego y el goblin
-		this.physics.add.collider(fireballs, this.goblin, this.hitGoblin, null, this);
-        this.physics.add.overlap(this.player,this.goblin,this.attack,null,this);
+        this.goblinGroup.goblins.forEach(goblin =>{
+            this.physics.add.collider(fireballs, goblin, this.hitGoblin, null, this);
+            this.physics.add.overlap(this.player, goblin ,this.attack,null,this);
+        });
     }
 
     attack(player,goblin){
@@ -71,17 +70,19 @@ export default class Level1Scene extends Phaser.Scene{
         this.fireballGroup.fire(this.player.x, this.player.y, this.player.speed, angle);
     }
 
-    enemyFollows () {
-        if(Phaser.Math.Distance.Between(this.player.body.position.x,this.player.body.position.y,this.goblin.body.position.x,this.goblin.body.position.y)>40){
-		    this.physics.moveToObject(this.goblin, this.player, 100);
+    enemyFollows (goblin) {
+        if(Phaser.Math.Distance.Between(this.player.body.position.x,this.player.body.position.y,goblin.body.position.x,goblin.body.position.y)>40){
+		    this.physics.moveToObject(goblin, this.player, 100);
         }
         else{
-            this.goblin.body.velocity.x=0;
-            this.goblin.body.velocity.y=0;
+            goblin.body.velocity.x=0;
+            goblin.body.velocity.y=0;
         }
 	}
 	update(){
-        this.goblin.vida ? this.enemyFollows() : this.goblin.destroy();
+        this.goblinGroup.goblins.forEach(goblin => {
+            goblin.vida ? this.enemyFollows(goblin) : goblin.destroy();
+        })
         this.healthBar.updateHealth() 
 	}
 }

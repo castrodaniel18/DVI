@@ -40,14 +40,10 @@ export default class Goblin extends Enemy {
       frameRate: 5,
       repeat: -1
     });
-
     this.play('up');
-
 	}
-
   preUpdate(t, dt){
     super.preUpdate(t, dt);
-
     let animation;
     if(this.body.velocity.x >= 0 && this.body.velocity.y >= 0){
         animation = 'left';
@@ -62,9 +58,6 @@ export default class Goblin extends Enemy {
         animation = 'down';
     }
     //Ejecutamos la animación solo si no es la que se estaba ejecutando ya
-    if(this.vida > 0)
-      this.play(animation, true);
-    else 
-      this.destroy()
+    this.vida ? this.play(animation, true) : this.destroy()
   }
 }
