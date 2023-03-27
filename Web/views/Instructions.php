@@ -38,17 +38,17 @@
                     </div>
                     <div class="container__trust container__box-cardPrimary">
                         <div class="card__trust box__card-primary">
-                            <img src="../../assets/awsd.png" alt="">
+                            <img src="../../assets/web/awsd.png" alt="">
                             <h2>Desplazamiento</h2>
                             <p>Desaplazamiento en ocho direcciones</p>
                         </div>
                         <div class="card__trust box__card-primary">
-                            <img id="mouseMoving" src="../../assets/mouse.png" alt="">
+                            <img id="mouseMoving" src="../../assets/web/mouse.png" alt="">
                             <h2>Apuntar</h2>
                             <p>Utiliza el ratón para apuntar en la dirección a la que quieras disparar</p>
                         </div>
                         <div class="card__trust box__card-primary">
-                            <img id="mouseClick" src="../../assets/mouseClick.png" alt="">
+                            <img id="mouseClick" src="../../assets/web/mouseClick.png" alt="">
                             <h2>Disparar</h2>
                             <p>Pulsa o manten pulsado el botón izquierdo de ratón para disparar</p>
                         </div>

@@ -12,12 +12,12 @@ export default class Level1Scene extends Phaser.Scene{
 
 	}
     preload(){
-        this.load.spritesheet('healthBar', 'assets/health.png',{frameWidth:640, frameHeight:128})
-        this.load.spritesheet('player','assets/loose sprites.png',{frameWidth:16, frameHeight:16});
-        this.load.spritesheet('fireball', 'assets/fireball.png', {frameWidth: 25.6, frameHeight: 25.5});
-        this.load.spritesheet('goblin', 'assets/goblin.png', {frameWidth: 64, frameHeight: 64});
-        this.load.spritesheet('potion', 'assets/potion.png', {frameWidth: 128, frameHeight: 128});
-        this.load.image('fondo','assets/fondo.png');
+        this.load.spritesheet('healthBar', 'assets/elements/health.png',{frameWidth:640, frameHeight:128})
+        this.load.spritesheet('player','assets/sprites/loose sprites.png',{frameWidth:16, frameHeight:16});
+        this.load.spritesheet('fireball', 'assets/elements/fireball.png', {frameWidth: 25.6, frameHeight: 25.5});
+        this.load.spritesheet('goblin', 'assets/sprites/goblin.png', {frameWidth: 64, frameHeight: 64});
+        this.load.spritesheet('potion', 'assets/elements/potion.png', {frameWidth: 128, frameHeight: 128});
+        this.load.image('fondo','assets/elements/fondo.png');
     }
     create(){
         let bg = this.add.image(0,0,'fondo').setOrigin(0,0);
@@ -52,7 +52,9 @@ export default class Level1Scene extends Phaser.Scene{
     hitGoblin(fireball, goblin) {
         fireball.destroy();
         goblin.vida -= fireball.damage
-
+        if (goblin.vida <= 0){
+            this.player.playerExp += 50;
+        }
     }
     addEvents(){
         //Para guardar las coordenadas del ratón y saber hacia donde disparar las bolas de fuego
@@ -91,5 +93,8 @@ export default class Level1Scene extends Phaser.Scene{
             this.player.playerDie()
             this.healthBar.playerDie()
         }
+
+        this.player.setLevelTextPosition(this.cameras.main.scrollX + 10, this.cameras.main.scrollY + 10);
 	}
+    
 }

@@ -16,6 +16,14 @@ constructor(scene,x,y){
         this.playerDied = false;
         //Sirve como temporizador para el efecto de la poción
         this.tiempoEfecto = 0;
+        this.playerExp = 0;
+        this.levelConfig = {
+            1:0,
+            2:100,
+            3:200
+        };
+        this.playerLevelText = this.scene.add.text(10, 10, 'Nivel 1 - Exp: ' + this.playerExp, { fontSize: '32px', fill: '#FFF' });
+
         this.scene.anims.create({
             key:'S',
             frames: scene.anims.generateFrameNumbers('player',{start:0,end:3}),
@@ -201,6 +209,8 @@ constructor(scene,x,y){
                 this.speed -= 100;
             }
         }
+
+        this.updatePlayerLevel();
     }
 
     potion(){
@@ -214,6 +224,28 @@ constructor(scene,x,y){
     playerDie() {
         this.playerDied = true;
         this.destroy()
+    }
+
+    checkLevelUp() {
+        let currentLevel = 1;
+        for (let level in this.levelConfig) {
+          if (this.playerExp >= this.levelConfig[level]) {
+            // @ts-ignore
+            currentLevel = level;
+          } else {
+            break;
+          }
+        }
+        return currentLevel;
+    }
+    
+    updatePlayerLevel() {
+        let currentLevel = this.checkLevelUp();
+        this.playerLevelText.setText('Nivel: ' + currentLevel + ' - Exp: ' + this.playerExp);
+    }
+
+    setLevelTextPosition(posX, posY){
+        this.playerLevelText.setPosition(posX, posY);
     }
 
 }

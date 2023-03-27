@@ -45,7 +45,7 @@
                     </p>
                 </section>
                 <section class="image__cover">
-                    <img src="../../assets/portada.png" alt="">
+                    <img src="../../assets/web/portada.png" alt="">
                 </section>
             </div>
         </div>

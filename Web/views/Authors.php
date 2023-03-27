@@ -44,25 +44,25 @@
                 <div class="container__comercials container__box-cardPrimary">
                     <div class="card__comercial box__card-primary">
                         <div class="photo__team">
-                            <img src="../../assets/daniel.png" alt="">
+                            <img src="../../assets/web/daniel.png" alt="">
                         </div>
                         <h4 class="center-text" >Daniel Castro López</h4>
                     </div>
                     <div class="card__comercial box__card-primary">
                         <div class="photo__team">
-                            <img src="../../assets/iulius.png" alt="">
+                            <img src="../../assets/web/iulius.png" alt="">
                         </div>
                         <h4 class="center-text">Iulius Gherasim</h4>
                     </div>
                     <div class="card__comercial box__card-primary">
                         <div class="photo__team">
-                            <img src="../../assets/rogger.png" alt="">
+                            <img src="../../assets/web/rogger.png" alt="">
                         </div>
                         <h4 class="center-text">Rogger Huayllasco de la Cruz</h4>
                     </div>
                     <div class="card__comercial box__card-primary">
                         <div class="photo__team">
-                            <img src="../../assets/miguel.png" alt="">
+                            <img src="../../assets/web/miguel.png" alt="">
                         </div>
                         <h4 class="center-text">Miguel Zayas Boíza</h4>
                     </div>
