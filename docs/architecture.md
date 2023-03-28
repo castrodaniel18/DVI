@@ -1,4 +1,4 @@
 # Arquitectura del juego
-La arquitectura del juego se puede ver en el siguiente archivo UMLç
+La arquitectura del juego se puede ver en el siguiente archivo UML
 
-<image src="Poner aqui la ruta del uml">
+<image src="../UML.vpd.png">
