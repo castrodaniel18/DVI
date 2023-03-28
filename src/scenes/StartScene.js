@@ -7,7 +7,7 @@ export default class StartScene extends Phaser.Scene {
     }
   
     preload() {
-      this.load.css('start', 'Web/css/start.css')
+      this.load.css('start', 'web/css/start.css')
     }
   
     create() {
