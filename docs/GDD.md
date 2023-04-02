@@ -3,23 +3,21 @@
 #### Miguel Zayas Boíza, Daniel Castro López, Iulius Gherasim, Rogger Huayllasco de la Cruz
 ## **Documento de diseño**
 
+# 1. Información básica
 
-### **INFORMACIÓN BÁSICA**
-#### **Título**: Folklore Hunters
-#### **Género**: Shooter por oleadas, Roguelike
-#### **Plataformas**: Web
-#### **Aundiencia objetivo**: Casual
+ - Título: Folklore Hunters
+ - Género: Shooter por oleadas, Roguelike
+ - Plataforma: Web
+ - Audiencia objetivo: Casual
 
-### **DESCRIPCIÓN**
-#### ¿De que va el juego?
-En un shooter por oleadas en el que se van matando enemigos para conseguir objetos y pasar de nivel.
-#### ¿Por qué jugar a este juego en vez de jugar a otra cosa / algo mejor?
+## 1.1 Descripción
+Este juego consiste en un shooter por oleadas en el que el jugador tendrá que sobrevivir y matar la mayor cantidad de enemigo posibles para poder enfrentarse al jefe del nivel y poder pasar a la siguiente zona. 
+Al derrotar enemigos el jugador irá obteniendo experiencia con la que podrá subir de nivel. Cada vez que suba de nivel tendrá la posibilidad de elegir entre tres objetos aleatorios que le proporcionarán una mejora permanente durante toda la partida. Además, también podrá obtener mejoras recogiendo objetos que habrá esparcidos por el mapa, solo que estos tendrán un efecto temporal.
+El objetivo final del juego será recorrer todas las zonas del mapa derrotando el mayor número de enemigos posibles para hacerse lo suficientemente fuerte para derrotar a todos los jefes finales y salvar el mundo.
 
-Porque es un juego entretenido para jugar de forma causal y no requiere de gran habilidad por lo que lo puede disfrutar cualquiera.
-### **AMBIENTACIÓN**
-
-El juego consiste en una serie de niveles, cada uno ambientado en la mitología de una región española concreta. Así mismo los enemigos pertenecerán a la mitología de esa región. El jugador podrá obtener mejoras matando enemigos y encontrando objetos también basados en la mitología.
-El jugador deberá enfrentarse a un jefe que será una de las criaturas más fuertes de la mitología de esa región.
+## 1.2 Ambientación
+El escenario que se plantea en el juego es que el jugador es un cazador que se ha encontrado con que todo el país ha sido invadido por seres mitológicos que hasta ahora ni siquiera se sabía si existían realmente. Nuestro protagonista tomará el papel del héroe que va a salvar a todo el país, recorriendo cada región de España para derrotar a todos los monstruos. En cada región se encontrará con seres mitológicos típicos de esa región y, cuando haya acabado con suficientes monstruos débiles, obligará a aparecer al jefe, que en cada región será uno de los seres mitológicos más conocidos de esa región.
+Del mismo modo, tanto los objetos que pueda recoger del suelo, como los objetos que el personaje obtiene al subir de nivel, serán objetos basados en la mitología de España.
 
 ### **MÉCANICAS PRINCIPALES DEL JUEGO** 
 #### **Elección de clase** 
