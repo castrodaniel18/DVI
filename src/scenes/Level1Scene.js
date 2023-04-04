@@ -13,7 +13,7 @@ export default class Level1Scene extends Phaser.Scene{
 	}
     preload(){
         this.load.spritesheet('healthBar', 'assets/elements/health.png',{frameWidth:640, frameHeight:128})
-        this.load.spritesheet('player','assets/sprites/loose sprites.png',{frameWidth:16, frameHeight:16});
+        this.load.spritesheet('player','assets/sprites/player.png',{frameWidth:16, frameHeight:16});
         this.load.spritesheet('fireball', 'assets/elements/fireball.png', {frameWidth: 25.6, frameHeight: 25.5});
         this.load.spritesheet('goblin', 'assets/sprites/goblin.png', {frameWidth: 64, frameHeight: 64});
         this.load.spritesheet('potion', 'assets/elements/potion.png', {frameWidth: 128, frameHeight: 128});

@@ -49,8 +49,11 @@ Del mismo modo, tanto los objetos que pueda recoger del suelo, como los objetos 
  - Escenario: el jugador podrá moverse por todo el escenario que vea en ese nivel, pero al llegar a los límites del escenario se chocará y no podrá continuar. También habrá elementos estéticos repartidos por el mapa que no tendrán una utilidad concreta pero que no podrán ser traspasados ni por el jugador ni por los enemigos o los ataques.
 
 ### 2.1.4 Mecánicas de objetos
+ - Poción de velocidad: duplica la velocidad del jugador durante 10 segundos.
 
 ### 2.1.5 Mecánicas de jefes
+
+
 
 ### **REFERENCIAS**
 
