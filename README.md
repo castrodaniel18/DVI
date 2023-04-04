@@ -107,10 +107,11 @@ La estética que hemos elegido para el juego es el estilo de pixel art, ya que n
 ## 4.3 Objetos
 
  - Bola de fuego: Obtenido de [cleanpng](https://www.cleanpng.com/png-body-jewellery-font-4261378/)  
- 
+
  ![Bola de fuego](https://raw.githubusercontent.com/castrodaniel18/DVI/master/dist/assets/elements/fireball.png)
  
- - Poción de velocidad: Obtenido de [kindpng](https://www.kindpng.com/imgv/TwhwihT_potion-pixel-art-animation-hd-png-download/)
+ - Poción de velocidad: Obtenido de [kindpng](https://www.kindpng.com/imgv/TwhwihT_potion-pixel-art-animation-hd-png-download/)  
+ 
 ![enter image description here](https://raw.githubusercontent.com/castrodaniel18/DVI/master/dist/assets/elements/potion.png)
 
  - Barra de vida: creada por nosotros
