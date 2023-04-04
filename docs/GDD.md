@@ -53,7 +53,71 @@ Del mismo modo, tanto los objetos que pueda recoger del suelo, como los objetos 
 
 ### 2.1.5 Mecánicas de jefes
 
+## 2.2 Dinámicas
 
+ - El jugador podrá aprovechar el hecho de poder moverse en una dirección mientras apunta hacia otra para poder disparar mientras está huyendo de un enemigo o poder coger los puntos de experiencia mientras dispara al siguiente enemigo entre otras cosas, todo dependiendo de la capacidad de coordinación que tenga la persona que está jugando.
+ 
+ - El jugador podrá utilizar la recompensa obtenida al utilizar bien el dash, para tener más tiempo y poder apuntar con mayor facilidad al punto débil del enemigo.
+
+ - Si el jugador es lo suficientemente hábil podrá utilizar los elementos estéticos del escenario como cubierta para evitar que le den los disparos o para despistar a algún enemigo en un momento dado.
+
+# 3. Controles
+
+ - W: movimiento hacia arriba
+ - A: movimiento hacia la izquierda
+ - S: movimiento hacia abajo
+ - D: movimiento hacia la derecha
+ - SPACE: dash en la dirección en la que esté mirando el jugador
+ - Cursor: posición hacia la que saldrán los ataques que haga el jugador 
+ - Click izquierdo ratón: ataque
+
+# 4. Estética
+La estética que hemos elegido para el juego es el estilo de pixel art, ya que nos parecía el más adecuado para un juego de este tipo.  Además pixel art nos parecía el tipo de arte más fácil de encontrar en internet de forma gratuita y teniendo muchas posibilidades distintas.
+
+## 4.1 Escenario
+
+
+## 4.2 Personajes
+
+ - Jugador: el sprite del jugador lo hemos creado desde cero y de forma que tenga animación para el desplazamiento tanto en las 4 direcciones habituales como en las diagonales.
+<img src="https://raw.githubusercontent.com/castrodaniel18/DVI/master/dist/assets/sprites/player.png"  width="100" height="200">
+
+ - Enemigos: para los enemigos hemos utilizado un generador de sprites que permite personalizar desde un sprite básico añadiendo todo tipo de elementos.
+ [Universal LPC Sprite Sheet Character Generator (sanderfrenken.github.io)](https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator/#?body=Body_color_light&head=Human_male_light&sex=male&shadow=none&wound_arm=none&arms=none&armour=none&belt=none&weapon=Gnarled_staff_gnarled&weapon_magic_crystal=Crystal_red&clothes=Longsleeve_black&chainmail=none&bandages=none&jacket=Iverness_cloak_black&jacket_collar=Frock_collar_gold&legs=Pants_black&shoes=Boots_black&hat=Magic_brown)
+ (Ejemplo del sprite de goblin creado a partir del generador)
+<img src="https://raw.githubusercontent.com/castrodaniel18/DVI/master/dist/assets/sprites/goblin.png"  width="600" height="800">
+
+## 4.3 Objetos
+
+ - Bola de fuego: Obtenido de [cleanpng](https://www.cleanpng.com/png-body-jewellery-font-4261378/)
+ ![Bola de fuego](https://raw.githubusercontent.com/castrodaniel18/DVI/master/dist/assets/elements/fireball.png)
+ 
+ - Poción de velocidad: Obtenido de [kindpng](https://www.kindpng.com/imgv/TwhwihT_potion-pixel-art-animation-hd-png-download/)
+![enter image description here](https://raw.githubusercontent.com/castrodaniel18/DVI/master/dist/assets/elements/potion.png)
+
+ - Barra de vida: creada por nosotros
+<img src="https://raw.githubusercontent.com/castrodaniel18/DVI/master/dist/assets/elements/health.png"  width="300" height="300">
+
+# 5. Niveles
+
+## 5.1 Galicia
+
+## 5.2 Asturias
+
+
+# 6. Sonido
+El juego contará con una canción de fondo que se escuchará desde que cargue el juego en el menú principal y que será posible silenciar desde la pestaña de ajustes.
+Si el tiempo lo permite se añadirán efectos de sonidos para los ataques tanto del jugador como de los enemigos y un sonido que se escuchará cuando te maten para indicar que se ha acabado la partida.
+
+# 7. Menú
+
+ - Empezar juego: botón que dirige directamente a la pestaña de selección de clase  para empezar la partida.
+ 
+ - Ajustes: pestaña con la configuración de la partida. Las opciones que contiene son:
+	 - Silenciar juego: quita el sonido tanto de la música de fondo como de los efectos de sonido dentro del juego.
+	 - Pantalla completa: pone el juego en modo pantalla completa para que no se vea la web de fondo.
+	 - Dificultad juego: te permite elegir la dificultad de la partida fácil, normal o difícil.
+ - Ayuda: muestra una pestaña en la que se enseñan los controles y unas instrucciones básicas para entender el juego.
 
 ### **REFERENCIAS**
 
