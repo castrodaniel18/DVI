@@ -13,7 +13,7 @@ El juego está ambientado en la mitología española, temática que debemos segu
 # Arquitectura del juego
 La arquitectura del juego se puede ver en el siguiente archivo UML
 
-<image src="../UML.vpd.png">
+<image src="https://raw.githubusercontent.com/castrodaniel18/DVI/master//UML.vpd.png">
 
 # Folklore Hunters
 #### *Visual Studio Games*
