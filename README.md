@@ -106,7 +106,8 @@ La estética que hemos elegido para el juego es el estilo de pixel art, ya que n
 
 ## 4.3 Objetos
 
- - Bola de fuego: Obtenido de [cleanpng](https://www.cleanpng.com/png-body-jewellery-font-4261378/)
+ - Bola de fuego: Obtenido de [cleanpng](https://www.cleanpng.com/png-body-jewellery-font-4261378/)  
+ 
  ![Bola de fuego](https://raw.githubusercontent.com/castrodaniel18/DVI/master/dist/assets/elements/fireball.png)
  
  - Poción de velocidad: Obtenido de [kindpng](https://www.kindpng.com/imgv/TwhwihT_potion-pixel-art-animation-hd-png-download/)
@@ -136,6 +137,6 @@ Si el tiempo lo permite se añadirán efectos de sonidos para los ataques tanto 
 	 - Dificultad juego: te permite elegir la dificultad de la partida fácil, normal o difícil.
  - Ayuda: muestra una pestaña en la que se enseñan los controles y unas instrucciones básicas para entender el juego.
 
-### **REFERENCIAS**
+# 8. Referencias
 
 Hemos tomado como referencia principal el juego Vampire Survivors, siguiendo el mismo estilo de juego y mecánicas básicas. Sin embargo, hemos añadido algunas mecánicas distintas basándonos en el juego Enter the Gungeon y hemos cambiado la temática siguiendo la mitología española que hemos ido recopilando de varias fuentes.
