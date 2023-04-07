@@ -19,6 +19,12 @@ export default class Level1Scene extends Phaser.Scene{
         this.load.spritesheet('potion', 'assets/elements/potion.png', {frameWidth: 128, frameHeight: 128});
         this.load.image('fondo','assets/elements/fondo.png');
     }
+
+    init(data) {
+        // guarda el personaje seleccionado en una variable
+        this.selectedCharacter = data.character;
+    }
+
     create(){
         let bg = this.add.image(0,0,'fondo').setOrigin(0,0);
         this.player = new Player(this,this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2)
