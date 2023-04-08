@@ -7,12 +7,12 @@ export default class Player extends Phaser.GameObjects.Sprite{
 *  @param {number} y - coordeada y de spawn
 */
 
-constructor(scene,x,y){
-        super(scene,x,y,'player');
+constructor(scene,x,y, sprite, playerSpeed, playerHealth){
+        super(scene,x,y,sprite);
         this.scene.add.existing(this);
         this.setScale(2);
-        this.speed=100;
-        this.vida = 100;
+        this.speed = playerSpeed;
+        this.vida = playerHealth;
         this.playerDied = false;
         //Sirve como temporizador para el efecto de la poción
         this.tiempoEfecto = 0;
@@ -26,73 +26,73 @@ constructor(scene,x,y){
 
         this.scene.anims.create({
             key:'S',
-            frames: scene.anims.generateFrameNumbers('player',{start:0,end:3}),
+            frames: scene.anims.generateFrameNumbers(sprite,{start:0,end:3}),
             frameRate: 5,
             repeat: -1
         });
         this.scene.anims.create({
             key:'SW',
-            frames: scene.anims.generateFrameNumbers('player',{start:4,end:7}),
+            frames: scene.anims.generateFrameNumbers(sprite,{start:4,end:7}),
             frameRate: 5,
             repeat: -1
         });
         this.scene.anims.create({
             key:'W',
-            frames: scene.anims.generateFrameNumbers('player',{start:8,end:11}),
+            frames: scene.anims.generateFrameNumbers(sprite,{start:8,end:11}),
             frameRate: 5,
             repeat: -1
         });
         this.scene.anims.create({
             key:'NW',
-            frames: scene.anims.generateFrameNumbers('player',{start:12,end:15}),
+            frames: scene.anims.generateFrameNumbers(sprite,{start:12,end:15}),
             frameRate: 5,
             repeat: -1
         });
         this.scene.anims.create({
             key:'N',
-            frames: scene.anims.generateFrameNumbers('player',{start:16,end:19}),
+            frames: scene.anims.generateFrameNumbers(sprite,{start:16,end:19}),
             frameRate: 5,
             repeat: -1
         });
         this.scene.anims.create({
             key:'NE',
-            frames: scene.anims.generateFrameNumbers('player',{start:20,end:23}),
+            frames: scene.anims.generateFrameNumbers(sprite,{start:20,end:23}),
             frameRate: 5,
             repeat: -1
         });
         this.scene.anims.create({
             key:'E',
-            frames: scene.anims.generateFrameNumbers('player',{start:24,end:27}),
+            frames: scene.anims.generateFrameNumbers(sprite,{start:24,end:27}),
             frameRate: 5,
             repeat: -1
         });
         this.scene.anims.create({
             key:'SE',
-            frames: scene.anims.generateFrameNumbers('player',{start:28,end:31}),
+            frames: scene.anims.generateFrameNumbers(sprite,{start:28,end:31}),
             frameRate: 5,
             repeat: -1
         });
         this.scene.anims.create({
             key:'idleS',
-            frames: scene.anims.generateFrameNumbers('player',{start:2,end:2}),
+            frames: scene.anims.generateFrameNumbers(sprite,{start:2,end:2}),
             frameRate: 0,
             repeat: -1
         });
         this.scene.anims.create({
             key:'idleW',
-            frames: scene.anims.generateFrameNumbers('player',{start:16,end:16}),
+            frames: scene.anims.generateFrameNumbers(sprite,{start:16,end:16}),
             frameRate: 0,
             repeat: -1
         });
         this.scene.anims.create({
             key:'idleA',
-            frames: scene.anims.generateFrameNumbers('player',{start:8,end:8}),
+            frames: scene.anims.generateFrameNumbers(sprite,{start:8,end:8}),
             frameRate: 0,
             repeat: -1
         });
         this.scene.anims.create({
             key:'idleD',
-            frames: scene.anims.generateFrameNumbers('player',{start:24,end:24}),
+            frames: scene.anims.generateFrameNumbers(sprite,{start:24,end:24}),
             frameRate: 0,
             repeat: -1
         });

@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import Level1Scene from './Level1Scene'
+import characterSelection from './characterSelection'
 
 export default class StartScene extends Phaser.Scene {
     constructor() {
@@ -23,7 +24,7 @@ export default class StartScene extends Phaser.Scene {
         buttonStart.classList.add('button');
         this.add.dom(400, 200, buttonStart);
         buttonStart.addEventListener('click', () => {
-            this.scene.start('Level1Scene');
+            this.scene.start('characterSelection');
         });
 
         // Boton de opciones

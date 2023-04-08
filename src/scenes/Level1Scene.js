@@ -13,7 +13,9 @@ export default class Level1Scene extends Phaser.Scene{
 	}
     preload(){
         this.load.spritesheet('healthBar', 'assets/elements/health.png',{frameWidth:640, frameHeight:128})
-        this.load.spritesheet('player','assets/sprites/player.png',{frameWidth:16, frameHeight:16});
+        this.load.spritesheet('player1','assets/sprites/player1.png',{frameWidth:16, frameHeight:16});
+        this.load.spritesheet('player2','assets/sprites/player2.png',{frameWidth:16, frameHeight:16});
+        this.load.spritesheet('player3','assets/sprites/player3.png',{frameWidth:16, frameHeight:16});
         this.load.spritesheet('fireball', 'assets/elements/fireball.png', {frameWidth: 25.6, frameHeight: 25.5});
         this.load.spritesheet('goblin', 'assets/sprites/goblin.png', {frameWidth: 64, frameHeight: 64});
         this.load.spritesheet('potion', 'assets/elements/potion.png', {frameWidth: 128, frameHeight: 128});
@@ -27,9 +29,25 @@ export default class Level1Scene extends Phaser.Scene{
 
     create(){
         let bg = this.add.image(0,0,'fondo').setOrigin(0,0);
-        this.player = new Player(this,this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2)
+        
+        //Creamos al personaje pasándole sus estadísticas según personaje que eligiéramos en la pantalla de selección
+        if (this.selectedCharacter == 'personaje1'){
+            this.player = new Player(this,this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2, 'player1', 150, 100)
+            this.fireballGroup = new FireballGroup(this, 15);
+        }
+        else if (this.selectedCharacter == 'personaje2'){
+            this.player = new Player(this,this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2, 'player2', 100, 150)
+            this.fireballGroup = new FireballGroup(this, 15);
+        }
+        else if (this.selectedCharacter == 'personaje3'){
+            this.player = new Player(this,this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2, 'player3', 100, 100)
+            this.fireballGroup = new FireballGroup(this, 20);
+        }
+        console.log('speed = ' + this.player.speed);
+        console.log('health = ' + this.player.vida);
+        console.log('fireballs = ' + this.fireballGroup.getLength());
+
         this.healthBar = new HealthBar(this,this.player.x,this.player.y -35) 
-        this.fireballGroup = new FireballGroup(this);
         this.goblinGroup = new GoblinGroup(this)
         this.potion = new Potion(this, 800, 600);
         this.physics.world.setBounds(0, 0, bg.width, bg.height);
