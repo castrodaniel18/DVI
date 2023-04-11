@@ -117,11 +117,17 @@ La estética que hemos elegido para el juego es el estilo de pixel art, ya que n
  - Barra de vida: creada por nosotros
 <img src="https://raw.githubusercontent.com/castrodaniel18/DVI/master/dist/assets/elements/health.png"  width="300" height="300">
 
+## 4.4 Tipos de enemigos
+- Diañu (goblin): Este enemigo será el enemigo estandar del primer nivel. Aparecerá en gran cantidad, se moverá a velocidad normal y tendrá 50 puntos de vida. Atacará cuerpo a cuerpo y quitará 10 de vida al jugador.
+-Patairu (ciclope): Este enemigo aparecerá también en el nivel 1. Tendrá más vida  y hará más daño que los demás enemigos pero a cambio se moverá más lento.
+-Ventolín: Este enemigo aparecerá en el nivel 1. Será un enemigo que irá más rápido pero hará menos daño.
+
 # 5. Niveles
-
-## 5.1 Galicia
-
-## 5.2 Asturias
+Cada nivel del juego estará basado en una comunidad autónoma de España, lo primeros dos niveles serán Asturias y Galicia ya que la mitologías de estas dos regiones es la que más nos ha gustado.
+## 5.1 Asturias
+El primer nivel estará basado en Asturias. El escenario de este nivel tendrá una temática de bosque y los enemigos  que aparecerán en este nivel son el Diañu, un duende pequeño, y el Patariu, un cíclope.
+## 5.2 Galicia
+El segundo nivel estará basado en Galicia. El escenario de este nivel tendrña una temática de agua, con un río o el mar.
 
 
 # 6. Sonido
