@@ -42,13 +42,16 @@ Del mismo modo, tanto los objetos que pueda recoger del suelo, como los objetos 
 
 ### 2.1.1 Mecánicas del jugador
 
- - Elección de clase: al comienzo de la partida, el jugador tendrá que escoger qué tipo de cazador quiere ser durante esa partida, lo que hará varias sus estadísticas iniciales.
+- Elección de clase: al comienzo de la partida, el jugador tendrá que escoger qué tipo de cazador quiere ser:
+		- A distancia: cada vez que pulsa el ratón lanza una bola de fuego que es capaz de atravesar todo el mapa. 
+		- A melé: el personaje tiene una espada con la que que puede atacar directamente a los enemigos.
+		- Daño en área: al pulsar el ratón se crea un ataque en área que puede hacer daño a varios enemigos pero que no atraviesa todo el mapa.
  
  - Movimiento: el jugador será capaz de desplazarse en ocho direcciones haciendo uso de las teclas w (arriba), a (izquierda), s(abajo) y d (derecha) y pudiendo combinarlas para crear el movimiento en diagonal. El jugador podrá moverse por todo el escenario que vea en ese nivel, pero al llegar a los límites del escenario se chocará y no podrá continuar. También habrá elementos estéticos repartidos por el mapa que no tendrán una utilidad concreta pero que no podrán ser traspasados ni por el jugador ni por los enemigos o los ataques.
  
  - Disparos: Para apuntar el jugador utilizará el ratón, de forma que los disparos irán dirigidos hacia el punto donde se encuentre el cursor. Para disparar se utilizará el click izquierda de ratón, de forma que cada vez que se pulse se disparará una vez, aunque esto es variable en función al arma que se lleve. Cada tipo de enemigo contará con un punto débil distinto. En caso de que el jugador consiga golpear ese punto, hará mucho más daño de lo normal.
  
- - Dash: el jugador tendrá la posibilidad de hacer un dash que le permitirá avanzar una pequeña distancia en la dirección en la que esté mirando, lo que le permitirá esquivar algunos ataques. Además, si el jugador consigue utilizar el dash en el momento preciso para esquivar un ataque, se le recompensará con una reducción de la velocidad del enemigo que lanzó el ataque durante un breve periodo de tiempo.
+ - Dash: el jugador tendrá la posibilidad de hacer un dash que le permitirá avanzar una pequeña distancia en la dirección en la que esté mirando, lo que le permitirá esquivar algunos ataques. Además, de vez en cuando los enemigos pueden lanzar una bolita que el jugador tendrá que recogerg utilizando el dash. Si la consigue coger a tiempo se le recompensará. Esta recompensará inicialmente será sólo un poco de experiencia extra, pero según vaya subiendo niveles se podrán obtener mejoras para que al conseguir estas recompensas se recupere vida o se consigan pequeños boosts durante una pequeña cantidad de tiempo.
 
 ### 2.1.2 Mecánicas de los enemigos
  - Movimiento: los enemigos se moverán constantemente hacia el jugador  hasta llegar a la distancia mínima necesaria para dañarle. Todos los enemigos van a tener el mismo tipo de movimiento a excepción de los jefes de nivel, que seguirán un patrón más específico.
@@ -56,20 +59,25 @@ Del mismo modo, tanto los objetos que pueda recoger del suelo, como los objetos 
  - Ataque: existirán algunos enemigos con ataques cuerpo a cuerpo que tendrán que acercarse a tí para poder dañarte, mientras que otros atacarán a distancia.
  
 ### 2.1.3 Mecánicas de escenario
- - Experiencia: por cada enemigo que el jugador mate, este soltará puntos de experiencia que el jugador tendrá que coger pasando por encima para poder ir subiendo de nivel.
+ - Experiencia: por cada enemigo que el jugador mate, este soltará puntos de experiencia que el jugador tendrá que coger pasando por encima para poder ir subiendo de nivel. En la parte superior de la pantalla habrá un barra de experiencia que muestre cuánto queda hasta llegar al próximo nivel.
  
- - Subida de nivel: cada vez que el jugador consiga subir de nivel se mostrará una caja con 3 objetos aleatorios. El jugador tendrá que escoger uno de estos para mantener durante el resto de la partida. Si el objeto que sale en la caja ya lo había cogido con anterioridad el jugador, lo podrá coger otra vez para mejorar su efecto.
+ - Subida de nivel: cada vez que el jugador consiga subir de nivel se mostrará una caja con 3 objetos aleatorios. El jugador tendrá que escoger uno de estos para mantener durante el resto de la partida. Si el objeto que sale en la caja ya lo había cogido con anterioridad el jugador, lo podrá coger otra vez para mejorar su efecto. Dentro de los objetos que se pueden conseguir al subir de nivel se incluyen tanto mejoras del arma, como consumibles y cambios en las recompensas obtenidas al realizar correctamente los dashes.
  
  - Consumibles: en los escenarios se generarán de forma aleatoria objetos consumibles que darán al enemigo efectos temporales como un aumento de velocidad, de daño, invisibilidad, etc.
 
+ - Estadísticas personaje: en alguna parte de la pantalla se podrá ver en todo momento una representación de las estadísticas actuales del personaje (vida, velocidad de movimiento, velocidad de ataque, número de bolas de fuego).
+
 ### 2.1.4 Mecánicas de objetos
  - Poción de velocidad: duplica la velocidad del jugador durante 10 segundos.
- - Poción de recuperación de vida: Regenera 100 de vida al jugador.
+ - Poción de recuperación de vida: Regenera el 30% de la vida del jugador.
  - Poción de invisibilidad: al cogerla el jugador se vuelve invisible y no recibe daño de los enemigos, además puede atravesarlos y huir hacia otro lado del mapa.
  - Poción de daño: duplica el daño de los proyectiles del jugador durante 10 segundos.
  - Bomba: cuando el jugador  recoja este objeto todos los enemigos vivos en pantalla recibirán 50 de daño.
 
 ### 2.1.5 Mecánicas de jefes
+
+- Punto débil: los jefes serán enemigos mucho más grandes que los normales y que contarán con un punto débil en el que los disparos harán muchos más daño.
+- Patrones: no contarán con un patrón de movimiento, pero sí con un patrón de comportamiento, de forma que primero seguirán al jugador un periodo de tiempo, después pararán y lanzarán un ataque. Este patrón se repetirá pero variando el tipo de ataque que lance cada vez que se pare.
 
 ## 2.2 Dinámicas
 
@@ -125,6 +133,18 @@ La estética que hemos elegido para el juego es el estilo de pixel art, ya que n
 
 # 5. Niveles
 Cada nivel del juego estará basado en una comunidad autónoma de España, lo primeros dos niveles serán Asturias y Galicia ya que la mitologías de estas dos regiones es la que más nos ha gustado.
+Antes de empezar el juego se mostrará un mapa de España que servirá como selector de niveles. En cada Comunidad Autónoma habrá un botón para acceder a ese nivel.
+Al principio todos los niveles estarán bloqueados salvo el de Galicia, de forma que hasta que no consigas superar ese nivel no podrás desbloquear otro.
+Cada vez que se supere un nivel se verá reflejado en el mapa para que el jugador pueda saber en todo momento el progreso que lleva en el juego.
+
+![mapa de España](https://raw.githubusercontent.com/castrodaniel18/DVI/master/dist/assets/elements/spainMap.png)
+
+Respecto a la lógica del juego, en principio en todos los niveles se seguirá el mismo patrón:
+
+ - Fase 1: oleada de enemigos normales de tipo 1.
+ - Fase 2: oleada de enemigos normales de tipo 2.
+ - Fase 3: oleada de enemigos normales de tipo 1 y 2.
+ - Fase 4: oleada de enemigos normales de tipo 1 y 2 y jefe final.
 ## 5.1 Asturias
 El primer nivel estará basado en Asturias. El escenario de este nivel tendrá una temática de bosque y los enemigos  que aparecerán en este nivel son el Diañu, un duende pequeño, y el Patariu, un cíclope.
 ## 5.2 Galicia
