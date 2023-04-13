@@ -44,9 +44,9 @@ Del mismo modo, tanto los objetos que pueda recoger del suelo, como los objetos 
 
  - Elección de clase: al comienzo de la partida, el jugador tendrá que escoger qué tipo de cazador quiere ser durante esa partida, lo que hará varias sus estadísticas iniciales.
  
- - Movimiento: el jugador será capaz de desplazarse en ocho direcciones haciendo uso de las teclas w (arriba), a (izquierda), s(abajo) y d (derecha) y pudiendo combinarlas para crear el movimiento en diagonal.
+ - Movimiento: el jugador será capaz de desplazarse en ocho direcciones haciendo uso de las teclas w (arriba), a (izquierda), s(abajo) y d (derecha) y pudiendo combinarlas para crear el movimiento en diagonal. El jugador podrá moverse por todo el escenario que vea en ese nivel, pero al llegar a los límites del escenario se chocará y no podrá continuar. También habrá elementos estéticos repartidos por el mapa que no tendrán una utilidad concreta pero que no podrán ser traspasados ni por el jugador ni por los enemigos o los ataques.
  
- - Disparos: Para apuntar el jugador utilizará el ratón, de forma que los disparos irán dirigidos hacia el punto donde se encuentre el cursor. Para disparar se utilizará el click izquierda de ratón, de forma que cada vez que se pulse se disparará una vez, aunque esto es variable en función al arma que se lleve.
+ - Disparos: Para apuntar el jugador utilizará el ratón, de forma que los disparos irán dirigidos hacia el punto donde se encuentre el cursor. Para disparar se utilizará el click izquierda de ratón, de forma que cada vez que se pulse se disparará una vez, aunque esto es variable en función al arma que se lleve. Cada tipo de enemigo contará con un punto débil distinto. En caso de que el jugador consiga golpear ese punto, hará mucho más daño de lo normal.
  
  - Dash: el jugador tendrá la posibilidad de hacer un dash que le permitirá avanzar una pequeña distancia en la dirección en la que esté mirando, lo que le permitirá esquivar algunos ataques. Además, si el jugador consigue utilizar el dash en el momento preciso para esquivar un ataque, se le recompensará con una reducción de la velocidad del enemigo que lanzó el ataque durante un breve periodo de tiempo.
 
@@ -55,18 +55,19 @@ Del mismo modo, tanto los objetos que pueda recoger del suelo, como los objetos 
  
  - Ataque: existirán algunos enemigos con ataques cuerpo a cuerpo que tendrán que acercarse a tí para poder dañarte, mientras que otros atacarán a distancia.
  
- - Puntos débiles: cada tipo de enemigo contará con un punto débil distinto. En caso de que el jugador consiga golpear ese punto, hará mucho más daño de lo normal. 
-
 ### 2.1.3 Mecánicas de escenario
- - Experiencia: por cada enemigo que el jugador maté, este soltará puntos de experiencia que el jugador tendrá que coger pasando por encima para poder ir subiendo de nivel.
+ - Experiencia: por cada enemigo que el jugador mate, este soltará puntos de experiencia que el jugador tendrá que coger pasando por encima para poder ir subiendo de nivel.
  
  - Subida de nivel: cada vez que el jugador consiga subir de nivel se mostrará una caja con 3 objetos aleatorios. El jugador tendrá que escoger uno de estos para mantener durante el resto de la partida. Si el objeto que sale en la caja ya lo había cogido con anterioridad el jugador, lo podrá coger otra vez para mejorar su efecto.
  
  - Consumibles: en los escenarios se generarán de forma aleatoria objetos consumibles que darán al enemigo efectos temporales como un aumento de velocidad, de daño, invisibilidad, etc.
- - Escenario: el jugador podrá moverse por todo el escenario que vea en ese nivel, pero al llegar a los límites del escenario se chocará y no podrá continuar. También habrá elementos estéticos repartidos por el mapa que no tendrán una utilidad concreta pero que no podrán ser traspasados ni por el jugador ni por los enemigos o los ataques.
 
 ### 2.1.4 Mecánicas de objetos
  - Poción de velocidad: duplica la velocidad del jugador durante 10 segundos.
+ - Poción de recuperación de vida: Regenera 100 de vida al jugador.
+ - Poción de invisibilidad: al cogerla el jugador se vuelve invisible y no recibe daño de los enemigos, además puede atravesarlos y huir hacia otro lado del mapa.
+ - Poción de daño: duplica el daño de los proyectiles del jugador durante 10 segundos.
+ - Bomba: cuando el jugador  recoja este objeto todos los enemigos vivos en pantalla recibirán 50 de daño.
 
 ### 2.1.5 Mecánicas de jefes
 

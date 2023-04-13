@@ -69,7 +69,7 @@ export default class Level1Scene extends Phaser.Scene{
 
     attack(player,goblin){
         if(Date.now() - goblin.lastAttackTime > goblin.attackCooldown){
-            player.vida-=goblin.damage;
+            if(!player.invencible)player.vida-=goblin.damage;
             goblin.lastAttackTime = Date.now();
         }
     }
@@ -101,7 +101,7 @@ export default class Level1Scene extends Phaser.Scene{
 
     enemyFollows (goblin) {
         if(Phaser.Math.Distance.Between(this.player.body.position.x,this.player.body.position.y,goblin.body.position.x,goblin.body.position.y)>40){
-		    this.physics.moveToObject(goblin, this.player, 100);
+		    this.physics.moveToObject(goblin, this.player, 50);
         }
         else{
             goblin.body.velocity.x=0;

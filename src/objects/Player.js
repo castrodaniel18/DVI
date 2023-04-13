@@ -17,12 +17,15 @@ constructor(scene,x,y, sprite, playerSpeed, playerHealth){
         //Sirve como temporizador para el efecto de la poción
         this.tiempoEfecto = 0;
         this.playerExp = 0;
+        this.tiempoDash = 0;
+        this. originalSpeed=this.speed
+        this.invencible = false;
         this.levelConfig = {
             1:0,
             2:100,
             3:200
         };
-        this.playerLevelText = this.scene.add.text(10, 10, 'Nivel 1 - Exp: ' + this.playerExp, { fontSize: '32px', fill: '#FFF' });
+        this.playerLevelText = this.scene.add.text(10, 10, 'Nivel 1 - Exp: ' + this.playerExp, { fontSize: '32px', fill: '#FFFFFF' });
 
         this.scene.anims.create({
             key:'S',
@@ -102,6 +105,7 @@ constructor(scene,x,y, sprite, playerSpeed, playerHealth){
         this.aKey = this.scene.input.keyboard.addKey('A');
         this.sKey = this.scene.input.keyboard.addKey('S');
         this.dKey = this.scene.input.keyboard.addKey('D');
+        this.spaceKey = this.scene.input.keyboard.addKey('SPACE');
 
         
         scene.physics.add.existing(this);
@@ -168,6 +172,20 @@ constructor(scene,x,y, sprite, playerSpeed, playerHealth){
                 this.play('NW');
             }
         }
+        if(Phaser.Input.Keyboard.JustDown(this.spaceKey)){
+        this.tiempoDash=0.1
+        this.speed*=4  
+        this.invencible=true;    
+        }
+        if(this.tiempoDash>0){
+            this.tiempoDash -= dt/1000;
+        
+        }
+        else{
+            this.speed=this.originalSpeed
+            this.invencible=false;
+        }
+        console.log(this.body.velocity.x)
         let aux = new Phaser.Math.Vector2(this.body.velocity.x,this.body.velocity.y); 
         aux.normalize();
         // @ts-ignore
@@ -212,7 +230,7 @@ constructor(scene,x,y, sprite, playerSpeed, playerHealth){
 
         this.updatePlayerLevel();
     }
-
+   
     potion(){
         console.log("Poción cogida");
         this.speed += 100;

@@ -1,6 +1,5 @@
 import Phaser from 'phaser'
 
-import HelloWorldScene from './scenes/HelloWorldScene'
 import Level1Scene from './scenes/Level1Scene'
 import StartScene from './scenes/StartScene'
 import characterSelection from './scenes/characterSelection'
