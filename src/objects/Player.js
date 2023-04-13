@@ -12,13 +12,16 @@ constructor(scene,x,y, sprite, playerSpeed, playerHealth){
         this.scene.add.existing(this);
         this.setScale(2);
         this.speed = playerSpeed;
-        this.vida = playerHealth;
+        this.damage = 1
+        this.maxHealth = playerHealth;
+        this.health = playerHealth;
         this.playerDied = false;
         //Sirve como temporizador para el efecto de la poción
         this.tiempoEfecto = 0;
         this.playerExp = 0;
         this.tiempoDash = 0;
         this. originalSpeed=this.speed
+        this.originalDamage=0;
         this.invencible = false;
         this.levelConfig = {
             1:0,
@@ -185,7 +188,7 @@ constructor(scene,x,y, sprite, playerSpeed, playerHealth){
             this.speed=this.originalSpeed
             this.invencible=false;
         }
-        console.log(this.body.velocity.x)
+        console.log(this.health)
         let aux = new Phaser.Math.Vector2(this.body.velocity.x,this.body.velocity.y); 
         aux.normalize();
         // @ts-ignore
@@ -224,19 +227,40 @@ constructor(scene,x,y, sprite, playerSpeed, playerHealth){
             this.tiempoTexto.y = this.y - 30;
 
             if (this.tiempoEfecto <= 0){
-                this.speed -= 100;
+                this.speed=this.originalSpeed;
+                if(this.invencible)this.invencible=false;
+                if(this.damage!==this.originalDamage)this.damage*=0.5;
             }
         }
 
         this.updatePlayerLevel();
     }
    
-    potion(){
+    potion(type){
         console.log("Poción cogida");
-        this.speed += 100;
-        this.tiempoEfecto = 10;
-        //Para mostrar el temporizador en el juego
-        this.tiempoTexto = this.scene.add.text(this.x - 30, this.y - 30, '00:10', { font: '10px Arial', fill: '#FFFFFF' });
+        switch(type){
+            case 'speed':
+                this.speed += 100;
+                this.tiempoEfecto = 10;
+                //Para mostrar el temporizador en el juego
+                this.tiempoTexto = this.scene.add.text(this.x - 30, this.y - 30, '00:10', { font: '10px Arial', fill: '#FFFFFF' });
+                break
+            case 'life':
+                if(this.health<this.maxHealth*0.7)this.health+=this.maxHealth*(0.3);
+                else this.health=this.maxHealth
+                break;
+            case 'damage':
+                this.originalDamage=this.damage;
+                this.damage*=2
+                this.tiempoEfecto=10;//hay que hacer un temporizador para cada efecto
+                this.tiempoTexto = this.scene.add.text(this.x - 30, this.y - 30, '00:10', { font: '10px Arial', fill: '#FFFFFF' });
+                break;
+            case 'invencible':
+                this.invencible=true;
+                this.tiempoEfecto=10;//hay que hacer un temporizador para cada efecto
+                this.tiempoTexto = this.scene.add.text(this.x - 30, this.y - 30, '00:10', { font: '10px Arial', fill: '#FFFFFF' });
+            default:
+        }
     }
 
     playerDie() {

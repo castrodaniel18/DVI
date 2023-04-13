@@ -1,5 +1,4 @@
 import Phaser from "phaser";
-import Goblin from "../objects/Goblin";
 import Player from "../objects/Player";
 import HealthBar from "../objects/HealthBar";
 import FireballGroup from "../objects/FireballGroup";
@@ -44,12 +43,12 @@ export default class Level1Scene extends Phaser.Scene{
             this.fireballGroup = new FireballGroup(this, 20);
         }
         console.log('speed = ' + this.player.speed);
-        console.log('health = ' + this.player.vida);
+        console.log('health = ' + this.player.health);
         console.log('fireballs = ' + this.fireballGroup.getLength());
 
         this.healthBar = new HealthBar(this,this.player.x,this.player.y -35) 
         this.goblinGroup = new GoblinGroup(this)
-        this.potion = new Potion(this, 800, 600);
+        this.potion = new Potion(this, 800, 600,'life');
         this.physics.world.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.startFollow(this.player);
@@ -69,7 +68,7 @@ export default class Level1Scene extends Phaser.Scene{
 
     attack(player,goblin){
         if(Date.now() - goblin.lastAttackTime > goblin.attackCooldown){
-            if(!player.invencible)player.vida-=goblin.damage;
+            if(!player.invencible)player.health-=goblin.damage;
             goblin.lastAttackTime = Date.now();
         }
     }
@@ -113,7 +112,7 @@ export default class Level1Scene extends Phaser.Scene{
             goblin.vida ? this.enemyFollows(goblin) : goblin.destroy();
         })
         this.healthBar.updateHealth() 
-        if(this.player.vida <= 0){
+        if(this.player.health <= 0){
             this.player.playerDie()
             this.healthBar.playerDie()
         }

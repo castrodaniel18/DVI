@@ -64,7 +64,7 @@ export default class HealhtBar extends Phaser.GameObjects.Sprite{
     updateHealth() {
         this.x = this.scene.player.x;
         this.y = this.scene.player.y - 35;
-        this.play(String(this.scene.player.vida))
+        this.play(String(this.scene.player.health))
     }
 
     playerDie() {
