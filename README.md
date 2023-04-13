@@ -43,10 +43,13 @@ Del mismo modo, tanto los objetos que pueda recoger del suelo, como los objetos 
 ### 2.1.1 Mecánicas del jugador
 
 - Elección de clase: al comienzo de la partida, el jugador tendrá que escoger qué tipo de cazador quiere ser:
-		- A distancia: cada vez que pulsa el ratón lanza una bola de fuego que es capaz de atravesar todo el mapa. 
-		- A melé: el personaje tiene una espada con la que que puede atacar directamente a los enemigos.
-		- Daño en área: al pulsar el ratón se crea un ataque en área que puede hacer daño a varios enemigos pero que no atraviesa todo el mapa.
- 
+
+	- A distancia: cada vez que pulsa el ratón lanza una bola de fuego que es capaz de atravesar todo el mapa.
+
+	- A melé: el personaje tiene una espada con la que que puede atacar directamente a los enemigos.
+
+	- Daño en área: al pulsar el ratón se crea un ataque en área que puede hacer daño a varios enemigos pero que no atraviesa todo el mapa.
+	
  - Movimiento: el jugador será capaz de desplazarse en ocho direcciones haciendo uso de las teclas w (arriba), a (izquierda), s(abajo) y d (derecha) y pudiendo combinarlas para crear el movimiento en diagonal. El jugador podrá moverse por todo el escenario que vea en ese nivel, pero al llegar a los límites del escenario se chocará y no podrá continuar. También habrá elementos estéticos repartidos por el mapa que no tendrán una utilidad concreta pero que no podrán ser traspasados ni por el jugador ni por los enemigos o los ataques.
  
  - Disparos: Para apuntar el jugador utilizará el ratón, de forma que los disparos irán dirigidos hacia el punto donde se encuentre el cursor. Para disparar se utilizará el click izquierda de ratón, de forma que cada vez que se pulse se disparará una vez, aunque esto es variable en función al arma que se lleve. Cada tipo de enemigo contará con un punto débil distinto. En caso de que el jugador consiga golpear ese punto, hará mucho más daño de lo normal.
@@ -137,7 +140,7 @@ Antes de empezar el juego se mostrará un mapa de España que servirá como sele
 Al principio todos los niveles estarán bloqueados salvo el de Galicia, de forma que hasta que no consigas superar ese nivel no podrás desbloquear otro.
 Cada vez que se supere un nivel se verá reflejado en el mapa para que el jugador pueda saber en todo momento el progreso que lleva en el juego.
 
-![mapa de España](https://raw.githubusercontent.com/castrodaniel18/DVI/master/dist/assets/elements/spainMap.png)
+![mapa de España](https://raw.githubusercontent.com/castrodaniel18/DVI/master/public/assets/elements/spainMap.png)
 
 Respecto a la lógica del juego, en principio en todos los niveles se seguirá el mismo patrón:
 
