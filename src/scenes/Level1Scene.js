@@ -59,6 +59,7 @@ export default class Level1Scene extends Phaser.Scene{
         let fireballs = this.add.group();
         //Le añadimos todas las bolas de fireballGroup
         fireballs.addMultiple(this.fireballGroup.getChildren());
+        this.player.setTint(0xffffff);
         //Añadimos un collider para detectar las colisiones entre las bolas de fuego y el goblin
         this.goblinGroup.goblins.forEach(goblin =>{
             this.physics.add.collider(fireballs, goblin, this.hitGoblin, null, this);
@@ -67,9 +68,17 @@ export default class Level1Scene extends Phaser.Scene{
     }
 
     attack(player,goblin){
+        const timer = this.time.addEvent({
+            delay: 50,
+            repeat: 3,
+            callback: function () {
+              player.alpha === 1 ? player.alpha = 0 : player.alpha = 1;
+            }
+        });
         if(Date.now() - goblin.lastAttackTime > goblin.attackCooldown){
             if(!player.invencible)player.health-=goblin.damage;
             goblin.lastAttackTime = Date.now();
+            
         }
     }
     hitGoblin(fireball, goblin) {
@@ -78,6 +87,10 @@ export default class Level1Scene extends Phaser.Scene{
         if (goblin.vida <= 0){
             this.player.playerExp += 50;
         }
+        goblin.alpha = 0.25;
+        this.time.delayedCall(100, function() {
+            goblin.alpha = 1; 
+        });
     }
     addEvents(){
         //Para guardar las coordenadas del ratón y saber hacia donde disparar las bolas de fuego
