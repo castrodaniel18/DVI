@@ -5,7 +5,7 @@ export default class Fireball extends Phaser.Physics.Arcade.Sprite{
 
         this.scene.add.existing(this);
         //this.setScale(3);
-        this.damage = 1;
+        this.damage = 0;
         //Metemos la animación de la fireball
         this.scene.anims.create({
 			key: 'none',
@@ -24,7 +24,8 @@ export default class Fireball extends Phaser.Physics.Arcade.Sprite{
         this.play("none")
     }
 
-    fire(playerX, playerY, speed, angle){
+    fire(playerX, playerY, speed, angle,damage){
+        this.damage=damage;
         //Reseteamos la posición de la bola de fuego para que aparezca desde donde está player
         this.body.reset(playerX, playerY);
         

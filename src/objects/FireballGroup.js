@@ -11,15 +11,15 @@ export default class FireballGroup extends Phaser.Physics.Arcade.Group{
             frameQuantity: numFireballs,
             active: false,
             visible: false,
-            key: 'Fireball'
+            key: 'Fireball',
         })
     }
 
-   fire(playerX, playerY, speed, angle){
+   fire(playerX, playerY, speed, angle, damage){
         let ball
         this.getLength()===this.numFireballs? ball = this.getFirstDead(false) : ball = this.getFirstDead(true)
         if (ball){
-             ball.fire(playerX, playerY, speed, angle);
+             ball.fire(playerX, playerY, speed, angle,damage);
         }
     }
     

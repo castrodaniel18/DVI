@@ -48,7 +48,7 @@ export default class Level1Scene extends Phaser.Scene{
 
         this.healthBar = new HealthBar(this,this.player.x,this.player.y -35) 
         this.goblinGroup = new GoblinGroup(this)
-        this.potion = new Potion(this, 800, 600,'life');
+        this.potion = new Potion(this, 800, 600,'damage');
         this.physics.world.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.startFollow(this.player);
@@ -83,8 +83,8 @@ export default class Level1Scene extends Phaser.Scene{
     }
     hitGoblin(fireball, goblin) {
         fireball.destroy();
-        fireball.setActive(false)
         goblin.vida -= fireball.damage
+        console.log('Vida restante: '+goblin.vida )
         if (goblin.vida <= 0){
             this.player.playerExp += 50;
         }
@@ -109,7 +109,7 @@ export default class Level1Scene extends Phaser.Scene{
         const angle = Phaser.Math.Angle.Between(this.player.x, this.player.y, this.fireballGroupX, this.fireballGroupY);
 
         //Disparamos enviando la posición dedse la que se va a crear la bola de fuego y la velocidad y ángulo del disparo
-        this.fireballGroup.fire(this.player.x, this.player.y, this.player.speed, angle);
+        this.fireballGroup.fire(this.player.x, this.player.y, this.player.speed, angle,this.player.damage);
     }
 
     enemyFollows (goblin) {
@@ -123,7 +123,7 @@ export default class Level1Scene extends Phaser.Scene{
 	}
 	update(){
         this.goblinGroup.goblins.forEach(goblin => {
-            goblin.vida ? this.enemyFollows(goblin) : goblin.destroy();
+            goblin.vida>0 ? this.enemyFollows(goblin) : goblin.destroy();
         })
         this.healthBar.updateHealth() 
         if(this.player.health <= 0){

@@ -12,7 +12,7 @@ constructor(scene,x,y, sprite, playerSpeed, playerHealth){
         this.scene.add.existing(this);
         this.setScale(2);
         this.speed = playerSpeed;
-        this.damage = 1
+        this.damage = 3
         this.maxHealth = playerHealth;
         this.health = playerHealth;
         this.playerDied = false;
