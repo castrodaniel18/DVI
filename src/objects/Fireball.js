@@ -1,4 +1,4 @@
-export default class FireballGroup extends Phaser.Physics.Arcade.Sprite{
+export default class Fireball extends Phaser.Physics.Arcade.Sprite{
     
     constructor(scene, x, y){
         super(scene, x, y, 'fireball');
@@ -26,7 +26,7 @@ export default class FireballGroup extends Phaser.Physics.Arcade.Sprite{
 
     fire(playerX, playerY, speed, angle){
         //Reseteamos la posición de la bola de fuego para que aparezca desde donde está player
-        this.body.reset(playerX + 10, playerY);
+        this.body.reset(playerX, playerY);
         
         //Activamos la bola de fuego
         this.setActive(true);
@@ -47,5 +47,6 @@ export default class FireballGroup extends Phaser.Physics.Arcade.Sprite{
             this.setActive(false);
             this.setVisible(false);
         }
+
     }
 }

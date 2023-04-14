@@ -74,6 +74,7 @@ export default class Level1Scene extends Phaser.Scene{
     }
     hitGoblin(fireball, goblin) {
         fireball.destroy();
+        fireball.setActive(false)
         goblin.vida -= fireball.damage
         if (goblin.vida <= 0){
             this.player.playerExp += 50;

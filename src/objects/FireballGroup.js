@@ -4,7 +4,7 @@ export default class FireballGroup extends Phaser.Physics.Arcade.Group{
 
     constructor(scene, numFireballs){
         super(scene.physics.world, scene);
-
+        this.numFireballs=numFireballs
         //Se crean 10 bolas de fuego que están desactivadas para que cada vez que se pulse el ratón se active una de ellas
         this.createMultiple({
             classType: Fireball,
@@ -15,10 +15,12 @@ export default class FireballGroup extends Phaser.Physics.Arcade.Group{
         })
     }
 
-    fire(playerX, playerY, speed, angle){
-        const ball = this.getFirstDead(false);
+   fire(playerX, playerY, speed, angle){
+        let ball
+        this.getLength()===this.numFireballs? ball = this.getFirstDead(false) : ball = this.getFirstDead(true)
         if (ball){
              ball.fire(playerX, playerY, speed, angle);
         }
     }
+    
 }
