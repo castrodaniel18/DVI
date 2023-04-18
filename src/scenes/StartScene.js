@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 import Level1Scene from './Level1Scene'
-import characterSelection from './characterSelection'
+import characterSelection from './CharacterSelection'
 
 export default class StartScene extends Phaser.Scene {
     constructor() {

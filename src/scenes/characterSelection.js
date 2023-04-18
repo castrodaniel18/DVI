@@ -1,7 +1,7 @@
 import Phaser from "phaser";
-import Level1Scene from './Level1Scene'
+import LevelSelector from "./LevelSelector";
 
-export default class StartScene extends Phaser.Scene {
+export default class CharacterSelection extends Phaser.Scene {
     constructor() {
       super({ key: 'characterSelection' });
     }
@@ -26,7 +26,7 @@ export default class StartScene extends Phaser.Scene {
             button.setInteractive();
             button.on('pointerdown', () => {
             // al hacer clic en el botón, guarda el personaje seleccionado y cambia a la escena del juego
-            this.scene.start('Level1Scene', { character: character });
+            this.scene.start('LevelSelector', { character: character });
             });
             buttonGroup.add(button);
         });
