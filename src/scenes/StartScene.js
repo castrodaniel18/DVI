@@ -33,7 +33,7 @@ export default class StartScene extends Phaser.Scene {
         buttonSettings.classList.add('button');
         this.add.dom(400, 250, buttonSettings);
         buttonSettings.addEventListener('click', () => {
-            // To Do
+            this.scene.start('Settings');
         });
 
         // Boton de ayuda
