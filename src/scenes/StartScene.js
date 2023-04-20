@@ -1,6 +1,5 @@
 import Phaser from "phaser";
-import Level1Scene from './Level1Scene'
-import characterSelection from './CharacterSelection'
+import Level1Scene from './Level1Scene';
 
 export default class StartScene extends Phaser.Scene {
     constructor() {
@@ -9,6 +8,15 @@ export default class StartScene extends Phaser.Scene {
   
     preload() {
       this.load.css('start', 'web/css/start.css')
+    }
+
+    init(data) {
+      // guarda la dificultad seleccionada en una variable
+      if (data.difficulty != "easy" && data.difficulty != "normal" && data.difficulty != "hard")
+        this.difficulty = "normal";
+      else
+        this.difficulty = data.difficulty;
+
     }
   
     create() {
@@ -33,7 +41,7 @@ export default class StartScene extends Phaser.Scene {
         buttonSettings.classList.add('button');
         this.add.dom(400, 250, buttonSettings);
         buttonSettings.addEventListener('click', () => {
-            this.scene.start('Settings');
+            this.scene.start('Settings', { difficulty: this.difficulty });
         });
 
         // Boton de ayuda
