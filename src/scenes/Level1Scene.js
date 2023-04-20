@@ -19,6 +19,7 @@ export default class Level1Scene extends Phaser.Scene{
         this.load.spritesheet('goblin', 'assets/sprites/goblin.png', {frameWidth: 64, frameHeight: 64});
         this.load.spritesheet('potion', 'assets/elements/potion.png', {frameWidth: 128, frameHeight: 128});
         this.load.image('fondo','assets/elements/fondo.png');
+        this.load.tilemapTiledJSON('tilemap','fondo_grande.json')
     }
 
     init(data) {
