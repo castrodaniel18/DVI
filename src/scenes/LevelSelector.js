@@ -30,7 +30,7 @@ export default class LevelSelector extends Phaser.Scene {
             this.scene.start('Level1Scene', { character: this.selectedCharacter });
         }, this);
 
-        var text1 = this.add.text(button1.x, button1.y + 10, 'Nivel 1:\nGalicia', { font: '16px Arial', fill: '#0A0A0A' });
+        var text1 = this.add.text(button1.x, button1.y + 10, 'Nivel 1:\nAsturias', { font: '16px Arial', fill: '#0A0A0A' });
         text1.setOrigin(0.5, 0);
 
         var button2 = this.add.image(600, 200, 'button2');
@@ -41,7 +41,7 @@ export default class LevelSelector extends Phaser.Scene {
             console.log("Se entra a nivel 2");
         }, this);
 
-        var text2 = this.add.text(button2.x, button2.y + 10, 'Nivel 2:\nAsturias', { font: '16px Arial', fill: '#0A0A0A' });
+        var text2 = this.add.text(button2.x, button2.y + 10, 'Nivel 2:\nGalicia', { font: '16px Arial', fill: '#0A0A0A' });
         text2.setOrigin(0.5, 0);
 
         console.log("Pantalla selección nivel");

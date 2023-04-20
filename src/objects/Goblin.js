@@ -61,6 +61,6 @@ export default class Goblin extends Enemy {
         animation = 'down';
     }
     //Ejecutamos la animación solo si no es la que se estaba ejecutando ya
-    this.vida ? this.play(animation, true) : this.destroy()
+    this.vida>0 ? this.play(animation, true) : this.destroy()
   }
 }
