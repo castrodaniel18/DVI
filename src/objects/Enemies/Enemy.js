@@ -23,9 +23,15 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         //que detecta las colisiones con el límite del mundo
     }
 
-    attack(){}
-
-    move(){}
-      
-    enemyUpdate(){}
+    getHit(){
+        this.health -= 10;
+        this.setTint(0xff0000); // Cambiar el color del personaje a rojo
+        this.scene.time.addEvent({
+            delay: 200, // La duración del efecto en milisegundos
+            callback: () => {
+                this.clearTint(); // Restablecer el color original del personaje
+            },
+            callbackScope: this
+        });
+    }
 }

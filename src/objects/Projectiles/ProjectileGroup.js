@@ -20,5 +20,4 @@ export default class ProjectileGroup extends Phaser.Physics.Arcade.Group{
             projectile.shoot(pointerX, pointerY);
         }
     }
-    
 }

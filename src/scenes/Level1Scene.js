@@ -4,10 +4,12 @@ import Character2, {CHARACTER_2_SPRITE_NAME, CHARACTER_2_NAME} from "../objects/
 import Character3, {CHARACTER_3_SPRITE_NAME, CHARACTER_3_NAME} from "../objects/Characters/Character3";
 import HealthBar from "../objects/Characters/healthBar";
 import Goblin from "../objects/Enemies/Goblin";
+import GoblinsGroup from "../objects/Enemies/GoblinsGroup";
 
 export default class Level1Scene extends Phaser.Scene {
 	constructor() {
 		super({ key: 'Level1Scene' });
+		this.enemies = [];
 	}
 
 	preload() {
@@ -25,7 +27,8 @@ export default class Level1Scene extends Phaser.Scene {
 		let bg = this.add.image(0, 0, 'fondo').setOrigin(0, 0);
 		// Agrega el personaje a la escena y establece su posición en el centro de la cámara principal
 		this.addCharacter();
-		this.goblin = new Goblin(this, 50, 50, 'goblin');
+		//this.goblin = new Goblin(this, 50, 50, 'goblin');
+		this.goblinsGroup = new GoblinsGroup(this);
 		this.physics.world.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.startFollow(this.player);
@@ -34,7 +37,8 @@ export default class Level1Scene extends Phaser.Scene {
 
 	update(){
 		this.player.update();
-		this.goblin.enemyUpdate();
+		//this.goblin.enemyUpdate();
+		this.goblinsGroup.enemyUpdate();
 	}
 
 	addCharacter(){

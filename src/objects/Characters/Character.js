@@ -254,18 +254,17 @@ checkLevelUp() {
 }
 
 getHit(damage){
-    if(!this.isInvencible)
+    if(!this.isInvencible){
         this.health -= damage;
-    this.setTint(0xff0000); // Cambiar el color del personaje a rojo
-    this.scene.time.addEvent({
-        delay: 200, // La duración del efecto en milisegundos
-        callback: () => {
-            this.clearTint(); // Restablecer el color original del personaje
-        },
-        callbackScope: this
-    });
+        this.setTint(0xff0000); // Cambiar el color del personaje a rojo
+        this.scene.time.addEvent({
+            delay: 200, // La duración del efecto en milisegundos
+            callback: () => {
+                this.clearTint(); // Restablecer el color original del personaje
+            },
+            callbackScope: this
+        });
+    }
 }
-
-mouseClickAction(){}
 
 }
