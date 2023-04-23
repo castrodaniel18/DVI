@@ -19,6 +19,7 @@ export default class Character2 extends Character{
         super(scene, x, y,  CHARACTER_2_NAME, sprite, CHARACTER_2_HEALTH, CHARACTER_2_DAMAGE, CHARACTER_2_SPEED);
 
         this.addWeapon(scene);
+        this.mouseClickAction();
     }
 
     addWeapon(scene){
@@ -26,19 +27,14 @@ export default class Character2 extends Character{
     }
 
     mouseClickAction(){
-        //Para guardar las coordenadas del ratón y saber hacia donde disparar las bolas de fuego
-        this.scene.input.on('pointermove', pointer => {
-            this.projectileGRoupX = pointer.worldX;
-            this.projectileGRoupX = pointer.worldY;
-        })
-        //Para detectar los clicks del ratón para disparar
-        this.input.on('pointerdown', pointer =>{
-            this.shoot();
+        this.scene.input.on('pointerdown', pointer => {
+            this.pointerX = pointer.worldX;
+            this.pointerY = pointer.worldY;
+            this.shoot(this.pointerX, this.pointerY);
         })
     }
 
-    shoot(){
-        console.log("hola");
-        this.weapon.Shoot();
+    shoot(pointerX, pointerY){
+        this.weapon.shoot(pointerX, pointerY);
     }
 }

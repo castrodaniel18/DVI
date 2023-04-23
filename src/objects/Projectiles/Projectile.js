@@ -6,7 +6,7 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite{
         this.scene.add.existing(this);
     }
 
-    shoot(){}
+    shoot(pointerX, pointerY){}
 
     preUpdate(time, delta){
         super.preUpdate(time, delta);
