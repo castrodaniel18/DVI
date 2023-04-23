@@ -2,17 +2,18 @@ import Potion from "./Potion";
 
 const EFFECT_TIME = 10000;
 const INVENCIBILITY_POTION_SPRITE = 'invencibilityPotion'
+export const INVENCIBILITY_POTION_SPAWN_RATE = 0.002;
 
-export default class LifePotion extends Potion {
+export default class InvencibilityPotion extends Potion {
     constructor(scene){
         super(scene, INVENCIBILITY_POTION_SPRITE);
-        this.scene = scene;
     }
 
     apply(){
-        this.scene.player.isInvincible = true;
+        this.scene.player.isInvencible = true;
+        const scene = this.scene;
         setTimeout(() => {
-            this.scene.player.isInvincible = false;
+            scene.player.isInvencible = false;
         }, EFFECT_TIME);
     }
 }

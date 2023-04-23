@@ -2,18 +2,19 @@ import Potion from "./Potion";
 
 const SPEED_INCREASE_FACTOR = 2;
 const EFFECT_TIME = 10000;
-const SPEED_POTION_SPRITE = 'strengthPotion'
+const SPEED_POTION_SPRITE = 'speedPotion'
+export const SPEED_POTION_SPAWN_RATE = 0.002;
 
-export default class LifePotion extends Potion {
+export default class SpeedPotion extends Potion {
     constructor(scene){
         super(scene, SPEED_POTION_SPRITE);
-        this.scene = scene;
     }
 
     apply(){
+        const scene = this.scene;
         this.scene.player.speed *= SPEED_INCREASE_FACTOR;
         setTimeout(() => {
-            this.scene.player.speed /= SPEED_INCREASE_FACTOR;
+            scene.player.speed /= SPEED_INCREASE_FACTOR;
         }, EFFECT_TIME);
     }
 }

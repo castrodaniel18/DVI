@@ -5,6 +5,7 @@ import Character3, {CHARACTER_3_SPRITE_NAME, CHARACTER_3_NAME} from "../objects/
 import HealthBar from "../objects/Characters/healthBar";
 import Goblin from "../objects/Enemies/Goblin";
 import GoblinsGroup from "../objects/Enemies/GoblinsGroup";
+import Potions from "../objects/Potions/Potions";
 
 export default class Level1Scene extends Phaser.Scene {
 	constructor() {
@@ -28,6 +29,7 @@ export default class Level1Scene extends Phaser.Scene {
 		// Agrega el personaje a la escena y establece su posición en el centro de la cámara principal
 		this.addCharacter();
 		//this.goblin = new Goblin(this, 50, 50, 'goblin');
+		this.potions = new Potions(this);
 		this.goblinsGroup = new GoblinsGroup(this);
 		this.physics.world.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.setBounds(0, 0, bg.width, bg.height);
@@ -37,8 +39,10 @@ export default class Level1Scene extends Phaser.Scene {
 
 	update(){
 		this.player.update();
+		console.log(this.player.speed);
 		//this.goblin.enemyUpdate();
 		this.goblinsGroup.enemyUpdate();
+		this.potions.trySpawn();
 	}
 
 	addCharacter(){

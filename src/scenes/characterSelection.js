@@ -26,6 +26,11 @@ export default class StartScene extends Phaser.Scene {
       this.load.spritesheet(character3.CHARACTER_3_SPRITE_WEAPON_NAME, character3.CHARACTER_3_SPRITE_WEAPON, {frameWidth: 25.6, frameHeight: 25.5})
       this.load.spritesheet('fireball', 'assets/elements/fireball.png', {frameWidth: 25.6, frameHeight: 25.5});
       this.load.spritesheet('healthBar', 'assets/elements/health.png',{frameWidth:640, frameHeight:128})
+
+      this.load.image('lifePotion', 'assets/elements/potion_life.png');
+      this.load.image('strengthPotion', 'assets/elements/potion_strength.png');
+      this.load.image('speedPotion', 'assets/elements/potion_speed.png');
+      this.load.image('invencibilityPotion', 'assets/elements/potion_invencibility.png');
     }
   
     create() {
