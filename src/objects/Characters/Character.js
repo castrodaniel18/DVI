@@ -1,7 +1,8 @@
 import { Scene } from "phaser";
 
 const LEVELS = [100, 200, 300];
-const DASH_TIME = 1000;
+const DASH_TIME = 200;
+const DASH_COOLDOWN = 5000;
 const DASH_SPEED_FACTOR = 4;
 
 export default class Character extends Phaser.GameObjects.Sprite {
@@ -10,7 +11,7 @@ export default class Character extends Phaser.GameObjects.Sprite {
 *  @param {number} x - coordenada x de spawn
 *  @param {number} y - coordeada y de spawn
 */
-constructor(scene,x,y, name, sprite, health, damage, weapon, speed){
+constructor(scene,x,y, name, sprite, health, damage, speed){
     super(scene,x,y,sprite);
     this.scene.add.existing(this);
     this.setScale(2);
@@ -25,6 +26,10 @@ constructor(scene,x,y, name, sprite, health, damage, weapon, speed){
     this.isDead = false;
 
     //variables auxiliares
+    this.dashTime = DASH_TIME;
+    this.dashCooldown = DASH_COOLDOWN;
+    this.dashSpeedFactor = DASH_SPEED_FACTOR;
+    this.canDash = true;
     this.isInvencible = false;
     this.playerLevel = 1;
     this.playerLevelText = this.scene.add.text(10, 10, 'Nivel 1 - Exp: ' + this.playerExp, { fontSize: '32px', fill: '#FFFFFF' });
@@ -44,6 +49,12 @@ constructor(scene,x,y, name, sprite, health, damage, weapon, speed){
 preUpdate(t,dt){
     super.preUpdate(t,dt);
 
+    if (this.health <= 0){
+        this.scene.healthBar.playerDie();
+        this.playerDie();
+        return;
+    }
+    this.scene.healthBar.updateHealth();
     this.checkMove();
     this.checkIdle();
     this.checkLevelUp();
@@ -187,15 +198,18 @@ checkMove(){
         }
     }
     if(Phaser.Input.Keyboard.JustDown(this.spaceKey)){
-        if(this.canDash = true){
-            this.speed *= DASH_SPEED_FACTOR;   
-            this.isInvencible=true; 
+        if (this.canDash) {
+            this.canDash = false;
+            this.speed *= this.dashSpeedFactor;
+            this.isInvencible = true;
+          
             setTimeout(() => {
-                this.speed /= DASH_SPEED_FACTOR;   
-                //cuidado con la pocion de invencibilidad
-                this.isInvencible=false; 
-                this.canDash = false;
-            }, DASH_TIME);
+                this.speed /= this.dashSpeedFactor;
+                this.isInvencible = false;
+                setTimeout(() => {
+                    this.canDash = true;
+                }, this.dashCooldown);
+            }, this.dashTime);
         }
     }
     let aux = new Phaser.Math.Vector2(this.body.velocity.x,this.body.velocity.y); 
@@ -237,4 +251,12 @@ checkLevelUp() {
         this.playerLevelText.setText('Nivel: ' + this.playerLevel + ' - Exp: ' + this.playerExp);
     }
 }
+
+getHit(damage){
+    if(!this.isInvencible)
+        this.health -= damage;
+}
+
+mouseClickAction(){}
+
 }
