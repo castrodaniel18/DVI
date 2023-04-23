@@ -55,6 +55,7 @@ preUpdate(t,dt){
         return;
     }
     this.scene.healthBar.updateHealth();
+    this.playerLevelText.setPosition(this.scene.cameras.main.scrollX + 10, this.scene.cameras.main.scrollY + 10);
     this.checkMove();
     this.checkIdle();
     this.checkLevelUp();
@@ -255,6 +256,14 @@ checkLevelUp() {
 getHit(damage){
     if(!this.isInvencible)
         this.health -= damage;
+    this.setTint(0xff0000); // Cambiar el color del personaje a rojo
+    this.scene.time.addEvent({
+        delay: 200, // La duración del efecto en milisegundos
+        callback: () => {
+            this.clearTint(); // Restablecer el color original del personaje
+        },
+        callbackScope: this
+    });
 }
 
 mouseClickAction(){}

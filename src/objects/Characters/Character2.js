@@ -10,7 +10,7 @@ export const CHARACTER_2_HEALTH = 100;
 export const CHARACTER_2_DAMAGE = 3;
 export const CHARACTER_2_SPRITE_WEAPON_NAME = 'fireball'
 export const CHARACTER_2_SPRITE_WEAPON = 'assets/elemnts/fireball'
-export const CHARACTER_2_WEAPON = 'fireball'
+export const CHARACTER_2_WEAPON = FireballGroup
 export const CHARACTER_2_SPEED = 150;
 const SHOOT_SPEED = 150;
 
@@ -23,7 +23,7 @@ export default class Character2 extends Character{
     }
 
     addWeapon(scene){
-        this.weapon = new FireballGroup(scene);
+        this.weapon = new CHARACTER_2_WEAPON(scene);
     }
 
     mouseClickAction(){

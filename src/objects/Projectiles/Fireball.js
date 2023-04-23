@@ -33,7 +33,6 @@ export default class Fireball extends Projectile{
     }
 
     shoot(pointerX, pointerY){
-        console.log(pointerX, pointerY);
         this.angle = Phaser.Math.Angle.Between(this.scene.player.x, this.scene.player.y, pointerX, pointerY);
         //Reseteamos la posición de la bola de fuego para que aparezca desde donde está player
         this.body.reset(this.scene.player.x, this.scene.player.y);
