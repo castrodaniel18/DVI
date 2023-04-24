@@ -24,15 +24,15 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
     }
 
     getHit(){
-        this.health -= 10;
-        this.setTint(0xff0000); // Cambiar el color del personaje a rojo
-        this.scene.time.addEvent({
-            delay: 200, // La duración del efecto en milisegundos
-            callback: () => {
-                this.clearTint(); // Restablecer el color original del personaje
-            },
-            callbackScope: this
-        });
+        // this.health -= 10;
+        // this.setTint(0xff0000); // Cambiar el color del personaje a rojo
+        // this.scene.time.addEvent({
+        //     delay: 200, // La duración del efecto en milisegundos
+        //     callback: () => {
+        //         this.clearTint(); // Restablecer el color original del personaje
+        //     },
+        //     callbackScope: this
+        // });
     }
 
     addCollisions(){

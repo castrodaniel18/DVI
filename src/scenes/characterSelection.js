@@ -30,7 +30,7 @@ export default class StartScene extends Phaser.Scene {
         button.setInteractive();
         button.on('pointerdown', () => {
             // al hacer clic en el botón, guarda el personaje seleccionado y cambia a la escena del juego
-            this.scene.start('Level1Scene', {characterName: CHARACTER_NAMES[index]});
+            this.scene.start('LevelSelector', {characterName: CHARACTER_NAMES[index]});
         });
         buttonGroup.add(button);
     });
