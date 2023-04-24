@@ -8,6 +8,7 @@ export default class EnemyGroup extends Phaser.Physics.Arcade.Group{
         this.enemyType = enemyType;
         this.enemies = []
         this.createEnemies();
+        this.addCollisions();
     }
 
     createEnemies() {
@@ -35,6 +36,12 @@ export default class EnemyGroup extends Phaser.Physics.Arcade.Group{
     enemyUpdate(){
         this.enemies.forEach(enemy => {
             enemy.enemyUpdate();
+        });
+    }
+
+    addCollisions(){
+        this.enemies.forEach(enemy => {
+            enemy.addCollisions();
         });
     }
 }

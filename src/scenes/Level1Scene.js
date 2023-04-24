@@ -34,13 +34,11 @@ export default class Level1Scene extends Phaser.Scene {
 		this.physics.world.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.startFollow(this.player);
-        //this.addEvents();
+		
 	}
 
 	update(){
 		this.player.update();
-		console.log(this.player.speed);
-		//this.goblin.enemyUpdate();
 		this.goblinsGroup.enemyUpdate();
 		this.potions.trySpawn();
 	}

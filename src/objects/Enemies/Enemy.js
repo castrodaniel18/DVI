@@ -34,4 +34,9 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
             callbackScope: this
         });
     }
+
+    addCollisions(){
+        console.log(this);
+        this.scene.physics.add.collider(this.scene.player.weapon, this, this.getHit, null, this);
+    }
 }
