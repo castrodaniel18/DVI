@@ -3,10 +3,16 @@ import Phaser from "phaser";
 export default class StartScene extends Phaser.Scene {
     constructor() {
       super({ key: 'StartScene' });
+      this.musicEnabled = false;
     }
   
     preload() {
-      this.load.css('start', 'web/css/start.css')
+      this.load.css('start', 'web/css/start.css');
+      /*Créditos de la canción para meter al gdd
+      Obra: Corazón de Guerrero
+      Música de https://www.fiftysounds.com/es/
+      */
+      this.load.audio('music', '../../../public/assets/sounds/music.mp3');
     }
 
     init(data) {
@@ -16,9 +22,21 @@ export default class StartScene extends Phaser.Scene {
       else
         this.difficulty = data.difficulty;
 
+      if (!data.music){
+        this.musicEnabled = false;
+      }
+      else{
+        this.musicEnabled = true;
+      }
+
     }
   
     create() {
+        this.music = this.sound.add('music');
+        if (!this.musicEnabled){
+          this.music.play();
+        }
+
         // Titulo del juego
         const title = document.createElement('h1');
         title.textContent = 'Main Menu';
