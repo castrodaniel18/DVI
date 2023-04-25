@@ -23,20 +23,25 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         //que detecta las colisiones con el límite del mundo
     }
 
-    getHit(){
-        // this.health -= 10;
-        // this.setTint(0xff0000); // Cambiar el color del personaje a rojo
-        // this.scene.time.addEvent({
-        //     delay: 200, // La duración del efecto en milisegundos
-        //     callback: () => {
-        //         this.clearTint(); // Restablecer el color original del personaje
-        //     },
-        //     callbackScope: this
-        // });
+    getHit(goblin, projectile){
+        this.health -= 10;
+
+        projectile.destroy();
+
+        this.setTint(0xff0000); // Cambiar el color del personaje a rojo
+        this.scene.time.addEvent({
+            delay: 200, // La duración del efecto en milisegundos
+            callback: () => {
+                this.clearTint(); // Restablecer el color original del personaje
+            },
+            callbackScope: this
+        });
+        
+        if (this.isDead())
+            this.destroy();
     }
 
     addCollisions(){
-        console.log(this);
         this.scene.physics.add.collider(this.scene.player.weapon, this, this.getHit, null, this);
     }
 }
