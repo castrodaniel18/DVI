@@ -18,6 +18,7 @@ export default class StartScene extends Phaser.Scene {
         this.loadCharacters();
         this.loadWeapons();
         this.loadPotions();
+        this.loadExp();
     }
   
     create() {
@@ -64,5 +65,13 @@ export default class StartScene extends Phaser.Scene {
         this.load.image('strengthPotion', 'assets/elements/potion_strength.png');
         this.load.image('speedPotion', 'assets/elements/potion_speed.png');
         this.load.image('invencibilityPotion', 'assets/elements/potion_invencibility.png');
+    }
+
+    loadExp(){
+        this.load.image('experience_red', 'assets/elements/experience_points(red).png');
+        this.load.image('experience_blue', 'assets/elements/experience_points(blue).png');
+        this.load.image('experience_green', 'assets/elements/experience_points(green).png');
+        this.load.image('experience_purple', 'assets/elements/experience_points(purple).png');
+        this.load.image('experience_yellow', 'assets/elements/experience_points(yellow).png');
     }
   }

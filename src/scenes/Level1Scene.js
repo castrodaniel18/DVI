@@ -6,6 +6,7 @@ import HealthBar from "../objects/Characters/healthBar";
 import Goblin from "../objects/Enemies/Goblin";
 import GoblinsGroup from "../objects/Enemies/GoblinsGroup";
 import Potions from "../objects/Potions/Potions";
+import ExperiencePointGroup from "../objects/misc/ExperiencePointGroup";
 
 export default class Level1Scene extends Phaser.Scene {
 	constructor() {

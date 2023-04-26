@@ -1,3 +1,5 @@
+import ExperiencePointGroup from "../misc/ExperiencePointGroup";
+
 export default class Enemy extends Phaser.GameObjects.Sprite {
     /**
      * Constructor de Enemy
@@ -37,8 +39,10 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
             callbackScope: this
         });
         
-        if (this.isDead())
+        if (this.isDead()){
+            this.expDrop = new ExperiencePointGroup(this.scene, this.x, this.y);
             this.destroy();
+        }
     }
 
     addCollisions(){
