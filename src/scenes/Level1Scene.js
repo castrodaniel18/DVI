@@ -19,7 +19,8 @@ export default class Level1Scene extends Phaser.Scene{
         this.load.spritesheet('goblin', 'assets/sprites/goblin.png', {frameWidth: 64, frameHeight: 64});
         this.load.spritesheet('potion', 'assets/elements/potion.png', {frameWidth: 128, frameHeight: 128});
         this.load.image('fondo','assets/elements/fondo.png');
-        this.load.tilemapTiledJSON('tilemap','fondo_grande.json')
+        this.load.image('tileset', 'assets/elements/TileSet2.png')
+        this.load.tilemapTiledJSON('tilemap','assets/elements/TileMap.json')
     }
 
     init(data) {
@@ -28,7 +29,9 @@ export default class Level1Scene extends Phaser.Scene{
     }
 
     create(){
-        let bg = this.add.image(0,0,'fondo').setOrigin(0,0);
+        const map = this.make.tilemap ({ key: "tilemap", tileWidth: 32, tileHeight: 32})
+        const tileset = map.addTilesetImage('tileset','tileset')
+        const layer = map.createLayer('Fondo', tileset, 0, 0)
         
         //Creamos al personaje pasándole sus estadísticas según personaje que eligiéramos en la pantalla de selección
         if (this.selectedCharacter == 'personaje1'){
@@ -50,8 +53,8 @@ export default class Level1Scene extends Phaser.Scene{
         this.healthBar = new HealthBar(this,this.player.x,this.player.y -35) 
         this.goblinGroup = new GoblinGroup(this)
         this.potion = new Potion(this, 800, 600,'damage');
-        this.physics.world.setBounds(0, 0, bg.width, bg.height);
-        this.cameras.main.setBounds(0, 0, bg.width, bg.height);
+        this.physics.world.setBounds(0, 0, 1280, 1280);
+        this.cameras.main.setBounds(0, 0, 1280, 1280);
         this.cameras.main.startFollow(this.player);
         this.addEvents();
         let scene = this;
