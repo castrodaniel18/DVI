@@ -54,6 +54,13 @@ export default class StartScene extends Phaser.Scene {
         this.load.spritesheet(character3.CHARACTER_3_SPRITE_WEAPON_NAME, character3.CHARACTER_3_SPRITE_WEAPON, {frameWidth: 25.6, frameHeight: 25.5})
     
         this.load.spritesheet('healthBar', 'assets/elements/health.png',{frameWidth:640, frameHeight:128});
+        this.load.spritesheet('piromancer_idle', 'assets/sprites/piromancer/Idle.png', {frameWidth: 128, frameHeight: 128});
+        this.load.on('complete', () => {
+            let piromancer_idle_backwards = this.add.sprite(100, 100, 'piromancer_idle');
+            piromancer_idle_backwards.flipX = true;
+          });
+        this.load.spritesheet('piromancer_dead', 'assets/sprites/piromancer/Dead.png', {frameWidth: 128, frameHeight: 128});
+        this.load.spritesheet('piromancer_move', 'assets/sprites/piromancer/Run.png', {frameWidth: 128, frameHeight: 128});
     }
 
     loadWeapons(){
@@ -72,6 +79,6 @@ export default class StartScene extends Phaser.Scene {
         this.load.image('experience_blue', 'assets/elements/experience_points(blue).png');
         this.load.image('experience_green', 'assets/elements/experience_points(green).png');
         this.load.image('experience_purple', 'assets/elements/experience_points(purple).png');
-        this.load.image('experience_yellow', 'assets/elements/experience_points(yellow).png');
+        this.load.image('experience_yellow', 'assets/elements/experience_points(blue).png');
     }
   }

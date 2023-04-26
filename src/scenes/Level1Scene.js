@@ -7,6 +7,7 @@ import Goblin from "../objects/Enemies/Goblin";
 import GoblinsGroup from "../objects/Enemies/GoblinsGroup";
 import Potions from "../objects/Potions/Potions";
 import ExperiencePointGroup from "../objects/misc/ExperiencePointGroup";
+import Piromancer from "../objects/Characters/Piromancer";
 
 export default class Level1Scene extends Phaser.Scene {
 	constructor() {
@@ -28,10 +29,10 @@ export default class Level1Scene extends Phaser.Scene {
 	create() {
 		let bg = this.add.image(0, 0, 'fondo').setOrigin(0, 0);
 		// Agrega el personaje a la escena y establece su posición en el centro de la cámara principal
-		this.addCharacter();
-		//this.goblin = new Goblin(this, 50, 50, 'goblin');
-		this.potions = new Potions(this);
-		this.goblinsGroup = new GoblinsGroup(this);
+		//this.addCharacter();
+		this.player = new Piromancer(this, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2, 'piromancer', 'character1', 100, 20, 100);
+		//this.potions = new Potions(this);
+		//this.goblinsGroup = new GoblinsGroup(this);
 		this.physics.world.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.startFollow(this.player);
@@ -40,8 +41,8 @@ export default class Level1Scene extends Phaser.Scene {
 
 	update(){
 		this.player.update();
-		this.goblinsGroup.enemyUpdate();
-		this.potions.trySpawn();
+		//this.goblinsGroup.enemyUpdate();
+		//this.potions.trySpawn();
 	}
 
 	addCharacter(){
