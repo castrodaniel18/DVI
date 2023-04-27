@@ -31,6 +31,7 @@ constructor(scene,x,y, name, sprite, health, damage, speed){
     this.dashTime = DASH_TIME;
     this.dashCooldown = DASH_COOLDOWN;
     this.dashSpeedFactor = DASH_SPEED_FACTOR;
+    this.canMove = true;
     this.canDash = true;
     this.isInvencible = false;
     this.playerLevel = 1;
@@ -58,9 +59,11 @@ preUpdate(t,dt){
     }
     this.scene.healthBar.updateHealth();
     this.playerLevelText.setPosition(this.scene.cameras.main.scrollX + 10, this.scene.cameras.main.scrollY + 10);
-    this.checkMove();
-    this.checkIdle();
-    this.checkLevelUp();
+    if(this.canMove){
+        this.checkMove();
+        this.checkIdle();
+        this.checkLevelUp();
+    }
 }
 
 defineControls(){
@@ -228,6 +231,30 @@ getHit(damage){
             },
             callbackScope: this
         });
+    }
+}
+
+shoot(pointerX, pointerY, castTime){
+    if(this.canMove){
+        this.canMove = false;
+        this.body.velocity.x = 0;
+        this.body.velocity.y = 0;
+        this.lookingLeft = false;
+        if (this.x > pointerX) {
+            this.play('shoot').flipX = true;
+            this.lookingLeft = true;
+        } 
+        else 
+            this.play('shoot').flipX = false;
+
+        this.scene.time.delayedCall(castTime, () => {
+            this.canMove = true;
+            if(this.lookingLeft === true)
+                this.play('idleA');
+            else
+                this.play('idleD');
+        });
+        this.weapon.shoot(pointerX, pointerY);
     }
 }
 

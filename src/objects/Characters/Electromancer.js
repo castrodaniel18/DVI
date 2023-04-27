@@ -13,6 +13,7 @@ export const ELECTROMANCER_SPRITE_WEAPON = 'assets/elemnts/fireball'
 export const ELECTROMANCER_WEAPON = FireballGroup
 export const ELECTROMANCER_FIREBALLS = 15;
 export const ELECTROMANCER_SPEED = 150;
+export const ELECTROMANCER_CAST_TIME = 1400;
 
 export default class Electromancer extends Mage{
     constructor(scene, sprite, x, y){
@@ -20,6 +21,13 @@ export default class Electromancer extends Mage{
 
         this.addWeapon(scene);
         this.mouseClickAction();
+
+        this.scene.anims.create({
+            key:'shoot',
+            frames: this.scene.anims.generateFrameNumbers(this.sprite + '_shoot',{start:0,end:6}),
+            frameRate: 5,
+            repeat: -1
+        });
     }
 
     addWeapon(scene){
@@ -30,11 +38,7 @@ export default class Electromancer extends Mage{
         this.scene.input.on('pointerdown', pointer => {
             this.pointerX = pointer.worldX;
             this.pointerY = pointer.worldY;
-            this.shoot(this.pointerX, this.pointerY);
+            this.shoot(this.pointerX, this.pointerY, ELECTROMANCER_CAST_TIME);
         })
-    }
-
-    shoot(pointerX, pointerY){
-        this.weapon.shoot(pointerX, pointerY);
     }
 }
