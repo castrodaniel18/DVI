@@ -3,7 +3,7 @@
 import { Scene } from "phaser";
 
 const LEVELS = [100, 200, 300];
-const DASH_TIME = 200;
+const DASH_TIME = 300;
 const DASH_COOLDOWN = 5000;
 const DASH_SPEED_FACTOR = 4;
 
@@ -170,22 +170,30 @@ checkMove(){
     }
     if(Phaser.Input.Keyboard.JustDown(this.spaceKey)){
         if (this.canDash) {
-            this.canDash = false;
-            this.speed *= this.dashSpeedFactor;
-            this.isInvencible = true;
-          
-            setTimeout(() => {
-                this.speed /= this.dashSpeedFactor;
-                this.isInvencible = false;
-                setTimeout(() => {
-                    this.canDash = true;
-                }, this.dashCooldown);
-            }, this.dashTime);
+            this.dash();
         }
     }
     let aux = new Phaser.Math.Vector2(this.body.velocity.x,this.body.velocity.y); 
     aux.normalize();
     this.body.setVelocity(this.speed*aux.x,this.speed*aux.y);
+}
+
+dash(){
+    this.canDash = false;
+    this.speed *= this.dashSpeedFactor;
+    this.isInvencible = true;
+    this.setTint(0x38FCFF); // Cambiar el color del personaje a azul
+    this.alpha = 0.5;
+  
+    setTimeout(() => {
+        this.speed /= this.dashSpeedFactor;
+        this.isInvencible = false;
+        setTimeout(() => {
+            this.canDash = true;
+        }, this.dashCooldown);
+        this.clearTint(); // Restablecer el color original del personaje
+        this.alpha = 1;
+    }, this.dashTime);
 }
 
 checkIdle(){
