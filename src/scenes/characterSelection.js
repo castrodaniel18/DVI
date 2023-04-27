@@ -55,12 +55,32 @@ export default class StartScene extends Phaser.Scene {
     
         this.load.spritesheet('healthBar', 'assets/elements/health.png',{frameWidth:640, frameHeight:128});
         this.load.spritesheet('piromancer_idle', 'assets/sprites/piromancer/Idle.png', {frameWidth: 128, frameHeight: 128});
+
+        //load piromancer
         this.load.on('complete', () => {
             let piromancer_idle_backwards = this.add.sprite(100, 100, 'piromancer_idle');
             piromancer_idle_backwards.flipX = true;
           });
         this.load.spritesheet('piromancer_dead', 'assets/sprites/piromancer/Dead.png', {frameWidth: 128, frameHeight: 128});
         this.load.spritesheet('piromancer_move', 'assets/sprites/piromancer/Run.png', {frameWidth: 128, frameHeight: 128});
+
+        //load electromancer
+        this.load.spritesheet('electromancer_idle', 'assets/sprites/electromancer/Idle.png', {frameWidth: 128, frameHeight: 128});
+        this.load.on('complete', () => {
+            let electromancer_idle_backwards = this.add.sprite(100, 100, 'electromancer_idle');
+            electromancer_idle_backwards.flipX = true;
+          });
+        this.load.spritesheet('electromancer_dead', 'assets/sprites/electromancer/Dead.png', {frameWidth: 128, frameHeight: 128});
+        this.load.spritesheet('electromancer_move', 'assets/sprites/electromancer/Run.png', {frameWidth: 128, frameHeight: 128});
+
+        //load luminomancer
+        this.load.spritesheet('luminomancer_idle', 'assets/sprites/luminomancer/Idle.png', {frameWidth: 128, frameHeight: 128});
+        this.load.on('complete', () => {
+            let luminomancer_idle_backwards = this.add.sprite(100, 100, 'luminomancer_idle');
+            luminomancer_idle_backwards.flipX = true;
+          });
+        this.load.spritesheet('luminomancer_dead', 'assets/sprites/luminomancer/Dead.png', {frameWidth: 128, frameHeight: 128});
+        this.load.spritesheet('luminomancer_move', 'assets/sprites/luminomancer/Run.png', {frameWidth: 128, frameHeight: 128});
     }
 
     loadWeapons(){

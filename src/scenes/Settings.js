@@ -11,13 +11,6 @@ export default class Settings extends Phaser.Scene {
         this.load.image('soundButton','assets/elements/sound.png');
         this.load.image('fullscreenButton','assets/elements/fullscreen.png');
         this.load.image('button', 'assets/elements/button.png');
-        this.load.image('difficultyButton', 'assets/elements/difficultyButton.png');
-        this.load.image('easyButton', 'assets/elements/easyButton.png');
-        this.load.image('easyButtonSelected', 'assets/elements/easyButtonSelected.png');
-        this.load.image('normalButton', 'assets/elements/normalButton.png');
-        this.load.image('normalButtonSelected', 'assets/elements/normalButtonSelected.png');
-        this.load.image('hardButton', 'assets/elements/hardButton.png');
-        this.load.image('hardButtonSelected', 'assets/elements/hardButtonSelected.png');
     }
 
     init(data) {

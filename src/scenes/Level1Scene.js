@@ -7,8 +7,9 @@ import Goblin from "../objects/Enemies/Goblin";
 import GoblinsGroup from "../objects/Enemies/GoblinsGroup";
 import Potions from "../objects/Potions/Potions";
 import ExperiencePointGroup from "../objects/misc/ExperiencePointGroup";
-import Piromancer from "../objects/Characters/Piromancer";
-import Piromancer1 from "../objects/Characters/Piromancer1";
+import Piromancer, {PIROMANCER_SPRITE_NAME, PIROMANCER_NAME} from "../objects/Characters/Piromancer";
+import Electromancer, {ELECTROMANCER_SPRITE_NAME, ELECTROMANCER_NAME} from "../objects/Characters/Electromancer";
+import LuminoMancer, {LUMINOMANCER_SPRITE_NAME, LUMINOMANCER_NAME} from "../objects/Characters/LuminoMancer";
 
 export default class Level1Scene extends Phaser.Scene {
 	constructor() {
@@ -41,19 +42,21 @@ export default class Level1Scene extends Phaser.Scene {
 	}
 
 	update(){
-		//this.player.update();
+		this.player.update();
 		this.goblinsGroup.enemyUpdate();
 		this.potions.trySpawn();
 	}
 
 	addCharacter(){
 		if(this.characterName === CHARACTER_1_NAME)
-			this.player = new Piromancer1(this, CHARACTER_1_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2);
+			this.player = new Piromancer(this, PIROMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2);
 			//this.player = new Character1(this, CHARACTER_1_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2);
 		if(this.characterName === CHARACTER_2_NAME)
-			this.player = new Character2(this, CHARACTER_2_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2);
+			this.player = new Electromancer(this, ELECTROMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2);
+			//this.player = new Character2(this, CHARACTER_2_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2);
 		if(this.characterName === CHARACTER_3_NAME)
-			this.player = new Character3(this, CHARACTER_3_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2);
+			this.player = new LuminoMancer(this, LUMINOMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2);
+			//this.player = new Character3(this, CHARACTER_3_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2);
 		this.healthBar = new HealthBar(this, this.player.x, this.player.y);
 	}
 }
