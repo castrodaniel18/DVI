@@ -1,13 +1,13 @@
 import { Scene } from 'phaser';
 import Enemy from './Enemy.js';
-import FireballGroup from "../Projectiles/EnemyProjectile.js";
-
+import EnemyProjectileGroup from "../Projectiles/EnemyProjectileGroup.js";
+//import FireballGroup from "../Projectiles/FireballGroup";
 
 const VENTOLIN_DAMAGE = 5;
 const VENTOLIN_HEALTH = 5;
 const VENTOLIN_SPEED = 10;
 const VENTOLIN_ATTACK_COOLDOWN = 4000;
-const VENTOLIN_WEAPON = FireballGroup;
+const VENTOLIN_WEAPON = EnemyProjectileGroup;
 const VENTOLIN_FIREBALLS=1;
 
 export default class Ventolin extends Enemy {
@@ -22,8 +22,7 @@ export default class Ventolin extends Enemy {
         super(scene, x, y, imgKey);
         this.setDisplaySize(50, 50);
         this.health = VENTOLIN_HEALTH;
-        this.addWeapon(scene,VENTOLIN_WEAPON);
-
+        this.addWeapon(scene);
         this.createAnimations();
         this.play('up');
         this.cooldown = false;
@@ -33,6 +32,7 @@ export default class Ventolin extends Enemy {
         super.preUpdate(t, dt);
         //Ejecutamos la animación solo si no es la que se estaba ejecutando ya
         !this.isDead() ? this.play(this.checkAnimation(), true) : this.destroy();
+        
     }
     createAnimations(){
         this.scene.anims.create({
@@ -94,10 +94,15 @@ export default class Ventolin extends Enemy {
     isDead(){
         return this.health < 0;
     }
-
+    attackRange() {
+        this.shoot(this.scene.player.x,this.scene.player.y);
+    }
     enemyUpdate(){
-        if (!this.isDead())
+        if (!this.isDead()) {
             this.move();
+            this.attackRange()
+        }
+            
     }
     addWeapon(scene){
         this.weapon = new VENTOLIN_WEAPON(scene, VENTOLIN_FIREBALLS);

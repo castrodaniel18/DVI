@@ -4,7 +4,7 @@ export const FIREBALL_IMGKEY_NAME = 'fireball';
 const FIREBALL_SPEED = 100;
 export const FIREBALL_DAMAGE_FACTOR = 1;
 
-export default class Fireball extends Projectile{
+export default class EnemyProjectile extends Projectile{
     
     constructor(scene, x, y){
         super(scene, x, y, FIREBALL_IMGKEY_NAME);
@@ -33,10 +33,9 @@ export default class Fireball extends Projectile{
     }
 
     shoot(enemy,pointerX, pointerY){
-        this.angle = Phaser.Math.Angle.Between(enemy.x, enemy.y, pointerX, pointerY);
+        //this.angle = Phaser.Math.Angle.Between(enemy.x, enemy.y, pointerX, pointerY);
         //Reseteamos la posición de la bola de fuego para que aparezca desde donde está player
-        this.body.reset(this.scene.enemy.x, this.scene.enemy.y);
-        
+        this.body.reset(enemy.x, enemy.y);
         //Activamos la bola de fuego
         this.setActive(true);
         this.setVisible(true);

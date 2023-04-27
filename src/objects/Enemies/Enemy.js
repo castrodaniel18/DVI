@@ -25,7 +25,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         //que detecta las colisiones con el límite del mundo
     }
 
-    getHit(goblin, projectile){
+    getHit(Ventolin, projectile){
         this.health -= 10;
 
         projectile.destroy();
