@@ -7,7 +7,7 @@ export default class Settings extends Phaser.Scene {
     }
   
     preload() {
-        this.load.image('bg','assets/elements/settingsPanel.png');
+        this.load.image('bg','assets/elements/settingsPanelOpaco.png');
         this.load.image('soundButton','assets/elements/sound.png');
         this.load.image('fullscreenButton','assets/elements/fullscreen.png');
         this.load.image('button', 'assets/elements/button.png');
@@ -26,6 +26,10 @@ export default class Settings extends Phaser.Scene {
         https://mounirtohami.itch.io/minimalpixel-font
         */
         
+        var background = this.add.image(0, 0, 'background');
+        background.setScale(800 / background.width, 600 / background.height);
+        background.setOrigin(0, 0);
+
         //Fondo
         var background = this.add.image(0, 0, 'bg');
         background.setScale(800 / background.width, 600 / background.height);

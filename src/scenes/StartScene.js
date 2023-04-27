@@ -13,6 +13,9 @@ export default class StartScene extends Phaser.Scene {
       Música de https://www.fiftysounds.com/es/
       */
       this.load.audio('music', '../../../public/assets/sounds/music.mp3');
+      this.load.image('background', '../../../public/assets/elements/menuBackground.png');
+      this.load.image('cartel', '../../../public/assets/elements/settingsPanel.png');
+      this.load.image('button', 'assets/elements/button.png');
     }
 
     init(data) {
@@ -32,43 +35,49 @@ export default class StartScene extends Phaser.Scene {
     }
   
     create() {
-        this.music = this.sound.add('music');
-        if (!this.musicEnabled){
-          this.music.play();
-        }
+      //Fondo
+      var background = this.add.image(0, 0, 'background');
+      background.setScale(800 / background.width, 600 / background.height);
+      background.setOrigin(0, 0);
 
-        // Titulo del juego
-        const title = document.createElement('h1');
-        title.textContent = 'Main Menu';
-        title.classList.add('title');
-        this.add.dom(400, 100, title);
+      //Cartel
+      var background = this.add.image(0, 0, 'cartel');
+      background.setScale(800 / background.width, 600 / background.height);
+      background.setOrigin(0, 0);
 
-        // Boton de comenzar juego
-        const buttonStart = document.createElement('div');
-        buttonStart.textContent = 'Start Game';
-        buttonStart.classList.add('button');
-        this.add.dom(400, 200, buttonStart);
-        buttonStart.addEventListener('click', () => {
-            this.scene.start('characterSelection');
-        });
+      //Canción de fondo
+      this.music = this.sound.add('music');
+      if (!this.musicEnabled){
+        this.music.play();
+      }
 
-        // Boton de opciones
-        const buttonSettings = document.createElement('div');
-        buttonSettings.textContent = 'Settings';
-        buttonSettings.classList.add('button');
-        this.add.dom(400, 250, buttonSettings);
-        buttonSettings.addEventListener('click', () => {
-          this.scene.start('Settings', { difficulty: this.difficulty });
-        });
+      // Titulo del juego
+      this.add.text(245, 75, 'Folkore ', { fontFamily: 'myFont', fontSize: '38px', color: '#0E9AF1' });
+      this.add.text(415, 75, 'Hunters', { fontFamily: 'myFont', fontSize: '38px', color: '#ffffff' });
 
-        // Boton de ayuda
-        const buttonHelp = document.createElement('div');
-        buttonHelp.textContent = 'Help';
-        buttonHelp.classList.add('button');
-        this.add.dom(400, 300, buttonHelp);
-        buttonHelp.addEventListener('click', () => {
-            // To Do
-        });
+      // Boton de comenzar juego
+      this.startButton = this.add.image(400, 200, 'button').setInteractive();
+      this.startButton.setScale(6, 3.5);
+      this.add.text(333, 193, 'Start Game', { fontFamily: 'myFont', fontSize: '26px', color: '#ffffff' });
+      this.startButton.on('pointerdown', () => {
+        this.scene.start('characterSelection');
+      });
+
+      // Boton de opciones
+      this.settingsButton = this.add.image(400, 300, 'button').setInteractive();
+      this.settingsButton.setScale(6, 3.5);
+      this.add.text(350, 293, 'Settings', { fontFamily: 'myFont', fontSize: '26px', color: '#ffffff' });
+      this.settingsButton.on('pointerdown', () => {
+        this.scene.start('Settings', { difficulty: this.difficulty });
+      });
+
+      // Boton de ayuda
+      this.helpButton = this.add.image(400, 400, 'button').setInteractive();
+      this.helpButton.setScale(6, 3.5);
+      this.add.text(370, 393, 'Help', { fontFamily: 'myFont', fontSize: '26px', color: '#ffffff' });
+      this.helpButton.on('pointerdown', () => {
+        //Por hacer
+      });
 
     }
   }
