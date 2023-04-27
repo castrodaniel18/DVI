@@ -2,9 +2,11 @@ import Phaser from "phaser";
 import Character1, {CHARACTER_1_SPRITE_NAME, CHARACTER_1_NAME} from "../objects/Characters/Character1";
 import Character2, {CHARACTER_2_SPRITE_NAME, CHARACTER_2_NAME} from "../objects/Characters/Character2";
 import Character3, {CHARACTER_3_SPRITE_NAME, CHARACTER_3_NAME} from "../objects/Characters/Character3";
-import HealthBar from "../objects/Characters/healthBar";
+import HealthBar from "../objects/Characters/HealthBar";
 import Goblin from "../objects/Enemies/Goblin";
 import GoblinsGroup from "../objects/Enemies/GoblinsGroup";
+import Ventlon from "../objects/Enemies/GoblinsGroup"
+import VentolinGroup from "../objects/Enemies/VentolinGroup"
 import Potions from "../objects/Potions/Potions";
 import ExperiencePointGroup from "../objects/misc/ExperiencePointGroup";
 import Piromancer, {PIROMANCER_SPRITE_NAME, PIROMANCER_NAME} from "../objects/Characters/Piromancer";
@@ -20,6 +22,7 @@ export default class Level1Scene extends Phaser.Scene {
 	preload() {
 		this.load.image('fondo','assets/elements/fondo.png');
 		this.load.spritesheet('goblin', 'assets/sprites/goblin.png', {frameWidth: 64, frameHeight: 64});
+		this.load.spritesheet('ventolin', 'assets/sprites/ventolin.png', {frameWidth: 64, frameHeight: 64})
 		this.load.spritesheet('fireball', 'assets/elements/fireball.png', {frameWidth: 25.6, frameHeight: 25.5});
 	}
 
@@ -34,7 +37,8 @@ export default class Level1Scene extends Phaser.Scene {
 		this.addCharacter();
 		//this.player = new Piromancer(this, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2, 'piromancer', 'character1', 100, 20, 100);
 		this.potions = new Potions(this);
-		this.goblinsGroup = new GoblinsGroup(this);
+		//this.goblinsGroup = new GoblinsGroup(this);
+		this.ventolinsGroup = new VentolinGroup(this)
 		this.physics.world.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.startFollow(this.player);
@@ -43,7 +47,8 @@ export default class Level1Scene extends Phaser.Scene {
 
 	update(){
 		this.player.update();
-		this.goblinsGroup.enemyUpdate();
+		//this.goblinsGroup.enemyUpdate();
+		this.ventolinsGroup.enemyUpdate();
 		this.potions.trySpawn();
 	}
 

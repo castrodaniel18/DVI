@@ -28,7 +28,7 @@ export default class Goblin extends Enemy {
     preUpdate(t, dt){
         super.preUpdate(t, dt);
         //Ejecutamos la animación solo si no es la que se estaba ejecutando ya
-        //!this.isDead() ? this.play(this.checkAnimation(), true) : this.destroy();
+        !this.isDead() ? this.play(this.checkAnimation(), true) : this.destroy();
     }
 
     createAnimations(){
@@ -84,7 +84,6 @@ export default class Goblin extends Enemy {
     attack(){
         if(this.cooldown)
             return;
-
         this.scene.player.getHit(GOBLIN_DAMAGE);
         this.cooldown = true;
         setTimeout(() => {

@@ -32,7 +32,7 @@ export default class Ventolin extends Enemy {
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
         //Ejecutamos la animación solo si no es la que se estaba ejecutando ya
-        //!this.isDead() ? this.play(this.checkAnimation(), true) : this.destroy();
+        !this.isDead() ? this.play(this.checkAnimation(), true) : this.destroy();
     }
     createAnimations(){
         this.scene.anims.create({
@@ -85,8 +85,7 @@ export default class Ventolin extends Enemy {
     attack(){
         if(this.cooldown)
             return;
-        this.getHit(playe)
-        this.shoot(this.scene.player.x,this.scene.player.y);
+        this.scene.player.getHit(VENTOLIN_DAMAGE);
         this.cooldown = true;
         setTimeout(() => {
             this.cooldown = false;
