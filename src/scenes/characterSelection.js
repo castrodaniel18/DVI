@@ -45,13 +45,13 @@ export default class StartScene extends Phaser.Scene {
     loadCharacters(){
         this.load.image(character1.CHARACTER_1_NAME, character1.CHARACTER_1_SELECTION);
         this.load.spritesheet(character1.CHARACTER_1_SPRITE_NAME, character1.CHARACTER_1_SPRITE,{frameWidth:character1.CHARACTER_1_SPRITE_SIZE, frameHeight:character1.CHARACTER_1_SPRITE_SIZE});
-        this.load.spritesheet(character1.CHARACTER_1_SPRITE_WEAPON_NAME, character1.CHARACTER_1_SPRITE_WEAPON, {frameWidth: 25.6, frameHeight: 25.5})
+        //this.load.spritesheet(character1.CHARACTER_1_SPRITE_WEAPON_NAME, character1.CHARACTER_1_SPRITE_WEAPON, {frameWidth: 25.6, frameHeight: 25.5})
         this.load.image(character2.CHARACTER_2_NAME, character2.CHARACTER_2_SELECTION);
         this.load.spritesheet(character2.CHARACTER_2_SPRITE_NAME, character2.CHARACTER_2_SPRITE,{frameWidth:character2.CHARACTER_2_SPRITE_SIZE, frameHeight:character2.CHARACTER_2_SPRITE_SIZE});
-        this.load.spritesheet(character2.CHARACTER_2_SPRITE_WEAPON_NAME, character2.CHARACTER_2_SPRITE_WEAPON, {frameWidth: 25.6, frameHeight: 25.5})
+        //this.load.spritesheet(character2.CHARACTER_2_SPRITE_WEAPON_NAME, character2.CHARACTER_2_SPRITE_WEAPON, {frameWidth: 25.6, frameHeight: 25.5})
         this.load.image(character3.CHARACTER_3_NAME, character3.CHARACTER_3_SELECTION);
         this.load.spritesheet(character3.CHARACTER_3_SPRITE_NAME, character3.CHARACTER_3_SPRITE,{frameWidth:character3.CHARACTER_3_SPRITE_SIZE, frameHeight:character3.CHARACTER_3_SPRITE_SIZE});
-        this.load.spritesheet(character3.CHARACTER_3_SPRITE_WEAPON_NAME, character3.CHARACTER_3_SPRITE_WEAPON, {frameWidth: 25.6, frameHeight: 25.5})
+        //this.load.spritesheet(character3.CHARACTER_3_SPRITE_WEAPON_NAME, character3.CHARACTER_3_SPRITE_WEAPON, {frameWidth: 25.6, frameHeight: 25.5})
     
         this.load.spritesheet('healthBar', 'assets/elements/health.png',{frameWidth:640, frameHeight:128});
 
@@ -59,23 +59,25 @@ export default class StartScene extends Phaser.Scene {
         this.load.spritesheet('piromancer_idle', 'assets/sprites/piromancer/Idle.png', {frameWidth: 128, frameHeight: 128});
         this.load.spritesheet('piromancer_dead', 'assets/sprites/piromancer/Dead.png', {frameWidth: 128, frameHeight: 128});
         this.load.spritesheet('piromancer_move', 'assets/sprites/piromancer/Run.png', {frameWidth: 128, frameHeight: 128});
-        this.load.spritesheet('piromancer_shoot', 'assets/sprites/piromancer/Shoot.png', {frameWidth: 128, frameHeight: 128});
+        this.load.spritesheet('piromancer_shoot', 'assets/sprites/piromancer/Fireball.png', {frameWidth: 128, frameHeight: 128});
 
         //load electromancer
         this.load.spritesheet('electromancer_idle', 'assets/sprites/electromancer/Idle.png', {frameWidth: 128, frameHeight: 128});
         this.load.spritesheet('electromancer_dead', 'assets/sprites/electromancer/Dead.png', {frameWidth: 128, frameHeight: 128});
         this.load.spritesheet('electromancer_move', 'assets/sprites/electromancer/Run.png', {frameWidth: 128, frameHeight: 128});
-        this.load.spritesheet('electromancer_shoot', 'assets/sprites/electromancer/Shoot.png', {frameWidth: 128, frameHeight: 128});
+        this.load.spritesheet('electromancer_shoot', 'assets/sprites/electromancer/Magic_sphere.png', {frameWidth: 128, frameHeight: 128});
 
         //load luminomancer
         this.load.spritesheet('luminomancer_idle', 'assets/sprites/luminomancer/Idle.png', {frameWidth: 128, frameHeight: 128});
         this.load.spritesheet('luminomancer_dead', 'assets/sprites/luminomancer/Dead.png', {frameWidth: 128, frameHeight: 128});
         this.load.spritesheet('luminomancer_move', 'assets/sprites/luminomancer/Run.png', {frameWidth: 128, frameHeight: 128});
-        this.load.spritesheet('luminomancer_shoot', 'assets/sprites/luminomancer/Shoot.png', {frameWidth: 128, frameHeight: 128});
+        this.load.spritesheet('luminomancer_shoot', 'assets/sprites/luminomancer/Light_ball.png', {frameWidth: 128, frameHeight: 128});
     }
 
     loadWeapons(){
-        this.load.spritesheet('fireball', 'assets/elements/fireball.png', {frameWidth: 25.6, frameHeight: 25.5});
+        this.load.spritesheet('fireball', 'assets/sprites/piromancer/Charge.png', {frameWidth: 64, frameHeight: 64});
+        this.load.spritesheet('electroball', 'assets/sprites/electromancer/Charge_1.png', {frameWidth: 64, frameHeight: 128});
+        this.load.spritesheet('lightball', 'assets/sprites/luminomancer/Charge.png', {frameWidth: 64, frameHeight: 64});
     }
 
     loadPotions(){

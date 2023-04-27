@@ -9,11 +9,11 @@ export const PIROMANCER_SELECTION = 'assets/elements/playerSelection1.png';
 export const PIROMANCER_HEALTH = 150;
 export const PIROMANCER_DAMAGE = 3;
 export const PIROMANCER_SPRITE_WEAPON_NAME = 'fireball';
-export const PIROMANCER_SPRITE_WEAPON = 'assets/elemnts/fireball';
+export const PIROMANCER_SPRITE_WEAPON = 'assets/sprites/piromancer/Charge.png';
 export const PIROMANCER_WEAPON = FireballGroup;
 export const PIROMANCER_FIREBALLS = 15;
 export const PIROMANCER_SPEED = 100;
-export const PIROMANCER_CAST_TIME = 1600;
+export const PIROMANCER_CAST_TIME = 800;
 
 export default class Piromancer extends Mage{
     constructor(scene, sprite, x, y){
@@ -25,7 +25,7 @@ export default class Piromancer extends Mage{
         this.scene.anims.create({
             key:'shoot',
             frames: this.scene.anims.generateFrameNumbers(this.sprite + '_shoot',{start:0,end:7}),
-            frameRate: 5,
+            frameRate: 10,
             repeat: -1
         });
     }

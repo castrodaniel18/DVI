@@ -191,7 +191,6 @@ checkMove(){
 checkIdle(){
     if(this.wKey.isDown || this.aKey.isDown || this.sKey.isDown || this.dKey.isDown || this.spaceKey.isDown){}
     else if(this.anims.currentAnim.key === ('A') && this.anims.currentAnim.key !== ('dash')){
-        //this.sprite.flipX = true;
         this.play('idleA').flipX = true;
         this.body.velocity.x=0;
         this.body.velocity.y=0;
@@ -253,8 +252,8 @@ shoot(pointerX, pointerY, castTime){
                 this.play('idleA');
             else
                 this.play('idleD');
+            this.weapon.shoot(pointerX, pointerY);
         });
-        this.weapon.shoot(pointerX, pointerY);
     }
 }
 
