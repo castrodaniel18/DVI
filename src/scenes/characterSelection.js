@@ -18,6 +18,7 @@ export default class StartScene extends Phaser.Scene {
         this.loadCharacters();
         this.loadWeapons();
         this.loadPotions();
+        this.loadExp();
     }
   
     create() {
@@ -53,6 +54,13 @@ export default class StartScene extends Phaser.Scene {
         this.load.spritesheet(character3.CHARACTER_3_SPRITE_WEAPON_NAME, character3.CHARACTER_3_SPRITE_WEAPON, {frameWidth: 25.6, frameHeight: 25.5})
     
         this.load.spritesheet('healthBar', 'assets/elements/health.png',{frameWidth:640, frameHeight:128});
+        this.load.spritesheet('piromancer_idle', 'assets/sprites/piromancer/Idle.png', {frameWidth: 128, frameHeight: 128});
+        this.load.on('complete', () => {
+            let piromancer_idle_backwards = this.add.sprite(100, 100, 'piromancer_idle');
+            piromancer_idle_backwards.flipX = true;
+          });
+        this.load.spritesheet('piromancer_dead', 'assets/sprites/piromancer/Dead.png', {frameWidth: 128, frameHeight: 128});
+        this.load.spritesheet('piromancer_move', 'assets/sprites/piromancer/Run.png', {frameWidth: 128, frameHeight: 128});
     }
 
     loadWeapons(){
@@ -64,5 +72,13 @@ export default class StartScene extends Phaser.Scene {
         this.load.image('strengthPotion', 'assets/elements/potion_strength.png');
         this.load.image('speedPotion', 'assets/elements/potion_speed.png');
         this.load.image('invencibilityPotion', 'assets/elements/potion_invencibility.png');
+    }
+
+    loadExp(){
+        this.load.image('experience_red', 'assets/elements/experience_points(red).png');
+        this.load.image('experience_blue', 'assets/elements/experience_points(blue).png');
+        this.load.image('experience_green', 'assets/elements/experience_points(green).png');
+        this.load.image('experience_purple', 'assets/elements/experience_points(purple).png');
+        this.load.image('experience_yellow', 'assets/elements/experience_points(blue).png');
     }
   }
