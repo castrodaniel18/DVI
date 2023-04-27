@@ -13,6 +13,7 @@ export const PIROMANCER_SPRITE_WEAPON = 'assets/elemnts/fireball';
 export const PIROMANCER_WEAPON = FireballGroup;
 export const PIROMANCER_FIREBALLS = 15;
 export const PIROMANCER_SPEED = 100;
+export const PIROMANCER_CAST_TIME = 1600;
 
 export default class Piromancer extends Mage{
     constructor(scene, sprite, x, y){
@@ -20,6 +21,13 @@ export default class Piromancer extends Mage{
 
         this.addWeapon(scene);
         this.mouseClickAction();
+
+        this.scene.anims.create({
+            key:'shoot',
+            frames: this.scene.anims.generateFrameNumbers(this.sprite + '_shoot',{start:0,end:7}),
+            frameRate: 5,
+            repeat: -1
+        });
     }
 
     addWeapon(scene){
@@ -30,11 +38,7 @@ export default class Piromancer extends Mage{
         this.scene.input.on('pointerdown', pointer => {
             this.pointerX = pointer.worldX;
             this.pointerY = pointer.worldY;
-            this.shoot(this.pointerX, this.pointerY);
+            this.shoot(this.pointerX, this.pointerY, PIROMANCER_CAST_TIME);
         })
-    }
-
-    shoot(pointerX, pointerY){
-        this.weapon.shoot(pointerX, pointerY);
     }
 }

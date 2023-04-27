@@ -13,6 +13,7 @@ export const LUMINOMANCER_SPRITE_WEAPON = 'assets/elemnts/fireball'
 export const LUMINOMANCER_WEAPON = FireballGroup;
 export const LUMINOMANCER_FIREBALLS = 20;
 export const LUMINOMANCER_SPEED = 100;
+export const LUMINOMANCER_CAST_TIME = 800;
 
 export default class Luminomancer extends Mage{
     constructor(scene, sprite, x, y){
@@ -20,6 +21,13 @@ export default class Luminomancer extends Mage{
 
         this.addWeapon(scene);
         this.mouseClickAction();
+
+        this.scene.anims.create({
+            key:'shoot',
+            frames: this.scene.anims.generateFrameNumbers(this.sprite + '_shoot',{start:0,end:3}),
+            frameRate: 5,
+            repeat: -1
+        });
     }
 
     addWeapon(scene){
@@ -30,11 +38,7 @@ export default class Luminomancer extends Mage{
         this.scene.input.on('pointerdown', pointer => {
             this.pointerX = pointer.worldX;
             this.pointerY = pointer.worldY;
-            this.shoot(this.pointerX, this.pointerY);
+            this.shoot(this.pointerX, this.pointerY, LUMINOMANCER_CAST_TIME);
         })
-    }
-
-    shoot(pointerX, pointerY){
-        this.weapon.shoot(pointerX, pointerY);
     }
 }
