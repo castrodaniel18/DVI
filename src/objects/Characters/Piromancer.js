@@ -106,23 +106,62 @@ createAnimations(){
 checkMove(){
     if(this.aKey.isDown ){
         if(this.wKey.isDown || this.sKey.isDown || this.dKey.isDown){}
-        else if(this.anims.currentAnim.key !== ('A') && this.anims.currentAnim.key !== ('dash')){
-            this.play('A');
+        else if(this.anims.currentAnim.key !== ('A')){
+            this.play('A').flipX = true;
         }
         this.body.velocity.x=-this.speed;
     }
     if(this.sKey.isDown ){
+        if(this.aKey.isDown || this.dKey.isDown || this.wKey.isDown){}
+        else if(this.anims.currentAnim.key == ('idleA')){
+            this.play('A').flipX = true;
+        }
+        else if (this.anims.currentAnim.key == ('idleD')){
+            this.play('D').flipX = false;
+        }
         this.body.velocity.y=this.speed;
     }
     if(this.dKey.isDown){
         if(this.wKey.isDown || this.sKey.isDown || this.aKey.isDown){}
-        else if(this.anims.currentAnim.key !== ('D') && this.anims.currentAnim.key !== ('dash')){
-            this.play('D');
+        else if(this.anims.currentAnim.key !== ('D')){
+            this.play('D').flipX = false;
         }
         this.body.velocity.x=this.speed;
     }
     if(this.wKey.isDown ){
+        if(this.aKey.isDown || this.dKey.isDown || this.sKey.isDown){}
+        else if(this.anims.currentAnim.key == ('idleA')){
+            this.play('A').flipX = true;
+        }
+        else if (this.anims.currentAnim.key == ('idleD')){
+            this.play('D').flipX = false;
+        }
         this.body.velocity.y=-this.speed;
+    }
+    
+    if(this.aKey.isDown && this.sKey.isDown){
+        if(this.wKey.isDown || this.dKey.isDown){}
+        else if(this.anims.currentAnim.key !== 'A'){
+            this.play('A').flipX = true;
+        }
+    }
+    if(this.sKey.isDown && this.dKey.isDown ){
+        if(this.wKey.isDown || this.aKey.isDown){}
+        else if(this.anims.currentAnim.key !== 'D'){
+            this.play('D').flipX = false;
+        }
+    }
+    if(this.wKey.isDown && this.dKey.isDown ){
+        if(this.aKey.isDown || this.sKey.isDown){}
+        else if(this.anims.currentAnim.key !== 'D'){
+            this.play('D').flipX = false;
+        }
+    }
+    if(this.wKey.isDown && this.aKey.isDown ){
+        if(this.dKey.isDown || this.sKey.isDown){}
+        else if(this.anims.currentAnim.key !== 'A'){
+            this.play('A').flipX = true;
+        }
     }
     if(Phaser.Input.Keyboard.JustDown(this.spaceKey)){
         if (this.canDash) {
@@ -147,15 +186,19 @@ checkMove(){
 checkIdle(){
     if(this.wKey.isDown || this.aKey.isDown || this.sKey.isDown || this.dKey.isDown || this.spaceKey.isDown){}
     else if(this.anims.currentAnim.key === ('A') && this.anims.currentAnim.key !== ('dash')){
-        this.sprite.flipX = true;
-        this.play('idleA');
+        //this.sprite.flipX = true;
+        this.play('idleA').flipX = true;
         this.body.velocity.x=0;
         this.body.velocity.y=0;
     }
     else if (this.anims.currentAnim.key === ('D') && this.anims.currentAnim.key !== ('dash')){
-        this.play('idleD');
+        this.play('idleD').flipX = false;
         this.body.velocity.x=0;
         this.body.velocity.y=0;
+    }
+    else{
+        this.body.velocity.x = 0;
+        this.body.velocity.y = 0;
     }
 }
 
