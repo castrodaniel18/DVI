@@ -190,6 +190,7 @@ checkMove(){
 
 dash(){
     this.canDash = false;
+    this.canMove = false;
     this.speed *= this.dashSpeedFactor;
     this.isInvencible = true;
     this.setTint(0x38FCFF); // Cambiar el color del personaje a azul
@@ -198,6 +199,7 @@ dash(){
     setTimeout(() => {
         this.speed /= this.dashSpeedFactor;
         this.isInvencible = false;
+        this.canMove = true;
         setTimeout(() => {
             this.canDash = true;
         }, this.dashCooldown);

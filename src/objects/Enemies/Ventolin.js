@@ -24,7 +24,7 @@ export default class Ventolin extends Enemy {
         this.health = VENTOLIN_HEALTH;
         this.addWeapon(scene);
         this.createAnimations();
-        this.play('up');
+        this.play('up_ventolin');
         this.cooldown = false;
         this.scene.physics.add.overlap(this.scene.player, this, this.attack, null, this);
     }
@@ -36,28 +36,28 @@ export default class Ventolin extends Enemy {
     }
     createAnimations(){
         this.scene.anims.create({
-            key:'up',
+            key:'up_ventolin',
             frames: this.scene.anims.generateFrameNumbers('ventolin',{start:104,end:112}),
             frameRate: 5,
             repeat: -1
         });
     
         this.scene.anims.create({
-            key:'right',
+            key:'right_ventolin',
             frames: this.scene.anims.generateFrameNumbers('ventolin',{start:117,end:125}),
             frameRate: 5,
             repeat: -1
         });
     
         this.scene.anims.create({
-            key:'down',
+            key:'down_ventolin',
             frames: this.scene.anims.generateFrameNumbers('ventolin',{start:130,end:138}),
             frameRate: 5,
             repeat: -1
             });
     
         this.scene.anims.create({
-            key:'left',
+            key:'left_ventolin',
             frames: this.scene.anims.generateFrameNumbers('ventolin',{start:143,end:151}),
             frameRate: 5,
             repeat: -1
@@ -65,13 +65,13 @@ export default class Ventolin extends Enemy {
     }
     checkAnimation(){
         if(this.body.velocity.x >= 0 && this.body.velocity.y >= 0)
-            return 'left';
+            return 'left_ventolin';
         else if(this.body.velocity.x >= 0 && this.body.velocity.y < 0)
-            return 'up';
+            return 'up_ventolin';
         else if (this.body.velocity.x < 0 && this.body.velocity.y < 0)
-            return'right';
+            return'right_ventolin';
         else
-            return 'down';
+            return 'down_ventolin';
     }
     move(){
         if(Phaser.Math.Distance.Between(this.scene.player.x, this.scene.player.y, this.x, this.y) > 40)

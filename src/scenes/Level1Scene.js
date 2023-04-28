@@ -23,7 +23,6 @@ export default class Level1Scene extends Phaser.Scene {
 		this.load.image('fondo','assets/elements/fondo.png');
 		this.load.spritesheet('goblin', 'assets/sprites/goblin.png', {frameWidth: 64, frameHeight: 64});
 		this.load.spritesheet('ventolin', 'assets/sprites/ventolin.png', {frameWidth: 64, frameHeight: 64})
-		//this.load.spritesheet('fireball', 'assets/elements/fireball.png', {frameWidth: 25.6, frameHeight: 25.5});
 		this.load.image('pauseButton', 'assets/elements/pauseButton.png');
 		this.load.image('levelPanel', 'assets/elements/levelPanel.png');
 	}
@@ -40,7 +39,7 @@ export default class Level1Scene extends Phaser.Scene {
 		this.addCharacter();
 		//this.player = new Piromancer(this, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2, 'piromancer', 'character1', 100, 20, 100);
 		this.potions = new Potions(this);
-		//this.goblinsGroup = new GoblinsGroup(this);
+		this.goblinsGroup = new GoblinsGroup(this);
 		this.ventolinsGroup = new VentolinGroup(this)
 		this.physics.world.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.setBounds(0, 0, bg.width, bg.height);
@@ -61,7 +60,7 @@ export default class Level1Scene extends Phaser.Scene {
 
 	update(){
 		this.player.update();
-		//this.goblinsGroup.enemyUpdate();
+		this.goblinsGroup.enemyUpdate();
 		this.ventolinsGroup.enemyUpdate();
 		this.potions.trySpawn();
 	}

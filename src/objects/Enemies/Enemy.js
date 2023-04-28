@@ -29,11 +29,9 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         this.body.offset.set(20, 23);
     }
 
-    getHit(Ventolin, projectile){
-        this.health -= 10;
-
+    getHit(enemy, projectile){
+        this.health -= projectile.damage;
         projectile.destroy();
-
         this.setTint(0xff0000); // Cambiar el color del personaje a rojo
         this.scene.time.addEvent({
             delay: 200, // La duración del efecto en milisegundos

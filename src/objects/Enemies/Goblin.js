@@ -20,7 +20,7 @@ export default class Goblin extends Enemy {
         this.health = GOBLIN_HEALTH;
 
         this.createAnimations();
-        this.play('up');
+        this.play('up_goblin');
         this.cooldown = false;
 		this.scene.physics.add.overlap(this.scene.player, this ,this.attack,null,this);
     }
@@ -34,28 +34,28 @@ export default class Goblin extends Enemy {
 
     createAnimations(){
         this.scene.anims.create({
-            key:'up',
+            key:'up_goblin',
             frames: this.scene.anims.generateFrameNumbers('goblin',{start:104,end:112}),
             frameRate: 5,
             repeat: -1
         });
     
         this.scene.anims.create({
-            key:'right',
+            key:'right_goblin',
             frames: this.scene.anims.generateFrameNumbers('goblin',{start:117,end:125}),
             frameRate: 5,
             repeat: -1
         });
     
         this.scene.anims.create({
-            key:'down',
+            key:'down_goblin',
             frames: this.scene.anims.generateFrameNumbers('goblin',{start:130,end:138}),
             frameRate: 5,
             repeat: -1
             });
     
         this.scene.anims.create({
-            key:'left',
+            key:'left_goblin',
             frames: this.scene.anims.generateFrameNumbers('goblin',{start:143,end:151}),
             frameRate: 5,
             repeat: -1
@@ -64,13 +64,13 @@ export default class Goblin extends Enemy {
 
     checkAnimation(){
         if(this.body.velocity.x >= 0 && this.body.velocity.y >= 0)
-            return 'left';
+            return 'left_goblin';
         else if(this.body.velocity.x >= 0 && this.body.velocity.y < 0)
-            return 'up';
+            return 'up_goblin';
         else if (this.body.velocity.x < 0 && this.body.velocity.y < 0)
-            return'right';
+            return'right_goblin';
         else
-            return 'down';
+            return 'down_goblin';
     }
 
     move(){
