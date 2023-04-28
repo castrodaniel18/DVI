@@ -39,8 +39,8 @@ export default class Level1Scene extends Phaser.Scene {
 		this.addCharacter();
 		//this.player = new Piromancer(this, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2, 'piromancer', 'character1', 100, 20, 100);
 		this.potions = new Potions(this);
-		this.goblinsGroup = new GoblinsGroup(this);
-		this.ventolinsGroup = new VentolinGroup(this)
+		this.enemies = [];
+		this.addEnemies();
 		this.physics.world.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.startFollow(this.player);
@@ -57,6 +57,19 @@ export default class Level1Scene extends Phaser.Scene {
 			this.scene.run('PauseScene', { difficulty: this.difficulty});
         });
 	}
+
+	addEnemies(){
+		this.goblinsGroup = new GoblinsGroup(this);
+		this.addEnemyGroup(this.goblinsGroup);
+		this.ventolinsGroup = new VentolinGroup(this);
+		this.addEnemyGroup(this.ventolinsGroup);
+	}
+
+	addEnemyGroup(group){
+		this.physics.add.collider(this.enemies, group.enemies);
+		this.enemies.push(...group.enemies);
+	}
+
 
 	update(){
 		this.player.update();

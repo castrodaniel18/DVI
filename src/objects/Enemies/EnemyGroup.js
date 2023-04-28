@@ -30,6 +30,8 @@ export default class EnemyGroup extends Phaser.Physics.Arcade.Group{
               }
             const enemy = new this.enemyType(this.scene, x, y, this.imgKey);
             this.enemies.push(enemy);
+            
+            this.scene.physics.add.collider(this.enemies, enemy);
         }
     }
 
