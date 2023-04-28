@@ -94,13 +94,13 @@ export default class Ventolin extends Enemy {
     isDead(){
         return this.health < 0;
     }
-    attackRange() {
-        this.shoot();
-    }
+
     enemyUpdate(){
         if (!this.isDead()) {
             this.move();
-            this.attackRange()
+            this.distanceToPlayer = Math.sqrt(Math.pow(this.scene.player.x - this.x, 2) + Math.pow(this.scene.player.y - this.y, 2));
+            if(this.distanceToPlayer < 300)
+                this.shoot();
         }
             
     }
