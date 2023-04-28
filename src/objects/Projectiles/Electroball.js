@@ -1,7 +1,7 @@
 import Projectile from "./Projectile";
 
 export const ELECTROBALL_IMGKEY_NAME = 'electroball';
-const ELECTROBALL_SPEED = 100;
+const ELECTROBALL_SPEED = 120;
 export const ELECTROBALL_DAMAGE_FACTOR = 2;
 
 export default class Electroball extends Projectile{

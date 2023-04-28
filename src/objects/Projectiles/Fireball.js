@@ -1,7 +1,7 @@
 import Projectile from "./Projectile";
 
 export const FIREBALL_IMGKEY_NAME = 'fireball';
-const FIREBALL_SPEED = 100;
+const FIREBALL_SPEED = 150;
 export const FIREBALL_DAMAGE_FACTOR = 1;
 
 export default class Fireball extends Projectile{

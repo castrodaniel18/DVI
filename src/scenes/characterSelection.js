@@ -45,14 +45,10 @@ export default class StartScene extends Phaser.Scene {
     loadCharacters(){
         this.load.image(character1.CHARACTER_1_NAME, character1.CHARACTER_1_SELECTION);
         this.load.spritesheet(character1.CHARACTER_1_SPRITE_NAME, character1.CHARACTER_1_SPRITE,{frameWidth:character1.CHARACTER_1_SPRITE_SIZE, frameHeight:character1.CHARACTER_1_SPRITE_SIZE});
-        //this.load.spritesheet(character1.CHARACTER_1_SPRITE_WEAPON_NAME, character1.CHARACTER_1_SPRITE_WEAPON, {frameWidth: 25.6, frameHeight: 25.5})
         this.load.image(character2.CHARACTER_2_NAME, character2.CHARACTER_2_SELECTION);
         this.load.spritesheet(character2.CHARACTER_2_SPRITE_NAME, character2.CHARACTER_2_SPRITE,{frameWidth:character2.CHARACTER_2_SPRITE_SIZE, frameHeight:character2.CHARACTER_2_SPRITE_SIZE});
-        //this.load.spritesheet(character2.CHARACTER_2_SPRITE_WEAPON_NAME, character2.CHARACTER_2_SPRITE_WEAPON, {frameWidth: 25.6, frameHeight: 25.5})
         this.load.image(character3.CHARACTER_3_NAME, character3.CHARACTER_3_SELECTION);
-        this.load.spritesheet(character3.CHARACTER_3_SPRITE_NAME, character3.CHARACTER_3_SPRITE,{frameWidth:character3.CHARACTER_3_SPRITE_SIZE, frameHeight:character3.CHARACTER_3_SPRITE_SIZE});
-        //this.load.spritesheet(character3.CHARACTER_3_SPRITE_WEAPON_NAME, character3.CHARACTER_3_SPRITE_WEAPON, {frameWidth: 25.6, frameHeight: 25.5})
-    
+        this.load.spritesheet(character3.CHARACTER_3_SPRITE_NAME, character3.CHARACTER_3_SPRITE,{frameWidth:character3.CHARACTER_3_SPRITE_SIZE, frameHeight:character3.CHARACTER_3_SPRITE_SIZE});    
         this.load.spritesheet('healthBar', 'assets/elements/health.png',{frameWidth:640, frameHeight:128});
 
         //load piromancer
@@ -78,6 +74,8 @@ export default class StartScene extends Phaser.Scene {
         this.load.spritesheet('fireball', 'assets/sprites/piromancer/Charge.png', {frameWidth: 64, frameHeight: 64});
         this.load.spritesheet('electroball', 'assets/sprites/electromancer/Charge_1.png', {frameWidth: 64, frameHeight: 128});
         this.load.spritesheet('lightball', 'assets/sprites/luminomancer/Charge.png', {frameWidth: 64, frameHeight: 64});
+        this.load.image('enemy_projectile_1', 'assets/elements/Explosion_gas_circle1.png');
+        this.load.image('enemy_projectile_2', 'assets/elements/Explosion_gas_circle3.png');
     }
 
     loadPotions(){
