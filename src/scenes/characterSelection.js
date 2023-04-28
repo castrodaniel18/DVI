@@ -14,7 +14,7 @@ export default class StartScene extends Phaser.Scene {
     }
   
     preload() {
-        this.load.image('fondo','assets/elements/menuBackground.png');
+        this.load.image('menuBackground','assets/elements/menuBackground.png');
         this.load.image('titleButton', 'assets/elements/largeButton.png');
         this.loadCharacters();
         this.loadWeapons();
@@ -32,7 +32,7 @@ export default class StartScene extends Phaser.Scene {
   
     create() {
     //Fondo
-    this.levelBackground = this.add.image(0, 0, 'fondo');
+    this.levelBackground = this.add.image(0, 0, 'menuBackground');
     this.levelBackground.setScale(800 / this.levelBackground.width, 600 / this.levelBackground.height);
     this.levelBackground.setOrigin(0, 0);
 

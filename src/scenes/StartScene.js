@@ -36,9 +36,9 @@ export default class StartScene extends Phaser.Scene {
   
     create() {
       //Fondo
-      var background = this.add.image(0, 0, 'background');
-      background.setScale(800 / background.width, 600 / background.height);
-      background.setOrigin(0, 0);
+      this.background = this.add.image(0, 0, 'background');
+      this.background.setScale(800 / this.background.width, 600 / this.background.height);
+      this.background.setOrigin(0, 0);
 
       //Cartel
       var background = this.add.image(0, 0, 'cartel');
