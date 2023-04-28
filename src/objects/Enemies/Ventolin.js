@@ -95,7 +95,7 @@ export default class Ventolin extends Enemy {
         return this.health < 0;
     }
     attackRange() {
-        this.shoot(this.scene.player.x,this.scene.player.y);
+        this.shoot();
     }
     enemyUpdate(){
         if (!this.isDead()) {
@@ -107,7 +107,7 @@ export default class Ventolin extends Enemy {
     addWeapon(scene){
         this.weapon = new VENTOLIN_WEAPON(scene, VENTOLIN_FIREBALLS);
     }
-    shoot(pointerX, pointerY){
-        this.weapon.shoot(this,pointerX, pointerY);
+    shoot(){
+        this.weapon.shoot(this);
     }
 }
