@@ -14,7 +14,8 @@ export default class StartScene extends Phaser.Scene {
     }
   
     preload() {
-        this.load.image('fondo','assets/elements/fondo.png');
+        this.load.image('fondo','assets/elements/menuBackground.png');
+        this.load.image('titleButton', 'assets/elements/largeButton.png');
         this.loadCharacters();
         this.loadWeapons();
         this.loadPotions();
@@ -30,7 +31,14 @@ export default class StartScene extends Phaser.Scene {
     }
   
     create() {
-    let bg = this.add.image(0,0,'fondo').setOrigin(0,0);
+    //Fondo
+    this.levelBackground = this.add.image(0, 0, 'fondo');
+    this.levelBackground.setScale(800 / this.levelBackground.width, 600 / this.levelBackground.height);
+    this.levelBackground.setOrigin(0, 0);
+
+    //Título
+    this.add.text(220, 75, 'Select your character: ', { fontFamily: 'myFont', fontSize: '35px', color: '#ffffff' });
+
     // crea un grupo de botones para cada personaje disponible
     const buttonGroup = this.add.group();
     CHARACTER_NAMES.forEach((character, index) => {
