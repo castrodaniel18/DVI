@@ -6,6 +6,7 @@ const LEVELS = [100, 200, 300];
 const DASH_TIME = 300;
 const DASH_COOLDOWN = 5000;
 const DASH_SPEED_FACTOR = 4;
+const INVENCIBILITY_SHIELD_SPRITE = 'invencibility_shield';
 
 export default class Mage extends Phaser.GameObjects.Sprite {
 /** 
@@ -48,6 +49,9 @@ constructor(scene,x,y, name, sprite, health, damage, speed){
     //Se ajusta la hitbox del personaje
     this.body.setSize(35, 70);
     this.body.offset.set(55, 60);
+
+    this.invencibilityShieldAnim = this.scene.add.sprite(this.x, this.y + 30, 'invencibility_shield');
+    this.invencibilityShieldAnim.visible = false;
 }
 
 /**
@@ -73,6 +77,8 @@ preUpdate(t,dt){
         this.checkIdle();
         this.checkLevelUp();
         this.checkHitBox();
+        this.invencibilityShieldAnim.x = this.x;
+        this.invencibilityShieldAnim.y = this.y + 30;
     }
 }
 
@@ -115,6 +121,15 @@ createAnimations(){
         frames: this.scene.anims.generateFrameNumbers(this.sprite + '_dead',{start:0,end:5}),
         frameRate: 5,
         repeat: -1
+    });
+
+    this.scene.anims.create({
+        key: 'invencibility_shield',
+        frames: [ 
+            { key: INVENCIBILITY_SHIELD_SPRITE, frame: INVENCIBILITY_SHIELD_SPRITE},
+          ],
+        frameRate: 5,
+        repeat: 0
     });
 }
 
