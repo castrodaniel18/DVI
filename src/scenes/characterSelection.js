@@ -20,6 +20,14 @@ export default class StartScene extends Phaser.Scene {
         this.loadPotions();
         this.loadExp();
     }
+
+    init(data){
+        // guarda la dificultad seleccionada en una variable
+        if (data.difficulty != "easy" && data.difficulty != "normal" && data.difficulty != "hard")
+            this.difficulty = "normal";
+        else
+            this.difficulty = data.difficulty;
+    }
   
     create() {
     let bg = this.add.image(0,0,'fondo').setOrigin(0,0);
@@ -31,7 +39,7 @@ export default class StartScene extends Phaser.Scene {
         button.setInteractive();
         button.on('pointerdown', () => {
             // al hacer clic en el botón, guarda el personaje seleccionado y cambia a la escena del juego
-            this.scene.start('LevelSelector', {characterName: CHARACTER_NAMES[index]});
+            this.scene.start('LevelSelector', {characterName: CHARACTER_NAMES[index], difficulty: this.difficulty});
         });
         buttonGroup.add(button);
     });

@@ -1,16 +1,17 @@
 import Phaser from "phaser";
-import StartScene from './StartScene';
 
-export default class Settings extends Phaser.Scene {
+export default class PauseScene extends Phaser.Scene {
     constructor(difficulty) {
-      super({ key: 'Settings' });
+      super({ key: 'PauseScene' });
     }
   
     preload() {
-        this.load.image('bg','assets/elements/settingsPanelOpaco.png');
+        this.load.image('settingsPanel','assets/elements/settingsPanel.png');
         this.load.image('soundButton','assets/elements/sound.png');
         this.load.image('fullscreenButton','assets/elements/fullscreen.png');
         this.load.image('button', 'assets/elements/button.png');
+        this.load.image('houseButton', 'assets/elements/houseButton.png');
+        this.load.image('pauseButtonInMenu', 'assets/elements/pauseButton.png');
     }
 
     init(data) {
@@ -21,17 +22,15 @@ export default class Settings extends Phaser.Scene {
   
     create() {
 
+        console.log("Menú de pausa");
+
         /*links assets
         https://mounirtohami.itch.io/pixel-art-gui-elements
         https://mounirtohami.itch.io/minimalpixel-font
         */
-        
-        var background = this.add.image(0, 0, 'background');
-        background.setScale(800 / background.width, 600 / background.height);
-        background.setOrigin(0, 0);
 
         //Fondo
-        var background = this.add.image(0, 0, 'bg');
+        var background = this.add.image(0, 0, 'settingsPanel');
         background.setScale(800 / background.width, 600 / background.height);
         background.setOrigin(0, 0);
 
@@ -39,11 +38,20 @@ export default class Settings extends Phaser.Scene {
         this.add.text(290, 65, 'Settings', { fontFamily: 'myFont', fontSize: '54px', color: '#ffffff' });
 
         //Botón para volver al menú principal
-        this.arrow = this.add.image(640, 160, 'button').setInteractive();
-        this.add.text(620, 155, 'Back', { fontFamily: 'myFont', fontSize: '20px', color: '#ffffff' });
-        this.arrow.setScale(2.5);
-        this.arrow.on('pointerdown', () => {
-            this.scene.start('StartScene', { difficulty: this.difficulty, music: true});
+        this.houseButton = this.add.image(650, 170, 'houseButton').setInteractive();
+        this.houseButton.setScale(3);
+        this.houseButton.on('pointerdown', () => {
+            this.scene.stop('Level1Scene');
+            this.scene.start('StartScene', { difficulty: this.difficulty });
+            this.scene.stop('PauseScene');
+        })
+
+        //Botón para quitar la pausa
+        this.pauseButton = this.add.image(750, 25, 'pauseButton').setInteractive();
+		this.pauseButton.setScale(2);
+        this.pauseButton.on('pointerdown', () => {
+            this.scene.resume('Level1Scene', { difficulty: this.difficulty });
+            this.scene.stop('PauseScene', { difficulty: this.difficulty });
         });
 
         //Icono sonido
@@ -86,7 +94,9 @@ export default class Settings extends Phaser.Scene {
             this.add.text(298, 380, 'Easy', { fontFamily: 'myFont', fontSize: '20px', color: '#ffffff' });
 
             this.easyButton.on('pointerdown', () => {
-                this.scene.start('StartScene', { difficulty: "easy", music: true});
+                //Al cambiar la dificultad a mitad de partida no es capaz de cambiarla
+                this.scene.resume('Level1Scene', { difficulty: 'easy' });
+                this.scene.stop('PauseScene', { difficulty: this.difficulty });
             });
         }
         
@@ -99,7 +109,8 @@ export default class Settings extends Phaser.Scene {
             this.add.text(395, 380, 'Normal', { fontFamily: 'myFont', fontSize: '20px', color: '#ffffff' });
 
             this.normalButton.on('pointerdown', () => {
-                this.scene.start('StartScene', { difficulty: "normal", music: true});
+                this.scene.resume('Level1Scene', { difficulty: 'normal' });
+                this.scene.stop('PauseScene', { difficulty: this.difficulty });
             });
         }
 
@@ -112,7 +123,8 @@ export default class Settings extends Phaser.Scene {
             this.add.text(517, 380, 'Hard', { fontFamily: 'myFont', fontSize: '20px', color: '#ffffff' });
 
             this.hardButton.on('pointerdown', () => {
-                this.scene.start('StartScene', { difficulty: "hard", music: true});
+                this.scene.resume('Level1Scene', { difficulty: 'hard' });
+                this.scene.stop('PauseScene', { difficulty: this.difficulty });
             });
         }
 

@@ -15,6 +15,7 @@ export default class LevelSelector extends Phaser.Scene {
     init(data) {
         // guarda el personaje seleccionado en una variable
         this.characterName = data.characterName;
+        this.difficulty = data.difficulty;
     }
   
     create() {
@@ -27,7 +28,7 @@ export default class LevelSelector extends Phaser.Scene {
         button1.setPosition(100, 75);
         button1.setInteractive();
         button1.on('pointerdown', function() {
-            this.scene.start('Level1Scene', { characterName: this.characterName });
+            this.scene.start('Level1Scene', { characterName: this.characterName, difficulty: this.difficulty });
         }, this);
 
         var text1 = this.add.text(button1.x, button1.y + 10, 'Nivel 1:\nAsturias', { font: '16px Arial', fill: '#0A0A0A' });

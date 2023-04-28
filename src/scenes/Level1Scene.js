@@ -24,11 +24,14 @@ export default class Level1Scene extends Phaser.Scene {
 		this.load.spritesheet('goblin', 'assets/sprites/goblin.png', {frameWidth: 64, frameHeight: 64});
 		this.load.spritesheet('ventolin', 'assets/sprites/ventolin.png', {frameWidth: 64, frameHeight: 64})
 		//this.load.spritesheet('fireball', 'assets/elements/fireball.png', {frameWidth: 25.6, frameHeight: 25.5});
+		this.load.image('pauseButton', 'assets/elements/pauseButton.png');
+		this.load.image('levelPanel', 'assets/elements/levelPanel.png');
 	}
 
 	init(data) {
 		// guarda el personaje seleccionado en una variable
 		this.characterName = data.characterName;
+		this.difficulty = data.difficulty;
 	}
 
 	create() {
@@ -42,7 +45,18 @@ export default class Level1Scene extends Phaser.Scene {
 		this.physics.world.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.startFollow(this.player);
-		
+
+		//Marco para nivel
+		this.levelDecoration = this.add.image(140, 30, 'levelPanel');
+		this.levelDecoration.setScale(.8, .35);
+
+		//Botón de pausa
+		this.pauseButton = this.add.image(750, 25, 'pauseButton').setInteractive();
+		this.pauseButton.setScale(2);
+		this.pauseButton.on('pointerdown', () => {
+            this.scene.pause();
+			this.scene.run('PauseScene', { difficulty: this.difficulty});
+        });
 	}
 
 	update(){

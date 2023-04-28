@@ -15,6 +15,8 @@ export const LUMINOMANCER_FIREBALLS = 20;
 export const LUMINOMANCER_SPEED = 100;
 export const LUMINOMANCER_CAST_TIME = 600;
 
+let cursorOnPauseButton = false;
+
 export default class Luminomancer extends Mage{
     constructor(scene, sprite, x, y){
         super(scene, x, y, LUMINOMANCER_NAME, sprite, LUMINOMANCER_HEALTH, LUMINOMANCER_DAMAGE, LUMINOMANCER_SPEED);
@@ -30,15 +32,29 @@ export default class Luminomancer extends Mage{
         });
     }
 
+    preUpdate(t,dt){
+        super.preUpdate(t, dt);
+
+        this.scene.pauseButton.on('pointerover', () => {
+            cursorOnPauseButton = true;
+        });
+    
+        this.scene.pauseButton.on('pointerout', () => {
+            cursorOnPauseButton = false;
+        });
+    }
+
     addWeapon(scene){
         this.weapon = new LUMINOMANCER_WEAPON(scene, LUMINOMANCER_FIREBALLS);
     }
 
     mouseClickAction(){
         this.scene.input.on('pointerdown', pointer => {
-            this.pointerX = pointer.worldX;
-            this.pointerY = pointer.worldY;
-            this.shoot(this.pointerX, this.pointerY, LUMINOMANCER_CAST_TIME);
+            if (!cursorOnPauseButton){
+                this.pointerX = pointer.worldX;
+                this.pointerY = pointer.worldY;
+                this.shoot(this.pointerX, this.pointerY, LUMINOMANCER_CAST_TIME);
+            }
         })
     }
 

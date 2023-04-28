@@ -15,6 +15,8 @@ export const PIROMANCER_FIREBALLS = 15;
 export const PIROMANCER_SPEED = 100;
 export const PIROMANCER_CAST_TIME = 800;
 
+let cursorOnPauseButton = false;
+
 export default class Piromancer extends Mage{
     constructor(scene, sprite, x, y){
         super(scene, x, y, PIROMANCER_NAME, sprite, PIROMANCER_HEALTH, PIROMANCER_DAMAGE, PIROMANCER_SPEED);
@@ -30,15 +32,29 @@ export default class Piromancer extends Mage{
         });
     }
 
+    preUpdate(t,dt){
+        super.preUpdate(t, dt);
+
+        this.scene.pauseButton.on('pointerover', () => {
+            cursorOnPauseButton = true;
+        });
+    
+        this.scene.pauseButton.on('pointerout', () => {
+            cursorOnPauseButton = false;
+        });
+    }
+
     addWeapon(scene){
         this.weapon = new PIROMANCER_WEAPON(scene, PIROMANCER_FIREBALLS);
     }
 
     mouseClickAction(){
         this.scene.input.on('pointerdown', pointer => {
-            this.pointerX = pointer.worldX;
-            this.pointerY = pointer.worldY;
-            this.shoot(this.pointerX, this.pointerY, PIROMANCER_CAST_TIME);
+            if (!cursorOnPauseButton){
+                this.pointerX = pointer.worldX;
+                this.pointerY = pointer.worldY;
+                this.shoot(this.pointerX, this.pointerY, PIROMANCER_CAST_TIME);
+            }
         })
     }
 

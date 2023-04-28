@@ -49,6 +49,7 @@ constructor(scene,x,y, name, sprite, health, damage, speed){
     this.body.setSize(35, 70);
     this.body.offset.set(55, 60);
 }
+
 /**
  * @param {number} t
  * @param {number} dt
@@ -64,7 +65,9 @@ preUpdate(t,dt){
     this.scene.healthBar.updateHealth();
     this.playerLevelText.destroy();
     this.playerLevelText = this.scene.add.text(10, 10, 'Nivel 1 - Exp: ' + this.playerExp, { fontFamily: 'myFont', fontSize: '32px', fill: '#FFFFFF' });
-    this.playerLevelText.setPosition(this.scene.cameras.main.scrollX + 10, this.scene.cameras.main.scrollY + 10);
+    this.playerLevelText.setPosition(this.scene.cameras.main.scrollX + 15, this.scene.cameras.main.scrollY + 15);
+    this.scene.levelDecoration.setPosition(this.scene.cameras.main.scrollX + 140, this.scene.cameras.main.scrollY + 30);
+    this.scene.pauseButton.setPosition(this.scene.cameras.main.scrollX + 750, this.scene.cameras.main.scrollY + 25);
     if(this.canMove){
         this.checkMove();
         this.checkIdle();

@@ -16,6 +16,8 @@ export const ELECTROMANCER_FIREBALLS = 15;
 export const ELECTROMANCER_SPEED = 150;
 export const ELECTROMANCER_CAST_TIME = 1500;
 
+let cursorOnPauseButton = false;
+
 export default class Electromancer extends Mage{
     constructor(scene, sprite, x, y){
         super(scene, x, y, ELECTROMANCER_NAME, sprite, ELECTROMANCER_HEALTH, ELECTROMANCER_DAMAGE, ELECTROMANCER_SPEED);
@@ -31,15 +33,29 @@ export default class Electromancer extends Mage{
         });
     }
 
+    preUpdate(t,dt){
+        super.preUpdate(t, dt);
+
+        this.scene.pauseButton.on('pointerover', () => {
+            cursorOnPauseButton = true;
+        });
+    
+        this.scene.pauseButton.on('pointerout', () => {
+            cursorOnPauseButton = false;
+        });
+    }
+
     addWeapon(scene){
         this.weapon = new ELECTROMANCER_WEAPON(scene, ELECTROMANCER_FIREBALLS);
     }
 
     mouseClickAction(){
         this.scene.input.on('pointerdown', pointer => {
-            this.pointerX = pointer.worldX;
-            this.pointerY = pointer.worldY;
-            this.shoot(this.pointerX, this.pointerY, ELECTROMANCER_CAST_TIME);
+            if (!cursorOnPauseButton){
+                this.pointerX = pointer.worldX;
+                this.pointerY = pointer.worldY;
+                this.shoot(this.pointerX, this.pointerY, ELECTROMANCER_CAST_TIME);
+            }
         })
     }
 
