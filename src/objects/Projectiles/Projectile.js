@@ -4,7 +4,6 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite{
         super(scene, x, y, imgKey);
 
         this.scene.add.existing(this);
-
     }
 
     preUpdate(time, delta){

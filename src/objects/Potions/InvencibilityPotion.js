@@ -15,5 +15,14 @@ export default class InvencibilityPotion extends Potion {
         setTimeout(() => {
             scene.player.isInvencible = false;
         }, EFFECT_TIME);
+
+        this.scene.player.setTint(0xFFD206); // Cambiar el color del personaje
+        this.scene.time.addEvent({
+            delay: EFFECT_TIME, // La duración del efecto en milisegundos
+            callback: () => {
+                this.clearTint(); // Restablecer el color original del personaje
+            },
+            callbackScope: this
+        });
     }
 }

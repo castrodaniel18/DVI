@@ -11,7 +11,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         super(scene, x, y, imgKey);
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
-
+        this.canMove = true;
 
         // Queremos que el enemigo no se salga de los límites del mundo
         this.body.setCollideWorldBounds();
@@ -31,12 +31,17 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 
     getHit(enemy, projectile){
         this.health -= projectile.damage;
+        var velocidad = -100;
+        var angulo = Phaser.Math.Angle.BetweenPoints(this, projectile);
+        this.body.setVelocity(Math.cos(angulo) * velocidad, Math.sin(angulo) * velocidad);
         projectile.destroy();
+        this.canMove = false;
         this.setTint(0xff0000); // Cambiar el color del personaje a rojo
         this.scene.time.addEvent({
             delay: 200, // La duración del efecto en milisegundos
             callback: () => {
                 this.clearTint(); // Restablecer el color original del personaje
+                this.canMove = true;
             },
             callbackScope: this
         });
