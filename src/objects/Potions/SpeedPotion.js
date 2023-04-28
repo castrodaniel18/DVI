@@ -1,6 +1,6 @@
 import Potion from "./Potion";
 
-const SPEED_INCREASE_FACTOR = 2;
+const SPEED_INCREASE_FACTOR = 1.5;
 const EFFECT_TIME = 10000;
 const SPEED_POTION_SPRITE = 'speedPotion'
 export const SPEED_POTION_SPAWN_RATE = 0.002;
