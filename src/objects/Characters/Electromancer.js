@@ -42,4 +42,23 @@ export default class Electromancer extends Mage{
             this.shoot(this.pointerX, this.pointerY, ELECTROMANCER_CAST_TIME);
         })
     }
+
+    checkHitBox(){
+        if (this.anims.currentAnim.key == 'idleD'){
+            this.body.setSize(35, 70);
+            this.body.offset.set(43, 60);
+        }
+        else if (this.anims.currentAnim.key == 'D'){
+            this.body.setSize(35, 65);
+            this.body.offset.set(35, 65);
+        }
+        else if (this.anims.currentAnim.key == 'idleA'){
+            this.body.setSize(35, 70);
+            this.body.offset.set(50, 60);
+        }
+        else{
+            this.body.setSize(35, 65);
+            this.body.offset.set(60, 65);
+        }
+    }
 }

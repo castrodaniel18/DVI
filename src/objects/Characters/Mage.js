@@ -35,7 +35,7 @@ constructor(scene,x,y, name, sprite, health, damage, speed){
     this.canDash = true;
     this.isInvencible = false;
     this.playerLevel = 1;
-    this.playerLevelText = this.scene.add.text(10, 10, 'Nivel 1 - Exp: ' + this.playerExp, { fontSize: '32px', fill: '#FFFFFF' });
+    this.playerLevelText = this.scene.add.text(10, 10, 'Nivel 1 - Exp: ' + this.playerExp, { fontFamily: 'myFont',fontSize: '32px', fill: '#FFFFFF' });
     //Se define el movimiento y idles
     this.createAnimations();
     this.play('idleA');
@@ -44,6 +44,10 @@ constructor(scene,x,y, name, sprite, health, damage, speed){
     //Se añade a la escena y se añaden colisiones con el mundo
     this.scene.physics.add.existing(this);
     this.body.setCollideWorldBounds();
+
+    //Se ajusta la hitbox del personaje
+    this.body.setSize(35, 70);
+    this.body.offset.set(55, 60);
 }
 /**
  * @param {number} t
@@ -58,11 +62,14 @@ preUpdate(t,dt){
         return;
     }
     this.scene.healthBar.updateHealth();
+    this.playerLevelText.destroy();
+    this.playerLevelText = this.scene.add.text(10, 10, 'Nivel 1 - Exp: ' + this.playerExp, { fontFamily: 'myFont', fontSize: '32px', fill: '#FFFFFF' });
     this.playerLevelText.setPosition(this.scene.cameras.main.scrollX + 10, this.scene.cameras.main.scrollY + 10);
     if(this.canMove){
         this.checkMove();
         this.checkIdle();
         this.checkLevelUp();
+        this.checkHitBox();
     }
 }
 
@@ -250,9 +257,18 @@ shoot(pointerX, pointerY, castTime){
         if (this.x > pointerX) {
             this.play('shoot').flipX = true;
             this.lookingLeft = true;
+
+            //Ajustamos la hitbox para la animación de disparo
+            this.body.setSize(35, 70);
+            this.body.offset.set(57, 60);
         } 
-        else 
+        else {
             this.play('shoot').flipX = false;
+
+            //Ajustamos la hitbox para la animación de disparo
+            this.body.setSize(35, 70);
+            this.body.offset.set(37, 60);
+        }
 
         this.scene.time.delayedCall(castTime, () => {
             this.canMove = true;

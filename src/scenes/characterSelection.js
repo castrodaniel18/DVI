@@ -76,6 +76,11 @@ export default class StartScene extends Phaser.Scene {
         this.load.spritesheet('lightball', 'assets/sprites/luminomancer/Charge.png', {frameWidth: 64, frameHeight: 64});
         this.load.image('enemy_projectile_1', 'assets/elements/Explosion_gas_circle1.png');
         this.load.image('enemy_projectile_2', 'assets/elements/Explosion_gas_circle3.png');
+
+        this.load.image('fireball_image', 'assets/sprites/piromancer/Fireball_Image.png');
+        this.load.image('none', 'assets/sprites/piromancer/none.png');
+        this.load.image('electroball_image', 'assets/sprites/electromancer/Electroball_Image.png');
+        this.load.image('none', 'assets/sprites/electromancer/none.png');
     }
 
     loadPotions(){

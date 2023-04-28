@@ -23,6 +23,10 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         this.body.key = imgKey;
         //nos guardamos a nostroso en self para poder acceder desde el evento
         //que detecta las colisiones con el límite del mundo
+
+        //Controlamos el tamaño de la hitbox inicial
+        this.body.setSize(25, 40);
+        this.body.offset.set(20, 23);
     }
 
     getHit(Ventolin, projectile){

@@ -65,4 +65,23 @@ export default class Luminomancer extends Mage{
             this.weapon.shoot(pointerX, pointerY);
         }
     }
+
+    checkHitBox(){
+        if (this.anims.currentAnim.key == 'idleD'){
+            this.body.setSize(30, 66);
+            this.body.offset.set(37, 63);
+        }
+        else if (this.anims.currentAnim.key == 'D'){
+            this.body.setSize(30, 66);
+            this.body.offset.set(45, 63);
+        }
+        else if (this.anims.currentAnim.key == 'idleA'){
+            this.body.setSize(30, 66);
+            this.body.offset.set(63, 63);
+        }
+        else{
+            this.body.setSize(30, 66);
+            this.body.offset.set(55, 63);
+        }
+    }
 }

@@ -1,5 +1,5 @@
 export default class Projectile extends Phaser.Physics.Arcade.Sprite{
-    
+
     constructor(scene, x, y, imgKey){
         super(scene, x, y, imgKey);
 
@@ -31,5 +31,8 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite{
 
         //Establecemos la velocidad según los valores que obtuvimos con el listener del ratón
         this.setVelocity(this.speed * Math.cos(this.rotation), this.speed * Math.sin(this.rotation));
+
+        this.body.setSize(20, 20);
+
     }
 }
