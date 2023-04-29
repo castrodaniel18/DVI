@@ -45,6 +45,7 @@ export default class Luminomancer extends Mage{
     }
 
     addWeapon(scene){
+        let weaponDamage = this.damage*(1+this.damageIncrease);
         this.weapon = new LUMINOMANCER_WEAPON(scene, LUMINOMANCER_FIREBALLS);
     }
 

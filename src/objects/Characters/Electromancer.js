@@ -46,6 +46,7 @@ export default class Electromancer extends Mage{
     }
 
     addWeapon(scene){
+        let weaponDamage = this.damage*(1+this.damageIncrease);
         this.weapon = new ELECTROMANCER_WEAPON(scene, ELECTROMANCER_FIREBALLS);
     }
 

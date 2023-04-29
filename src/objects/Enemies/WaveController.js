@@ -34,8 +34,8 @@ export default class WaveController{
     }
 
     update(){
-        if(this.currentWave < this.level.length && this.level.at(this.currentWave).time <= (Date.now() - this.initialTime)){
-            const group = new this.level[this.currentWave].groupName(this.scene);
+        if(this.currentWave < this.level.length && this.level[this.currentWave].time <= (Date.now() - this.initialTime)){
+            const group = new this.level[this.currentWave].groupName(this.scene, this.level[this.currentWave].numEnemies);
             this.addEnemiesGroup(group);
             this.currentWave++;
         }

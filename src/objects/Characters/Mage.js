@@ -7,6 +7,9 @@ const DASH_TIME = 300;
 const DASH_COOLDOWN = 5000;
 const DASH_SPEED_FACTOR = 4;
 const INVENCIBILITY_SHIELD_SPRITE = 'invencibility_shield';
+const DAMAGE_BUFF_SPRITE = 'damage_buff';
+const SPEED_BUFF_SPRITE = 'speed_buff';
+const HEALING_SPRITE = 'healing';
 
 export default class Mage extends Phaser.GameObjects.Sprite {
 /** 
@@ -57,6 +60,15 @@ constructor(scene,x,y, name, sprite, health, damage, speed, inventorySize){
 
     this.invencibilityShieldAnim = this.scene.add.sprite(this.x, this.y + 30, 'invencibility_shield');
     this.invencibilityShieldAnim.visible = false;
+
+    this.buffDamageAnim = this.scene.add.sprite(this.x + 50, this.y - 17, 'damage_buff');
+    this.buffDamageAnim.visible = false;
+
+    this.buffSpeedAnim = this.scene.add.sprite(this.x + 50, this.y - 17, 'damage_buff');
+    this.buffSpeedAnim.visible = false;
+
+    this.healingAnim = this.scene.add.sprite(this.x -10, this.y + 40, 'healing');
+    this.healingAnim.visible = false;
 }
 
 /**
@@ -85,9 +97,21 @@ preUpdate(t,dt){
         this.checkIdle();
         this.checkLevelUp();
         this.checkHitBox();
-        this.invencibilityShieldAnim.x = this.x;
-        this.invencibilityShieldAnim.y = this.y + 30;
     }
+    this.invencibilityShieldAnim.x = this.x;
+    this.invencibilityShieldAnim.y = this.y + 30;
+    this.buffDamageAnim.x = this.x + 50;
+    this.buffDamageAnim.y = this.y - 17;
+    if(!this.buffDamageAnim.visible){
+        this.buffSpeedAnim.x = this.x + 50;
+        this.buffSpeedAnim.y = this.y - 17;
+    }
+    else{
+        this.buffSpeedAnim.x = this.x + 70;
+        this.buffSpeedAnim.y = this.y - 17;
+    }
+    this.healingAnim.x = this.x - 10;
+    this.healingAnim.y = this.y + 40;
 }
 
 defineControls(){
@@ -137,6 +161,29 @@ createAnimations(){
             { key: INVENCIBILITY_SHIELD_SPRITE, frame: INVENCIBILITY_SHIELD_SPRITE},
           ],
         frameRate: 5,
+        repeat: 0
+    });
+
+    this.scene.anims.create({
+        key: 'damage_buff',
+        frames: [ 
+            { key: DAMAGE_BUFF_SPRITE, frame: DAMAGE_BUFF_SPRITE},
+          ],
+        frameRate: 5,
+        repeat: 0
+    });
+    this.scene.anims.create({
+        key: 'speed_buff',
+        frames: [ 
+            { key: SPEED_BUFF_SPRITE, frame: SPEED_BUFF_SPRITE},
+          ],
+        frameRate: 10,
+        repeat: 0
+    });
+    this.scene.anims.create({
+        key: 'healing',
+        frames: this.scene.anims.generateFrameNumbers(HEALING_SPRITE ,{start:0,end:15}),
+        frameRate: 10,
         repeat: 0
     });
 }
