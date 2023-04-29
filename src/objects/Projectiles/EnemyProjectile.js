@@ -18,6 +18,7 @@ export default class EnemyProjectile extends Projectile{
 
     hitPlayer(){
         this.scene.player.getHit(ENEMY_PROJECTILE_DAMAGE_FACTOR);
+        this.destroy();
     }
 
     createAnimations(){

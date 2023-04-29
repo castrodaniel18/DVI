@@ -1,7 +1,7 @@
 import GoblinsGroup from "./GoblinsGroup";
 import VentolinsGroup from "./VentolinGroup";
 
-export const LEVEL_1 = [{time: 0, groupName: GoblinsGroup, numEnemies: 15}, 
+export const LEVEL_1 = [{time: 0, groupName: GoblinsGroup, numEnemies: 150}, 
             {time: 10000, groupName: VentolinsGroup, numEnemies: 10}, 
             {time: 15000, groupName: GoblinsGroup, numEnemies: 20},
             {time: 15000, groupName: VentolinsGroup, numEnemies: 5},
@@ -34,8 +34,8 @@ export default class WaveController{
     }
 
     update(){
-        if(this.currentWave < this.level.length && this.level.at(this.currentWave).time <= (Date.now() - this.initialTime)){
-            const group = new this.level[this.currentWave].groupName(this.scene);
+        if(this.currentWave < this.level.length && this.level[this.currentWave].time <= (Date.now() - this.initialTime)){
+            const group = new this.level[this.currentWave].groupName(this.scene, this.level[this.currentWave].numEnemies);
             this.addEnemiesGroup(group);
             this.currentWave++;
         }

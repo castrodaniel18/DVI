@@ -105,6 +105,7 @@ export default class StartScene extends Phaser.Scene {
         this.load.image('speedPotion', 'assets/elements/potion_speed.png');
         this.load.image('invencibilityPotion', 'assets/elements/potion_invencibility.png');
         this.load.image('invencibility_shield', 'assets/elements/shield.png');
+        this.load.image('damage_buff', 'assets/elements/damageBuffEffect.png');
     }
 
     loadExp(){
