@@ -17,9 +17,9 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite{
     }
     
     shoot(pointerX, pointerY){
-        this.angle = Phaser.Math.Angle.Between(this.scene.player.x, this.scene.player.y, pointerX, pointerY);
+        this.angle = Phaser.Math.Angle.Between(this.scene.player.x, this.scene.player.y + 20, pointerX, pointerY);
         //Reseteamos la posición de la bola de fuego para que aparezca desde donde está player
-        this.body.reset(this.scene.player.x, this.scene.player.y);
+        this.body.reset(this.scene.player.x, this.scene.player.y + 20);
         
         //Activamos la bola de fuego
         this.setActive(true);
