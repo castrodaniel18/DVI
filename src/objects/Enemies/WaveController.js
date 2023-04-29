@@ -1,7 +1,7 @@
 import GoblinsGroup from "./GoblinsGroup";
 import VentolinsGroup from "./VentolinGroup";
 
-export const LEVEL_1 = [{time: 0, groupName: GoblinsGroup, numEnemies: 150}, 
+export const LEVEL_1 = [{time: 0, groupName: GoblinsGroup, numEnemies: 15}, 
             {time: 10000, groupName: VentolinsGroup, numEnemies: 10}, 
             {time: 15000, groupName: GoblinsGroup, numEnemies: 20},
             {time: 15000, groupName: VentolinsGroup, numEnemies: 5},
