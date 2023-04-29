@@ -13,6 +13,11 @@ export default class EnemyProjectile extends Projectile{
         this.speed = ENEMY_PROJECTILE_SPEED;
         this.createAnimations();
         this.play("none_enemy");
+        this.scene.physics.add.collider(this.scene.player, this, this.hitPlayer, null, this);
+    }
+
+    hitPlayer(){
+        this.scene.player.getHit(ENEMY_PROJECTILE_DAMAGE_FACTOR);
     }
 
     createAnimations(){

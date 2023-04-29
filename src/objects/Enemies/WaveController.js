@@ -34,8 +34,6 @@ export default class WaveController{
     }
 
     update(){
-        console.log(this.currentWave);
-        console.log(LEVEL_1.length);
         if(this.currentWave < LEVEL_1.length && LEVEL_1.at(this.currentWave).time <= (Date.now() - this.initialTime)){
             const group = new LEVEL_1[this.currentWave].groupName(this.scene);
             this.addEnemiesGroup(group);
@@ -44,7 +42,6 @@ export default class WaveController{
 
         if(this.groups.length != 0){
             this.groups.forEach(currentGroup => {
-                console.log(currentGroup);
                 currentGroup.enemyUpdate();
             });
         }
