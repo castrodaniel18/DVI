@@ -1,7 +1,7 @@
 import FireballGroup from "../Projectiles/FireballGroup";
 import Mage from "./Mage";
 
-export const PIROMANCER_NAME = 'piromancer';
+export const PIROMANCER_NAME = 'character1';
 export const PIROMANCER_SPRITE = 'assets/sprites/piromancer';
 export const PIROMANCER_SPRITE_SIZE = 16;
 export const PIROMANCER_SPRITE_NAME = 'piromancer';
