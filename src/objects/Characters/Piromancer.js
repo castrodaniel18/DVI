@@ -18,8 +18,8 @@ export const PIROMANCER_CAST_TIME = 800;
 let cursorOnPauseButton = false;
 
 export default class Piromancer extends Mage{
-    constructor(scene, sprite, x, y){
-        super(scene, x, y, PIROMANCER_NAME, sprite, PIROMANCER_HEALTH, PIROMANCER_DAMAGE, PIROMANCER_SPEED);
+    constructor(scene, sprite, x, y,inventorySize){
+        super(scene, x, y, PIROMANCER_NAME, sprite, PIROMANCER_HEALTH, PIROMANCER_DAMAGE, PIROMANCER_SPEED, inventorySize);
 
         this.addWeapon(scene);
         this.mouseClickAction();
@@ -45,7 +45,8 @@ export default class Piromancer extends Mage{
     }
 
     addWeapon(scene){
-        this.weapon = new PIROMANCER_WEAPON(scene, PIROMANCER_FIREBALLS);
+        let weaponDamage = this.damage*(1+this.damageIncrease);
+        this.weapon = new PIROMANCER_WEAPON(scene, 1,weaponDamage);
     }
 
     mouseClickAction(){

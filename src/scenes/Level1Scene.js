@@ -10,14 +10,16 @@ export default class Level1Scene extends Phaser.Scene {
 	constructor() {
 		super({ key: 'Level1Scene' });
 		this.enemies = [];
+		this.playerItems=[];
 	}
 
 	preload() {
 		this.load.image('fondo','assets/elements/fondo.png');
 		this.load.spritesheet('goblin', 'assets/sprites/goblin.png', {frameWidth: 64, frameHeight: 64});
-		this.load.spritesheet('ventolin', 'assets/sprites/ventolin.png', {frameWidth: 64, frameHeight: 64})
+		this.load.spritesheet('ventolin', 'assets/sprites/ventolin.png', {frameWidth: 64, frameHeight: 64});
 		this.load.image('pauseButton', 'assets/elements/pauseButton.png');
 		this.load.image('levelPanel', 'assets/elements/levelPanel.png');
+		this.load.image('item','assets/elements/marco_objeto.png' );
 	}
 
 	init(data) {
@@ -38,7 +40,9 @@ export default class Level1Scene extends Phaser.Scene {
 		//Marco para nivel
 		this.levelDecoration = this.add.image(140, 30, 'levelPanel');
 		this.levelDecoration.setScale(.8, .35);
-
+		//Objetos del jugador
+		this.playerItems[0] = this.add.image(50, 100,'item');
+		this.playerItems[1] = this.add.image(100, 100,'item');
 		//Botón de pausa
 		this.pauseButton = this.add.image(750, 25, 'pauseButton').setInteractive();
 		this.pauseButton.setScale(2);
@@ -57,11 +61,11 @@ export default class Level1Scene extends Phaser.Scene {
 
 	addCharacter(){
 		if(this.characterName === PIROMANCER_NAME)
-			this.player = new Piromancer(this, PIROMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2);
+			this.player = new Piromancer(this, PIROMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2,this.playerItems.length);
 		if(this.characterName === ELECTROMANCER_NAME)
-			this.player = new Electromancer(this, ELECTROMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2);
+			this.player = new Electromancer(this, ELECTROMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2,this.playerItems.length);
 		if(this.characterName === LUMINOMANCER_NAME)
-			this.player = new LuminoMancer(this, LUMINOMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2);
+			this.player = new LuminoMancer(this, LUMINOMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2,this.playerItems.length);
 		this.healthBar = new HealthBar(this, this.player.x, this.player.y);
 	}
 }

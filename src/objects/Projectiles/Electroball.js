@@ -10,7 +10,7 @@ export default class Electroball extends Projectile{
     constructor(scene, x, y){
         super(scene, x, y, ELECTROBALL_IMGKEY_NAME);
         this.scene = scene;
-        this.damage = ELECTROBALL_DAMAGE_FACTOR;
+        this.damage *= ELECTROBALL_DAMAGE_FACTOR;
         this.speed = ELECTROBALL_SPEED;
         this.createAnimations();
         this.play("none");

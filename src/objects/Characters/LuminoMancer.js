@@ -18,8 +18,8 @@ export const LUMINOMANCER_CAST_TIME = 600;
 let cursorOnPauseButton = false;
 
 export default class Luminomancer extends Mage{
-    constructor(scene, sprite, x, y){
-        super(scene, x, y, LUMINOMANCER_NAME, sprite, LUMINOMANCER_HEALTH, LUMINOMANCER_DAMAGE, LUMINOMANCER_SPEED);
+    constructor(scene, sprite, x, y,inventorySize){
+        super(scene, x, y, LUMINOMANCER_NAME, sprite, LUMINOMANCER_HEALTH, LUMINOMANCER_DAMAGE, LUMINOMANCER_SPEED,inventorySize);
 
         this.addWeapon(scene);
         this.mouseClickAction();

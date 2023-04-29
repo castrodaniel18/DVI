@@ -12,7 +12,7 @@ export default class ProjectileGroup extends Phaser.Physics.Arcade.Group{
             key: imgKey,
         })
     }
-
+    
    shoot(pointerX, pointerY){
         let projectile;
         this.getLength()===this.numProjectiles? projectile = this.getFirstDead(false) : projectile = this.getFirstDead(true)

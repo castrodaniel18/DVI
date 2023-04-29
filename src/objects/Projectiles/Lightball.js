@@ -9,7 +9,7 @@ export default class Lightball extends Projectile{
     constructor(scene, x, y){
         super(scene, x, y, LIGHTBALL_IMGKEY_NAME);
         this.scene = scene;
-        this.damage = LIGHTBALL_DAMAGE_FACTOR;
+        this.damage *= LIGHTBALL_DAMAGE_FACTOR;
         this.speed = LIGHTBALL_SPEED;
         this.createAnimations();
         this.play("none");

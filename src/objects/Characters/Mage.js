@@ -14,7 +14,7 @@ export default class Mage extends Phaser.GameObjects.Sprite {
 *  @param {number} x - coordenada x de spawn
 *  @param {number} y - coordeada y de spawn
 */
-constructor(scene,x,y, name, sprite, health, damage, speed){
+constructor(scene,x,y, name, sprite, health, damage, speed, inventorySize){
     super(scene,x,y,sprite);
     this.scene.add.existing(this);
     this.setScale(1);
@@ -24,7 +24,11 @@ constructor(scene,x,y, name, sprite, health, damage, speed){
     this.maxHealth = health;
     this.health = health;
     this.speed = speed;
+    this.baseSpeed = speed;
     this.damage = damage;
+    this.damageIncrease = 0;
+    this.damageReduction = 0;
+    this.lifesteal = 0;
     this.playerExp = 0;
     this.isDead = false;
 
@@ -37,6 +41,7 @@ constructor(scene,x,y, name, sprite, health, damage, speed){
     this.isInvencible = false;
     this.playerLevel = 1;
     this.playerLevelText = this.scene.add.text(10, 10, 'Nivel 1 - Exp: ' + this.playerExp, { fontFamily: 'myFont',fontSize: '32px', fill: '#FFFFFF' });
+    this.inventorySize=inventorySize;
     //Se define el movimiento y idles
     this.createAnimations();
     this.play('idleA');
@@ -71,6 +76,9 @@ preUpdate(t,dt){
     this.playerLevelText = this.scene.add.text(10, 10, 'Nivel 1 - Exp: ' + this.playerExp, { fontFamily: 'myFont', fontSize: '32px', fill: '#FFFFFF' });
     this.playerLevelText.setPosition(this.scene.cameras.main.scrollX + 15, this.scene.cameras.main.scrollY + 15);
     this.scene.levelDecoration.setPosition(this.scene.cameras.main.scrollX + 140, this.scene.cameras.main.scrollY + 30);
+    for(let i=0;i<this.inventorySize;i++){
+    this.scene.playerItems.setPosition(this.scene.cameras.main.scrollX + 50*i, this.scene.cameras.main.scrollY + 100);
+    }
     this.scene.pauseButton.setPosition(this.scene.cameras.main.scrollX + 750, this.scene.cameras.main.scrollY + 25);
     if(this.canMove){
         this.checkMove();
@@ -256,7 +264,7 @@ checkLevelUp() {
 
 getHit(damage){
     if(!this.isInvencible){
-        this.health -= damage;
+        this.health -= (damage*(1-this.damageReduction));
         this.setTint(0xff0000); // Cambiar el color del personaje a rojo
         this.scene.time.addEvent({
             delay: 200, // La duración del efecto en milisegundos

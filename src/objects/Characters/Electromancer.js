@@ -19,8 +19,8 @@ export const ELECTROMANCER_CAST_TIME = 1500;
 let cursorOnPauseButton = false;
 
 export default class Electromancer extends Mage{
-    constructor(scene, sprite, x, y){
-        super(scene, x, y, ELECTROMANCER_NAME, sprite, ELECTROMANCER_HEALTH, ELECTROMANCER_DAMAGE, ELECTROMANCER_SPEED);
+    constructor(scene, sprite, x, y,inventorySize){
+        super(scene, x, y, ELECTROMANCER_NAME, sprite, ELECTROMANCER_HEALTH, ELECTROMANCER_DAMAGE, ELECTROMANCER_SPEED,inventorySize);
 
         this.addWeapon(scene);
         this.mouseClickAction();

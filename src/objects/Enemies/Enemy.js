@@ -30,7 +30,15 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
     }
 
     getHit(enemy, projectile){
-        this.health -= projectile.damage;
+        this.health -= Math.round(projectile.damage);
+        console.log(projectile.damage)
+        let stolenLife=Math.ceil(this.scene.player.lifesteal*projectile.damage);//cantidad de vida robada redondeada
+        if(this.scene.player.health+stolenLife<this.scene.player.maxHealth){//comprueba la vida para no hacer overflow con el lifesteal
+        this.scene.player.health+=stolenLife;
+        }
+        else{
+            this.scene.player.health=this.scene.player.maxHealth;
+        }
         var velocidad = -100;
         var angulo = Phaser.Math.Angle.BetweenPoints(this, projectile);
         this.body.setVelocity(Math.cos(angulo) * velocidad, Math.sin(angulo) * velocidad);
