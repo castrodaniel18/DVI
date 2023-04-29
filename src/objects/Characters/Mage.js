@@ -45,7 +45,7 @@ constructor(scene,x,y, name, sprite, health, damage, speed, inventorySize){
     this.playerLevel = 1;
     this.playerLevelText = this.scene.add.text(10, 10, 'Nivel 1 - Exp: ' + this.playerExp, { fontFamily: 'myFont',fontSize: '32px', fill: '#FFFFFF' });
     this.inventorySize=inventorySize;
-    //Se define el movimiento y idles
+//Se define el movimiento y idles
     this.createAnimations();
     this.play('idleA');
     this.defineControls();
@@ -85,7 +85,7 @@ preUpdate(t,dt){
     }
     this.scene.healthBar.updateHealth();
     this.playerLevelText.destroy();
-    this.playerLevelText = this.scene.add.text(10, 10, 'Nivel 1 - Exp: ' + this.playerExp, { fontFamily: 'myFont', fontSize: '32px', fill: '#FFFFFF' });
+    this.playerLevelText = this.scene.add.text(10, 10, 'Nivel: ' + this.playerLevel + ' - Exp: ' + this.playerExp, { fontFamily: 'myFont', fontSize: '26px', fill: '#FFFFFF' });
     this.playerLevelText.setPosition(this.scene.cameras.main.scrollX + 15, this.scene.cameras.main.scrollY + 15);
     this.scene.levelDecoration.setPosition(this.scene.cameras.main.scrollX + 140, this.scene.cameras.main.scrollY + 30);
     for(let i=0;i<this.inventorySize;i++){
@@ -303,9 +303,12 @@ playerDie() {
 }
 
 checkLevelUp() {
-    if(this.playerExp >= LEVELS[this.playerLevel]){
+    if(this.playerExp >= LEVELS[this.playerLevel-1]){
         this.playerLevel++;
         this.playerLevelText.setText('Nivel: ' + this.playerLevel + ' - Exp: ' + this.playerExp);
+
+        this.scene.scene.pause();
+        this.scene.scene.launch('LevelUpScene', { mainScene: this.scene });
     }
 }
 

@@ -11,6 +11,8 @@ export default class Level1Scene extends Phaser.Scene {
 		super({ key: 'Level1Scene' });
 		this.enemies = [];
 		this.playerItems=[];
+		this.playerItemsImages = [];
+		this.itemsOnBag = Array[2];
 	}
 
 	preload() {
