@@ -12,6 +12,7 @@ import ExperiencePointGroup from "../objects/misc/ExperiencePointGroup";
 import Piromancer, {PIROMANCER_SPRITE_NAME, PIROMANCER_NAME} from "../objects/Characters/Piromancer";
 import Electromancer, {ELECTROMANCER_SPRITE_NAME, ELECTROMANCER_NAME} from "../objects/Characters/Electromancer";
 import LuminoMancer, {LUMINOMANCER_SPRITE_NAME, LUMINOMANCER_NAME} from "../objects/Characters/LuminoMancer";
+import WaveController from "../objects/Enemies/WaveController";
 
 export default class Level1Scene extends Phaser.Scene {
 	constructor() {
@@ -39,12 +40,12 @@ export default class Level1Scene extends Phaser.Scene {
 		this.addCharacter();
 		//this.player = new Piromancer(this, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2, 'piromancer', 'character1', 100, 20, 100);
 		this.potions = new Potions(this);
-		this.enemies = [];
-		this.addEnemies();
+		// this.enemies = [];
+		// this.addEnemies();
 		this.physics.world.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.startFollow(this.player);
-
+		this.waveController = new WaveController(this, 'LEVEL_1');
 		//Marco para nivel
 		this.levelDecoration = this.add.image(140, 30, 'levelPanel');
 		this.levelDecoration.setScale(.8, .35);
@@ -58,23 +59,24 @@ export default class Level1Scene extends Phaser.Scene {
         });
 	}
 
-	addEnemies(){
-		this.goblinsGroup = new GoblinsGroup(this);
-		this.addEnemyGroup(this.goblinsGroup);
-		this.ventolinsGroup = new VentolinGroup(this);
-		this.addEnemyGroup(this.ventolinsGroup);
-	}
+	// addEnemies(){
+	// 	this.goblinsGroup = new GoblinsGroup(this);
+	// 	this.addEnemyGroup(this.goblinsGroup);
+	// 	this.ventolinsGroup = new VentolinGroup(this);
+	// 	this.addEnemyGroup(this.ventolinsGroup);
+	// }
 
-	addEnemyGroup(group){
-		this.physics.add.collider(this.enemies, group.enemies);
-		this.enemies.push(...group.enemies);
-	}
+	// addEnemyGroup(group){
+	// 	this.physics.add.collider(this.enemies, group.enemies);
+	// 	this.enemies.push(...group.enemies);
+	// }
 
 
 	update(){
 		this.player.update();
-		this.goblinsGroup.enemyUpdate();
-		this.ventolinsGroup.enemyUpdate();
+		// this.goblinsGroup.enemyUpdate();
+		// this.ventolinsGroup.enemyUpdate();
+		this.waveController.update();
 		this.potions.trySpawn();
 	}
 

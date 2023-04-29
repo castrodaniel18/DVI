@@ -2,7 +2,7 @@ import Potion from "./Potion";
 
 const LIFE_HEALED = 40;
 const LIFE_POTION_SPRITE = 'lifePotion'
-export const LIFE_POTION_SPAWN_RATE = 0.002;
+export const LIFE_POTION_SPAWN_RATE = 0.0002;
 
 export default class LifePotion extends Potion {
     constructor(scene){
