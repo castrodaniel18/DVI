@@ -2,7 +2,7 @@ import Potion from "./Potion";
 
 const EFFECT_TIME = 10000;
 const INVENCIBILITY_POTION_SPRITE = 'invencibilityPotion'
-export const INVENCIBILITY_POTION_SPAWN_RATE = 0.02;
+export const INVENCIBILITY_POTION_SPAWN_RATE = 0.0002;
 
 export default class InvencibilityPotion extends Potion {
     constructor(scene){
