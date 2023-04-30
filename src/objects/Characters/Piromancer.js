@@ -14,12 +14,12 @@ export const PIROMANCER_WEAPON = FireballGroup;
 export const PIROMANCER_FIREBALLS = 15;
 export const PIROMANCER_SPEED = 100;
 export const PIROMANCER_CAST_TIME = 600;
-
+export const PIROMANCER_CRIT_PROB = 0.2;
 let cursorOnPauseButton = false;
 
 export default class Piromancer extends Mage{
     constructor(scene, sprite, x, y,inventorySize){
-        super(scene, x, y, PIROMANCER_NAME, sprite, PIROMANCER_HEALTH, PIROMANCER_DAMAGE, PIROMANCER_SPEED, inventorySize);
+        super(scene, x, y, PIROMANCER_NAME, sprite, PIROMANCER_HEALTH, PIROMANCER_DAMAGE, PIROMANCER_SPEED, PIROMANCER_CRIT_PROB, inventorySize);
 
         this.addWeapon(scene);
         this.mouseClickAction();

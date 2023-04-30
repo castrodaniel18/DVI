@@ -15,12 +15,13 @@ export const ELECTROMANCER_WEAPON = ElectroballGroup
 export const ELECTROMANCER_FIREBALLS = 15;
 export const ELECTROMANCER_SPEED = 150;
 export const ELECTROMANCER_CAST_TIME = 1200;
+export const ELECTROMANCER_CRIT_PROB = 0.2;
 
 let cursorOnPauseButton = false;
 
 export default class Electromancer extends Mage{
     constructor(scene, sprite, x, y,inventorySize){
-        super(scene, x, y, ELECTROMANCER_NAME, sprite, ELECTROMANCER_HEALTH, ELECTROMANCER_DAMAGE, ELECTROMANCER_SPEED,inventorySize);
+        super(scene, x, y, ELECTROMANCER_NAME, sprite, ELECTROMANCER_HEALTH, ELECTROMANCER_DAMAGE, ELECTROMANCER_SPEED, ELECTROMANCER_CRIT_PROB, inventorySize);
 
         this.addWeapon(scene);
         this.mouseClickAction();

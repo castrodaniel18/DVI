@@ -28,12 +28,7 @@ export default class Ventolin extends Enemy {
         this.cooldown = false;
         this.scene.physics.add.overlap(this.scene.player, this, this.attack, null, this);
     }
-    preUpdate(t, dt) {
-        super.preUpdate(t, dt);
-        //Ejecutamos la animación solo si no es la que se estaba ejecutando ya
-        !this.isDead() ? this.play(this.checkAnimation(), true) : this.destroy();
-        
-    }
+    
     createAnimations(){
         this.scene.anims.create({
             key:'up_ventolin',

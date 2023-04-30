@@ -17,7 +17,7 @@ export default class Mage extends Phaser.GameObjects.Sprite {
 *  @param {number} x - coordenada x de spawn
 *  @param {number} y - coordeada y de spawn
 */
-constructor(scene,x,y, name, sprite, health, damage, speed, inventorySize){
+constructor(scene,x,y, name, sprite, health, damage, speed, critProb, inventorySize){
     super(scene,x,y,sprite);
     this.scene.add.existing(this);
     this.setScale(1);
@@ -29,6 +29,7 @@ constructor(scene,x,y, name, sprite, health, damage, speed, inventorySize){
     this.speed = speed;
     this.baseSpeed = speed;
     this.damage = damage;
+    this.critProb = critProb;
     this.damageIncrease = 0;
     this.damageReduction = 0;
     this.lifesteal = 0;
@@ -354,7 +355,7 @@ shoot(pointerX, pointerY, castTime){
                 this.play('idleA');
             else
                 this.play('idleD');
-            this.weapon.shoot(pointerX, pointerY);
+                this.weapon.shoot(pointerX, pointerY);
         });
     }
 }

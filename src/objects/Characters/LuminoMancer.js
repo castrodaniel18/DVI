@@ -14,12 +14,13 @@ export const LUMINOMANCER_WEAPON = lightballGroup;
 export const LUMINOMANCER_FIREBALLS = 20;
 export const LUMINOMANCER_SPEED = 100;
 export const LUMINOMANCER_CAST_TIME = 200;
+export const LUMINOMANCER_CRIT_PROB = 0.2;
 
 let cursorOnPauseButton = false;
 
 export default class Luminomancer extends Mage{
     constructor(scene, sprite, x, y,inventorySize){
-        super(scene, x, y, LUMINOMANCER_NAME, sprite, LUMINOMANCER_HEALTH, LUMINOMANCER_DAMAGE, LUMINOMANCER_SPEED,inventorySize);
+        super(scene, x, y, LUMINOMANCER_NAME, sprite, LUMINOMANCER_HEALTH, LUMINOMANCER_DAMAGE, LUMINOMANCER_SPEED, LUMINOMANCER_CRIT_PROB, inventorySize);
 
         this.addWeapon(scene);
         this.mouseClickAction();
