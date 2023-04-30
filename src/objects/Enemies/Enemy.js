@@ -26,6 +26,9 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         //nos guardamos a nostroso en self para poder acceder desde el evento
         //que detecta las colisiones con el límite del mundo
 
+        //Controlamos el tamaño de la hitbox inicial
+        this.body.setSize(25, 40);
+        this.body.offset.set(20, 23);
         // Crear un objeto texto
         this.texto = this.scene.add.text(this.x - 5, this.y - 40, 'damageRecieved');
         this.texto.setFontSize(16);
@@ -45,7 +48,6 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
     }
 
     getHit(enemy, projectile){
-        console.log("huashuiu")
         this.crit = 1;
         if(Math.random() < this.scene.player.critProb){
             this.crit = 1.5;
@@ -89,11 +91,6 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
             this.destroy();
         }
     }
-
-    isDead(){
-        return this.health < 0;
-    }
-
 
     addCollisions(){
         this.scene.physics.add.collider(this.scene.player.weapon, this, this.getHit, null, this);

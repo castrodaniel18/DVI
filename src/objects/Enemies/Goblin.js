@@ -22,10 +22,6 @@ export default class Goblin extends Enemy {
         this.createAnimations();
         this.play('up_goblin');
         this.cooldown = false;
-        
-        //Controlamos el tamaño de la hitbox inicial
-        this.body.setSize(25, 40);
-        this.body.offset.set(20, 23);
 		this.scene.physics.add.overlap(this.scene.player, this ,this.attack,null,this);
     }
 
@@ -59,6 +55,17 @@ export default class Goblin extends Enemy {
         });
     }
 
+    checkAnimation(){
+        if(this.body.velocity.x >= 0 && this.body.velocity.y >= 0)
+            return 'left_goblin';
+        else if(this.body.velocity.x >= 0 && this.body.velocity.y < 0)
+            return 'up_goblin';
+        else if (this.body.velocity.x < 0 && this.body.velocity.y < 0)
+            return'right_goblin';
+        else
+            return 'down_goblin';
+    }
+
     move(){
         if(Phaser.Math.Distance.Between(this.scene.player.x, this.scene.player.y, this.x, this.y) > 40)
             this.scene.physics.moveToObject(this, this.scene.player, GOBLIN_SPEED);
@@ -76,6 +83,10 @@ export default class Goblin extends Enemy {
         setTimeout(() => {
             this.cooldown = false;
         }, GOBLIN_ATTACK_COOLDOWN);
+    }
+
+    isDead(){
+        return this.health < 0;
     }
 
     enemyUpdate(){
