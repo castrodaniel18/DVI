@@ -14,7 +14,7 @@ export const ELECTROMANCER_SPRITE_WEAPON = 'assets/sprites/electromancer/Charge_
 export const ELECTROMANCER_WEAPON = ElectroballGroup
 export const ELECTROMANCER_FIREBALLS = 15;
 export const ELECTROMANCER_SPEED = 150;
-export const ELECTROMANCER_CAST_TIME = 1500;
+export const ELECTROMANCER_CAST_TIME = 1200;
 
 let cursorOnPauseButton = false;
 

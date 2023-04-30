@@ -13,7 +13,7 @@ export const PIROMANCER_SPRITE_WEAPON = 'assets/sprites/piromancer/Charge.png';
 export const PIROMANCER_WEAPON = FireballGroup;
 export const PIROMANCER_FIREBALLS = 15;
 export const PIROMANCER_SPEED = 100;
-export const PIROMANCER_CAST_TIME = 800;
+export const PIROMANCER_CAST_TIME = 600;
 
 let cursorOnPauseButton = false;
 

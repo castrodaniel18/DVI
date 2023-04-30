@@ -45,11 +45,12 @@ export default class Level1Scene extends Phaser.Scene {
 		//Objetos del jugador
 		this.playerItems[0] = this.add.image(50, 100,'item');
 		this.playerItems[1] = this.add.image(100, 100,'item');
+		this.playerItems[0].setScale(.8, .35);
+		this.playerItems[1].setScale(.8, .35);
 		//Botón de pausa
 		this.pauseButton = this.add.image(750, 25, 'pauseButton').setInteractive();
 		this.pauseButton.setScale(2);
 		this.pauseButton.on('pointerdown', () => {
-			this.initialPauseTime = Date.now();
             this.scene.pause();
 			this.scene.run('PauseScene', { difficulty: this.difficulty});
         });

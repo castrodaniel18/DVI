@@ -13,7 +13,7 @@ export const LUMINOMANCER_SPRITE_WEAPON = 'assets/sprites/luminomancer/Charge.pn
 export const LUMINOMANCER_WEAPON = lightballGroup;
 export const LUMINOMANCER_FIREBALLS = 20;
 export const LUMINOMANCER_SPEED = 100;
-export const LUMINOMANCER_CAST_TIME = 600;
+export const LUMINOMANCER_CAST_TIME = 200;
 
 let cursorOnPauseButton = false;
 
@@ -57,30 +57,6 @@ export default class Luminomancer extends Mage{
                 this.shoot(this.pointerX, this.pointerY, LUMINOMANCER_CAST_TIME);
             }
         })
-    }
-
-    shoot(pointerX, pointerY, castTime){
-        if(this.canMove){
-            this.canMove = false;
-            this.body.velocity.x = 0;
-            this.body.velocity.y = 0;
-            this.lookingLeft = false;
-            if (this.x > pointerX) {
-                this.play('shoot').flipX = true;
-                this.lookingLeft = true;
-            } 
-            else 
-                this.play('shoot').flipX = false;
-    
-            this.scene.time.delayedCall(castTime, () => {
-                this.canMove = true;
-                if(this.lookingLeft === true)
-                    this.play('idleA');
-                else
-                    this.play('idleD');
-            });
-            this.weapon.shoot(pointerX, pointerY);
-        }
     }
 
     checkHitBox(){
