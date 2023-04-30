@@ -19,6 +19,10 @@ export default class Level1Scene extends Phaser.Scene {
 		this.load.image('fondo','assets/elements/fondo.png');
 		this.load.spritesheet('goblin', 'assets/sprites/goblin.png', {frameWidth: 64, frameHeight: 64});
 		this.load.spritesheet('ventolin', 'assets/sprites/ventolin.png', {frameWidth: 64, frameHeight: 64});
+		this.load.spritesheet('centipede', 'assets/sprites/Centipede/Centipede_walk.png', {frameWidth: 72, frameHeight: 38});
+		this.load.spritesheet('centipede_attack_1', 'assets/sprites/Centipede/Centipede_attack2.png', {frameWidth: 72, frameHeight: 40});
+		this.load.spritesheet('centipede_attack_2', 'assets/sprites/Centipede/Centipede_attack3.png', {frameWidth: 72, frameHeight: 38});
+		this.load.spritesheet('centipede_attack_3', 'assets/sprites/Centipede/Centipede_attack4.png', {frameWidth: 72, frameHeight: 26});
 		this.load.image('pauseButton', 'assets/elements/pauseButton.png');
 		this.load.image('levelPanel', 'assets/elements/levelPanel.png');
 		this.load.image('item','assets/elements/marco_objeto.png' );

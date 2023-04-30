@@ -61,8 +61,8 @@ export default class WaveController{
 	}
 
     addBoss(boss){
-		this.scene.physics.add.collider(this.enemies, boss);
-		this.enemies.push(boss);
+		//this.scene.physics.add.collider(this.enemies, boss);
+		//this.enemies.push(boss);
 	}
 
 }
