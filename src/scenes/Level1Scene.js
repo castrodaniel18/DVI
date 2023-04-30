@@ -1,141 +1,76 @@
 import Phaser from "phaser";
-import Player from "../objects/Player";
-import HealthBar from "../objects/HealthBar";
-import FireballGroup from "../objects/FireballGroup";
-import Potion from "../objects/Potion";
-import GoblinGroup from "../objects/GoblinGroup";
+import HealthBar from "../objects/Characters/HealthBar";
+import Potions from "../objects/Potions/Potions";
+import Piromancer, {PIROMANCER_SPRITE_NAME, PIROMANCER_NAME} from "../objects/Characters/Piromancer";
+import Electromancer, {ELECTROMANCER_SPRITE_NAME, ELECTROMANCER_NAME} from "../objects/Characters/Electromancer";
+import LuminoMancer, {LUMINOMANCER_SPRITE_NAME, LUMINOMANCER_NAME} from "../objects/Characters/LuminoMancer";
+import WaveController, {LEVEL_1} from "../objects/Enemies/WaveController";
 
-export default class Level1Scene extends Phaser.Scene{
-    constructor() {
+export default class Level1Scene extends Phaser.Scene {
+	constructor() {
 		super({ key: 'Level1Scene' });
-
+		this.enemies = [];
+		this.playerItems=[];
+		this.playerItemsImages = [];
+		this.itemsOnBag = Array[2];
 	}
-    preload(){
-        this.load.spritesheet('healthBar', 'assets/elements/health.png',{frameWidth:640, frameHeight:128})
-        this.load.spritesheet('player1','assets/sprites/player1.png',{frameWidth:16, frameHeight:16});
-        this.load.spritesheet('player2','assets/sprites/player2.png',{frameWidth:16, frameHeight:16});
-        this.load.spritesheet('player3','assets/sprites/player3.png',{frameWidth:16, frameHeight:16});
-        this.load.spritesheet('fireball', 'assets/elements/fireball.png', {frameWidth: 25.6, frameHeight: 25.5});
-        this.load.spritesheet('goblin', 'assets/sprites/goblin.png', {frameWidth: 64, frameHeight: 64});
-        this.load.spritesheet('potion', 'assets/elements/potion.png', {frameWidth: 128, frameHeight: 128});
-        this.load.image('fondo','assets/elements/fondo.png');
-        this.load.image('tileset', 'assets/elements/TileSet2.png')
-        this.load.tilemapTiledJSON('tilemap','assets/elements/TileMap.json')
-    }
 
-    init(data) {
-        // guarda el personaje seleccionado en una variable
-        this.selectedCharacter = data.character;
-    }
+	preload() {
+		this.load.image('fondo','assets/elements/fondo.png');
+		this.load.spritesheet('goblin', 'assets/sprites/goblin.png', {frameWidth: 64, frameHeight: 64});
+		this.load.spritesheet('ventolin', 'assets/sprites/ventolin.png', {frameWidth: 64, frameHeight: 64});
+		this.load.spritesheet('centipede', 'assets/sprites/Centipede/Centipede_walk.png', {frameWidth: 72, frameHeight: 72})
+		this.load.image('pauseButton', 'assets/elements/pauseButton.png');
+		this.load.image('levelPanel', 'assets/elements/levelPanel.png');
+		this.load.image('item','assets/elements/marco_objeto.png' );
+	}
 
-    create(){
-        const map = this.make.tilemap ({ key: "tilemap", tileWidth: 32, tileHeight: 32})
-        const tileset = map.addTilesetImage('tileset','tileset')
-        const layer = map.createLayer('Fondo', tileset, 0, 0)
-        
-        //Creamos al personaje pasándole sus estadísticas según personaje que eligiéramos en la pantalla de selección
-        if (this.selectedCharacter == 'personaje1'){
-            this.player = new Player(this,this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2, 'player1', 150, 100)
-            this.fireballGroup = new FireballGroup(this, 15);
-        }
-        else if (this.selectedCharacter == 'personaje2'){
-            this.player = new Player(this,this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2, 'player2', 100, 150)
-            this.fireballGroup = new FireballGroup(this, 15);
-        }
-        else if (this.selectedCharacter == 'personaje3'){
-            this.player = new Player(this,this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2, 'player3', 100, 100)
-            this.fireballGroup = new FireballGroup(this, 20);
-        }
-        console.log('speed = ' + this.player.speed);
-        console.log('health = ' + this.player.health);
-        console.log('fireballs = ' + this.fireballGroup.getLength());
+	init(data) {
+		// guarda el personaje seleccionado en una variable
+		this.characterName = data.characterName;
+		this.difficulty = data.difficulty;
+	}
 
-        this.healthBar = new HealthBar(this,this.player.x,this.player.y -35) 
-        this.goblinGroup = new GoblinGroup(this)
-        this.potion = new Potion(this, 800, 600,'damage');
-        this.physics.world.setBounds(0, 0, 1280, 1280);
-        this.cameras.main.setBounds(0, 0, 1280, 1280);
+	create() {
+		let bg = this.add.image(0, 0, 'fondo').setOrigin(0, 0);
+		// Agrega el personaje a la escena y establece su posición en el centro de la cámara principal
+		this.addCharacter();
+		this.potions = new Potions(this);
+		this.physics.world.setBounds(0, 0, bg.width, bg.height);
+        this.cameras.main.setBounds(0, 0, bg.width, bg.height);
         this.cameras.main.startFollow(this.player);
-        this.addEvents();
-        let scene = this;
-        
-        //Se crea una variable para grupos de elementos que tengan física
-        let fireballs = this.add.group();
-        //Le añadimos todas las bolas de fireballGroup
-        fireballs.addMultiple(this.fireballGroup.getChildren());
-        this.player.setTint(0xffffff);
-        //Añadimos un collider para detectar las colisiones entre las bolas de fuego y el goblin
-        this.goblinGroup.goblins.forEach(goblin =>{
-            this.physics.add.collider(fireballs, goblin, this.hitGoblin, null, this);
-            this.physics.add.overlap(this.player, goblin ,this.attack,null,this);
+		this.waveController = new WaveController(this, LEVEL_1);
+		//Marco para nivel
+		this.levelDecoration = this.add.image(140, 30, 'levelPanel');
+		this.levelDecoration.setScale(.8, .35);
+		//Objetos del jugador
+		this.playerItems[0] = this.add.image(50, 100,'item');
+		this.playerItems[1] = this.add.image(100, 100,'item');
+		this.playerItems[0].setScale(.8, .35);
+		this.playerItems[1].setScale(.8, .35);
+		//Botón de pausa
+		this.pauseButton = this.add.image(750, 25, 'pauseButton').setInteractive();
+		this.pauseButton.setScale(2);
+		this.pauseButton.on('pointerdown', () => {
+            this.scene.pause();
+			this.scene.run('PauseScene', { difficulty: this.difficulty});
         });
-    }
-
-    attack(player,goblin){
-        const timer = this.time.addEvent({
-            delay: 50,
-            repeat: 3,
-            callback: function () {
-              player.alpha === 1 ? player.alpha = 0 : player.alpha = 1;
-            }
-        });
-        if(Date.now() - goblin.lastAttackTime > goblin.attackCooldown){
-            if(!player.invencible)player.health-=goblin.damage;
-            goblin.lastAttackTime = Date.now();
-            
-        }
-    }
-    hitGoblin(fireball, goblin) {
-        fireball.destroy();
-        goblin.vida -= fireball.damage
-        console.log('Vida restante: '+goblin.vida )
-        if (goblin.vida <= 0){
-            this.player.playerExp += 50;
-        }
-        goblin.alpha = 0.25;
-        this.time.delayedCall(100, function() {
-            goblin.alpha = 1; 
-        });
-    }
-    addEvents(){
-        //Para guardar las coordenadas del ratón y saber hacia donde disparar las bolas de fuego
-        this.input.on('pointermove', pointer => {
-            this.fireballGroupX = pointer.worldX;
-            this.fireballGroupY = pointer.worldY;
-        })
-        //Para detectar los clicks del ratón para disparar
-        this.input.on('pointerdown', pointer =>{
-            this.fire();
-        })
-    }
-    fire(){
-        //Calculamos el ángulo en el que va a haber que disparar
-        const angle = Phaser.Math.Angle.Between(this.player.x, this.player.y, this.fireballGroupX, this.fireballGroupY);
-
-        //Disparamos enviando la posición dedse la que se va a crear la bola de fuego y la velocidad y ángulo del disparo
-        this.fireballGroup.fire(this.player.x, this.player.y, this.player.speed, angle,this.player.damage);
-    }
-
-    enemyFollows (goblin) {
-        if(Phaser.Math.Distance.Between(this.player.body.position.x,this.player.body.position.y,goblin.body.position.x,goblin.body.position.y)>40){
-		    this.physics.moveToObject(goblin, this.player, 50);
-        }
-        else{
-            goblin.body.velocity.x=0;
-            goblin.body.velocity.y=0;
-        }
 	}
+
+
 	update(){
-        this.goblinGroup.goblins.forEach(goblin => {
-            goblin.vida>0 ? this.enemyFollows(goblin) : goblin.destroy();
-        })
-        this.healthBar.updateHealth() 
-        if(this.player.health <= 0){
-            this.player.playerDie()
-            this.healthBar.playerDie()
-        }
-
-        this.player.setLevelTextPosition(this.cameras.main.scrollX + 10, this.cameras.main.scrollY + 10);
+		this.player.update();
+		this.waveController.update();
+		this.potions.trySpawn();
 	}
-    
+
+	addCharacter(){
+		if(this.characterName === PIROMANCER_NAME)
+			this.player = new Piromancer(this, PIROMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2,this.playerItems.length);
+		if(this.characterName === ELECTROMANCER_NAME)
+			this.player = new Electromancer(this, ELECTROMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2,this.playerItems.length);
+		if(this.characterName === LUMINOMANCER_NAME)
+			this.player = new LuminoMancer(this, LUMINOMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2,this.playerItems.length);
+		this.healthBar = new HealthBar(this, this.player.x, this.player.y);
+	}
 }

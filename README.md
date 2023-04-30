@@ -42,22 +42,22 @@ Del mismo modo, tanto los objetos que pueda recoger del suelo, como los objetos 
 
 ### 2.1.1 Mecánicas del jugador
 
-- Elección de clase: al comienzo de la partida, el jugador tendrá que escoger qué tipo de cazador quiere ser:
+- Elección de clase: al comienzo de la partida, el jugador tendrá que escoger qué tipo de mago quiere ser:
 
-	- A distancia: cada vez que pulsa el ratón lanza una bola de fuego que es capaz de atravesar todo el mapa.
+	- Piromancer: Un mago de fuego que ataca tirando bolas de fuego, tiene más vida inicial que el resto de personajes.
 
-	- A melé: el personaje tiene una espada con la que que puede atacar directamente a los enemigos.
+	- Electromancer: Un mago de electricidad que ataca tirando bolas de rayos, se mueve más rápido que el resto de personajes.
 
-	- Daño en área: al pulsar el ratón se crea un ataque en área que puede hacer daño a varios enemigos pero que no atraviesa todo el mapa.
+	- Luminomancer: Un mago de luz que ataca tirando bolas de luz, tiene más disparos que los demás personajes y hacen más daño, además dispara más seguido.
 	
  - Movimiento: el jugador será capaz de desplazarse en ocho direcciones haciendo uso de las teclas w (arriba), a (izquierda), s(abajo) y d (derecha) y pudiendo combinarlas para crear el movimiento en diagonal. El jugador podrá moverse por todo el escenario que vea en ese nivel, pero al llegar a los límites del escenario se chocará y no podrá continuar. También habrá elementos estéticos repartidos por el mapa que no tendrán una utilidad concreta pero que no podrán ser traspasados ni por el jugador ni por los enemigos o los ataques.
  
- - Disparos: Para apuntar el jugador utilizará el ratón, de forma que los disparos irán dirigidos hacia el punto donde se encuentre el cursor. Para disparar se utilizará el click izquierda de ratón, de forma que cada vez que se pulse se disparará una vez, aunque esto es variable en función al arma que se lleve. Cada tipo de enemigo contará con un punto débil distinto. En caso de que el jugador consiga golpear ese punto, hará mucho más daño de lo normal.
+ - Disparos: Para apuntar el jugador utilizará el ratón, de forma que los disparos irán dirigidos hacia el punto donde se encuentre el cursor. Para disparar se utilizará el click izquierda de ratón, de forma que cada vez que se pulse se disparará una vez, aunque esto es variable en función al arma que se lleve. Cada tipo de boss contará con un punto débil distinto. En caso de que el jugador consiga golpear ese punto, hará mucho más daño de lo normal.
  
- - Dash: el jugador tendrá la posibilidad de hacer un dash que le permitirá avanzar una pequeña distancia en la dirección en la que esté mirando, lo que le permitirá esquivar algunos ataques. Además, de vez en cuando los enemigos pueden lanzar una bolita que el jugador tendrá que recogerg utilizando el dash. Si la consigue coger a tiempo se le recompensará. Esta recompensará inicialmente será sólo un poco de experiencia extra, pero según vaya subiendo niveles se podrán obtener mejoras para que al conseguir estas recompensas se recupere vida o se consigan pequeños boosts durante una pequeña cantidad de tiempo.
+ - Dash: el jugador tendrá la posibilidad de hacer un dash que le permitirá avanzar una pequeña distancia en la dirección en la que esté mirando, lo que le permitirá esquivar algunos ataques. Además, de vez en cuando los enemigos pueden lanzar un ataque especial que el jugador podrá utilizando el dash. Si la consigue esquivar correctamente se le recompensará. Esta recompensará potenciará el siguiente ataque que lance el jugador, que inflingirá más daño.
 
 ### 2.1.2 Mecánicas de los enemigos
- - Movimiento: los enemigos se moverán constantemente hacia el jugador  hasta llegar a la distancia mínima necesaria para dañarle. Todos los enemigos van a tener el mismo tipo de movimiento a excepción de los jefes de nivel, que seguirán un patrón más específico.
+ - Movimiento: los enemigos se moverán constantemente hacia el jugador  hasta llegar a la distancia mínima necesaria para dañarle. Todos los enemigos van a tener el mismo tipo de movimiento.
  
  - Ataque: existirán algunos enemigos con ataques cuerpo a cuerpo que tendrán que acercarse a tí para poder dañarte, mientras que otros atacarán a distancia.
  
@@ -71,10 +71,14 @@ Del mismo modo, tanto los objetos que pueda recoger del suelo, como los objetos 
  - Estadísticas personaje: en alguna parte de la pantalla se podrá ver en todo momento una representación de las estadísticas actuales del personaje (vida, velocidad de movimiento, velocidad de ataque, número de bolas de fuego).
 
 ### 2.1.4 Mecánicas de objetos
- - Poción de velocidad: duplica la velocidad del jugador durante 10 segundos.
- - Poción de recuperación de vida: Regenera el 30% de la vida del jugador.
- - Poción de invisibilidad: al cogerla el jugador se vuelve invisible y no recibe daño de los enemigos, además puede atravesarlos y huir hacia otro lado del mapa.
- - Poción de daño: duplica el daño de los proyectiles del jugador durante 10 segundos.
+ - Poción de velocidad: aumenta la velocidad del jugador un 50% durante 10 segundos.
+ 
+ - Poción de salud: Cura un 30% de la vida del jugador.
+
+ - Poción de invencibilidad: vuelve al jugador inmune al daño de los enemigos durante 10 segundos.
+
+ - Poción de daño: Duplica el daño del jugador durante 10 segundos.
+
  - Bomba: cuando el jugador  recoja este objeto todos los enemigos vivos en pantalla recibirán 50 de daño.
 
 ### 2.1.5 Mecánicas de jefes
@@ -86,7 +90,7 @@ Del mismo modo, tanto los objetos que pueda recoger del suelo, como los objetos 
 
  - El jugador podrá aprovechar el hecho de poder moverse en una dirección mientras apunta hacia otra para poder disparar mientras está huyendo de un enemigo o poder coger los puntos de experiencia mientras dispara al siguiente enemigo entre otras cosas, todo dependiendo de la capacidad de coordinación que tenga la persona que está jugando.
  
- - El jugador podrá utilizar la recompensa obtenida al utilizar bien el dash, para tener más tiempo y poder apuntar con mayor facilidad al punto débil del enemigo.
+ - El jugador podrá utilizar el dash para esquivar ataques y poder apuntar con mayor facilidad al punto débil del enemigo y hacerle más daño con el disparo potenciado.
 
  - Si el jugador es lo suficientemente hábil podrá utilizar los elementos estéticos del escenario como cubierta para evitar que le den los disparos o para despistar a algún enemigo en un momento dado.
 
@@ -104,12 +108,15 @@ Del mismo modo, tanto los objetos que pueda recoger del suelo, como los objetos 
 La estética que hemos elegido para el juego es el estilo de pixel art, ya que nos parecía el más adecuado para un juego de este tipo.  Además pixel art nos parecía el tipo de arte más fácil de encontrar en internet de forma gratuita y teniendo muchas posibilidades distintas.
 
 ## 4.1 Escenario
-
+- Los escenarios han sido creados con Tiled utilizando el siguiente tileset: //TODO poner el tileset
 
 ## 4.2 Personajes
 
- - Jugador: el sprite del jugador lo hemos creado desde cero y de forma que tenga animación para el desplazamiento tanto en las 4 direcciones habituales como en las diagonales.
+ - Jugador: el sprite del jugador lo hemos creado desde cero y de forma que tenga animación para el desplazamiento tanto en las 4 direcciones habituales como en las diagonales. Finalmente se decidió cambiar los sprites del personaje del jugador, para así representar mejor la mecánica de elección de clase. Ahora el jugador puede ser uno de tres magos.
+
 <img src="https://raw.githubusercontent.com/castrodaniel18/DVI/master/dist/assets/sprites/player.png"  width="100" height="200">
+
+//TODO poner imagenes de los nuevos personajes
 
  - Enemigos: para los enemigos hemos utilizado un generador de sprites que permite personalizar desde un sprite básico añadiendo todo tipo de elementos.
  [Universal LPC Sprite Sheet Character Generator (sanderfrenken.github.io)](https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator/#?body=Body_color_light&head=Human_male_light&sex=male&shadow=none&wound_arm=none&arms=none&armour=none&belt=none&weapon=Gnarled_staff_gnarled&weapon_magic_crystal=Crystal_red&clothes=Longsleeve_black&chainmail=none&bandages=none&jacket=Iverness_cloak_black&jacket_collar=Frock_collar_gold&legs=Pants_black&shoes=Boots_black&hat=Magic_brown)
@@ -132,7 +139,7 @@ La estética que hemos elegido para el juego es el estilo de pixel art, ya que n
 ## 4.4 Tipos de enemigos
 - Diañu (goblin): Este enemigo será el enemigo estandar del primer nivel. Aparecerá en gran cantidad, se moverá a velocidad normal y tendrá 50 puntos de vida. Atacará cuerpo a cuerpo y quitará 10 de vida al jugador.
 -Patairu (ciclope): Este enemigo aparecerá también en el nivel 1. Tendrá más vida  y hará más daño que los demás enemigos pero a cambio se moverá más lento.
--Ventolín: Este enemigo aparecerá en el nivel 1. Será un enemigo que irá más rápido pero hará menos daño.
+-Ventolín: Este enemigo aparecerá en el nivel 1. Será un enemigo que se moverá más lento pero atacrá a distancia.
 
 # 5. Niveles
 Cada nivel del juego estará basado en una comunidad autónoma de España, lo primeros dos niveles serán Asturias y Galicia ya que la mitologías de estas dos regiones es la que más nos ha gustado.
@@ -151,7 +158,7 @@ Respecto a la lógica del juego, en principio en todos los niveles se seguirá e
 ## 5.1 Asturias
 El primer nivel estará basado en Asturias. El escenario de este nivel tendrá una temática de bosque y los enemigos  que aparecerán en este nivel son el Diañu, un duende pequeño, y el Patariu, un cíclope.
 ## 5.2 Galicia
-El segundo nivel estará basado en Galicia. El escenario de este nivel tendrña una temática de agua, con un río o el mar.
+El segundo nivel estará basado en Galicia. El escenario de este nivel tendrá una temática de agua, con un río o el mar.
 
 
 # 6. Sonido
@@ -165,7 +172,7 @@ Si el tiempo lo permite se añadirán efectos de sonidos para los ataques tanto 
  - Ajustes: pestaña con la configuración de la partida. Las opciones que contiene son:
 	 - Silenciar juego: quita el sonido tanto de la música de fondo como de los efectos de sonido dentro del juego.
 	 - Pantalla completa: pone el juego en modo pantalla completa para que no se vea la web de fondo.
-	 - Dificultad juego: te permite elegir la dificultad de la partida fácil, normal o difícil.
+	 - Dificultad juego: te permite elegir la dificultad de la partida fácil, normal o difícil. La dificultad modificará la vida, daño y velocidad de movimiento de los enemigos.
  - Ayuda: muestra una pestaña en la que se enseñan los controles y unas instrucciones básicas para entender el juego.
 
 # 8. Referencias
