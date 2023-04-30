@@ -58,7 +58,7 @@ export default class StartScene extends Phaser.Scene {
       // Boton de comenzar juego
       this.startButton = this.add.image(400, 200, 'button').setInteractive();
       this.startButton.setScale(6, 3.5);
-      this.add.text(333, 193, 'Start Game', { fontFamily: 'myFont', fontSize: '26px', color: '#ffffff' });
+      this.add.text(330, 193, 'Start Game', { fontFamily: 'myFont', fontSize: '26px', color: '#ffffff' });
       this.startButton.on('pointerdown', () => {
         this.scene.start('characterSelection', { difficulty: this.difficulty});
       });
