@@ -1,7 +1,9 @@
 import ExperiencePointGroup from "../misc/ExperiencePointGroup";
 
 const SPAWN_ENEMY_EFFECT = 'spawn_enemy_effect';
+const DESTROY_ENEMY_EFFECT= 'destroy_enemy_effect';
 const SPAWN_ENEMY_TIME = 1300;
+const DESTROY_ENEMY_TIME = 1000;
 const DAMAGE_COLOR = '0xFF0000';
 const CRIT_DAMAGE_COLOR = '0xFFFF00';
 
@@ -37,6 +39,11 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         this.spawnEnemyAnim = this.scene.add.sprite(this.x, this.y + 10, 'spawn_enemy_effect');
         this.spawnEnemyAnim.visible = true;
         this.spawnEnemyAnim.play('spawn_enemy_effect');
+
+        this.createDestroyAnimation();
+        this.destroyEnemyAnim = this.scene.add.sprite(this.x, this.y + 10, 'destroy_enemy_effect');
+        this.destroyEnemyAnim.visible = false;
+
         setTimeout(() => {
             this.spawnEnemyAnim.visible = false;
             this.canMove = true;
@@ -97,7 +104,15 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         });
         
         if (this.isDead()){
-            this.expDrop = new ExperiencePointGroup(this.scene, this.x, this.y);
+            const instance = this;
+            this.destroyEnemyAnim.visible = true;
+            this.destroyEnemyAnim.x = this.x;
+            this.destroyEnemyAnim.y = this.y;
+            this.destroyEnemyAnim.play('destroy_enemy_effect');
+            setTimeout(() => {
+                this.destroyEnemyAnim.visible = false;
+                this.expDrop = new ExperiencePointGroup(instance.scene, instance.x, instance.y);
+            }, DESTROY_ENEMY_TIME);
             this.destroy();
         }
     }
@@ -107,6 +122,15 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
             key:'spawn_enemy_effect',
             frames: this.scene.anims.generateFrameNumbers(SPAWN_ENEMY_EFFECT,{start:0,end:12}),
             frameRate: 10,
+            repeat: 0
+        });
+    }
+
+    createDestroyAnimation(){
+        this.scene.anims.create({
+            key:'destroy_enemy_effect',
+            frames: this.scene.anims.generateFrameNumbers(DESTROY_ENEMY_EFFECT,{start:0,end:14}),
+            frameRate: 15,
             repeat: 0
         });
     }
