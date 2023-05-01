@@ -81,11 +81,11 @@ preUpdate(t,dt){
     super.preUpdate(t,dt);
 
     if (this.health <= 0){
-        this.scene.healthBar.playerDie();
+       // this.scene.healthBar.playerDie();
         this.playerDie();
         return;
     }
-    this.scene.healthBar.updateHealth();
+    //this.scene.healthBar.updateHealth();
     this.playerLevelText.destroy();
     this.playerLevelText = this.scene.add.text(10, 10, 'Nivel: ' + this.playerLevel + ' - Exp: ' + this.playerExp, { fontFamily: 'myFont', fontSize: '26px', fill: '#FFFFFF' });
     this.playerLevelText.setPosition(this.scene.cameras.main.scrollX + 15, this.scene.cameras.main.scrollY + 15);

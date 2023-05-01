@@ -1,5 +1,3 @@
-import { Scene } from "phaser";
-import Level1Scene from "../../scenes/Level1Scene";
 const BAR_WIDTH = 150;
 const BAR_HEIGHT = 15;
 export default class HealthBar extends Phaser.Scene {

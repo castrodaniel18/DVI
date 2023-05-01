@@ -32,6 +32,7 @@ export default class ItemSelectScene extends Phaser.Scene{
     }
 
     create(){
+        this.scene.bringToTop();
         //Fondo
         this.levelUpBorder = this.add.image(425, 350, 'levelUpBorder');
         this.levelUpBorder.setScale(2, 2);

@@ -10,7 +10,7 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite{
         super.preUpdate(time, delta);
 
         //Cuando el proyectil sale del canvas se desactiva para que se puedan lanzar más
-        if(this.y <= 0 || this.y >= 960 || this.x <= 0 || this.x >= 960){
+        if(!this.scene.cameras.main.worldView.contains(this.x,this.y)){
             this.setActive(false);
             this.setVisible(false);
         }

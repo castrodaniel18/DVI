@@ -63,6 +63,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
     }
 
     getHit(enemy, projectile){
+        if(this.colliderSet){
         this.crit = 1;
         if(Math.random() < this.scene.player.critProb){
             this.crit = 1.5;
@@ -75,7 +76,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         this.texto.text = projectile.damage * this.crit;
         this.texto.setStyle({color:  this.damageColor});
 
-        this.health -= Math.round(projectile.damage * this.crit);
+        this.health -= projectile.damage * this.crit;
         let stolenLife=Math.ceil(this.scene.player.lifesteal*projectile.damage * this.crit);//cantidad de vida robada redondeada
         if(this.scene.player.health+stolenLife<this.scene.player.maxHealth){//comprueba la vida para no hacer overflow con el lifesteal
         this.scene.player.health+=stolenLife;
@@ -108,12 +109,15 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
             this.body.velocity.x = 0;
             this.body.velocity.y = 0;
             this.setVisible(false);
-            this.scene.time.delayedCall(DESTROY_ENEMY_TIME, () => {
+            this.colliderSet=false;
+            this.scene.time.delayedCall(DESTROY_ENEMY_TIME, () => { 
                 this.destroyEnemyAnim.visible = false;
                 this.expDrop = new ExperiencePointGroup(this.scene, this.x, this.y);
                 this.destroy();
+
             });
         }
+    }
     }
 
     createSpawnAnimation(){
@@ -136,5 +140,6 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 
     addCollisions(){
         this.scene.physics.add.collider(this.scene.player.weapon, this, this.getHit, null, this);
+        this.colliderSet=true;
     }
 }
