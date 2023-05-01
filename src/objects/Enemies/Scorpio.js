@@ -27,8 +27,8 @@ export default class Scorpio extends Enemy {
         this.play('scorpio');
 
         //Controlamos el tamaño de la hitbox inicial
-        this.body.setSize(25, 40);
-        this.body.offset.set(20, 23);
+        this.body.setSize(48, 30);
+        this.body.offset.set(0, 22);
         this.cooldown = false;
         this.addWeapon(scene);
     }
