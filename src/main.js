@@ -6,7 +6,7 @@ import characterSelection from './scenes/characterSelection'
 import Settings from './scenes/Settings'
 import LevelSelector from './scenes/LevelSelector';
 import PauseScene from './scenes/PauseScene'
-import LevelUpScene from './scenes/levelUpScene'
+import LevelUpScene from './scenes/LevelUpScene'
 
 const config = {
 	type: Phaser.AUTO,

@@ -24,6 +24,11 @@ export default class Level1Scene extends Phaser.Scene {
 		this.load.spritesheet('centipede_attack_1', 'assets/sprites/Centipede/Centipede_attack2.png', {frameWidth: 72, frameHeight: 40});
 		this.load.spritesheet('centipede_attack_2', 'assets/sprites/Centipede/Centipede_attack3.png', {frameWidth: 72, frameHeight: 38});
 		this.load.spritesheet('centipede_attack_3', 'assets/sprites/Centipede/Centipede_attack4.png', {frameWidth: 72, frameHeight: 26});
+		this.load.image('tileset2', 'assets/elements/tileset2.png')
+		//this.load.image('tileset3', 'assets/elements/tileset3.png')
+		//this.load.image('tileset4', 'assets/elements/tileset4.png')
+		this.load.image('tileset5', 'assets/elements/tileset5.png')
+        this.load.tilemapTiledJSON('tilemap','assets/elements/tilemap.json')
 		this.load.image('pauseButton', 'assets/elements/pauseButton.png');
 		this.load.image('levelPanel', 'assets/elements/levelPanel.png');
 		this.load.image('item','assets/elements/marco_objeto.png' );
@@ -36,12 +41,25 @@ export default class Level1Scene extends Phaser.Scene {
 	}
 
 	create() {
-		let bg = this.add.image(0, 0, 'fondo').setOrigin(0, 0);
+		
+		//let bg = this.add.image(0, 0, 'fondo').setOrigin(0, 0);
+		// Tilemap
+		const map = this.make.tilemap ({ key: "tilemap", tileWidth: 32, tileHeight: 32})
+        const tileset2 = map.addTilesetImage('tileset2','tileset2')
+		//const tileset3 = map.addTilesetImage('tileset3','tileset3')
+		//const tileset4 = map.addTilesetImage('tileset4','tileset4')
+		const tileset5 = map.addTilesetImage('tileset5','tileset5')
+        const layer = map.createLayer('fondo', tileset2, 0, 0)
+		const layer2 = map.createLayer('arboles', tileset2, 0, 0)
+		const layer3 = map.createLayer('camino', tileset2, 0, 0)
+		const layer4 = map.createLayer('arbustos', tileset2, 0, 0)
+		const layer5 = map.createLayer('piedras', tileset5, 0, 0)
+		
 		// Agrega el personaje a la escena y establece su posición en el centro de la cámara principal
 		this.addCharacter();
 		this.potions = new Potions(this);
-		this.physics.world.setBounds(0, 0, bg.width, bg.height);
-        this.cameras.main.setBounds(0, 0, bg.width, bg.height);
+		this.physics.world.setBounds(0, 0, 1980, 1980);
+        this.cameras.main.setBounds(0, 0, 1980, 1980);
         this.cameras.main.startFollow(this.player);
 		this.waveController = new WaveController(this, LEVEL_1);
 		//Marco para nivel
@@ -59,6 +77,11 @@ export default class Level1Scene extends Phaser.Scene {
             this.scene.pause();
 			this.scene.run('PauseScene', { difficulty: this.difficulty});
         });
+		// let arboles = this.physics.add.staticGroup();
+		// arboles.add(layer2);
+		// this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+		// this.physics.world.setBoundsCollision(true, true, true, true);
+		// this.physics.add.collider(this.player, arboles);
 	}
 
 
