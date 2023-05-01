@@ -14,7 +14,6 @@ export default class Fireball extends Projectile{
         this.speed = FIREBALL_SPEED;
         this.createAnimations();
         this.play("none");
-        console.log(this.damage)
     }
 
     createAnimations(){

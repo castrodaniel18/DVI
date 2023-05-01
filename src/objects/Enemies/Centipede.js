@@ -163,7 +163,16 @@ export default class Centipede extends Boss{
         this.damage = ATTACKS_DAMAGE[this.attackSelected];
         this.speed = ATTACKS_SPEED[this.attackSelected];
         this.angle = Phaser.Math.Angle.Between(this.x, this.y, this.scene.player.x, this.scene.player.y);
-        this.setRotation(this.angle);
+        this.degrees = this.angle * (180 / Math.PI)
+        if(this.degrees > 90){
+            this.setAngle(this.degrees - 180);
+        }
+        else if(this.degrees < -90){
+            this.setAngle(this.degrees + 180);
+        }
+        else
+            this.setRotation(this.angle);
+
         this.scene.physics.moveToObject(this, this.scene.player, this.speed);
         this.body.bounce.set(1);
     }

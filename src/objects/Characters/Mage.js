@@ -46,7 +46,6 @@ constructor(scene,x,y, name, sprite, health, damage, speed, critProb, inventoryS
     this.playerLevel = 1;
     this.playerLevelText = this.scene.add.text(10, 10, 'Nivel 1 - Exp: ' + this.playerExp, { fontFamily: 'myFont',fontSize: '32px', fill: '#FFFFFF' });
     this.inventorySize=inventorySize;
-    console.log("inventory size: " + this.inventorySize);
 //Se define el movimiento y idles
     this.createAnimations();
     this.play('idleA');

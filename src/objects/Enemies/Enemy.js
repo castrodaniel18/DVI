@@ -5,7 +5,8 @@ const DESTROY_ENEMY_EFFECT= 'destroy_enemy_effect';
 const SPAWN_ENEMY_TIME = 1300;
 const DESTROY_ENEMY_TIME = 1000;
 const DAMAGE_COLOR = '0xFF0000';
-const CRIT_DAMAGE_COLOR = '0xFFFF00';
+const DAMAGE_TEXT_COLOR = '#FF0000';
+const CRIT_DAMAGE_TEXT_COLOR = '#FFFF00';
 
 export default class Enemy extends Phaser.GameObjects.Sprite {
     /**
@@ -67,14 +68,13 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         this.crit = 1;
         if(Math.random() < this.scene.player.critProb){
             this.crit = 1.5;
-            this.damageColor = CRIT_DAMAGE_COLOR;
-            console.log("CRIT")
+            this.damageColor = CRIT_DAMAGE_TEXT_COLOR;
         }
         else 
-            this.damageColor = DAMAGE_COLOR;
+            this.damageColor = DAMAGE_TEXT_COLOR;
 
         this.texto.text = projectile.damage * this.crit;
-        this.texto.setStyle({color:  this.damageColor});
+        this.texto.setColor(this.damageColor);
 
         this.health -= Math.round(projectile.damage * this.crit);
         let stolenLife=Math.ceil(this.scene.player.lifesteal*projectile.damage * this.crit);//cantidad de vida robada redondeada
@@ -91,7 +91,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         projectile.destroy();
         this.canMove = false;
         this.texto.setVisible(true);
-        this.setTint(this.damageColor); // Cambiar el color del personaje a rojo
+        this.setTint(DAMAGE_COLOR); // Cambiar el color del personaje a rojo
         this.scene.time.addEvent({
             delay: 200, // La duración del efecto en milisegundos
             callback: () => {

@@ -26,7 +26,6 @@ export default class Boss extends Phaser.GameObjects.Sprite {
         super.preUpdate(t, dt);
             //Ejecutamos la animación solo si no es la que se estaba ejecutando ya
             if(!this.isDead()){
-                console.log(this.anims.currentAnim.key)
                 this.anim = this.checkAnimation();
                 if(this.anim !== null)
                     this.play(this.anim, true).flipX = this.flip;
