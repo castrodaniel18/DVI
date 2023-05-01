@@ -327,7 +327,7 @@ checkLevelUp() {
         this.playerLevelText.setText('Nivel: ' + this.playerLevel + ' - Exp: ' + this.playerExp);
 
         this.scene.scene.pause();
-        this.scene.scene.launch('ItemSelectedScene', { mainScene: this.scene });
+        this.scene.scene.launch('ItemSelectScene', { mainScene: this.scene });
     }
 }
 
