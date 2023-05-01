@@ -1,6 +1,6 @@
 import Enemy from "./Enemy";
 
-const SNAKE_HEALTH = 40;
+const SNAKE_HEALTH = 3;
 const SNAKE_CHARGE_COLOR = '0x000000';
 const SNAKE_SPEED = 70;
 const CHARGE_SPEED = 300;
