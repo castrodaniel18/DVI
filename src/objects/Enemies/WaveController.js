@@ -23,27 +23,34 @@ export default class WaveController{
         this.enemies = [];
         this.groups = [];
         this.initialTime = Date.now();
-
+        this.initialPauseTime = 0;
+        this.pause = false;
         this.currentWave = 0;
     }
 
     update(){
-        if(this.currentWave < this.level.length && this.level[this.currentWave].time <= (Date.now() - this.initialTime)){
-            if(!this.level[this.currentWave].boss){
-                const group = new this.level[this.currentWave].groupName(this.scene, this.level[this.currentWave].numEnemies);
-                this.addEnemiesGroup(group);
+        if (!this.pause){
+            if(this.currentWave < this.level.length && this.level[this.currentWave].time <= (Date.now() - this.initialTime)){
+                if(!this.level[this.currentWave].boss){
+                    const group = new this.level[this.currentWave].groupName(this.scene, this.level[this.currentWave].numEnemies);
+                    this.addEnemiesGroup(group);
+                }
+                else {
+                    const boss = new this.level[this.currentWave].bossName(this.scene);
+                    this.addBoss(boss);
+                }
+                this.currentWave++;
             }
-            else {
-                const boss = new this.level[this.currentWave].bossName(this.scene);
-                this.addBoss(boss);
+    
+            if(this.groups.length != 0){
+                this.groups.forEach(currentGroup => {
+                    currentGroup.enemyUpdate();
+                });
             }
-            this.currentWave++;
         }
-
-        if(this.groups.length != 0){
-            this.groups.forEach(currentGroup => {
-                currentGroup.enemyUpdate();
-            });
+        else if (this.pause){
+            this.initialTime += (Date() - this.initialPauseTime);
+            this.pause = false;
         }
     }
 

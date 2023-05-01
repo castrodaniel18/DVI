@@ -17,7 +17,6 @@ export default class PauseScene extends Phaser.Scene {
     init(data) {
         this.difficulty = data.difficulty;
         this.lastScene = data.actualScene;
-        console.log("difficulty: " + this.difficulty);
     }
   
     create() {
@@ -50,7 +49,6 @@ export default class PauseScene extends Phaser.Scene {
         this.pauseButton = this.add.image(750, 25, 'pauseButton').setInteractive();
 		this.pauseButton.setScale(2);
         this.pauseButton.on('pointerdown', () => {
-            console.log(this.lastScene);
             this.scene.resume(this.lastScene, { difficulty: this.difficulty });
             this.scene.stop('PauseScene', { difficulty: this.difficulty });
         });
