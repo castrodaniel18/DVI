@@ -31,7 +31,7 @@ export default class LevelSelector extends Phaser.Scene {
         buttonGalicia.setInteractive();
         buttonGalicia.setAlpha(0.5);
         buttonGalicia.on('pointerdown', function() {
-            //this.scene.start('Level1Scene', { characterName: this.characterName });
+          this.scene.start('Level2Scene', { characterName: this.characterName, difficulty: this.difficulty });
         }, this);
 
         buttonGalicia.on('pointerover', function () {

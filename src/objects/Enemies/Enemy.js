@@ -28,9 +28,6 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         //nos guardamos a nostroso en self para poder acceder desde el evento
         //que detecta las colisiones con el límite del mundo
 
-        //Controlamos el tamaño de la hitbox inicial
-        this.body.setSize(25, 40);
-        this.body.offset.set(20, 23);
         // Crear un objeto texto
         this.texto = this.scene.add.text(this.x - 5, this.y - 40, 'damageRecieved');
         this.texto.setFontSize(16);
@@ -44,13 +41,15 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
             this.spawnEnemyAnim.visible = false;
             this.canMove = true;
         }, SPAWN_ENEMY_TIME);
+
+        this.flip = false;
     }
 
     preUpdate(t, dt){
         super.preUpdate(t, dt);
             //Ejecutamos la animación solo si no es la que se estaba ejecutando ya
             if(!this.isDead()){
-                this.play(this.checkAnimation(), true);
+                this.play(this.checkAnimation(), true).flipX = this.flip;
                 this.texto.x = this.x - 5;
                 this.texto.y = this.y - 40;
             }
