@@ -1,4 +1,5 @@
 import { Scene } from "phaser";
+import Level1Scene from "../../scenes/Level1Scene";
 const BAR_WIDTH = 150;
 const BAR_HEIGHT = 15;
 export default class HealthBar extends Phaser.Scene {
@@ -6,16 +7,16 @@ export default class HealthBar extends Phaser.Scene {
         super('healthBar');
         this.maxHealth = 100;
     }
-    preload() { }
     create(data) {
         this.maxHealth = data.health;
         this.bar = this.add.graphics();
         this.bar.fillStyle(0x00f000, 1);
         this.bar.fillRect(data.x, data.y, BAR_WIDTH, BAR_HEIGHT);
         this.levelName=data.levelName;
-        this.cameras.main.setBounds(0, 0, 
-            this.scene.get(this.levelName).cameras.main.width, 
-            this.scene.get(this.levelName).cameras.main.height);
+        this.cameras.main.startFollow(this.scene.get(this.levelName).player);
+        this.cameras.main.setBounds(0,0,
+            this.scene.get(this.levelName).cameras.main.getBounds().right,
+            this.scene.get(this.levelName).cameras.main.getBounds().bottom);
     }
 
     update() {

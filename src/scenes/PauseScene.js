@@ -23,7 +23,7 @@ export default class PauseScene extends Phaser.Scene {
     create() {
 
         console.log("Menú de pausa");
-
+        this.scene.bringToTop();
         /*links assets
         https://mounirtohami.itch.io/pixel-art-gui-elements
         https://mounirtohami.itch.io/minimalpixel-font

@@ -111,8 +111,8 @@ export default class Level1Scene extends Phaser.Scene {
 			setTimeout(() => {
 				this.scene.start('GameOver', {difficulty: this.difficulty, characterName: this.characterName})
 			  }, 2000);
-			
 		}
+
 	}
 
 	addCharacter(){
