@@ -1,5 +1,4 @@
 import Phaser from "phaser";
-import Fang from "./../objects/Items/Fang"
 
 export default class LevelUpScene extends Phaser.Scene {
     constructor() {

@@ -7,21 +7,14 @@ import ScorpiosGroup from "./ScorpiosGroup";
 
 export const LEVEL_1 = [{time: 0, boss: false, groupName: GoblinsGroup, numEnemies: 5}, 
                         {time: 10000, boss: false, groupName: VentolinsGroup, numEnemies: 5}, 
-                        {time: 15000, boss: false, groupName: GoblinsGroup, numEnemies: 10},
-                        {time: 15000, boss: false, groupName: VentolinsGroup, numEnemies: 5},
-                        {time: 20000, boss: false, groupName: GoblinsGroup, numEnemies: 10},
-                        {time: 20000, boss: false, groupName: VentolinsGroup, numEnemies: 10},
-                        {time: 22000, boss: false, groupName: GoblinsGroup, numEnemies: 10},
-                        {time: 22000, boss: false, groupName: VentolinsGroup, numEnemies: 10},
-                        {time: 23000, boss: false, groupName: GoblinsGroup, numEnemies: 10},
-                        {time: 24000, boss: true, bossName: Centipede, numEnemies: 5}]
+                        {time: 24000, boss: true, bossName: Centipede, numEnemies: 1}]
 
 
-export const LEVEL_2 = [{time: 0, groupName: ScorpiosGroup, numEnemies: 10}]
+//export const LEVEL_2 = [{time: 0, groupName: ScorpiosGroup, numEnemies: 10}]
 
-// export const LEVEL_2 = [{time: 0, groupName: ScorpiosGroup, numEnemies: 10},
-//             {time: 10000, groupName: SnakeGroup, numEnemies: 1}, 
-//             {time: 10000, groupName: HyenasGroup, numEnemies: 1}]
+export const LEVEL_2 = [{time: 0, groupName: ScorpiosGroup, numEnemies: 5},
+            {time: 10000, groupName: SnakeGroup, numEnemies: 5}, 
+            {time: 10000, groupName: HyenasGroup, numEnemies: 5}]
 
 export default class WaveController{
     constructor(scene, level){

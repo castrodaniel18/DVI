@@ -74,8 +74,8 @@ export default class Level1Scene extends Phaser.Scene {
 		//Objetos del jugador
 		this.playerItemsBorder[0] = this.add.image(50, 100,'item');
 		this.playerItemsBorder[1] = this.add.image(100, 100,'item');
-		this.playerItemsBorder[0].setScale(.8, .35);
-		this.playerItemsBorder[1].setScale(.8, .35);
+		// this.playerItemsBorder[0].setScale(.8, .35);
+		// this.playerItemsBorder[1].setScale(.8, .35);
 
 		
 
@@ -84,7 +84,7 @@ export default class Level1Scene extends Phaser.Scene {
 		this.pauseButton.setScale(2);
 		this.pauseButton.on('pointerdown', () => {
             this.scene.pause();
-			this.scene.run('PauseScene', { difficulty: this.difficulty});
+			this.scene.run('PauseScene', { difficulty: this.difficulty, actualScene: 'Level1Scene'});
         });
 		// let arboles = this.physics.add.staticGroup();
 		// arboles.add(layer2);
@@ -107,8 +107,8 @@ export default class Level1Scene extends Phaser.Scene {
 		let playerData = { health: this.player.health, x: this.player.x-85, y: this.player.y-25 }; // Create object containing player data
     	this.events.emit('updatePlayerData', playerData);
 		if (this.player.isDead) {
-			this.scene.stop()
-			this.scene.start('GameOver', {difficulty: this.difficulty, characterName: this.characterName})
+			this.scene.pause();
+			this.scene.run('GameOver', {difficulty: this.difficulty, characterName: this.characterName})
 			  		
 		}
 

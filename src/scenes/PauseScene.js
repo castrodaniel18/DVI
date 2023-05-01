@@ -16,7 +16,7 @@ export default class PauseScene extends Phaser.Scene {
 
     init(data) {
         this.difficulty = data.difficulty;
-
+        this.lastScene = data.actualScene;
         console.log("difficulty: " + this.difficulty);
     }
   
@@ -35,13 +35,13 @@ export default class PauseScene extends Phaser.Scene {
         background.setOrigin(0, 0);
 
         //Título Settings
-        this.add.text(290, 65, 'Settings', { fontFamily: 'myFont', fontSize: '54px', color: '#ffffff' });
+        this.add.text(290, 65, 'Settings', { fontFamily: 'myFont', fontSize: '54px', color: '#ffffff' }); 
 
         //Botón para volver al menú principal
         this.houseButton = this.add.image(650, 170, 'houseButton').setInteractive();
         this.houseButton.setScale(3);
         this.houseButton.on('pointerdown', () => {
-            this.scene.stop('Level2Scene');
+            this.scene.stop(this.lastScene);
             this.scene.start('StartScene', { difficulty: this.difficulty });
             this.scene.stop('PauseScene');
         })
@@ -50,7 +50,8 @@ export default class PauseScene extends Phaser.Scene {
         this.pauseButton = this.add.image(750, 25, 'pauseButton').setInteractive();
 		this.pauseButton.setScale(2);
         this.pauseButton.on('pointerdown', () => {
-            this.scene.resume('Level2Scene', { difficulty: this.difficulty });
+            console.log(this.lastScene);
+            this.scene.resume(this.lastScene, { difficulty: this.difficulty });
             this.scene.stop('PauseScene', { difficulty: this.difficulty });
         });
 
