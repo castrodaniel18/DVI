@@ -46,6 +46,7 @@ constructor(scene,x,y, name, sprite, health, damage, speed, critProb, inventoryS
     this.playerLevel = 1;
     this.playerLevelText = this.scene.add.text(10, 10, 'Nivel 1 - Exp: ' + this.playerExp, { fontFamily: 'myFont',fontSize: '32px', fill: '#FFFFFF' });
     this.inventorySize=inventorySize;
+    console.log("inventory size: " + this.inventorySize);
 //Se define el movimiento y idles
     this.createAnimations();
     this.play('idleA');
@@ -89,8 +90,25 @@ preUpdate(t,dt){
     this.playerLevelText = this.scene.add.text(10, 10, 'Nivel: ' + this.playerLevel + ' - Exp: ' + this.playerExp, { fontFamily: 'myFont', fontSize: '26px', fill: '#FFFFFF' });
     this.playerLevelText.setPosition(this.scene.cameras.main.scrollX + 15, this.scene.cameras.main.scrollY + 15);
     this.scene.levelDecoration.setPosition(this.scene.cameras.main.scrollX + 140, this.scene.cameras.main.scrollY + 30);
+    //El 2 tendría que ser inventorySize pero está sin inicializar
+    let pos = 50;
     for(let i=0;i<this.inventorySize;i++){
-    this.scene.playerItems.setPosition(this.scene.cameras.main.scrollX + 50*i, this.scene.cameras.main.scrollY + 100);
+        this.scene.playerItemsBorder[i].setPosition(this.scene.cameras.main.scrollX + pos, this.scene.cameras.main.scrollY + 100);
+        pos += 50;
+    }
+    pos = 50;
+    for(let i=0;i<this.inventorySize;i++){
+        if (this.scene.itemImages[i]){
+            this.scene.itemImages[i].setPosition(this.scene.cameras.main.scrollX + pos, this.scene.cameras.main.scrollY + 100);
+            pos += 50;
+        }
+    }
+    pos = 30;
+    for(let i=0;i<this.inventorySize;i++){
+        if (this.scene.itemLevels[i]){
+            this.scene.itemLevels[i].setPosition(this.scene.cameras.main.scrollX + pos, this.scene.cameras.main.scrollY + 120);
+            pos += 50;
+        }
     }
     this.scene.pauseButton.setPosition(this.scene.cameras.main.scrollX + 750, this.scene.cameras.main.scrollY + 25);
     if(this.canMove){
@@ -309,7 +327,7 @@ checkLevelUp() {
         this.playerLevelText.setText('Nivel: ' + this.playerLevel + ' - Exp: ' + this.playerExp);
 
         this.scene.scene.pause();
-        this.scene.scene.launch('LevelUpScene', { mainScene: this.scene });
+        this.scene.scene.launch('ItemSelectedScene', { mainScene: this.scene });
     }
 }
 

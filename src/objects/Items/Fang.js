@@ -7,6 +7,7 @@ export const FANG_ITEM_SPAWN_RATE = 0.0002;
 export default class Fang extends Item {
     constructor(scene){
         super(scene, FANG_ITEM_SPRITE);
+        this.name = 'Fang';
     }
 
     apply(){

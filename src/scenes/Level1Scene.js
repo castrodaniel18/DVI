@@ -11,8 +11,10 @@ export default class Level1Scene extends Phaser.Scene {
 		super({ key: 'Level1Scene' });
 		this.enemies = [];
 		this.playerItems=[];
-		this.playerItemsImages = [];
-		this.itemsOnBag = Array[2];
+		this.playerItemsBorder = [];
+		this.itemsOnBag = [];
+		this.itemImages = [];
+		this.itemLevels = [];
 	}
 
 	preload() {
@@ -44,16 +46,27 @@ export default class Level1Scene extends Phaser.Scene {
 		this.levelDecoration = this.add.image(140, 30, 'levelPanel');
 		this.levelDecoration.setScale(.8, .35);
 		//Objetos del jugador
-		this.playerItems[0] = this.add.image(50, 100,'item');
-		this.playerItems[1] = this.add.image(100, 100,'item');
-		this.playerItems[0].setScale(.8, .35);
-		this.playerItems[1].setScale(.8, .35);
+		this.playerItemsBorder[0] = this.add.image(50, 100,'item');
+		this.playerItemsBorder[1] = this.add.image(100, 100,'item');
+		this.playerItemsBorder[0].setScale(.8, .35);
+		this.playerItemsBorder[1].setScale(.8, .35);
+
+		
+
 		//Botón de pausa
 		this.pauseButton = this.add.image(750, 25, 'pauseButton').setInteractive();
 		this.pauseButton.setScale(2);
 		this.pauseButton.on('pointerdown', () => {
             this.scene.pause();
 			this.scene.run('PauseScene', { difficulty: this.difficulty});
+        });
+
+		//Botón para probar escena subida de nivel
+		this.prueba = this.add.image(400, 300, 'pauseButton').setInteractive();
+		this.prueba.setScale(2);
+		this.prueba.on('pointerdown', () => {
+            this.scene.pause();
+			this.scene.run('ItemSelectScene', { mainScene: this});
         });
 	}
 
@@ -66,11 +79,11 @@ export default class Level1Scene extends Phaser.Scene {
 
 	addCharacter(){
 		if(this.characterName === PIROMANCER_NAME)
-			this.player = new Piromancer(this, PIROMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2,this.playerItems.length);
+			this.player = new Piromancer(this, PIROMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2, 2);
 		if(this.characterName === ELECTROMANCER_NAME)
-			this.player = new Electromancer(this, ELECTROMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2,this.playerItems.length);
+			this.player = new Electromancer(this, ELECTROMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2, 2);
 		if(this.characterName === LUMINOMANCER_NAME)
-			this.player = new LuminoMancer(this, LUMINOMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2,this.playerItems.length);
+			this.player = new LuminoMancer(this, LUMINOMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2, 2);
 		this.healthBar = new HealthBar(this, this.player.x, this.player.y);
 	}
 }

@@ -4,7 +4,7 @@ import Knife, {KNIFE_ITEM_SPAWN_RATE} from "./Knife"
 import Stone, {STONE_ITEM_SPAWN_RATE} from "./Stone"
 
 
-const ITEMS = [Stone, Cape, Knife, Fang];
+export const ITEMS = [Stone, Cape, Knife, Fang];
 const SPAWN_RATES = [FANG_ITEM_SPAWN_RATE,CAPE_ITEM_SPAWN_RATE,KNIFE_ITEM_SPAWN_RATE,STONE_ITEM_SPAWN_RATE];
 
 export default class Items{

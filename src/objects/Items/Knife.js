@@ -7,6 +7,7 @@ export const KNIFE_ITEM_SPAWN_RATE = 0.0002;
 export default class Knife extends Item {
     constructor(scene){
         super(scene, KNIFE_ITEM_SPRITE);
+        this.name = 'Knife';
     }
 
     apply(){

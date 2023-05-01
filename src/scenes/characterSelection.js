@@ -20,6 +20,7 @@ export default class StartScene extends Phaser.Scene {
         this.loadWeapons();
         this.loadPotions();
         this.loadExp();
+        this.loadObjects();
     }
 
     init(data){
@@ -116,5 +117,12 @@ export default class StartScene extends Phaser.Scene {
         this.load.image('experience_green', 'assets/elements/experience_points(green).png');
         this.load.image('experience_purple', 'assets/elements/experience_points(purple).png');
         this.load.image('experience_yellow', 'assets/elements/experience_points(blue).png');
+    }
+
+    loadObjects(){
+        this.load.image('Fang','public/assets/elements/colmillo_chupasangre.png');
+        this.load.image('Knife','public/assets/elements/cuchillo_sacauntos.png');
+        this.load.image('Cape','public/assets/elements/manto_nuberu.png');
+        this.load.image('Stone','public/assets/elements/piedra_san_pedro.png');
     }
   }

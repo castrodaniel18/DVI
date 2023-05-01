@@ -6,7 +6,7 @@ import characterSelection from './scenes/characterSelection'
 import Settings from './scenes/Settings'
 import LevelSelector from './scenes/LevelSelector';
 import PauseScene from './scenes/PauseScene'
-import LevelUpScene from './scenes/levelUpScene'
+import ItemSelectScene from './scenes/ItemSelectScene'
 
 const config = {
 	type: Phaser.AUTO,
@@ -22,7 +22,7 @@ const config = {
 	dom: {
 		createContainer: true
 	},
-	scene: [StartScene, characterSelection, Level1Scene, Settings, LevelSelector, PauseScene, LevelUpScene],
+	scene: [StartScene, characterSelection, Level1Scene, Settings, LevelSelector, PauseScene, ItemSelectScene],
 	physics: {
 		default: 'arcade',
 		arcade: {

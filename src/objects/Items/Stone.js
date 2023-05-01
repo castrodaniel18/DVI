@@ -7,6 +7,7 @@ export const STONE_ITEM_SPAWN_RATE = 0.0002;
 export default class Stone extends Item {
     constructor(scene){
         super(scene, STONE_ITEM_SPRITE);
+        this.name = 'Stone';
     }
 
     apply(){
