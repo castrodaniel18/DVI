@@ -1,5 +1,7 @@
 import ExperiencePointGroup from "../misc/ExperiencePointGroup";
 
+const SPAWN_ENEMY_EFFECT = 'spawn_enemy_effect';
+const SPAWN_ENEMY_TIME = 1300;
 const DAMAGE_COLOR = '0xFF0000';
 const CRIT_DAMAGE_COLOR = '0xFFFF00';
 
@@ -14,7 +16,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         super(scene, x, y, imgKey);
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
-        this.canMove = true;
+        this.canMove = false;
 
         // Queremos que el enemigo no se salga de los límites del mundo
         this.body.setCollideWorldBounds();
@@ -26,10 +28,22 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         //nos guardamos a nostroso en self para poder acceder desde el evento
         //que detecta las colisiones con el límite del mundo
 
+        //Controlamos el tamaño de la hitbox inicial
+        this.body.setSize(25, 40);
+        this.body.offset.set(20, 23);
         // Crear un objeto texto
         this.texto = this.scene.add.text(this.x - 5, this.y - 40, 'damageRecieved');
         this.texto.setFontSize(16);
         this.texto.setVisible(false);
+
+        this.createSpawnAnimation();
+        this.spawnEnemyAnim = this.scene.add.sprite(this.x, this.y + 10, 'spawn_enemy_effect');
+        this.spawnEnemyAnim.visible = true;
+        this.spawnEnemyAnim.play('spawn_enemy_effect');
+        setTimeout(() => {
+            this.spawnEnemyAnim.visible = false;
+            this.canMove = true;
+        }, SPAWN_ENEMY_TIME);
     }
 
     preUpdate(t, dt){
@@ -45,7 +59,6 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
     }
 
     getHit(enemy, projectile){
-        console.log("huashuiu")
         this.crit = 1;
         if(Math.random() < this.scene.player.critProb){
             this.crit = 1.5;
@@ -90,10 +103,14 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         }
     }
 
-    isDead(){
-        return this.health < 0;
+    createSpawnAnimation(){
+        this.scene.anims.create({
+            key:'spawn_enemy_effect',
+            frames: this.scene.anims.generateFrameNumbers(SPAWN_ENEMY_EFFECT,{start:0,end:12}),
+            frameRate: 10,
+            repeat: 0
+        });
     }
-
 
     addCollisions(){
         this.scene.physics.add.collider(this.scene.player.weapon, this, this.getHit, null, this);

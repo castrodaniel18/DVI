@@ -26,10 +26,6 @@ export default class Ventolin extends Enemy {
         this.createAnimations();
         this.play('up_ventolin');
         this.cooldown = false;
-
-        //Controlamos el tamaño de la hitbox inicial
-        this.body.setSize(25, 40);
-        this.body.offset.set(20, 23);
         this.scene.physics.add.overlap(this.scene.player, this, this.attack, null, this);
     }
     
@@ -89,6 +85,9 @@ export default class Ventolin extends Enemy {
         setTimeout(() => {
             this.cooldown = false;
         }, VENTOLIN_ATTACK_COOLDOWN);
+    }
+    isDead(){
+        return this.health < 0;
     }
 
     enemyUpdate(){

@@ -109,6 +109,7 @@ export default class StartScene extends Phaser.Scene {
         this.load.image('damage_buff', 'assets/elements/damageBuffEffect.png');
         this.load.image('speed_buff', 'assets/elements/speedBuffEffect.png');
         this.load.spritesheet('healing', 'assets/elements/Heal_Effect_Sprite_Sheet.png', {frameWidth: 128, frameHeight: 128});
+        this.load.spritesheet('spawn_potion_effect', 'assets/elements/Smoke_VFX_2.png', {frameWidth: 64, frameHeight: 64});
     }
 
     loadExp(){

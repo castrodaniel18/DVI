@@ -1,18 +1,17 @@
 import GoblinsGroup from "./GoblinsGroup";
 import VentolinsGroup from "./VentolinGroup";
-import Centipede from "./centipede";
+import Centipede from "./Centipede";
 
-// export const LEVEL_1 = [{time: 0, boss: false, groupName: GoblinsGroup, numEnemies: 5}, 
-//                         {time: 10000, boss: false, groupName: VentolinsGroup, numEnemies: 5}, 
-//                         {time: 15000, boss: false, groupName: GoblinsGroup, numEnemies: 10},
-//                         {time: 15000, boss: false, groupName: VentolinsGroup, numEnemies: 5},
-//                         {time: 20000, boss: false, groupName: GoblinsGroup, numEnemies: 10},
-//                         {time: 20000, boss: false, groupName: VentolinsGroup, numEnemies: 10},
-//                         {time: 22000, boss: false, groupName: GoblinsGroup, numEnemies: 10},
-//                         {time: 22000, boss: false, groupName: VentolinsGroup, numEnemies: 10},
-//                         {time: 23000, boss: false, groupName: GoblinsGroup, numEnemies: 10}]
-
-export const LEVEL_1 = [{time: 0, boss: true, bossName: Centipede, numEnemies: 5}]
+export const LEVEL_1 = [{time: 0, boss: false, groupName: GoblinsGroup, numEnemies: 5}, 
+                        {time: 10000, boss: false, groupName: VentolinsGroup, numEnemies: 5}, 
+                        {time: 15000, boss: false, groupName: GoblinsGroup, numEnemies: 10},
+                        {time: 15000, boss: false, groupName: VentolinsGroup, numEnemies: 5},
+                        {time: 20000, boss: false, groupName: GoblinsGroup, numEnemies: 10},
+                        {time: 20000, boss: false, groupName: VentolinsGroup, numEnemies: 10},
+                        {time: 22000, boss: false, groupName: GoblinsGroup, numEnemies: 10},
+                        {time: 22000, boss: false, groupName: VentolinsGroup, numEnemies: 10},
+                        {time: 23000, boss: false, groupName: GoblinsGroup, numEnemies: 10},
+                        {time: 24000, boss: true, bossName: Centipede, numEnemies: 5}]
 
 export const LEVEL_2 = [{time: 0, groupName: GoblinsGroup, numEnemies: 15}, 
             {time: 10000, groupName: VentolinsGroup, numEnemies: 10}, 
@@ -62,8 +61,8 @@ export default class WaveController{
 	}
 
     addBoss(boss){
-		this.scene.physics.add.collider(this.enemies, boss);
-		this.enemies.push(boss);
+		//this.scene.physics.add.collider(this.enemies, boss);
+		//this.enemies.push(boss);
 	}
 
 }
