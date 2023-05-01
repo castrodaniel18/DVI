@@ -1,7 +1,9 @@
 import ExperiencePointGroup from "../misc/ExperiencePointGroup";
 
 const SPAWN_ENEMY_EFFECT = 'spawn_enemy_effect';
+const DESTROY_ENEMY_EFFECT= 'destroy_enemy_effect';
 const SPAWN_ENEMY_TIME = 1300;
+const DESTROY_ENEMY_TIME = 1000;
 const DAMAGE_COLOR = '0xFF0000';
 const CRIT_DAMAGE_COLOR = '0xFFFF00';
 
@@ -28,9 +30,6 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         //nos guardamos a nostroso en self para poder acceder desde el evento
         //que detecta las colisiones con el límite del mundo
 
-        //Controlamos el tamaño de la hitbox inicial
-        this.body.setSize(25, 40);
-        this.body.offset.set(20, 23);
         // Crear un objeto texto
         this.texto = this.scene.add.text(this.x - 5, this.y - 40, 'damageRecieved');
         this.texto.setFontSize(16);
@@ -40,17 +39,24 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         this.spawnEnemyAnim = this.scene.add.sprite(this.x, this.y + 10, 'spawn_enemy_effect');
         this.spawnEnemyAnim.visible = true;
         this.spawnEnemyAnim.play('spawn_enemy_effect');
+
+        this.createDestroyAnimation();
+        this.destroyEnemyAnim = this.scene.add.sprite(this.x, this.y + 10, 'destroy_enemy_effect');
+        this.destroyEnemyAnim.visible = false;
+
         setTimeout(() => {
             this.spawnEnemyAnim.visible = false;
             this.canMove = true;
         }, SPAWN_ENEMY_TIME);
+
+        this.flip = false;
     }
 
     preUpdate(t, dt){
         super.preUpdate(t, dt);
             //Ejecutamos la animación solo si no es la que se estaba ejecutando ya
             if(!this.isDead()){
-                this.play(this.checkAnimation(), true);
+                this.play(this.checkAnimation(), true).flipX = this.flip;
                 this.texto.x = this.x - 5;
                 this.texto.y = this.y - 40;
             }
@@ -98,7 +104,15 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         });
         
         if (this.isDead()){
-            this.expDrop = new ExperiencePointGroup(this.scene, this.x, this.y);
+            const instance = this;
+            this.destroyEnemyAnim.visible = true;
+            this.destroyEnemyAnim.x = this.x;
+            this.destroyEnemyAnim.y = this.y;
+            this.destroyEnemyAnim.play('destroy_enemy_effect');
+            setTimeout(() => {
+                this.destroyEnemyAnim.visible = false;
+                this.expDrop = new ExperiencePointGroup(instance.scene, instance.x, instance.y);
+            }, DESTROY_ENEMY_TIME);
             this.destroy();
         }
     }
@@ -108,6 +122,15 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
             key:'spawn_enemy_effect',
             frames: this.scene.anims.generateFrameNumbers(SPAWN_ENEMY_EFFECT,{start:0,end:12}),
             frameRate: 10,
+            repeat: 0
+        });
+    }
+
+    createDestroyAnimation(){
+        this.scene.anims.create({
+            key:'destroy_enemy_effect',
+            frames: this.scene.anims.generateFrameNumbers(DESTROY_ENEMY_EFFECT,{start:0,end:14}),
+            frameRate: 15,
             repeat: 0
         });
     }

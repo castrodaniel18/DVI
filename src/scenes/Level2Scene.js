@@ -4,31 +4,32 @@ import Potions from "../objects/Potions/Potions";
 import Piromancer, {PIROMANCER_SPRITE_NAME, PIROMANCER_NAME} from "../objects/Characters/Piromancer";
 import Electromancer, {ELECTROMANCER_SPRITE_NAME, ELECTROMANCER_NAME} from "../objects/Characters/Electromancer";
 import LuminoMancer, {LUMINOMANCER_SPRITE_NAME, LUMINOMANCER_NAME} from "../objects/Characters/LuminoMancer";
-import WaveController, {LEVEL_1} from "../objects/Enemies/WaveController";
-export default class Level1Scene extends Phaser.Scene {
+import WaveController, {LEVEL_2} from "../objects/Enemies/WaveController";
+
+export default class Level2Scene extends Phaser.Scene {
 	constructor() {
-		super({ key: 'Level1Scene'});
+		super({ key: 'Level2Scene' });
 		this.enemies = [];
 		this.playerItems=[];
 		this.playerItemsBorder = [];
 		this.itemsOnBag = [];
 		this.itemImages = [];
 		this.itemLevels = [];
-		this.gameOver = false;
 	}
 
 	preload() {
 		this.load.image('fondo','assets/elements/fondo.png');
 		this.load.spritesheet('spawn_enemy_effect', 'assets/elements/spawnEnemyAnimation.png', {frameWidth: 64, frameHeight: 64});
 		this.load.spritesheet('destroy_enemy_effect', 'assets/elements/Dark_VFX_2.png', {frameWidth: 48, frameHeight: 64});
-		this.load.spritesheet('goblin', 'assets/sprites/goblin.png', {frameWidth: 64, frameHeight: 64});
-		this.load.spritesheet('ventolin', 'assets/sprites/ventolin.png', {frameWidth: 64, frameHeight: 64});
-		this.load.spritesheet('centipede', 'assets/sprites/Centipede/Centipede_walk.png', {frameWidth: 72, frameHeight: 38});
-		this.load.spritesheet('centipede_attack_1', 'assets/sprites/Centipede/Centipede_attack2.png', {frameWidth: 72, frameHeight: 40});
-		this.load.spritesheet('centipede_attack_2', 'assets/sprites/Centipede/Centipede_attack3.png', {frameWidth: 72, frameHeight: 38});
-		this.load.spritesheet('centipede_attack_3', 'assets/sprites/Centipede/Centipede_attack4.png', {frameWidth: 72, frameHeight: 26});
+		// this.load.spritesheet('goblin', 'assets/sprites/goblin.png', {frameWidth: 64, frameHeight: 64});
+		// this.load.spritesheet('ventolin', 'assets/sprites/ventolin.png', {frameWidth: 64, frameHeight: 64});
+		// this.load.spritesheet('centipede', 'assets/sprites/Centipede/Centipede_walk.png', {frameWidth: 72, frameHeight: 38});
+		// this.load.spritesheet('centipede_attack_1', 'assets/sprites/Centipede/Centipede_attack2.png', {frameWidth: 72, frameHeight: 40});
+		// this.load.spritesheet('centipede_attack_2', 'assets/sprites/Centipede/Centipede_attack3.png', {frameWidth: 72, frameHeight: 38});
+		// this.load.spritesheet('centipede_attack_3', 'assets/sprites/Centipede/Centipede_attack4.png', {frameWidth: 72, frameHeight: 26});
 		this.load.spritesheet('snake', 'assets/sprites/Snake/Snake_walk.png', {frameWidth: 48, frameHeight: 48});
 		this.load.spritesheet('snake_attack', 'assets/sprites/Snake/Snake_attack.png', {frameWidth: 48, frameHeight: 48});
+		this.load.spritesheet('snake_idle', 'assets/sprites/Snake/Snake_idle.png', {frameWidth: 48, frameHeight: 48});
 
 		this.load.image('tileset2', 'assets/elements/tileset2.png')
 		//this.load.image('tileset3', 'assets/elements/tileset3.png')
@@ -67,7 +68,7 @@ export default class Level1Scene extends Phaser.Scene {
 		this.physics.world.setBounds(0, 0, layer.width, layer.height);
         this.cameras.main.setBounds(0, 0, layer.width, layer.height);
         this.cameras.main.startFollow(this.player);
-		this.waveController = new WaveController(this, LEVEL_1);
+		this.waveController = new WaveController(this, LEVEL_2);
 		//Marco para nivel
 		this.levelDecoration = this.add.image(140, 30, 'levelPanel');
 		this.levelDecoration.setScale(.8, .35);
@@ -91,12 +92,6 @@ export default class Level1Scene extends Phaser.Scene {
 		// this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 		// this.physics.world.setBoundsCollision(true, true, true, true);
 		// this.physics.add.collider(this.player, arboles);
-		this.events=new Phaser.Events.EventEmitter();
-		this.scene.launch('healthBar',{
-			x:this.player.x-85,
-			y:this.player.y-25,
-			health:this.player.maxHealth,
-			levelName:'Level1Scene'});
 	}
 
 
@@ -104,15 +99,6 @@ export default class Level1Scene extends Phaser.Scene {
 		this.player.update();
 		this.waveController.update();
 		this.potions.trySpawn();
-		let playerData = { health: this.player.health, x: this.player.x-85, y: this.player.y-25 }; // Create object containing player data
-    	this.events.emit('updatePlayerData', playerData);
-		if (this.player.isDead) {
-			this.physics.pause(); // Detener cualquier cosa que esté sucediendo en el nivel actual.
-			setTimeout(() => {
-				this.scene.start('GameOver', {difficulty: this.difficulty, characterName: this.characterName})
-			  }, 2000);
-			
-		}
 	}
 
 	addCharacter(){
@@ -122,6 +108,6 @@ export default class Level1Scene extends Phaser.Scene {
 			this.player = new Electromancer(this, ELECTROMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2, 2);
 		if(this.characterName === LUMINOMANCER_NAME)
 			this.player = new LuminoMancer(this, LUMINOMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2, 2);
-		//this.healthBar = new HealthBar(this, this.player.x, this.player.y);
+		this.healthBar = new HealthBar(this, this.player.x, this.player.y);
 	}
 }
