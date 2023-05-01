@@ -76,7 +76,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
         this.texto.text = projectile.damage * this.crit;
         this.texto.setStyle({color:  this.damageColor});
 
-        this.health -= projectile.damage * this.crit;
+        this.health -= Math.round(projectile.damage * this.crit);
         let stolenLife=Math.ceil(this.scene.player.lifesteal*projectile.damage * this.crit);//cantidad de vida robada redondeada
         if(this.scene.player.health+stolenLife<this.scene.player.maxHealth){//comprueba la vida para no hacer overflow con el lifesteal
         this.scene.player.health+=stolenLife;

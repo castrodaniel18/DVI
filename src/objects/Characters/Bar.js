@@ -18,7 +18,12 @@ export default class HealthBar extends Phaser.Scene {
     }
 
     update() {
+    
         this.scene.get(this.levelName).events.on('updatePlayerData', (playerData) => {
+            if(playerData.health<0){
+                this.bar.clear();
+            }
+            else{
             let newBarWidth = BAR_WIDTH * (playerData.health / this.maxHealth);
             let barColor;
             if(newBarWidth/BAR_WIDTH>0.5)barColor="0x00f000";
@@ -27,7 +32,7 @@ export default class HealthBar extends Phaser.Scene {
             this.bar.clear();
             this.bar.fillStyle(barColor, 1); 
             this.bar.fillRect(playerData.x, playerData.y, newBarWidth, BAR_HEIGHT);
-            
+            }
         });
     }
 
