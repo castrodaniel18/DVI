@@ -21,6 +21,10 @@ export default class Goblin extends Enemy {
 
         this.createAnimations();
         this.play('up_goblin');
+
+        //Controlamos el tamaño de la hitbox inicial
+        this.body.setSize(25, 40);
+        this.body.offset.set(20, 23);
         this.cooldown = false;
 		this.scene.physics.add.overlap(this.scene.player, this ,this.attack,null,this);
     }

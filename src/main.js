@@ -2,6 +2,7 @@ import Phaser from 'phaser'
 
 import StartScene from './scenes/StartScene'
 import Level1Scene from './scenes/Level1Scene'
+import Level2Scene from './scenes/Level2Scene'
 import characterSelection from './scenes/characterSelection'
 import Settings from './scenes/Settings'
 import LevelSelector from './scenes/LevelSelector';
@@ -22,7 +23,7 @@ const config = {
 	dom: {
 		createContainer: true
 	},
-	scene: [StartScene, characterSelection, Level1Scene, Settings, LevelSelector, PauseScene, ItemSelectScene],
+	scene: [StartScene, characterSelection, Level1Scene, Level2Scene, Settings, LevelSelector, PauseScene, ItemSelectScene],
 	physics: {
 		default: 'arcade',
 		arcade: {
