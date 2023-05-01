@@ -30,12 +30,19 @@ export default class Level2Scene extends Phaser.Scene {
 		this.load.spritesheet('snake', 'assets/sprites/Snake/Snake_walk.png', {frameWidth: 48, frameHeight: 48});
 		this.load.spritesheet('snake_attack', 'assets/sprites/Snake/Snake_attack.png', {frameWidth: 48, frameHeight: 48});
 		this.load.spritesheet('snake_idle', 'assets/sprites/Snake/Snake_idle.png', {frameWidth: 48, frameHeight: 48});
+		this.load.spritesheet('hyena', 'assets/sprites/Hyena/Hyena_walk.png', {frameWidth: 48, frameHeight: 48});
+		this.load.spritesheet('hyena_attack', 'assets/sprites/Hyena/Hyena_attack.png', {frameWidth: 48, frameHeight: 48});
+		this.load.spritesheet('hyena_idle', 'assets/sprites/Hyena/Hyena_idle.png', {frameWidth: 48, frameHeight: 48});
+		this.load.spritesheet('scorpio', 'assets/sprites/Scorpio/Scorpio_walk.png', {frameWidth: 48, frameHeight: 48});
+		this.load.spritesheet('scorpio_attack', 'assets/sprites/Scorpio/Scorpio_attack.png', {frameWidth: 48, frameHeight: 48});
+		this.load.spritesheet('scorpio_idle', 'assets/sprites/Scorpio/Scorpio_idle.png', {frameWidth: 48, frameHeight: 48});
+		this.load.spritesheet('scorpio_projectile', 'assets/elements/Scorpio_Projectile.png', {frameWidth: 32, frameHeight: 32});
 
-		this.load.image('tileset2', 'assets/elements/tileset2.png')
-		//this.load.image('tileset3', 'assets/elements/tileset3.png')
-		//this.load.image('tileset4', 'assets/elements/tileset4.png')
-		this.load.image('tileset5', 'assets/elements/tileset5.png')
-        this.load.tilemapTiledJSON('tilemap','assets/elements/tilemap.json')
+		this.load.image('tileset2', 'assets/elements/tileset2.png');
+		//this.load.image('tileset3', 'assets/elements/tileset3.png');
+		//this.load.image('tileset4', 'assets/elements/tileset4.png');
+		this.load.image('tileset5', 'assets/elements/tileset5.png');
+        this.load.tilemapTiledJSON('tilemap','assets/elements/tilemap.json');
 		this.load.image('pauseButton', 'assets/elements/pauseButton.png');
 		this.load.image('levelPanel', 'assets/elements/levelPanel.png');
 		this.load.image('item','assets/elements/marco_objeto.png' );

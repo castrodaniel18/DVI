@@ -19,8 +19,8 @@ export default class ExperiencePointGroup extends Phaser.GameObjects.Group{
         for (let i=0; i<this.numExps; i++){
             let x =Phaser.Math.Between(xReference - MAX_DISTANCE, xReference + MAX_DISTANCE)
             let y =Phaser.Math.Between(yReference - MAX_DISTANCE, yReference + MAX_DISTANCE)
-            x = Phaser.Math.Clamp(x, 0, this.scene.game.config.width);
-            y = Phaser.Math.Clamp(y, 0, this.scene.game.config.height);
+            // x = Phaser.Math.Clamp(x, 0, this.scene.game.config.width);
+            // y = Phaser.Math.Clamp(y, 0, this.scene.game.config.height);
             let color = Phaser.Math.Between(0, 4);
             const expPoint = new ExperiencePoint(this.scene, x, y, EXP_SPRITES[color]);
             this.experiencePoints.push(expPoint);

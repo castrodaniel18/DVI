@@ -41,7 +41,7 @@ export default class PauseScene extends Phaser.Scene {
         this.houseButton = this.add.image(650, 170, 'houseButton').setInteractive();
         this.houseButton.setScale(3);
         this.houseButton.on('pointerdown', () => {
-            this.scene.stop('Level1Scene');
+            this.scene.stop('Level2Scene');
             this.scene.start('StartScene', { difficulty: this.difficulty });
             this.scene.stop('PauseScene');
         })
@@ -50,7 +50,7 @@ export default class PauseScene extends Phaser.Scene {
         this.pauseButton = this.add.image(750, 25, 'pauseButton').setInteractive();
 		this.pauseButton.setScale(2);
         this.pauseButton.on('pointerdown', () => {
-            this.scene.resume('Level1Scene', { difficulty: this.difficulty });
+            this.scene.resume('Level2Scene', { difficulty: this.difficulty });
             this.scene.stop('PauseScene', { difficulty: this.difficulty });
         });
 

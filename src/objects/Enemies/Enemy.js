@@ -60,8 +60,6 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
                 this.texto.x = this.x - 5;
                 this.texto.y = this.y - 40;
             }
-            else
-                this.destroy();
     }
 
     getHit(enemy, projectile){
@@ -102,18 +100,19 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
             },
             callbackScope: this
         });
-        
         if (this.isDead()){
-            const instance = this;
             this.destroyEnemyAnim.visible = true;
             this.destroyEnemyAnim.x = this.x;
             this.destroyEnemyAnim.y = this.y;
             this.destroyEnemyAnim.play('destroy_enemy_effect');
-            setTimeout(() => {
+            this.body.velocity.x = 0;
+            this.body.velocity.y = 0;
+            this.setVisible(false);
+            this.scene.time.delayedCall(DESTROY_ENEMY_TIME, () => {
                 this.destroyEnemyAnim.visible = false;
-                this.expDrop = new ExperiencePointGroup(instance.scene, instance.x, instance.y);
-            }, DESTROY_ENEMY_TIME);
-            this.destroy();
+                this.expDrop = new ExperiencePointGroup(this.scene, this.x, this.y);
+                this.destroy();
+            });
         }
     }
 

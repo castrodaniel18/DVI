@@ -1,14 +1,13 @@
 import { Scene } from 'phaser';
 import Enemy from './Enemy.js';
-import EnemyProjectileGroup from "../Projectiles/EnemyProjectileGroup.js";
-//import FireballGroup from "../Projectiles/FireballGroup";
+import VentolinProjectileGroup from '../Projectiles/VentolinProjectileGroup.js';
 
 const VENTOLIN_DAMAGE = 5;
 const VENTOLIN_HEALTH = 5;
 const VENTOLIN_SPEED = 10;
 const VENTOLIN_ATTACK_COOLDOWN = 4000;
-const VENTOLIN_WEAPON = EnemyProjectileGroup;
-const VENTOLIN_FIREBALLS=1;
+const VENTOLIN_WEAPON = VentolinProjectileGroup;
+const VENTOLIN_PROJECTILES=1;
 
 export default class Ventolin extends Enemy {
 
@@ -106,7 +105,7 @@ export default class Ventolin extends Enemy {
             
     }
     addWeapon(scene){
-        this.weapon = new VENTOLIN_WEAPON(scene, VENTOLIN_FIREBALLS);
+        this.weapon = new VENTOLIN_WEAPON(scene, VENTOLIN_PROJECTILES);
     }
     shoot(){
         this.weapon.shoot(this);
