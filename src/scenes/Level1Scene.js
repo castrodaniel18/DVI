@@ -8,7 +8,7 @@ import WaveController, {LEVEL_1} from "../objects/Enemies/WaveController";
 
 export default class Level1Scene extends Phaser.Scene {
 	constructor() {
-		super({ key: 'Level1Scene' });
+		super({ key: 'Level1Scene'});
 		this.enemies = [];
 		this.playerItems=[];
 		this.playerItemsBorder = [];
@@ -87,6 +87,12 @@ export default class Level1Scene extends Phaser.Scene {
 		// this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 		// this.physics.world.setBoundsCollision(true, true, true, true);
 		// this.physics.add.collider(this.player, arboles);
+		this.events=new Phaser.Events.EventEmitter();
+		this.scene.launch('healthBar',{
+			x:this.player.x-85,
+			y:this.player.y-25,
+			health:this.player.maxHealth,
+			levelName:'Level1Scene'});
 	}
 
 
@@ -94,6 +100,8 @@ export default class Level1Scene extends Phaser.Scene {
 		this.player.update();
 		this.waveController.update();
 		this.potions.trySpawn();
+		let playerData = { health: this.player.health, x: this.player.x-85, y: this.player.y-25 }; // Create object containing player data
+    	this.events.emit('updatePlayerData', playerData);
 	}
 
 	addCharacter(){
@@ -103,6 +111,6 @@ export default class Level1Scene extends Phaser.Scene {
 			this.player = new Electromancer(this, ELECTROMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2, 2);
 		if(this.characterName === LUMINOMANCER_NAME)
 			this.player = new LuminoMancer(this, LUMINOMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2, 2);
-		this.healthBar = new HealthBar(this, this.player.x, this.player.y);
+		//this.healthBar = new HealthBar(this, this.player.x, this.player.y);
 	}
 }
