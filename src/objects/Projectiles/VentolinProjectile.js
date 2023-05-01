@@ -1,42 +1,42 @@
 import Projectile from "./Projectile";
 
-export const ENEMY_PROJECTILE_IMGKEY_NAME = 'enemy_projectile_';
-const ENEMY_PROJECTILE_SPEED = 150;
-export const ENEMY_PROJECTILE_DAMAGE_FACTOR = 1;
-export default class EnemyProjectile extends Projectile{
+export const VENTOLIN_PROJECTILE_IMGKEY_NAME = 'ventolin_projectile_';
+const VENTOLIN_PROJECTILE_SPEED = 150;
+export const VENTOLIN_PROJECTILE_DAMAGE_FACTOR = 1;
+export default class VentolinProjectile extends Projectile{
     
     constructor(scene, x, y){
-        super(scene, x, y, ENEMY_PROJECTILE_IMGKEY_NAME);
+        super(scene, x, y, VENTOLIN_PROJECTILE_IMGKEY_NAME);
         this.setScale(0.01);
         this.scene = scene;
-        this.damage = ENEMY_PROJECTILE_DAMAGE_FACTOR;
-        this.speed = ENEMY_PROJECTILE_SPEED;
+        this.damage = VENTOLIN_PROJECTILE_DAMAGE_FACTOR;
+        this.speed = VENTOLIN_PROJECTILE_SPEED;
         this.createAnimations();
-        this.play("none_enemy");
+        this.play("none_ventolin");
         this.scene.physics.add.collider(this.scene.player, this, this.hitPlayer, null, this);
     }
 
     hitPlayer(){
-        this.scene.player.getHit(ENEMY_PROJECTILE_DAMAGE_FACTOR);
+        this.scene.player.getHit(VENTOLIN_PROJECTILE_DAMAGE_FACTOR);
         this.destroy();
     }
 
     createAnimations(){
         //Metemos la animación
         this.scene.anims.create({
-            key: 'none_enemy',
+            key: 'none_ventolin',
             frames: [ 
-                { key: ENEMY_PROJECTILE_IMGKEY_NAME+ '2', frame: ENEMY_PROJECTILE_IMGKEY_NAME + '2'}
+                { key: VENTOLIN_PROJECTILE_IMGKEY_NAME+ '2', frame: VENTOLIN_PROJECTILE_IMGKEY_NAME + '2'}
               ],
             frameRate: 5,
             repeat: -1
         });
 
         this.scene.anims.create({
-            key: 'fire_attack_enemy',
+            key: 'fire_attack_ventolin',
             frames: [ 
-                { key: ENEMY_PROJECTILE_IMGKEY_NAME + '1', frame: ENEMY_PROJECTILE_IMGKEY_NAME + '1'},
-                { key: ENEMY_PROJECTILE_IMGKEY_NAME + '2', frame: ENEMY_PROJECTILE_IMGKEY_NAME + '2'},
+                { key: VENTOLIN_PROJECTILE_IMGKEY_NAME + '1', frame: VENTOLIN_PROJECTILE_IMGKEY_NAME + '1'},
+                { key: VENTOLIN_PROJECTILE_IMGKEY_NAME + '2', frame: VENTOLIN_PROJECTILE_IMGKEY_NAME + '2'},
               ],
             frameRate: 2,
             repeat: 0
@@ -54,7 +54,7 @@ export default class EnemyProjectile extends Projectile{
 
         //Activamos la animación
         this.setRotation(this.angle);
-        this.play('fire_attack_enemy');
+        this.play('fire_attack_ventolin');
 
         //Establecemos la velocidad según los valores que obtuvimos con el listener del ratón
         this.setVelocity(this.speed * Math.cos(this.rotation), this.speed * Math.sin(this.rotation));
