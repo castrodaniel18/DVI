@@ -2,6 +2,7 @@ import GoblinsGroup from "./GoblinsGroup";
 import VentolinsGroup from "./VentolinGroup";
 import Centipede from "./Centipede";
 import SnakeGroup from "./SnakeGroup";
+import HyenasGroup from "./HyenaGroup";
 
 export const LEVEL_1 = [{time: 0, boss: false, groupName: GoblinsGroup, numEnemies: 5}, 
                         {time: 10000, boss: false, groupName: VentolinsGroup, numEnemies: 5}, 
@@ -15,7 +16,7 @@ export const LEVEL_1 = [{time: 0, boss: false, groupName: GoblinsGroup, numEnemi
                         {time: 24000, boss: true, bossName: Centipede, numEnemies: 5}]
 
 
-export const LEVEL_2 = [{time: 0, groupName: SnakeGroup, numEnemies: 10}]
+export const LEVEL_2 = [{time: 0, groupName: HyenasGroup, numEnemies: 10}]
 //             {time: 10000, groupName: VentolinsGroup, numEnemies: 10}, 
 //             {time: 15000, groupName: GoblinsGroup, numEnemies: 20},
 //             {time: 15000, groupName: VentolinsGroup, numEnemies: 5},

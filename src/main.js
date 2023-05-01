@@ -25,7 +25,7 @@ const config = {
 	dom: {
 		createContainer: true
 	},
-	scene: [StartScene, characterSelection, Level1Scene, Settings, LevelSelector, PauseScene, ItemSelectScene, HealthBar,GameOver],
+	scene: [StartScene, characterSelection, Level1Scene, Level2Scene, Settings, LevelSelector, PauseScene, ItemSelectScene, HealthBar,GameOver],
 	physics: {
 		default: 'arcade',
 		arcade: {

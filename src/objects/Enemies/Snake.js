@@ -56,7 +56,7 @@ export default class Snake extends Enemy{
 
         if(this.attackAnim && !this.charging)
             return 'snake_attack';
-        if((this.body.velocity.x === 0 && this.body.velocity.y === 0) || this.charging)
+        else if((this.body.velocity.x === 0 && this.body.velocity.y === 0) || this.charging)
             return 'snake_idle';
         return 'snake';
     }

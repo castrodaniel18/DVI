@@ -30,6 +30,9 @@ export default class Level2Scene extends Phaser.Scene {
 		this.load.spritesheet('snake', 'assets/sprites/Snake/Snake_walk.png', {frameWidth: 48, frameHeight: 48});
 		this.load.spritesheet('snake_attack', 'assets/sprites/Snake/Snake_attack.png', {frameWidth: 48, frameHeight: 48});
 		this.load.spritesheet('snake_idle', 'assets/sprites/Snake/Snake_idle.png', {frameWidth: 48, frameHeight: 48});
+		this.load.spritesheet('hyena', 'assets/sprites/Hyena/Hyena_walk.png', {frameWidth: 48, frameHeight: 48});
+		this.load.spritesheet('hyena_attack', 'assets/sprites/Hyena/Hyena_attack.png', {frameWidth: 48, frameHeight: 48});
+		this.load.spritesheet('hyena_idle', 'assets/sprites/Hyena/Hyena_idle.png', {frameWidth: 48, frameHeight: 48});
 
 		this.load.image('tileset2', 'assets/elements/tileset2.png')
 		//this.load.image('tileset3', 'assets/elements/tileset3.png')
