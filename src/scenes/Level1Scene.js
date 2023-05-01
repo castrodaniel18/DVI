@@ -60,8 +60,8 @@ export default class Level1Scene extends Phaser.Scene {
 		// Agrega el personaje a la escena y establece su posición en el centro de la cámara principal
 		this.addCharacter();
 		this.potions = new Potions(this);
-		this.physics.world.setBounds(0, 0, 1980, 1980);
-        this.cameras.main.setBounds(0, 0, 1980, 1980);
+		this.physics.world.setBounds(0, 0, layer.width, layer.height);
+        this.cameras.main.setBounds(0, 0, layer.width, layer.height);
         this.cameras.main.startFollow(this.player);
 		this.waveController = new WaveController(this, LEVEL_1);
 		//Marco para nivel
