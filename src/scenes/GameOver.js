@@ -6,7 +6,7 @@ export default class GameOver extends Phaser.Scene {
     }
   
     preload() {
-        this.load.image('bg','assets/elements/settingsPanelOpaco.png');
+        this.load.image('bg','assets/elements/settingsPanel.png');
         this.load.image('button', 'assets/elements/button.png');
     }
 

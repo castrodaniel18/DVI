@@ -101,7 +101,7 @@ export default class Level1Scene extends Phaser.Scene {
 		if (this.player.isDead) {
 			this.physics.pause(); // Detener cualquier cosa que esté sucediendo en el nivel actual.
 			setTimeout(() => {
-				this.scene.start('GameOver', {difficulty: this.difficulty, characterName: this.characterName})
+				this.scene.run('GameOver', {difficulty: this.difficulty, characterName: this.characterName})
 			  }, 2000);
 			
 		}
