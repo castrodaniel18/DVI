@@ -1,15 +1,16 @@
-const BAR_WIDTH = 150;
-const BAR_HEIGHT = 15;
+const BAR_WIDTH = 70;
+const BAR_HEIGHT = 7;
 export default class HealthBar extends Phaser.Scene {
     constructor() {
         super('healthBar');
         this.maxHealth = 100;
     }
     create(data) {
-        this.maxHealth = data.health;
+        this.maxHealth = data.health
         this.bar = this.add.graphics();
         this.bar.fillStyle(0x00f000, 1);
         this.bar.fillRect(data.x, data.y, BAR_WIDTH, BAR_HEIGHT);
+
         this.levelName=data.levelName;
         this.cameras.main.startFollow(this.scene.get(this.levelName).player);
         this.cameras.main.setBounds(0,0,
@@ -30,7 +31,22 @@ export default class HealthBar extends Phaser.Scene {
             else if(newBarWidth/BAR_WIDTH<0.5 && newBarWidth/BAR_WIDTH>0.2)barColor="0xffff00";
             else barColor="0xff0000";
             this.bar.clear();
-            this.bar.fillStyle(barColor, 1); 
+            let percentage = playerData.health / this.maxHealth;
+            let r, g, b;
+            
+            if (percentage >= 0.5) {
+              // Verde -> amarillo
+              r = Math.floor(255 * (1 - (percentage - 0.5) * 2));
+              g = 255;
+              b = 0;
+            } else {
+              // Amarillo -> rojo
+              r = 255;
+              g = Math.floor(255 * percentage * 2);
+              b = 0;
+            }
+            let color = (r << 16) | (g << 8) | b;
+            this.bar.fillStyle(color, 1); 
             this.bar.fillRect(playerData.x, playerData.y, newBarWidth, BAR_HEIGHT);
             }
         });

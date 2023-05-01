@@ -5,11 +5,11 @@ import SnakeGroup from "./SnakeGroup";
 import HyenasGroup from "./HyenaGroup";
 import ScorpiosGroup from "./ScorpiosGroup";
 
-// export const LEVEL_1 = [{time: 0, boss: false, groupName: GoblinsGroup, numEnemies: 5}, 
-//                         {time: 10000, boss: false, groupName: VentolinsGroup, numEnemies: 5},
-//                         {time: 0, boss: false, groupName: GoblinsGroup, numEnemies: 5}, 
-//                         {time: 24000, boss: true, bossName: Centipede, numEnemies: 1}]
-export const LEVEL_1 = [{time: 0, boss: true, bossName: Centipede, numEnemies: 1}]
+export const LEVEL_1 = [{time: 0, boss: false, groupName: GoblinsGroup, numEnemies: 5}, 
+                        {time: 10000, boss: false, groupName: VentolinsGroup, numEnemies: 5},
+                        {time: 0, boss: false, groupName: GoblinsGroup, numEnemies: 5}, 
+                        {time: 24000, boss: true, bossName: Centipede, numEnemies: 1}]
+//export const LEVEL_1 = [{time: 0, boss: true, bossName: Centipede, numEnemies: 1}]
 
 export const LEVEL_2 = [{time: 0, groupName: SnakeGroup, numEnemies: 3}]
 

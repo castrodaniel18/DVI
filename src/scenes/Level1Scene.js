@@ -95,8 +95,8 @@ export default class Level1Scene extends Phaser.Scene {
 		// this.physics.add.collider(this.player, arboles);
 		this.events=new Phaser.Events.EventEmitter();
 		this.scene.launch('healthBar',{
-			x:this.player.x-85,
-			y:this.player.y-25,
+			x:this.player.x-35,
+			y:this.player.y-15,
 			health:this.player.maxHealth,
 			levelName:'Level1Scene'});
 	}
@@ -106,7 +106,7 @@ export default class Level1Scene extends Phaser.Scene {
 		this.player.update();
 		this.waveController.update();
 		this.potions.trySpawn();
-		let playerData = { health: this.player.health, x: this.player.x-85, y: this.player.y-25 }; // Create object containing player data
+		let playerData = { health: this.player.health, x: this.player.x-35, y: this.player.y-15 }; // Create object containing player data
     	this.events.emit('updatePlayerData', playerData);
 		if (this.player.isDead) {
 			this.scene.pause();

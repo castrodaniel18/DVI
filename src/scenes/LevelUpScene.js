@@ -39,7 +39,6 @@ export default class LevelUpScene extends Phaser.Scene {
             elementosAleatorios.push(elementoAleatorio);
             }
         }
-        console.log(elementosAleatorios);
 
 
         //Tarjetas objetos

@@ -15,8 +15,6 @@ export default class Settings extends Phaser.Scene {
 
     init(data) {
         this.difficulty = data.difficulty;
-
-        console.log("difficulty: " + this.difficulty);
     }
   
     create() {
@@ -61,7 +59,6 @@ export default class Settings extends Phaser.Scene {
         this.soundBar.addListener('change');
         this.soundBar.on('change', () => {
             this.sound.volume = this.soundBar.node.firstChild.value / 100;
-            console.log("volumen: " + this.soundBar.node.firstChild.value/100);
         });
         //Se meten estilos a la barra de sonido
         this.createStyle();

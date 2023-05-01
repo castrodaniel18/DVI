@@ -20,8 +20,6 @@ export default class PauseScene extends Phaser.Scene {
     }
   
     create() {
-
-        console.log("Menú de pausa");
         this.scene.bringToTop();
         /*links assets
         https://mounirtohami.itch.io/pixel-art-gui-elements
@@ -68,7 +66,6 @@ export default class PauseScene extends Phaser.Scene {
         this.soundBar.addListener('change');
         this.soundBar.on('change', () => {
             this.sound.volume = this.soundBar.node.firstChild.value / 100;
-            console.log("volumen: " + this.soundBar.node.firstChild.value/100);
         });
         //Se meten estilos a la barra de sonido
         this.createStyle();

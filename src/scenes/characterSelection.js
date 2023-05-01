@@ -67,6 +67,7 @@ export default class StartScene extends Phaser.Scene {
         this.load.image(character3.CHARACTER_3_NAME, character3.CHARACTER_3_SELECTION);
         this.load.spritesheet(character3.CHARACTER_3_SPRITE_NAME, character3.CHARACTER_3_SPRITE,{frameWidth:character3.CHARACTER_3_SPRITE_SIZE, frameHeight:character3.CHARACTER_3_SPRITE_SIZE});    
         this.load.spritesheet('healthBar', 'assets/elements/health.png',{frameWidth:640, frameHeight:128});
+        this.load.image('healthBar_border', 'assets/elements/healthBarEmpty.png');
 
         //load piromancer
         this.load.spritesheet('piromancer_idle', 'assets/sprites/piromancer/Idle.png', {frameWidth: 128, frameHeight: 128});
