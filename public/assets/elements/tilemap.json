@@ -392,19 +392,6 @@
          "tilewidth":32
         }, 
         {
-         "columns":27,
-         "firstgid":377,
-         "image":"tileset4.png",
-         "imageheight":705,
-         "imagewidth":864,
-         "margin":0,
-         "name":"tileset4",
-         "spacing":0,
-         "tilecount":594,
-         "tileheight":32,
-         "tilewidth":32
-        }, 
-        {
          "columns":56,
          "firstgid":971,
          "image":"tileset5.png",

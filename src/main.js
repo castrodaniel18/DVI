@@ -7,7 +7,7 @@ import Settings from './scenes/Settings'
 import LevelSelector from './scenes/LevelSelector';
 import PauseScene from './scenes/PauseScene'
 import ItemSelectScene from './scenes/ItemSelectScene'
-
+import GameOver from './scenes/GameOver'
 const config = {
 	type: Phaser.AUTO,
 	parent: 'game',
@@ -22,7 +22,7 @@ const config = {
 	dom: {
 		createContainer: true
 	},
-	scene: [StartScene, characterSelection, Level1Scene, Settings, LevelSelector, PauseScene, ItemSelectScene],
+	scene: [StartScene, characterSelection, Level1Scene, Settings, LevelSelector, PauseScene, ItemSelectScene, GameOver],
 	physics: {
 		default: 'arcade',
 		arcade: {

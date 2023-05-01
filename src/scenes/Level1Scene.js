@@ -5,7 +5,6 @@ import Piromancer, {PIROMANCER_SPRITE_NAME, PIROMANCER_NAME} from "../objects/Ch
 import Electromancer, {ELECTROMANCER_SPRITE_NAME, ELECTROMANCER_NAME} from "../objects/Characters/Electromancer";
 import LuminoMancer, {LUMINOMANCER_SPRITE_NAME, LUMINOMANCER_NAME} from "../objects/Characters/LuminoMancer";
 import WaveController, {LEVEL_1} from "../objects/Enemies/WaveController";
-
 export default class Level1Scene extends Phaser.Scene {
 	constructor() {
 		super({ key: 'Level1Scene' });
@@ -15,6 +14,7 @@ export default class Level1Scene extends Phaser.Scene {
 		this.itemsOnBag = [];
 		this.itemImages = [];
 		this.itemLevels = [];
+		this.gameOver = false;
 	}
 
 	preload() {
@@ -94,6 +94,13 @@ export default class Level1Scene extends Phaser.Scene {
 		this.player.update();
 		this.waveController.update();
 		this.potions.trySpawn();
+		if (this.player.isDead) {
+			this.physics.pause(); // Detener cualquier cosa que esté sucediendo en el nivel actual.
+			setTimeout(() => {
+				this.scene.start('GameOver', {difficulty: this.difficulty, characterName: this.characterName})
+			  }, 2000);
+			
+		}
 	}
 
 	addCharacter(){
