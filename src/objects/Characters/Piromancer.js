@@ -77,4 +77,14 @@ export default class Piromancer extends Mage{
             this.body.offset.set(60, 65);
         }
     }
+
+    dashParry(){
+        this.speed *= 1.5;
+        this.buffSpeedAnim.visible = true;
+        this.buffSpeedAnim.anims.play('speed_buff', true);
+        setTimeout(() => {
+            this.speed /= 1.5;
+            this.buffSpeedAnim.visible = false;
+        }, 3000);
+    }
 }

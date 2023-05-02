@@ -78,4 +78,15 @@ export default class Luminomancer extends Mage{
             this.body.offset.set(55, 63);
         }
     }
+
+    dashParry(){
+        this.healingAnim.visible = true;
+        this.healingAnim.anims.play('healing', true);
+        if(this.health + 15 < this.maxHealth)
+            this.health += 15;
+        else this.health = this.maxHealth;
+        setTimeout(() => {
+            this.healingAnim.visible = false;
+        }, 1600);
+    }
 }

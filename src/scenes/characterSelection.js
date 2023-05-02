@@ -1,12 +1,14 @@
 import Phaser from "phaser";
-import * as character1 from "../objects/Characters/Character1";
-import * as character2 from "../objects/Characters/Character2";
-import * as character3 from "../objects/Characters/Character3";
 
-const CHARACTER_NAMES = [character1.CHARACTER_1_NAME, character2.CHARACTER_2_NAME, character3.CHARACTER_3_NAME];
+import * as LUMINOMANCER from "../objects/Characters/LuminoMancer";
+import * as ELECTROMANCER from "../objects/Characters/Electromancer";
+import * as PIROMANCER from "../objects/Characters/Piromancer";
+
 
 const INITIAL_CHARACTER_CARD_POS = 200;
 const CHARACTER_CARD_SEPARATION = 200;
+
+const CHARACTER_NAMES = [PIROMANCER.PIROMANCER_NAME, ELECTROMANCER.ELECTROMANCER_NAME, LUMINOMANCER.LUMINOMANCER_NAME];
 
 export default class StartScene extends Phaser.Scene {
     constructor() {
@@ -95,12 +97,10 @@ export default class StartScene extends Phaser.Scene {
     }
 
     loadCharacters(){
-        this.load.image(character1.CHARACTER_1_NAME, character1.CHARACTER_1_SELECTION);
-        this.load.spritesheet(character1.CHARACTER_1_SPRITE_NAME, character1.CHARACTER_1_SPRITE,{frameWidth:character1.CHARACTER_1_SPRITE_SIZE, frameHeight:character1.CHARACTER_1_SPRITE_SIZE});
-        this.load.image(character2.CHARACTER_2_NAME, character2.CHARACTER_2_SELECTION);
-        this.load.spritesheet(character2.CHARACTER_2_SPRITE_NAME, character2.CHARACTER_2_SPRITE,{frameWidth:character2.CHARACTER_2_SPRITE_SIZE, frameHeight:character2.CHARACTER_2_SPRITE_SIZE});
-        this.load.image(character3.CHARACTER_3_NAME, character3.CHARACTER_3_SELECTION);
-        this.load.spritesheet(character3.CHARACTER_3_SPRITE_NAME, character3.CHARACTER_3_SPRITE,{frameWidth:character3.CHARACTER_3_SPRITE_SIZE, frameHeight:character3.CHARACTER_3_SPRITE_SIZE});    
+        this.load.image(PIROMANCER.PIROMANCER_NAME, PIROMANCER.PIROMANCER_SELECTION);
+        this.load.image(ELECTROMANCER.ELECTROMANCER_NAME, ELECTROMANCER.ELECTROMANCER_SELECTION);
+        this.load.image(LUMINOMANCER.LUMINOMANCER_NAME, LUMINOMANCER.LUMINOMANCER_SELECTION);
+
         this.load.spritesheet('healthBar', 'assets/elements/health.png',{frameWidth:640, frameHeight:128});
 
         //load piromancer

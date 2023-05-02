@@ -105,5 +105,13 @@ export default class LevelSelector extends Phaser.Scene {
         buttonBosses.on('pointerdown', function() {
           this.scene.start('LevelDemoBosses', { characterName: this.characterName, difficulty: this.difficulty });
         }, this);
+
+        var buttonPotions = this.add.image(40,160, 'greenButton');
+        buttonPotions.setScale(0.05);
+        var buttonPotionsText = this.add.text(55, 153, 'Demo Potions', { fontFamily: 'myFont', fontSize: '16px',  color: '#000000' });
+        buttonPotions.setInteractive();
+        buttonPotions.on('pointerdown', function() {
+          this.scene.start('LevelDemoPotions', { characterName: this.characterName, difficulty: this.difficulty });
+        }, this);
     }
   }

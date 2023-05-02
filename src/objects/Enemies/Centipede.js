@@ -275,6 +275,7 @@ export default class Centipede extends Boss {
                 this.scene.time.delayedCall(DESTROY_ENEMY_TIME * 2.5, () => {
                     this.destroyEnemyAnim.visible = false;
                     this.expDrop = new ExperiencePointGroup(auxScene, this.x, this.y);
+                    this.scene.count++;
                     this.destroy();
                 });
             }
