@@ -64,6 +64,10 @@ export default class LevelDemoBosses extends Phaser.Scene {
 		const layer3 = map.createLayer('camino', tileset2, 0, 0)
 		const layer4 = map.createLayer('arbustos', tileset2, 0, 0)
 		const layer5 = map.createLayer('piedras', tileset5, 0, 0)
+
+		layer2.setCollisionByExclusion(156); // Todas las capas son colisionables
+		layer4.setCollisionByExclusion([-1]); // Todas las capas son colisionables
+		layer5.setCollision(1485);
 		
 		// Agrega el personaje a la escena y establece su posición en el centro de la cámara principal
 		this.addCharacter();
@@ -99,7 +103,13 @@ export default class LevelDemoBosses extends Phaser.Scene {
 			x:this.player.x-35,
 			y:this.player.y-15,
 			health:this.player.maxHealth,
-			levelName:'LevelDemoBosses'});
+			levelName:'LevelDemoBosses'
+		});
+
+		this.physics.add.collider(this.player, layer2);
+		this.physics.add.collider(this.player, layer4);
+		this.physics.add.collider(this.player, layer5);
+
 	}
 
 
