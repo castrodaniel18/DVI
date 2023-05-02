@@ -18,7 +18,7 @@ export default class Scorpio extends Enemy {
    */
 	constructor(scene, x, y, imgKey) {
 		super(scene, x, y, imgKey);
-        this.health = SCORPIO_HEALTH;
+        this.health = SCORPIO_HEALTH * this.scene.rateDifficulty;
         this.sprite = imgKey;
 
         this.createAnimations();
@@ -116,9 +116,9 @@ export default class Scorpio extends Enemy {
 
     hitPlayer(){
         if(!this.cooldown && !this.attackAnim)
-            this.scene.player.getHit(SCORPIO_DAMAGE);
+            this.scene.player.getHit(SCORPIO_DAMAGE * this.scene.rateDifficulty);
         else if (this.attackAnim && !this.hasHitPlayer){
-            this.scene.player.getHit(SCORPIO_DAMAGE);
+            this.scene.player.getHit(SCORPIO_DAMAGE * this.scene.rateDifficulty);
             this.hasHitPlayer = true;
         }
     }

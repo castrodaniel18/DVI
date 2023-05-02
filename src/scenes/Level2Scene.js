@@ -15,6 +15,7 @@ export default class Level2Scene extends Phaser.Scene {
 		this.itemImages = [];
 		this.itemLevels = [];
 		this.count = 0;
+		this.rateDifficulty = 1;
 	}
 
 	preload() {
@@ -52,6 +53,8 @@ export default class Level2Scene extends Phaser.Scene {
 		// guarda el personaje seleccionado en una variable
 		this.characterName = data.characterName;
 		this.difficulty = data.difficulty;
+		if(this.difficulty == 'easy') this.rateDifficulty = 0.8;
+		if(this.difficulty == 'hard') this.rateDifficulty = 1.2;
 	}
 
 	create() {
@@ -76,7 +79,7 @@ export default class Level2Scene extends Phaser.Scene {
 		this.playerItemsBorder[0] = this.add.image(50, 100,'item');
 		this.playerItemsBorder[1] = this.add.image(100, 100,'item');
 
-		
+		this.numEnemies = LEVEL_2.reduce((acc, curr) => acc + curr.numEnemies, 0)
 
 		//Botón de pausa
 		this.pauseButton = this.add.image(750, 25, 'pauseButton').setInteractive();

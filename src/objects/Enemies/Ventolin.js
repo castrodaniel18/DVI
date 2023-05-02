@@ -20,7 +20,7 @@ export default class Ventolin extends Enemy {
     constructor(scene, x, y, imgKey) {
         super(scene, x, y, imgKey);
         this.setDisplaySize(50, 50);
-        this.health = VENTOLIN_HEALTH;
+        this.health = VENTOLIN_HEALTH * this.scene.rateDifficulty;
         this.addWeapon(scene);
         this.createAnimations();
 
@@ -83,7 +83,7 @@ export default class Ventolin extends Enemy {
     attack(){
         if(this.cooldown)
             return;
-        this.scene.player.getHit(VENTOLIN_DAMAGE);
+        this.scene.player.getHit(VENTOLIN_DAMAGE * this.scene.rateDifficulty);
         this.cooldown = true;
         setTimeout(() => {
             this.cooldown = false;
