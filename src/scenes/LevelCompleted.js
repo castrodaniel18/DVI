@@ -37,7 +37,7 @@ export default class LevelCompleted extends Phaser.Scene {
         this.startButton.setScale(6, 3.5);
         this.add.text(340, 335, 'Main menu', { fontFamily: 'myFont', fontSize: '26px', color: '#ffffff' });
         this.startButton.on('pointerdown', () => {
-            this.scene.start('StartScene', { difficulty: this.difficulty});
+            this.scene.run('StartScene', { difficulty: this.difficulty});
         });
     }
   }

@@ -14,6 +14,7 @@ export default class Level1Scene extends Phaser.Scene {
 		this.itemImages = [];
 		this.itemLevels = [];
 		this.gameOver = false;
+		this.count = 0;
 	}
 
 	preload() {
@@ -74,8 +75,7 @@ export default class Level1Scene extends Phaser.Scene {
 		this.playerItemsBorder[0] = this.add.image(50, 100,'item');
 		this.playerItemsBorder[1] = this.add.image(100, 100,'item');
 
-		
-
+		this.numEnemies = LEVEL_1.reduce((acc, curr) => acc + curr.numEnemies, 0)
 		//Botón de pausa
 		this.pauseButton = this.add.image(750, 25, 'pauseButton').setInteractive();
 		this.pauseButton.setScale(2);
@@ -109,7 +109,11 @@ export default class Level1Scene extends Phaser.Scene {
 			this.scene.pause();
 			this.scene.run('GameOver', {difficulty: this.difficulty, characterName: this.characterName, level: 'Level1Scene'})
 		}
-		
+		if(this.count == this.numEnemies) {
+			this.count = 0
+			this.scene.pause()
+			this.scene.run('LevelCompleted', {difficulty: this.difficulty, characterName: this.characterName})
+		}
 	}
 
 	addCharacter(){
