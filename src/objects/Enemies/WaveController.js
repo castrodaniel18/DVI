@@ -5,17 +5,17 @@ import HyenasGroup from "./HyenaGroup";
 import ScorpiosGroup from "./ScorpiosGroup";
 import CentipedeGroup from "./CentipedeGroup";
 
-// export const LEVEL_1 = [{time: 0, boss: false, groupName: GoblinsGroup, numEnemies: 5}, 
-//                         {time: 15000, boss: false, groupName: VentolinsGroup, numEnemies: 3},
-//                         {time: 30000, boss: false, groupName: GoblinsGroup, numEnemies: 3},
-//                         {time: 45000, boss: false, groupName: GoblinsGroup, numEnemies: 5}, 
-//                         {time: 45000, boss: false, groupName: VentolinsGroup, numEnemies: 5},
-//                         {time: 80000, boss: false, groupName: GoblinsGroup, numEnemies: 10}, 
-//                         {time: 80000, boss: false, groupName: VentolinsGroup, numEnemies: 7},
-//                         {time: 140000, boss: true, groupName: CentipedeGroup, numEnemies: 1}]
+export const LEVEL_1 = [{time: 0, boss: false, groupName: GoblinsGroup, numEnemies: 5}, 
+                         {time: 15000, boss: false, groupName: VentolinsGroup, numEnemies: 3},
+                         {time: 30000, boss: false, groupName: GoblinsGroup, numEnemies: 3},
+                         {time: 45000, boss: false, groupName: GoblinsGroup, numEnemies: 5}, 
+                         {time: 45000, boss: false, groupName: VentolinsGroup, numEnemies: 5},
+                         {time: 80000, boss: false, groupName: GoblinsGroup, numEnemies: 10}, 
+                         {time: 80000, boss: false, groupName: VentolinsGroup, numEnemies: 7},
+                         {time: 140000, boss: true, groupName: CentipedeGroup, numEnemies: 1}]
 
 
-export const LEVEL_1 = [{time: 0, boss: false, groupName: VentolinsGroup, numEnemies: 20}]
+//export const LEVEL_1 = [{time: 0, boss: false, groupName: VentolinsGroup, numEnemies: 20}]
 
 export const LEVEL_2 = [{time: 0, boss: false, groupName: SnakeGroup, numEnemies: 5}, 
                         {time: 15000, boss: false, groupName: ScorpiosGroup, numEnemies: 3},
