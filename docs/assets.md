@@ -12,3 +12,5 @@ Aquí se detallan los distintos assets que utilizamos dentro del juego, de dónd
 [goblin](../public/assets/sprites/goblin.png) Spritesheet para el enemigo goblin. Obtenido de [aquí](https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator/)
 
 [player](../public/assets/sprites/loose%20sprites.png) Spritesheet para el personaje del jugador. Modificado de [8-Directional Gameboy Character Template](https://gibbongl.itch.io/8-directional-gameboy-character-template)
+
+[Boss del nivel 1](../public/assets/sprites/Centipede) Spritesheet para el boss del nivel 1. Obtenido de [Craftpix.net](https://craftpix.net/freebies/free-swamp-bosses-pixel-art-character-pack/)
