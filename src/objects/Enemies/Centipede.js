@@ -272,6 +272,7 @@ export default class Centipede extends Boss {
                 this.colliderSet = false;
                 this.scene.physics.world.removeCollider(this.collider);
                 let auxScene = this.scene;
+                this.scene.count++
                 this.scene.time.delayedCall(DESTROY_ENEMY_TIME * 2.5, () => {
                     this.destroyEnemyAnim.visible = false;
                     this.expDrop = new ExperiencePointGroup(auxScene, this.x, this.y);
