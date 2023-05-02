@@ -10,7 +10,7 @@ export default class Snake extends Enemy{
     constructor(scene, x, y, sprite){
         super(scene, x,  y, sprite);
 		//this.setDisplaySize(50,50);
-        this.health = SNAKE_HEALTH;
+        this.health = SNAKE_HEALTH * this.scene.rateDifficulty;
         this.sprite = sprite;
         this.speed = SNAKE_SPEED;
         this.createAnimations();
@@ -123,9 +123,9 @@ export default class Snake extends Enemy{
 
     hitPlayer(){
         if(!this.cooldown && !this.attackAnim)
-            this.scene.player.getHit(SNAKE_DAMAGE);
+            this.scene.player.getHit(SNAKE_DAMAGE * this.scene.rateDifficulty);
         else if (this.attackAnim && !this.hasHitPlayer){
-            this.scene.player.getHit(SNAKE_DAMAGE);
+            this.scene.player.getHit(SNAKE_DAMAGE * this.scene.rateDifficulty);
             this.hasHitPlayer = true;
         }
     }

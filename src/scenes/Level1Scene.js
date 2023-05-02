@@ -15,6 +15,7 @@ export default class Level1Scene extends Phaser.Scene {
 		this.itemLevels = [];
 		this.gameOver = false;
 		this.count = 0;
+		this.rateDifficulty = 1;
 	}
 
 	preload() {
@@ -45,6 +46,8 @@ export default class Level1Scene extends Phaser.Scene {
 		// guarda el personaje seleccionado en una variable
 		this.characterName = data.characterName;
 		this.difficulty = data.difficulty;
+		if(this.difficulty == 'easy') this.rateDifficulty = 0.8;
+		if(this.difficulty == 'hard') this.rateDifficulty = 1.2;
 	}
 
 	create() {

@@ -17,7 +17,7 @@ export default class Goblin extends Enemy {
 	constructor(scene, x, y, imgKey) {
 		super(scene, x, y, imgKey);
 		this.setDisplaySize(50,50);
-        this.health = GOBLIN_HEALTH;
+        this.health = GOBLIN_HEALTH * this.scene.rateDifficulty;
 
         this.createAnimations();
         this.play('up_goblin');
@@ -82,11 +82,12 @@ export default class Goblin extends Enemy {
     attack(){
         if(this.cooldown)
             return;
-        this.scene.player.getHit(GOBLIN_DAMAGE);
+        this.scene.player.getHit(GOBLIN_DAMAGE * this.scene.rateDifficulty);
         this.cooldown = true;
         setTimeout(() => {
             this.cooldown = false;
         }, GOBLIN_ATTACK_COOLDOWN);
+        console.log(this.scene.rateDifficulty)
     }
 
     isDead(){

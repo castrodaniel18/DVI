@@ -16,7 +16,7 @@ export default class Hyena extends Enemy {
    */
 	constructor(scene, x, y, imgKey) {
 		super(scene, x, y, imgKey);
-        this.health = HYENA_HEALTH;
+        this.health = HYENA_HEALTH * this.scene.rateDifficulty;
         this.sprite = imgKey;
 
         this.createAnimations();
@@ -75,7 +75,7 @@ export default class Hyena extends Enemy {
     attack(){
         if(this.cooldown)
             return;
-        this.scene.player.getHit(HYENA_DAMAGE);
+        this.scene.player.getHit(HYENA_DAMAGE * this.scene.rateDifficulty);
         this.cooldown = true;
         this.attackAnim = true;
         setTimeout(() => {
