@@ -86,8 +86,8 @@ preUpdate(t,dt){
     }
     //this.scene.healthBar.updateHealth();
     this.playerLevelText.destroy();
-    this.playerLevelText = this.scene.add.text(10, 10, 'Nivel: ' + this.playerLevel + ' - Exp: ' + this.playerExp, { fontFamily: 'myFont', fontSize: '26px', fill: '#FFFFFF' });
-    this.playerLevelText.setPosition(this.scene.cameras.main.scrollX + 15, this.scene.cameras.main.scrollY + 15);
+    this.playerLevelText = this.scene.add.text(15, 20, 'Level: ' + this.playerLevel + ' - Exp: ' + this.playerExp, { fontFamily: 'myFont', fontSize: '26px', fill: '#FFFFFF' });
+    this.playerLevelText.setPosition(this.scene.cameras.main.scrollX + 17, this.scene.cameras.main.scrollY + 20);
     this.scene.levelDecoration.setPosition(this.scene.cameras.main.scrollX + 140, this.scene.cameras.main.scrollY + 30);
     //El 2 tendría que ser inventorySize pero está sin inicializar
     let pos = 50;
@@ -105,7 +105,7 @@ preUpdate(t,dt){
     pos = 30;
     for(let i=0;i<this.inventorySize;i++){
         if (this.scene.itemLevels[i]){
-            this.scene.itemLevels[i].setPosition(this.scene.cameras.main.scrollX + pos, this.scene.cameras.main.scrollY + 120);
+            this.scene.itemLevels[i].setPosition(this.scene.cameras.main.scrollX + pos, this.scene.cameras.main.scrollY + 127);
             pos += 50;
         }
     }
