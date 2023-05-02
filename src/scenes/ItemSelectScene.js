@@ -1,10 +1,5 @@
 import Phaser from "phaser";
-/*
-import * as item1 from "../objects/Items/Stone";
-import * as item2 from "../objects/Items/Cape";
-import * as item3 from "../objects/Items/Knife";
-import * as item4 from "../objects/Items/Fang";
-*/
+
 import Stone from "../objects/Items/Stone";
 import Cape from "../objects/Items/Cape";
 import Knife from "../objects/Items/Knife";
@@ -20,11 +15,11 @@ export default class ItemSelectScene extends Phaser.Scene{
     }
     preload(){
         //https://drunkenimpgamestudio.itch.io/pixel-ui-borders
-        this.load.image('levelUpBorder','public/assets/elements/levelUpBorder.png');
-        this.load.image('Fang_card','public/assets/elements/colmillo_chupasangre_card.png');
-        this.load.image('Knife_card','public/assets/elements/cuchillo_sacaunto_card.png');
-        this.load.image('Cape_card','public/assets/elements/manto_nuberu_card.png');
-        this.load.image('Stone_card','public/assets/elements/piedra_san_pedro_card.png');
+        this.load.image('levelUpBorder','/assets/elements/levelUpBorder.png');
+        this.load.image('Fang_card','/assets/elements/colmillo_chupasangre_card.png');
+        this.load.image('Knife_card','/assets/elements/cuchillo_sacaunto_card.png');
+        this.load.image('Cape_card','/assets/elements/manto_nuberu_card.png');
+        this.load.image('Stone_card','/assets/elements/piedra_san_pedro_card.png');
     }
 
     init(data){
