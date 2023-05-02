@@ -282,11 +282,12 @@ dash(){
     this.isInvencible = true;
     this.setTint(0x38FCFF); // Cambiar el color del personaje a azul
     this.alpha = 0.5;
-  
+    this.dashing = true;
     setTimeout(() => {
         this.speed /= this.dashSpeedFactor;
         this.isInvencible = false;
         this.canMove = true;
+        this.dashing = false;
         setTimeout(() => {
             this.canDash = true;
         }, this.dashCooldown);

@@ -14,11 +14,24 @@ export default class ScorpioProjectile extends Projectile{
         this.createAnimations();
         this.play("none_scorpio");
         this.scene.physics.add.collider(this.scene.player, this, this.hitPlayer, null, this);
+        this.specialProb = Math.random();
+        if (this.specialProb < 0.5){
+            this.special = true;
+            this.setTint(0xff0000)
+        }
+        else
+            this.special = false;
     }
 
     hitPlayer(){
-        this.scene.player.getHit(SCORPIO_PROJECTILE_DAMAGE_FACTOR);
-        this.destroy();
+        if(this.visible){
+            if(this.special && this.scene.player.dashing)
+            this.scene.player.dashParry();
+            else
+                this.scene.player.getHit(SCORPIO_PROJECTILE_DAMAGE_FACTOR);
+            this.setVisible(false);
+            this.setActive(false);
+        }
     }
 
     createAnimations(){

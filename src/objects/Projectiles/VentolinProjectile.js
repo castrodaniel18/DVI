@@ -13,14 +13,26 @@ export default class VentolinProjectile extends Projectile{
         this.speed = VENTOLIN_PROJECTILE_SPEED;
         this.createAnimations();
         this.play("none_ventolin");
-        this.setVisible(true);
         this.scene.physics.add.collider(this.scene.player, this, this.hitPlayer, null, this);
+        this.specialProb = Math.random();
+        this.setVisible(true);
+        if (this.specialProb < 0.5){
+            this.special = true;
+            this.setTint(0xff0000)
+        }
+        else
+            this.special = false;
     }
 
     hitPlayer(){
-        this.scene.player.getHit(VENTOLIN_PROJECTILE_DAMAGE_FACTOR);
-        this.setVisible(false);
-        this.setActive(false);
+        if(this.visible){
+            if(this.special && this.scene.player.dashing)
+            this.scene.player.dashParry();
+        else
+            this.scene.player.getHit(VENTOLIN_PROJECTILE_DAMAGE_FACTOR);
+            this.setVisible(false);
+            this.setActive(false);
+        }
     }
 
     createAnimations(){
@@ -60,5 +72,7 @@ export default class VentolinProjectile extends Projectile{
 
         //Establecemos la velocidad según los valores que obtuvimos con el listener del ratón
         this.setVelocity(this.speed * Math.cos(this.rotation), this.speed * Math.sin(this.rotation));
+
+        this.body.setSize(20, 20);
     }
 }

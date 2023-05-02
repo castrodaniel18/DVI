@@ -79,4 +79,14 @@ export default class Electromancer extends Mage{
             this.body.offset.set(60, 65);
         }
     }
+
+    dashParry(){
+        this.damage *= 1.5;
+        this.buffDamageAnim.visible = true;
+        this.buffFamageAnim.anims.play('damage_buff', true);
+        setTimeout(() => {
+            this.damage /= 1.5;
+            this.buffDamageAnim.visible = false;
+        }, 3000);
+    }
 }
