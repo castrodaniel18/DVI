@@ -19,6 +19,7 @@ const config = {
 	width: 800,
 	height: 600,
 	pixelArt: true,
+	
 	scale:{
 	autoCenter: Phaser.Scale.CENTER_BOTH,
 	mode: Phaser.Scale.FIT,
@@ -32,6 +33,7 @@ const config = {
 		default: 'arcade',
 		arcade: {
 			gravity: { y: 0 },
+			fps:60,
 			debug: true
 		},
 	},

@@ -107,7 +107,7 @@ export default class LevelDemoBosses extends Phaser.Scene {
 		this.player.update();
 		this.waveController.update();
 		//this.potions.trySpawn();
-		let playerData = { health: this.player.health, x: this.player.x-35, y: this.player.y-15 };
+		let playerData = { health: this.player.health, x: this.player.x-35, y: this.player.y-15, canDash:this.player.canDash};
     	this.events.emit('updatePlayerData', playerData);
 		if (this.player.isDead) {
 			this.scene.pause();
