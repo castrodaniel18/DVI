@@ -15,11 +15,11 @@ export default class ItemSelectScene extends Phaser.Scene{
     }
     preload(){
         //https://drunkenimpgamestudio.itch.io/pixel-ui-borders
-        this.load.image('levelUpBorder','/assets/elements/levelUpBorder.png');
-        this.load.image('Fang_card','/assets/elements/colmillo_chupasangre_card.png');
-        this.load.image('Knife_card','/assets/elements/cuchillo_sacaunto_card.png');
-        this.load.image('Cape_card','/assets/elements/manto_nuberu_card.png');
-        this.load.image('Stone_card','/assets/elements/piedra_san_pedro_card.png');
+        this.load.image('levelUpBorder','./assets/elements/levelUpBorder.png');
+        this.load.image('Fang_card','./assets/elements/colmillo_chupasangre_card.png');
+        this.load.image('Knife_card','./assets/elements/cuchillo_sacaunto_card.png');
+        this.load.image('Cape_card','./assets/elements/manto_nuberu_card.png');
+        this.load.image('Stone_card','./assets/elements/piedra_san_pedro_card.png');
     }
 
     init(data){

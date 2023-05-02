@@ -156,9 +156,9 @@ export default class StartScene extends Phaser.Scene {
     }
 
     loadObjects(){
-        this.load.image('Fang','public/assets/elements/colmillo_chupasangre.png');
-        this.load.image('Knife','public/assets/elements/cuchillo_sacauntos.png');
-        this.load.image('Cape','public/assets/elements/manto_nuberu.png');
-        this.load.image('Stone','public/assets/elements/piedra_san_pedro.png');
+        this.load.image('Fang','assets/elements/colmillo_chupasangre.png');
+        this.load.image('Knife','assets/elements/cuchillo_sacauntos.png');
+        this.load.image('Cape','assets/elements/manto_nuberu.png');
+        this.load.image('Stone','assets/elements/piedra_san_pedro.png');
     }
   }
