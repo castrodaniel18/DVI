@@ -112,8 +112,8 @@ export default class Level2Scene extends Phaser.Scene {
 		let playerData = { health: this.player.health, x: this.player.x - 35, y: this.player.y - 15}; // Create object containing player data
     	this.events.emit('updatePlayerData', playerData);
 		if (this.player.isDead) {
-			this.scene.run()
-			this.scene.pause('GameOver', {difficulty: this.difficulty, characterName: this.characterName})
+			this.scene.pause()
+			this.scene.start('GameOver', {difficulty: this.difficulty, characterName: this.characterName, level: 'Level2Scene'})
 			  		
 		}
 	}
