@@ -13,6 +13,7 @@ export default class GameOver extends Phaser.Scene {
     init(data) {
         this.difficulty = data.difficulty;
         this.characterName = data.characterName;
+        this.level = data.level
     }
   
     create() {
@@ -29,7 +30,7 @@ export default class GameOver extends Phaser.Scene {
         this.tryAgainButton.setScale(6, 3.5)
         this.add.text(340, 195, 'Try again', { fontFamily: 'myFont', fontSize: '26px', color: '#ffffff' });
         this.tryAgainButton.on('pointerdown', () => {
-            this.scene.start('Level1Scene', { difficulty: this.difficulty, characterName: this.characterName});
+            this.scene.start(this.level , { difficulty: this.difficulty, characterName: this.characterName});
         });
         //Level selector
         this.levelSelectorButton = this.add.image(400, 300, 'button').setInteractive();
