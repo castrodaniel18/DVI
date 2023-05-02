@@ -33,8 +33,10 @@ export default class Boss extends Phaser.GameObjects.Sprite {
                 this.texto.x = this.x - 5;
                 this.texto.y = this.y - 40;
             }
-            else
-                this.destroy();
+           else{
+                this.body.velocity.x=0;
+                this.body.velocity.y=0;
+           }
     }
 
     isDead(){

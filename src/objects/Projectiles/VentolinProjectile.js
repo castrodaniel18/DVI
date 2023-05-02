@@ -18,7 +18,8 @@ export default class VentolinProjectile extends Projectile{
 
     hitPlayer(){
         this.scene.player.getHit(VENTOLIN_PROJECTILE_DAMAGE_FACTOR);
-        this.destroy();
+        this.setVisible(false);
+        this.setActive(false);
     }
 
     createAnimations(){
@@ -39,7 +40,7 @@ export default class VentolinProjectile extends Projectile{
                 { key: VENTOLIN_PROJECTILE_IMGKEY_NAME + '2', frame: VENTOLIN_PROJECTILE_IMGKEY_NAME + '2'},
               ],
             frameRate: 2,
-            repeat: 0
+            repeat: 0,
         });
     }
 

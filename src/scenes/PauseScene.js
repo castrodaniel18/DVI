@@ -40,6 +40,7 @@ export default class PauseScene extends Phaser.Scene {
         this.houseButton.on('pointerdown', () => {
             this.scene.stop(this.lastScene);
             this.scene.start('StartScene', { difficulty: this.difficulty });
+            this.scene.setVisible(false,'HealthBar');
             this.scene.stop('PauseScene');
         })
 

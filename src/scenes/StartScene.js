@@ -35,6 +35,7 @@ export default class StartScene extends Phaser.Scene {
     }
   
     create() {
+      this.scene.bringToTop();
       //Fondo
       this.background = this.add.image(0, 0, 'background');
       this.background.setScale(800 / this.background.width, 600 / this.background.height);

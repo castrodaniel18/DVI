@@ -2,7 +2,7 @@ const BAR_WIDTH = 70;
 const BAR_HEIGHT = 7;
 export default class HealthBar extends Phaser.Scene {
     constructor() {
-        super('healthBar');
+        super('HealthBar');
         this.maxHealth = 100;
     }
     create(data) {

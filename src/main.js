@@ -8,7 +8,7 @@ import Settings from './scenes/Settings'
 import LevelSelector from './scenes/LevelSelector';
 import PauseScene from './scenes/PauseScene'
 import ItemSelectScene from './scenes/ItemSelectScene'
-import HealthBar from './objects/Characters/Bar'
+import HealthBar from './scenes/HealthBar'
 
 import GameOver from './scenes/GameOver'
 const config = {

@@ -80,7 +80,6 @@ preUpdate(t,dt){
     super.preUpdate(t,dt);
 
     if (this.health <= 0){
-        //this.scene.healthBar.playerDie();
         this.playerDie();
         return;
     }

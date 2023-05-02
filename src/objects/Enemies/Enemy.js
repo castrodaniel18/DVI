@@ -110,6 +110,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
                 this.body.velocity.y = 0;
                 this.setVisible(false);
                 this.colliderSet=false;
+                this.scene.physics.world.removeCollider(this.collider)
                 this.scene.time.delayedCall(DESTROY_ENEMY_TIME, () => { 
                     this.destroyEnemyAnim.visible = false;
                     this.expDrop = new ExperiencePointGroup(this.scene, this.x, this.y);
@@ -139,7 +140,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
     }
 
     addCollisions(){
-        this.scene.physics.add.collider(this.scene.player.weapon, this, this.getHit, null, this);
+        this.collider=this.scene.physics.add.collider(this.scene.player.weapon, this, this.getHit, null, this);
         this.colliderSet=true;
     }
 }

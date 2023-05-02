@@ -26,6 +26,7 @@ export default class Level1Scene extends Phaser.Scene {
 		this.load.spritesheet('centipede_attack_1', 'assets/sprites/Centipede/Centipede_attack2.png', {frameWidth: 72, frameHeight: 40});
 		this.load.spritesheet('centipede_attack_2', 'assets/sprites/Centipede/Centipede_attack3.png', {frameWidth: 72, frameHeight: 38});
 		this.load.spritesheet('centipede_attack_3', 'assets/sprites/Centipede/Centipede_attack4.png', {frameWidth: 72, frameHeight: 26});
+		this.load.spritesheet('centipede_death', 'assets/sprites/Centipede/Centipede_death.png', {frameWidth: 72, frameHeight: 72});
 		this.load.spritesheet('snake', 'assets/sprites/Snake/Snake_walk.png', {frameWidth: 48, frameHeight: 48});
 		this.load.spritesheet('snake_attack', 'assets/sprites/Snake/Snake_attack.png', {frameWidth: 48, frameHeight: 48});
 
@@ -91,7 +92,7 @@ export default class Level1Scene extends Phaser.Scene {
 		// this.physics.world.setBoundsCollision(true, true, true, true);
 		// this.physics.add.collider(this.player, arboles);
 		this.events=new Phaser.Events.EventEmitter();
-		this.scene.launch('healthBar',{
+		this.scene.launch('HealthBar',{
 			x:this.player.x-35,
 			y:this.player.y-15,
 			health:this.player.maxHealth,
@@ -103,12 +104,11 @@ export default class Level1Scene extends Phaser.Scene {
 		this.player.update();
 		this.waveController.update();
 		this.potions.trySpawn();
-		let playerData = { health: this.player.health, x: this.player.x-35, y: this.player.y-15 }; // Create object containing player data
+		let playerData = { health: this.player.health, x: this.player.x-35, y: this.player.y-15 };
     	this.events.emit('updatePlayerData', playerData);
 		if (this.player.isDead) {
 			this.scene.pause();
-			this.scene.run('GameOver', {difficulty: this.difficulty, characterName: this.characterName})
-			  		
+			this.scene.run('GameOver', {difficulty: this.difficulty, characterName: this.characterName}) 		
 		}
 
 	}
@@ -120,6 +120,5 @@ export default class Level1Scene extends Phaser.Scene {
 			this.player = new Electromancer(this, ELECTROMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2, 2);
 		if(this.characterName === LUMINOMANCER_NAME)
 			this.player = new LuminoMancer(this, LUMINOMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2, 2);
-		//this.healthBar = new HealthBar(this, this.player.x, this.player.y);
 	}
 }

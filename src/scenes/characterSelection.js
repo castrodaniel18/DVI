@@ -32,6 +32,7 @@ export default class StartScene extends Phaser.Scene {
     }
   
     create() {
+    this.scene.bringToTop();
     //Fondo
     this.levelBackground = this.add.image(0, 0, 'menuBackground');
     this.levelBackground.setScale(800 / this.levelBackground.width, 600 / this.levelBackground.height);
