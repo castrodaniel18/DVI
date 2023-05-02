@@ -87,7 +87,6 @@ export default class Goblin extends Enemy {
         setTimeout(() => {
             this.cooldown = false;
         }, GOBLIN_ATTACK_COOLDOWN);
-        console.log(this.scene.rateDifficulty)
     }
 
     isDead(){

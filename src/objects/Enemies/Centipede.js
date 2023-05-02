@@ -240,7 +240,6 @@ export default class Centipede extends Boss {
 
             
             if(!this.unstoppable){
-                console.log(this.unstoppable);
                 this.velocidad = -5;
                 this.angulo = Phaser.Math.Angle.BetweenPoints(this, projectile);
                 this.body.setVelocity(Math.cos(this.angulo) * this.velocidad, Math.sin(this.angulo) * this.velocidad);

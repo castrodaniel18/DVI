@@ -53,7 +53,6 @@ export default class WaveController{
                     }
                     else {
                         const boss = new this.level[this.currentWave].groupName(this.scene,this.level[this.currentWave].numEnemies);
-                        console.log("boss")
                         this.addEnemiesGroup(boss);
                     }
                     this.currentWave++;
