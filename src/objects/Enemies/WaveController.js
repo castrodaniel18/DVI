@@ -1,9 +1,9 @@
 import GoblinsGroup from "./GoblinsGroup";
 import VentolinsGroup from "./VentolinGroup";
-import Centipede from "./Centipede";
 import SnakeGroup from "./SnakeGroup";
 import HyenasGroup from "./HyenaGroup";
 import ScorpiosGroup from "./ScorpiosGroup";
+import CentipedeGroup from "./CentipedeGroup";
 
 export const LEVEL_1 = [{time: 0, boss: false, groupName: GoblinsGroup, numEnemies: 5}, 
                         {time: 15000, boss: false, groupName: VentolinsGroup, numEnemies: 3},
@@ -12,7 +12,7 @@ export const LEVEL_1 = [{time: 0, boss: false, groupName: GoblinsGroup, numEnemi
                         {time: 45000, boss: false, groupName: VentolinsGroup, numEnemies: 5},
                         {time: 80000, boss: false, groupName: GoblinsGroup, numEnemies: 10}, 
                         {time: 80000, boss: false, groupName: VentolinsGroup, numEnemies: 7},
-                        {time: 140000, boss: true, bossName: Centipede, numEnemies: 1}]
+                        {time: 140000, boss: true, groupName: CentipedeGroup, numEnemies: 1}]
 
 export const LEVEL_2 = [{time: 0, boss: false, groupName: SnakeGroup, numEnemies: 5}, 
                         {time: 15000, boss: false, groupName: ScorpiosGroup, numEnemies: 3},
@@ -47,8 +47,9 @@ export default class WaveController{
                         this.addEnemiesGroup(group);
                     }
                     else {
-                        const boss = new this.level[this.currentWave].bossName(this.scene);
-                        this.addBoss(boss);
+                        const boss = new this.level[this.currentWave].groupName(this.scene,this.level[this.currentWave].numEnemies);
+                        console.log("boss")
+                        this.addEnemiesGroup(boss);
                     }
                     this.currentWave++;
                 }
@@ -67,7 +68,7 @@ export default class WaveController{
     }
 
 	addEnemiesGroup(group){
-		this.scene.physics.add.collider(this.enemies, group.enemies);
+		//this.scene.physics.add.collider(this.enemies, group.enemies);
         this.groups.push(group);
 		this.enemies.push(...group.enemies);
 	}

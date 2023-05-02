@@ -1,18 +1,18 @@
-export default class EnemyGroup extends Phaser.Physics.Arcade.Group{
+export default class BossGroup extends Phaser.Physics.Arcade.Group{
 
-    constructor(scene, imgKey, enemyType, num_enemies) {
+    constructor(scene, imgKey, bossType, num_bosses) {
         super(scene.physics.world, scene);
         this.scene = scene;
         this.imgKey = imgKey;
-        this.num_enemies = num_enemies;
-        this.enemyType = enemyType;
+        this.num_bosses = num_bosses;
+        this.bossType = bossType;
         this.enemies = []
-        this.createEnemies();
+        this.createBosses();
         this.addCollisions();
     }
 
-    createEnemies() {
-        for(let i=0; i<this.num_enemies; i++) {
+    createBosses() {
+        for(let i=0; i<this.num_bosses; i++) {
             const randomBorder = Math.floor(Math.random() * 4);
             let x, y;
             let rectHeight=this.scene.cameras.main.worldView.height;
@@ -30,22 +30,22 @@ export default class EnemyGroup extends Phaser.Physics.Arcade.Group{
                 x = Math.random() * rectWidth;
                 y = this.scene.cameras.main.worldView.bottom;
               }
-            const enemy = new this.enemyType(this.scene, x, y, this.imgKey);
-            this.enemies.push(enemy);
+            const boss = new this.bossType(this.scene, x, y, this.imgKey);
+            this.enemies.push(boss);
             
-            this.scene.physics.add.collider(this.enemies, enemy);
+            this.scene.physics.add.collider(this.enemies, boss);
         }
     }
 
     enemyUpdate(){
-        this.enemies.forEach(enemy => {
-            enemy.enemyUpdate();
+        this.enemies.forEach(boss => {
+            boss.enemyUpdate();
         });
     }
 
     addCollisions(){
-        this.enemies.forEach(enemy => {
-            enemy.addCollisions();
+        this.enemies.forEach(boss => {
+            boss.addCollisions();
         });
     }
 }

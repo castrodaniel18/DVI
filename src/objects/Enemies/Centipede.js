@@ -25,10 +25,11 @@ const ATTACKS_DAMAGE = [30, 20, 40]
 
 export default class Centipede extends Boss {
     constructor(scene, x, y) {
-        super(scene, 200, 200, CENTIPEDE_SPRITE);
+        super(scene, x, y, CENTIPEDE_SPRITE);
 
         this.health = CENTIPEDE_HEALTH;
         this.canMove = false;
+        this.unstoppable=false;
         this.createAnimations();
         this.play('centipede');
         this.setScale(3);
@@ -123,11 +124,14 @@ export default class Centipede extends Boss {
                     else
                         this.body.offset.set(0, 0);
                     this.attackSelected = 2;
+                    this.unstoppable=true;
                     return 'centipede_attack_3';
                 }
             }
         }
-        else if (this.canMove) {
+        else if (!this.isAttacking) {
+            this.unstoppable=false;
+            if(!this.colliderSet)this.addCollisions();
             this.body.setSize(52, 40);
             if (!this.flip)
                 this.body.offset.set(0, 0);
@@ -159,9 +163,11 @@ export default class Centipede extends Boss {
             setTimeout(() => {
                 this.attackCooldown = false;
             }, ATTACKS_COOLDOWN[this.attackSelected]);
-            this.canMove = false;
+            this.isAttacking = true;
+            this.canMove=false;
             setTimeout(() => {
-                this.canMove = true;
+                this.canMove=true;
+                this.isAttacking = false;
                 this.setRotation(0);
                 this.flipY = false;
             }, ATTACKS_TIME[this.attackSelected]);
@@ -198,7 +204,7 @@ export default class Centipede extends Boss {
             this.setRotation(this.angle);
 
         this.scene.physics.moveToObject(this, this.scene.player, this.speed);
-        this.body.bounce.set(1);
+        //this.body.bounce.set(1);
     }
 
     onWorldBoundsFunction(body) {
@@ -232,11 +238,15 @@ export default class Centipede extends Boss {
                 this.scene.player.health = this.scene.player.maxHealth;
             }
 
-            this.velocidad = -5;
-            this.angulo = Phaser.Math.Angle.BetweenPoints(this, projectile);
-            this.body.setVelocity(Math.cos(this.angulo) * this.velocidad, Math.sin(this.angulo) * this.velocidad);
+            
+            if(!this.unstoppable){
+                console.log(this.unstoppable);
+                this.velocidad = -5;
+                this.angulo = Phaser.Math.Angle.BetweenPoints(this, projectile);
+                this.body.setVelocity(Math.cos(this.angulo) * this.velocidad, Math.sin(this.angulo) * this.velocidad);
+                this.canMove = false;
+            }
             projectile.destroy();
-            //this.canMove = false;
             this.texto.setVisible(true);
             this.setTint(DAMAGE_COLOR); // Cambiar el color del personaje a rojo
             this.scene.time.addEvent({
@@ -279,7 +289,7 @@ export default class Centipede extends Boss {
     }
 
     addCollisions() {
-        this.collider = this.scene.physics.add.collider(this.scene.player.weapon, this, this.getHit, null, this);
+        this.collider = this.scene.physics.add.overlap(this.scene.player.weapon, this, this.getHit, null, this);
         this.colliderSet = true;
     }
     createDestroyAnimation() {
@@ -297,5 +307,10 @@ export default class Centipede extends Boss {
             frameRate: 10,
             repeat: 0
         });
+    }
+    enemyUpdate(){
+        if(!this.isDead())
+        this.attack();
+
     }
 }

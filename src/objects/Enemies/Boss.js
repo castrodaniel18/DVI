@@ -27,9 +27,8 @@ export default class Boss extends Phaser.GameObjects.Sprite {
             //Ejecutamos la animación solo si no es la que se estaba ejecutando ya
             if(!this.isDead()){
                 this.anim = this.checkAnimation();
-                if(this.anim !== null)
+                if(this.anim !== null && this.anim !== undefined)
                     this.play(this.anim, true).flipX = this.flip;
-                this.attack();
                 this.texto.x = this.x - 5;
                 this.texto.y = this.y - 40;
             }
@@ -45,6 +44,7 @@ export default class Boss extends Phaser.GameObjects.Sprite {
 
 
     addCollisions(){
-        this.scene.physics.add.collider(this.scene.player.weapon, this, this.getHit, null, this);
+        this.scene.physics.add.overlap(this.scene.player.weapon, this, this.getHit, null, this);
     }
+    
 }

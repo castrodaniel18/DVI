@@ -61,6 +61,10 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
                 this.texto.x = this.x - 5;
                 this.texto.y = this.y - 40;
             }
+            else{
+                this.body.velocity.x=0;
+                this.body.velocity.y=0;
+           }
     }
 
     getHit(enemy, projectile){
