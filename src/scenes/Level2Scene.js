@@ -14,6 +14,7 @@ export default class Level2Scene extends Phaser.Scene {
 		this.itemsOnBag = [];
 		this.itemImages = [];
 		this.itemLevels = [];
+		this.count = 0;
 	}
 
 	preload() {
@@ -40,8 +41,8 @@ export default class Level2Scene extends Phaser.Scene {
 		this.load.image('tileset2', 'assets/elements/tileset2.png');
 		//this.load.image('tileset3', 'assets/elements/tileset3.png');
 		//this.load.image('tileset4', 'assets/elements/tileset4.png');
-		this.load.image('tileset5', 'assets/elements/tileset5.png');
-        this.load.tilemapTiledJSON('tilemap','assets/elements/tilemap.json');
+		//this.load.image('tileset5', 'assets/elements/tileset5.png');
+        this.load.tilemapTiledJSON('tilemap','assets/elements/tilemapLevel2.json');
 		this.load.image('pauseButton', 'assets/elements/pauseButton.png');
 		this.load.image('levelPanel', 'assets/elements/levelPanel.png');
 		this.load.image('item','assets/elements/marco_objeto.png' );
@@ -54,19 +55,12 @@ export default class Level2Scene extends Phaser.Scene {
 	}
 
 	create() {
-		
 		//let bg = this.add.image(0, 0, 'fondo').setOrigin(0, 0);
 		// Tilemap
 		const map = this.make.tilemap ({ key: "tilemap", tileWidth: 32, tileHeight: 32})
         const tileset2 = map.addTilesetImage('tileset2','tileset2')
-		//const tileset3 = map.addTilesetImage('tileset3','tileset3')
-		//const tileset4 = map.addTilesetImage('tileset4','tileset4')
-		const tileset5 = map.addTilesetImage('tileset5','tileset5')
         const layer = map.createLayer('fondo', tileset2, 0, 0)
-		const layer2 = map.createLayer('arboles', tileset2, 0, 0)
-		const layer3 = map.createLayer('camino', tileset2, 0, 0)
-		const layer4 = map.createLayer('arbustos', tileset2, 0, 0)
-		const layer5 = map.createLayer('piedras', tileset5, 0, 0)
+		const layer2 = map.createLayer('agua', tileset2, 0, 0)
 		
 		// Agrega el personaje a la escena y establece su posición en el centro de la cámara principal
 		this.addCharacter();
@@ -91,17 +85,13 @@ export default class Level2Scene extends Phaser.Scene {
             this.scene.pause();
 			this.scene.run('PauseScene', { difficulty: this.difficulty, actualScene: 'Level2Scene'});
         });
-		// let arboles = this.physics.add.staticGroup();
-		// arboles.add(layer2);
-		// this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-		// this.physics.world.setBoundsCollision(true, true, true, true);
-		// this.physics.add.collider(this.player, arboles)
 		this.events=new Phaser.Events.EventEmitter();
 		this.scene.launch('healthBar',{
 			x:this.player.x - 35,
 			y:this.player.y - 15,
 			health:this.player.maxHealth,
 			levelName:'Level2Scene'});
+		
 	}
 
 
@@ -114,7 +104,11 @@ export default class Level2Scene extends Phaser.Scene {
 		if (this.player.isDead) {
 			this.scene.pause()
 			this.scene.start('GameOver', {difficulty: this.difficulty, characterName: this.characterName, level: 'Level2Scene'})
-			  		
+		}
+		if(this.count == this.numEnemies) {
+			this.count = 0
+			this.scene.pause()
+			this.scene.run('LevelCompleted', {difficulty: this.difficulty, characterName: this.characterName})
 		}
 	}
 
