@@ -108,7 +108,7 @@ export default class Snake extends Enemy{
                 this.setAngle(this.degrees + 180);
             }
             
-            scene.physics.moveToObject(this, this.scene.player, CHARGE_SPEED);
+            this.scene.physics.moveToObject(this, scene.player, CHARGE_SPEED);
         }, 2000);
         setTimeout(() => {
             this.canMove = true;

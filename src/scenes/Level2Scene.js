@@ -89,7 +89,7 @@ export default class Level2Scene extends Phaser.Scene {
 			this.scene.run('PauseScene', { difficulty: this.difficulty, actualScene: 'Level2Scene'});
         });
 		this.events=new Phaser.Events.EventEmitter();
-		this.scene.launch('healthBar',{
+		this.scene.launch('HealthBar',{
 			x:this.player.x - 35,
 			y:this.player.y - 15,
 			health:this.player.maxHealth,
@@ -102,7 +102,7 @@ export default class Level2Scene extends Phaser.Scene {
 		this.player.update();
 		this.waveController.update();
 		this.potions.trySpawn();
-		let playerData = { health: this.player.health, x: this.player.x - 35, y: this.player.y - 15}; // Create object containing player data
+		let playerData = { health: this.player.health, x: this.player.x - 35, y: this.player.y - 15, canDash: this.player.canDash };
     	this.events.emit('updatePlayerData', playerData);
 		if (this.player.isDead) {
 			this.scene.pause()
