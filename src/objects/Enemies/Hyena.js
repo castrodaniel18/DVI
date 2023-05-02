@@ -23,8 +23,8 @@ export default class Hyena extends Enemy {
         this.play('hyena');
 
         //Controlamos el tamaño de la hitbox inicial
-        this.body.setSize(25, 40);
-        this.body.offset.set(20, 23);
+        this.body.setSize(48, 30);
+        this.body.offset.set(0, 18);
         this.cooldown = false;
 		this.scene.physics.add.overlap(this.scene.player, this ,this.attack,null,this);
     }
