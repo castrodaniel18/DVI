@@ -84,7 +84,7 @@ export default class Level1Scene extends Phaser.Scene {
 		this.pauseButton = this.add.image(750, 25, 'pauseButton').setInteractive();
 		this.pauseButton.setScale(2);
 		this.pauseButton.on('pointerdown', () => {
-			this.waveController.initialPauseTime = Date();
+			this.waveController.initialPauseTime = new Date();
 			this.waveController.pause = true;
             this.scene.pause();
 			this.scene.run('PauseScene', { difficulty: this.difficulty, actualScene: 'Level1Scene'});
