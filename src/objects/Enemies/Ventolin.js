@@ -81,13 +81,13 @@ export default class Ventolin extends Enemy {
     }
 
     attack(){
-        if(this.cooldown)
-            return;
-        this.scene.player.getHit(VENTOLIN_DAMAGE * this.scene.rateDifficulty);
-        this.cooldown = true;
-        setTimeout(() => {
-            this.cooldown = false;
-        }, VENTOLIN_ATTACK_COOLDOWN);
+        if(!this.cooldown){
+            this.scene.player.getHit(VENTOLIN_DAMAGE * this.scene.rateDifficulty);
+            this.cooldown = true;
+            setTimeout(() => {
+                this.cooldown = false;
+            }, VENTOLIN_ATTACK_COOLDOWN);
+        }
     }
     isDead(){
         return this.health < 0;
@@ -98,7 +98,7 @@ export default class Ventolin extends Enemy {
             if(this.canMove){
                 this.move();
                 this.distanceToPlayer = Math.sqrt(Math.pow(this.scene.player.x - this.x, 2) + Math.pow(this.scene.player.y - this.y, 2));
-                if(this.distanceToPlayer < 300)
+                if(!this.cooldown && this.distanceToPlayer < 300)
                     this.shoot();
             }
         }
@@ -109,5 +109,9 @@ export default class Ventolin extends Enemy {
     }
     shoot(){
         this.weapon.shoot(this);
+        this.cooldown = true;
+        setTimeout(() => {
+            this.cooldown = false;
+        }, VENTOLIN_ATTACK_COOLDOWN);
     }
 }
