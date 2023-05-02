@@ -13,6 +13,7 @@ export default class VentolinProjectile extends Projectile{
         this.speed = VENTOLIN_PROJECTILE_SPEED;
         this.createAnimations();
         this.play("none_ventolin");
+        this.setVisible(true);
         this.scene.physics.add.collider(this.scene.player, this, this.hitPlayer, null, this);
     }
 
