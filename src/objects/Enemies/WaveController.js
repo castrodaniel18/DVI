@@ -24,7 +24,7 @@ export const LEVEL_2 = [{time: 0, boss: false, groupName: SnakeGroup, numEnemies
                         {time: 80000, boss: false, groupName: SnakeGroup, numEnemies: 4},
                         {time: 80000, boss: false, groupName: HyenasGroup, numEnemies: 3}]
 
-export const LEVEL_DEMO_BOSS = [{time: 0, boss: true, bossName: Centipede, numEnemies: 1}]
+export const LEVEL_DEMO_BOSS = [{time: 0, boss: true, groupName: CentipedeGroup, numEnemies: 1}]
 
 
 export default class WaveController{
