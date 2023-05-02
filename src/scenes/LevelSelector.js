@@ -8,8 +8,7 @@ export default class LevelSelector extends Phaser.Scene {
   
     preload() {
       this.load.image('map','assets/elements/spainMap.png');
-      this.load.image('button1', 'assets/elements/greenButton.png');
-      this.load.image('button2', 'assets/elements/greenButton.png');
+      this.load.image('greenButton', 'assets/elements/greenButton.png');
       this.load.image('buttonGalicia', 'assets/elements/Galicia.png');
       this.load.image('buttonAsturias', 'assets/elements/Asturias.png');
     }
@@ -97,6 +96,14 @@ export default class LevelSelector extends Phaser.Scene {
             ease: 'Linear' // Tipo de interpolación de la animación
           });
 
+        }, this);
+
+        var buttonBosses = this.add.image(40,100, 'greenButton');
+        buttonBosses.setScale(0.05);
+        var buttonBossesText = this.add.text(55, 93, 'Demo Bosses', { fontFamily: 'myFont', fontSize: '16px',  color: '#000000' });
+        buttonBosses.setInteractive();
+        buttonBosses.on('pointerdown', function() {
+          this.scene.start('LevelDemoBosses', { characterName: this.characterName, difficulty: this.difficulty });
         }, this);
     }
   }
