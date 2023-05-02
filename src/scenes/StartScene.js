@@ -12,9 +12,9 @@ export default class StartScene extends Phaser.Scene {
       Obra: Corazón de Guerrero
       Música de https://www.fiftysounds.com/es/
       */
-      this.load.audio('music', '../../../public/assets/sounds/music.mp3');
-      this.load.image('background', '../../../public/assets/elements/menuBackground.png');
-      this.load.image('cartel', '../../../public/assets/elements/settingsPanel.png');
+      this.load.audio('music', 'assets/sounds/music.mp3');
+      this.load.image('background', 'assets/elements/menuBackground.png');
+      this.load.image('cartel', 'assets/elements/settingsPanel.png');
       this.load.image('button', 'assets/elements/button.png');
     }
 
