@@ -2,7 +2,7 @@
 
 import { Scene } from "phaser";
 
-const LEVELS = [100, 200, 300];
+const LEVELS = [200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800, 2000];
 const DASH_TIME = 300;
 const DASH_COOLDOWN = 5000;
 const DASH_SPEED_FACTOR = 4;
