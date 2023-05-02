@@ -65,59 +65,59 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 
     getHit(enemy, projectile){
         if(this.colliderSet){
-        this.crit = 1;
-        if(Math.random() < this.scene.player.critProb){
-            this.crit = 1.5;
-            this.damageColor = CRIT_DAMAGE_TEXT_COLOR;
-        }
-        else 
-            this.damageColor = DAMAGE_TEXT_COLOR;
+            this.crit = 1;
+            if(Math.random() < this.scene.player.critProb){
+                this.crit = 1.5;
+                this.damageColor = CRIT_DAMAGE_TEXT_COLOR;
+            }
+            else 
+                this.damageColor = DAMAGE_TEXT_COLOR;
 
-        this.texto.text = projectile.damage * this.crit;
-        this.texto.setColor(this.damageColor);
+            this.texto.text = projectile.damage * this.crit;
+            this.texto.setColor(this.damageColor);
 
-        this.health -= Math.round(projectile.damage * this.crit);
-        let stolenLife=Math.ceil(this.scene.player.lifesteal*projectile.damage * this.crit);//cantidad de vida robada redondeada
-        if(this.scene.player.health+stolenLife<this.scene.player.maxHealth){//comprueba la vida para no hacer overflow con el lifesteal
-        this.scene.player.health+=stolenLife;
-        }
-        else{
-            this.scene.player.health=this.scene.player.maxHealth;
-        }
+            this.health -= Math.round(projectile.damage * this.crit);
+            let stolenLife=Math.ceil(this.scene.player.lifesteal*projectile.damage * this.crit);//cantidad de vida robada redondeada
+            if(this.scene.player.health+stolenLife<this.scene.player.maxHealth){//comprueba la vida para no hacer overflow con el lifesteal
+            this.scene.player.health+=stolenLife;
+            }
+            else{
+                this.scene.player.health=this.scene.player.maxHealth;
+            }
 
-        this.velocidad = -100;
-        this.angulo = Phaser.Math.Angle.BetweenPoints(this, projectile);
-        this.body.setVelocity(Math.cos(this.angulo) * this.velocidad, Math.sin(this.angulo) * this.velocidad);
-        projectile.destroy();
-        this.canMove = false;
-        this.texto.setVisible(true);
-        this.setTint(DAMAGE_COLOR); // Cambiar el color del personaje a rojo
-        this.scene.time.addEvent({
-            delay: 200, // La duración del efecto en milisegundos
-            callback: () => {
-                this.clearTint(); // Restablecer el color original del personaje
-                this.canMove = true;
-                this.texto.setVisible(false);
-            },
-            callbackScope: this
-        });
-        if (this.isDead()){
-            this.destroyEnemyAnim.visible = true;
-            this.destroyEnemyAnim.x = this.x;
-            this.destroyEnemyAnim.y = this.y;
-            this.destroyEnemyAnim.play('destroy_enemy_effect');
-            this.body.velocity.x = 0;
-            this.body.velocity.y = 0;
-            this.setVisible(false);
-            this.colliderSet=false;
-            this.scene.time.delayedCall(DESTROY_ENEMY_TIME, () => { 
-                this.destroyEnemyAnim.visible = false;
-                this.expDrop = new ExperiencePointGroup(this.scene, this.x, this.y);
-                this.destroy();
-
+            this.velocidad = -100;
+            this.angulo = Phaser.Math.Angle.BetweenPoints(this, projectile);
+            this.body.setVelocity(Math.cos(this.angulo) * this.velocidad, Math.sin(this.angulo) * this.velocidad);
+            projectile.destroy();
+            this.canMove = false;
+            this.texto.setVisible(true);
+            this.setTint(DAMAGE_COLOR); // Cambiar el color del personaje a rojo
+            this.scene.time.addEvent({
+                delay: 200, // La duración del efecto en milisegundos
+                callback: () => {
+                    this.clearTint(); // Restablecer el color original del personaje
+                    this.canMove = true;
+                    this.texto.setVisible(false);
+                },
+                callbackScope: this
             });
+            if (this.isDead()){
+                this.destroyEnemyAnim.visible = true;
+                this.destroyEnemyAnim.x = this.x;
+                this.destroyEnemyAnim.y = this.y;
+                this.destroyEnemyAnim.play('destroy_enemy_effect');
+                this.body.velocity.x = 0;
+                this.body.velocity.y = 0;
+                this.setVisible(false);
+                this.colliderSet=false;
+                this.scene.time.delayedCall(DESTROY_ENEMY_TIME, () => { 
+                    this.destroyEnemyAnim.visible = false;
+                    this.expDrop = new ExperiencePointGroup(this.scene, this.x, this.y);
+                    this.destroy();
+
+                });
+            }
         }
-    }
     }
 
     createSpawnAnimation(){

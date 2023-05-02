@@ -1,14 +1,18 @@
 import Boss from "./Boss";
 
 const CENTIPEDE_SPRITE = 'centipede';
-const CENTIPEDE_HEALTH = 1000;
-const CENTIPEDE_SPEED = 150;
+const CENTIPEDE_HEALTH = 700;
+const CENTIPEDE_SPEED = 80;
 
-const ATTACKS_COOLDOWN = [5000, 2000, 7000]
+const DAMAGE_COLOR = '0xFF0000';
+const DAMAGE_TEXT_COLOR = '#FF0000';
+const CRIT_DAMAGE_TEXT_COLOR = '#FFFF00';
 
-const ATTACKS_TIME = [1000, 4000, 5000]
+const ATTACKS_COOLDOWN = [5000, 2000, 14000]
 
-const ATTACKS_SPEED = [200, 100, 300]
+const ATTACKS_TIME = [1000, 4000, 10000]
+
+const ATTACKS_SPEED = [200, 100, 500]
 
 const ATTACKS_DAMAGE = [30, 20, 40]
 
@@ -21,24 +25,14 @@ export default class Centipede extends Boss{
         this.createAnimations();
         this.play('centipede');
         this.setScale(3);
-        //Controlamos el tamaño de la hitbox inicial
-        //CAMINA IZQUIERDA
-        // this.body.setSize(52, 40);
-        // this.body.offset.set(0, 0);
-        //ATAQUE 1 IZQUIERDA
-        // this.body.setSize(70, 40);
-        // this.body.offset.set(5, 0);
-        //ATAQUE 2 IZQUIERDA
-        // this.body.setSize(75, 40);
-        // this.body.offset.set(0, 0);
-        //ATAQUE 3 IZQUIERDA
-        // this.body.setSize(64, 28);
-        // this.body.offset.set(8, 0);
-		this.scene.physics.add.overlap(this.scene.player, this ,this.attack,null,this);
+		this.scene.physics.add.overlap(this.scene.player, this ,this.hitPlayer,null,this);
         this.body.onWorldBounds=true;
         this.body.world.on('worldbounds', this.onWorldBoundsFunction, this);
         this.addCollisions();
-        this.attackCooldown = false;
+        this.attackCooldown = true;
+        setTimeout(() => {
+            this.attackCooldown = false;
+        }, 4000);
     }
 
     createAnimations(){
@@ -75,33 +69,36 @@ export default class Centipede extends Boss{
         else
             this.flip = false;
         if(!this.attackCooldown){
-            // Generar un número aleatorio entre 0 y 1
-            const rand = Math.random();
-            // Reproducir la animación en función de la probabilidad
-            if (rand < 0.3) {
-                this.body.setSize(70, 40);
-                if(!this.flip)
-                    this.body.offset.set(5, 0);
-                else
-                    this.body.offset.set(-2, 0);
-                this.attackSelected = 0;
-                return 'centipede_attack_1';
-            } else if (rand < 0.6) {
-                this.body.setSize(75, 40);
-                if(!this.flip)
-                        this.body.offset.set(0, 0);
+            this.playerDistance = Phaser.Math.Distance.Between(this.scene.player.x, this.scene.player.y, this.x, this.y);
+            if(this.playerDistance < 500){
+                // Generar un número aleatorio entre 0 y 1
+                const rand = Math.random();
+                // Reproducir la animación en función de la probabilidad
+                if (rand < 0.3 &&  this.playerDistance> 40) {
+                    this.body.setSize(70, 40);
+                    if(!this.flip)
+                        this.body.offset.set(5, 0);
                     else
                         this.body.offset.set(-2, 0);
-                this.attackSelected = 1;
-                return 'centipede_attack_2';
-            } else {
-                this.body.setSize(64, 28);
-                if(!this.flip)
-                    this.body.offset.set(8, 0);
-                else
-                    this.body.offset.set(0, 0);
-                this.attackSelected = 2;
-                return 'centipede_attack_3';
+                    this.attackSelected = 0;
+                    return 'centipede_attack_1';
+                } else if (rand < 0.6 && this.playerDistance > 50) {
+                    this.body.setSize(75, 40);
+                    if(!this.flip)
+                            this.body.offset.set(0, 0);
+                        else
+                            this.body.offset.set(-2, 0);
+                    this.attackSelected = 1;
+                    return 'centipede_attack_2';
+                } else if(this.playerDistance > 80){
+                    this.body.setSize(64, 28);
+                    if(!this.flip)
+                        this.body.offset.set(8, 0);
+                    else
+                        this.body.offset.set(0, 0);
+                    this.attackSelected = 2;
+                    return 'centipede_attack_3';
+                }
             }
         }
         else if (this.canMove){
@@ -120,6 +117,7 @@ export default class Centipede extends Boss{
             this.body.velocity.x = 0;
             this.body.velocity.y = 0;
             this.body.bounce.set(0);
+            this.hasHitPlayer = false;
             switch (this.attackSelected) {
                 case 0:
                     this.attack1();
@@ -184,6 +182,76 @@ export default class Centipede extends Boss{
             this.setAngle(180 - this.angle);
         this.flipY = !this.flipY;
 
-      }
+    }
+
+    getHit(enemy, projectile){
+        if(this.colliderSet){
+            this.crit = 1;
+            if(Math.random() < this.scene.player.critProb){
+                this.crit = 1.5;
+                this.damageColor = CRIT_DAMAGE_TEXT_COLOR;
+            }
+            else 
+                this.damageColor = DAMAGE_TEXT_COLOR;
+
+            this.texto.text = projectile.damage * this.crit;
+            this.texto.setColor(this.damageColor);
+
+            this.health -= Math.round(projectile.damage * this.crit);
+            let stolenLife=Math.ceil(this.scene.player.lifesteal*projectile.damage * this.crit);//cantidad de vida robada redondeada
+            if(this.scene.player.health+stolenLife<this.scene.player.maxHealth){//comprueba la vida para no hacer overflow con el lifesteal
+            this.scene.player.health+=stolenLife;
+            }
+            else{
+                this.scene.player.health=this.scene.player.maxHealth;
+            }
+
+            this.velocidad = -5;
+            this.angulo = Phaser.Math.Angle.BetweenPoints(this, projectile);
+            this.body.setVelocity(Math.cos(this.angulo) * this.velocidad, Math.sin(this.angulo) * this.velocidad);
+            projectile.destroy();
+            this.canMove = false;
+            this.texto.setVisible(true);
+            this.setTint(DAMAGE_COLOR); // Cambiar el color del personaje a rojo
+            this.scene.time.addEvent({
+                delay: 200, // La duración del efecto en milisegundos
+                callback: () => {
+                    this.clearTint(); // Restablecer el color original del personaje
+                    this.canMove = true;
+                    this.texto.setVisible(false);
+                },
+                callbackScope: this
+            });
+            if (this.isDead()){
+                this.destroyEnemyAnim.visible = true;
+                this.destroyEnemyAnim.x = this.x;
+                this.destroyEnemyAnim.y = this.y;
+                this.destroyEnemyAnim.play('destroy_enemy_effect');
+                this.body.velocity.x = 0;
+                this.body.velocity.y = 0;
+                this.setVisible(false);
+                this.colliderSet=false;
+                this.scene.time.delayedCall(DESTROY_ENEMY_TIME, () => { 
+                    this.destroyEnemyAnim.visible = false;
+                    this.expDrop = new ExperiencePointGroup(this.scene, this.x, this.y);
+                    this.destroy();
+
+                });
+            }
+        }
+    }
+
+    hitPlayer(){
+        if(!this.hasHitPlayer){
+            this.scene.player.getHit(this.damage);
+            console.log("jnisdfisduni")
+            this.hasHitPlayer = true;
+        }
+    }
+
+    addCollisions(){
+    this.scene.physics.add.collider(this.scene.player.weapon, this, this.getHit, null, this);
+    this.colliderSet=true;
+    }
 
 }

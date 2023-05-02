@@ -1,5 +1,4 @@
 import Phaser from "phaser";
-import HealthBar from "../objects/Characters/HealthBar";
 import Potions from "../objects/Potions/Potions";
 import Piromancer, {PIROMANCER_SPRITE_NAME, PIROMANCER_NAME} from "../objects/Characters/Piromancer";
 import Electromancer, {ELECTROMANCER_SPRITE_NAME, ELECTROMANCER_NAME} from "../objects/Characters/Electromancer";
@@ -74,8 +73,6 @@ export default class Level1Scene extends Phaser.Scene {
 		//Objetos del jugador
 		this.playerItemsBorder[0] = this.add.image(50, 100,'item');
 		this.playerItemsBorder[1] = this.add.image(100, 100,'item');
-		// this.playerItemsBorder[0].setScale(.8, .35);
-		// this.playerItemsBorder[1].setScale(.8, .35);
 
 		
 

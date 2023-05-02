@@ -12,6 +12,6 @@ export default class Cape extends Item {
 
     apply(){
         const scene = this.scene;
-        this.scene.player.speed += this.scene.player.startingSpeed*SPEED_INCREASE_FACTOR;
+        this.scene.player.speed += this.scene.player.speed*SPEED_INCREASE_FACTOR;
     }
 }

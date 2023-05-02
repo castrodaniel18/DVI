@@ -324,10 +324,11 @@ checkLevelUp() {
     if(this.playerExp >= LEVELS[this.playerLevel-1]){
         this.playerLevel++;
         this.playerLevelText.setText('Nivel: ' + this.playerLevel + ' - Exp: ' + this.playerExp);
-        this.scene.waveController.initialPauseTime = Date();
+        this.scene.waveController.initialPauseTime = new Date();
         this.scene.waveController.pause = true;
+        this.scene.waveController.leveling = true;
         this.scene.scene.pause();
-        this.scene.scene.launch('ItemSelectScene', { mainScene: this.scene});
+        this.scene.scene.run('ItemSelectScene', { mainScene: this.scene});
     }
 }
 

@@ -1,8 +1,8 @@
 import { Scene } from 'phaser';
 import Enemy from './Enemy.js';
 
-const HYENA_DAMAGE = 10;
-const HYENA_HEALTH = 5;
+const HYENA_DAMAGE = 15;
+const HYENA_HEALTH = 100;
 const HYENA_SPEED = 80;
 const HYENA_ATTACK_COOLDOWN = 2000;
 const HYENA_ATTACK_TIME = 3000;

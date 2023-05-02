@@ -2,7 +2,7 @@ import { Scene } from 'phaser';
 import Enemy from './Enemy.js';
 
 const GOBLIN_DAMAGE = 10;
-const GOBLIN_HEALTH = 5;
+const GOBLIN_HEALTH = 80;
 const GOBLIN_SPEED = 50;
 const GOBLIN_ATTACK_COOLDOWN = 2000;
 

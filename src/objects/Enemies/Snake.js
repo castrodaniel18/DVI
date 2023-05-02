@@ -1,10 +1,10 @@
 import Enemy from "./Enemy";
 
-const SNAKE_HEALTH = 3;
+const SNAKE_HEALTH = 40;
 const SNAKE_CHARGE_COLOR = '0x000000';
 const SNAKE_SPEED = 70;
 const CHARGE_SPEED = 300;
-const SNAKE_DAMAGE = 10;
+const SNAKE_DAMAGE = 20;
 
 export default class Snake extends Enemy{
     constructor(scene, x, y, sprite){

@@ -26,10 +26,6 @@ export default class HealthBar extends Phaser.Scene {
             }
             else{
             let newBarWidth = BAR_WIDTH * (playerData.health / this.maxHealth);
-            let barColor;
-            if(newBarWidth/BAR_WIDTH>0.5)barColor="0x00f000";
-            else if(newBarWidth/BAR_WIDTH<0.5 && newBarWidth/BAR_WIDTH>0.2)barColor="0xffff00";
-            else barColor="0xff0000";
             this.bar.clear();
             let percentage = playerData.health / this.maxHealth;
             let r, g, b;

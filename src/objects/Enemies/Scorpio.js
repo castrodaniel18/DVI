@@ -2,13 +2,11 @@ import { Scene } from 'phaser';
 import Enemy from './Enemy.js';
 import ScorpioProjectileGroup from '../Projectiles/ScorpioProjectileGroup.js';
 
-const SCORPIO_DAMAGE = 10;
-const SCORPIO_HEALTH = 5;
+const SCORPIO_DAMAGE = 30;
+const SCORPIO_HEALTH = 50;
 const SCORPIO_WEAPON = ScorpioProjectileGroup;
 const SCORPIO_PROJECTILES = 1;
-const SCORPIO_SPEED = 80;
-const SCORPIO_ATTACK_COOLDOWN = 2000;
-const SCORPIO_ATTACK_TIME = 3000;
+const SCORPIO_SPEED = 50;
 const SCORPIO_CHARGE_COLOR = '0x000000';
 export default class Scorpio extends Enemy {
 

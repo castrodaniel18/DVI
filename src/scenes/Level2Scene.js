@@ -1,5 +1,4 @@
 import Phaser from "phaser";
-import HealthBar from "../objects/Characters/HealthBar";
 import Potions from "../objects/Potions/Potions";
 import Piromancer, {PIROMANCER_SPRITE_NAME, PIROMANCER_NAME} from "../objects/Characters/Piromancer";
 import Electromancer, {ELECTROMANCER_SPRITE_NAME, ELECTROMANCER_NAME} from "../objects/Characters/Electromancer";
@@ -82,8 +81,6 @@ export default class Level2Scene extends Phaser.Scene {
 		//Objetos del jugador
 		this.playerItemsBorder[0] = this.add.image(50, 100,'item');
 		this.playerItemsBorder[1] = this.add.image(100, 100,'item');
-		this.playerItemsBorder[0].setScale(.8, .35);
-		this.playerItemsBorder[1].setScale(.8, .35);
 
 		
 
@@ -98,7 +95,13 @@ export default class Level2Scene extends Phaser.Scene {
 		// arboles.add(layer2);
 		// this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 		// this.physics.world.setBoundsCollision(true, true, true, true);
-		// this.physics.add.collider(this.player, arboles);
+		// this.physics.add.collider(this.player, arboles)
+		this.events=new Phaser.Events.EventEmitter();
+		this.scene.launch('healthBar',{
+			x:this.player.x - 35,
+			y:this.player.y - 15,
+			health:this.player.maxHealth,
+			levelName:'Level2Scene'});
 	}
 
 
@@ -106,7 +109,7 @@ export default class Level2Scene extends Phaser.Scene {
 		this.player.update();
 		this.waveController.update();
 		this.potions.trySpawn();
-		let playerData = { health: this.player.health, x: this.player.x-85, y: this.player.y-25 }; // Create object containing player data
+		let playerData = { health: this.player.health, x: this.player.x - 35, y: this.player.y - 15}; // Create object containing player data
     	this.events.emit('updatePlayerData', playerData);
 		if (this.player.isDead) {
 			this.scene.run()
@@ -122,6 +125,6 @@ export default class Level2Scene extends Phaser.Scene {
 			this.player = new Electromancer(this, ELECTROMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2, 2);
 		if(this.characterName === LUMINOMANCER_NAME)
 			this.player = new LuminoMancer(this, LUMINOMANCER_SPRITE_NAME, this.scene.systems.game.scale.gameSize.width/2,this.scene.systems.game.scale.gameSize.height/2, 2);
-		this.healthBar = new HealthBar(this, this.player.x, this.player.y);
+		//this.healthBar = new HealthBar(this, this.player.x, this.player.y);
 	}
 }

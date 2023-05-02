@@ -61,6 +61,7 @@ export default class ItemSelectScene extends Phaser.Scene{
         this.object1.on('pointerdown', () => {
             //Si queda espacio en el inventario o el objeto que se quiere coger ya se tiene
             if(this.mainScene.playerItems.length < this.mainScene.player.inventorySize || this.mainScene.playerItems.some(item => item.name === elementosAleatorios[0].name)){
+                this.mainScene.waveController.leveling = false;
                 this.scene.resume(this.mainScene);
                 this.scene.stop();
                 this.itemSelect(elementosAleatorios[0]);
@@ -71,6 +72,7 @@ export default class ItemSelectScene extends Phaser.Scene{
         this.object2.setScale(.25);
         this.object2.on('pointerdown', () => {
             if(this.mainScene.playerItems.length < this.mainScene.player.inventorySize || this.mainScene.playerItems.some(item => item.name === elementosAleatorios[1].name)){
+                this.mainScene.waveController.leveling = false;
                 this.scene.resume(this.mainScene);
                 this.scene.stop();
                 this.itemSelect(elementosAleatorios[1]);
@@ -81,7 +83,8 @@ export default class ItemSelectScene extends Phaser.Scene{
         this.object3.setScale(.25);
         this.object3.on('pointerdown', () => {
             if(this.mainScene.playerItems.length < this.mainScene.player.inventorySize || this.mainScene.playerItems.some(item => item.name === elementosAleatorios[2].name)){
-                this.scene.resume('Level1Scene');
+                this.mainScene.waveController.leveling = false;
+                this.scene.resume(this.mainScene);
                 this.scene.stop();
                 this.itemSelect(elementosAleatorios[2]);
             }
