@@ -47,6 +47,40 @@ export default class StartScene extends Phaser.Scene {
         const button = this.add.image(0, index * 100, character);
         button.setScale(0.30);
         button.setInteractive();
+
+        //Guardamos la escala original para usarla en el pointover
+        var originalScaleX = button.scaleX;
+        var originalScaleY = button.scaleY;
+
+        //Animación para tween
+        button.on('pointerover', function () {
+            // Crea la animación tween
+            this.tweens.add({
+            targets: button,
+            scaleX: 0.32, // Escala horizontal del botón
+            scaleY: 0.32, // Escala vertical del botón
+            alpha: 1, // Cambia la opacidad del botón a 0.7
+            duration: 200, // Duración de la animación en milisegundos
+            ease: 'Linear' // Tipo de interpolación de la animación
+            });
+
+        }, this);
+
+        // Agrega un evento de puntero fuera del botón
+        button.on('pointerout', function () {
+
+            // Crea la animación tween inversa
+            this.tweens.add({
+              targets: button,
+              scaleX: originalScaleX, // Escala horizontal del botón de regreso al valor original
+              scaleY: originalScaleY, // Escala vertical del botón de regreso al valor original
+              alpha: 1, // Cambia la opacidad del botón a 0.7
+              duration: 200, // Duración de la animación en milisegundos
+              ease: 'Linear' // Tipo de interpolación de la animación
+            });
+  
+        }, this);
+
         button.on('pointerdown', () => {
             // al hacer clic en el botón, guarda el personaje seleccionado y cambia a la escena del juego
             this.scene.start('LevelSelector', {characterName: CHARACTER_NAMES[index], difficulty: this.difficulty});

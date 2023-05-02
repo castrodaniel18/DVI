@@ -11,6 +11,7 @@ import ItemSelectScene from './scenes/ItemSelectScene'
 import HealthBar from './scenes/HealthBar'
 
 import GameOver from './scenes/GameOver'
+import LevelCompleted from './scenes/LevelCompleted'
 const config = {
 	type: Phaser.AUTO,
 	parent: 'game',
@@ -25,7 +26,7 @@ const config = {
 	dom: {
 		createContainer: true
 	},
-	scene: [StartScene, characterSelection, Level1Scene, Level2Scene, Settings, LevelSelector, PauseScene, ItemSelectScene, HealthBar,GameOver],
+	scene: [StartScene, characterSelection, Level1Scene, Level2Scene, Settings, LevelSelector, PauseScene, ItemSelectScene, HealthBar,GameOver, LevelCompleted],
 	physics: {
 		default: 'arcade',
 		arcade: {

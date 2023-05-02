@@ -111,6 +111,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
                 this.setVisible(false);
                 this.colliderSet=false;
                 this.scene.physics.world.removeCollider(this.collider)
+                this.scene.count++
                 this.scene.time.delayedCall(DESTROY_ENEMY_TIME, () => { 
                     this.destroyEnemyAnim.visible = false;
                     this.expDrop = new ExperiencePointGroup(this.scene, this.x, this.y);
