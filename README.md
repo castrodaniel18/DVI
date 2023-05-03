@@ -12,7 +12,7 @@ El juego está ambientado en la mitología española, temática que debemos segu
 
 ## Capturas del juego/bocetos
 
-<image  src="public/assets/web/portada.png"  alt="Portada del juego">
+![Portada](public/assets/web/portada.png "Portada del juego")
 
   
 
@@ -28,7 +28,7 @@ La arquitectura del juego se puede ver en el siguiente archivo UML
 
   
 
-<image  src="https://raw.githubusercontent.com/castrodaniel18/DVI/master/uml.png">
+![UML](uml.png)
 
   
 
@@ -88,17 +88,14 @@ Del mismo modo, tanto los objetos que pueda recoger del suelo, como los objetos 
 
 - Elección de clase: al comienzo de la partida, el jugador tendrá que escoger qué tipo de mago quiere ser:
 
+
+- Piromancer: Un mago de fuego que ataca tirando bolas de fuego, tiene más vida inicial que el resto de personajes. es el personaje más equilibrado.
   
 
-- Piromancer: Un mago de fuego que ataca tirando bolas de fuego, tiene más vida inicial que el resto de personajes.
+- Electromancer: Un mago de electricidad que ataca tirando bolas de rayos, se mueve más rápido que el resto de personajes y sus ataques hacen más daño, pero tarda más en lanzarlos.
 
-  
 
-- Electromancer: Un mago de electricidad que ataca tirando bolas de rayos, se mueve más rápido que el resto de personajes.
-
-  
-
-- Luminomancer: Un mago de luz que ataca tirando bolas de luz, tiene más disparos que los demás personajes y hacen más daño, además dispara más seguido.
+- Luminomancer: Un mago de luz que ataca tirando bolas de luz, tiene más disparos que los demás personajes y hacen menos daño, además dispara más seguido.
 
 - Movimiento: el jugador será capaz de desplazarse en ocho direcciones haciendo uso de las teclas w (arriba), a (izquierda), s(abajo) y d (derecha) y pudiendo combinarlas para crear el movimiento en diagonal. El jugador podrá moverse por todo el escenario que vea en ese nivel, pero al llegar a los límites del escenario se chocará y no podrá continuar. También habrá elementos estéticos repartidos por el mapa que no tendrán una utilidad concreta pero que no podrán ser traspasados ni por el jugador ni por los enemigos o los ataques.
 
@@ -142,9 +139,9 @@ Del mismo modo, tanto los objetos que pueda recoger del suelo, como los objetos 
  
  - Piedra de San Pedro: reduce un 1% el daño recibido por el jugador.
  
- - Cuchillo Sacauntos: incrementa un 5% el daño producido por el enemigo.
+ - Cuchillo Sacauntos: incrementa un 2% el daño inflingido por el jugador.
  
- - Colmillo chupasangre: incrementa un 5% el robo de vida de los enemigos.
+ - Colmillo chupasangre: incrementa un 2% el robo de vida del jugador.
 
   
 
@@ -200,37 +197,46 @@ La estética que hemos elegido para el juego es el estilo de pixel art, ya que n
 
 ## 4.1 Escenario
 
-- Los escenarios han sido creados con Tiled utilizando el siguiente tileset: //TODO poner el tileset
+- Los escenarios han sido creados con Tiled utilizando el siguiente tileset obtenido de [OpenGameArt](https://opengameart.org/content/2d-lost-garden-tileset-transition-to-jetrels-wood-tileset): 
+![Tileset](/public/assets/elements/tileset2.png)
 
   
 
 ## 4.2 Jugador
 Todos los sprites de los personajes jugables lo hemos conseguido directamente de una página de internet.
 
-[Piromancer](../public/assets/sprites/piromancer) Spritesheet personaje piromancer. Obtenido de [Craftpix](https://craftpix.net/freebies/free-wizard-sprite-sheets-pixel-art/)
+![Piromancer](/public/assets/sprites/piromancer/Fireball.png "Piromancer") 
+- Spritesheet personaje piromancer. Obtenido de [Craftpix](https://craftpix.net/freebies/free-wizard-sprite-sheets-pixel-art/)
 
-[Electromancer](../public/assets/sprites/electromancer) Spritesheet personaje electromancer. Obtenido de [Craftpix](https://craftpix.net/freebies/free-wizard-sprite-sheets-pixel-art/)
+![Electromancer](/public/assets/sprites/electromancer/Magic_sphere.png "Electromancer") 
+- Spritesheet personaje electromancer. Obtenido de [Craftpix](https://craftpix.net/freebies/free-wizard-sprite-sheets-pixel-art/)
 
-[Luminomancer](../public/assets/sprites/luminomancer) Spritesheet personaje luminomancer. Obtenido de [Craftpix](https://craftpix.net/freebies/free-wizard-sprite-sheets-pixel-art/)
+![Luminomancer](/public/assets/sprites/luminomancer/Light_ball.png "Luminomancer") 
+- Spritesheet personaje luminomancer. Obtenido de [Craftpix](https://craftpix.net/freebies/free-wizard-sprite-sheets-pixel-art/)
 
   
 
 ## 4.3 Objetos
 En el caso de los objetos, algunos de los sprites los hemos conseguido de páginas web y otros los hemos tenido que hacer nosotros o que crear en base a fotos.
-[Pociones](../public/assets/elements/potion_strength.png) Sprite poción fuerza (todas las pociones son de la misma página). Obtenido de [Craftpix](https://craftpix.net/freebies/free-magic-potions-pixel-art-icons/)
-  [Colmillo chupasangre](../public/assets/elements/colmillo_chupasangre.png) objeto para conseguir al subir de nivel. Creado desde cero.
+	
+
+	
+Sprite poción fuerza (todas las pociones son de la misma página). Obtenido de [Craftpix](https://craftpix.net/freebies/free-magic-potions-pixel-art-icons/)
+![Pociones](/public/assets/elements/potion_strength.png) 
+	
+Colmillo del chupasangres: objeto para conseguir al subir de nivel. Creado desde cero. ![Colmillo chupasangre](/public/assets/elements/colmillo_chupasangre.png) 
+
+  
+Manto del nuberu: objeto para conseguir al subir de nivel. Creado desde cero. 
+![Manto nuberu](/public/assets/elements/manto_nuberu.png)
 
   
 
-[Manto nuberu](../public/assets/elements/manto_nuberu.png) objeto para conseguir al subir de nivel. Creado desde cero.
+Piedra de San Pedro: objeto para conseguir al subir de nivel. Creado desde cero. ![Piedra San Pedro](/public/assets/elements/piedra_san_pedro.png) 
 
   
-
-[Piedra San Pedro](../public/assets/elements/piedra_san_pedro.png) objeto para conseguir al subir de nivel. Creado desde cero.
-
-  
-
-[Cuchillo sacauntos](../public/assets/elements/cuchillo_sacauntos.png) objeto para conseguir al subir de nivel. Creado desde cero.
+Cuchillo del Sacauntos: objeto para conseguir al subir de nivel. Creado desde cero. 
+![Cuchillo sacauntos](/public/assets/elements/cuchillo_sacauntos.png)
 
 
   
@@ -239,100 +245,95 @@ En el caso de los objetos, algunos de los sprites los hemos conseguido de págin
 
  - Diañu (goblin): Este enemigo será el enemigo estandar del primer nivel. Aparecerá en gran cantidad, se moverá a velocidad normal y tendrá 50 puntos de vida. Atacará cuerpo a cuerpo y quitará 10 de vida al jugador.
  
-	[Diañu](../public/assets/sprites/goblin.png) Spritesheet para el enemigo goblin. Obtenido de [Sanderfrenken](https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator/)
+	![Diañu](/public/assets/sprites/goblin.png "Diañu") 
+- Spritesheet para el enemigo goblin. Obtenido de [Sanderfrenken](https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator/)
  
  - Ventolín: Este enemigo aparecerá en el nivel 1. Será un enemigo que se moverá más lento pero atacará a distancia.
 
-	[Ventolin](../public/assets/sprites/ventolin.png) Spritesheet para el enemigo ventolin. Obtenido de [Sanderfrenken](https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator/)
+	![Ventolin](/public/assets/sprites/ventolin.png) 
+- Spritesheet para el enemigo ventolin. Obtenido de [Sanderfrenken](https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator/)
 		
  - Centipede: es el boss del nivel 1. Será un enemigo mucho más grande que el resto y con patrones de ataque más impredecibles. Tendrá una gran cantidad de vida y ataque.
 
-	[Centipede](../public/assets/sprites/Centipede) Spritesheet para el boss del nivel 1. Obtenido de [Craftpix](https://craftpix.net/freebies/free-swamp-bosses-pixel-art-character-pack/)
+	![Centipede](/public/assets/sprites/Centipede/Centipede.png)
+- Spritesheet para el boss del nivel 1. Obtenido de [Craftpix](https://craftpix.net/freebies/free-swamp-bosses-pixel-art-character-pack/)
 		
  - Cuelebre:  este enemigo aparece en la primera oleada del nivel 2. Son enemigos pequeños y con poca vida, pero al atacar avanzan una gran distancia para intentar morder al jugador.
 
-	[Cuelebre](../public/assets/sprites/Snake) Spritesheet serpiente del nivel 2. Obtenido de [Craftpix](https://craftpix.net/freebies/free-desert-enemy-sprite-sheets-pixel-art/)
+	![Cuelebre](/public/assets/sprites/Snake/snake.png) 
+- Spritesheet serpiente del nivel 2. Obtenido de [Craftpix](https://craftpix.net/freebies/free-desert-enemy-sprite-sheets-pixel-art/)
 	
  - Tarasca: es el enemigo que aparece en la segunda oleada del nivel 2. Son escorpiones que tienen bastante vida. No son muy rápido, pero lanzan ataques de veneno a distancia.
 
-	[Tarasca](../public/assets/sprites/Scorpio) Spritesheet escorpión del nivel 2. Obtenido de [Craftpix](https://craftpix.net/freebies/free-desert-enemy-sprite-sheets-pixel-art/)
+	![Tarasca](/public/assets/sprites/Scorpio/Scorpio.png) 
+- Spritesheet escorpión del nivel 2. Obtenido de [Craftpix](https://craftpix.net/freebies/free-desert-enemy-sprite-sheets-pixel-art/)
 	
- - Urco: en otro enemigo que aparece en el nivel 2. Es una especie de perro que cuenta con una gran velocidad y ataque.
-	[Urco](../public/assets/sprites/Scorpio) Spritesheet perro del nivel 2. Obtenido de [Craftpix](https://craftpix.net/freebies/free-desert-enemy-sprite-sheets-pixel-art/)
+ - Urco: otro enemigo que aparece en el nivel 2. Es una especie de perro que cuenta con una gran velocidad y ataque.
+	![Urco](/public/assets/sprites/Hyena/Hyena.png) 
+- Spritesheet perro del nivel 2. Obtenido de [Craftpix](https://craftpix.net/freebies/free-desert-enemy-sprite-sheets-pixel-art/)
 
 	
 ## 4.5 Elementos menús
 
 Para crear los elementos de los menús, como los botones o las tarjetas de los personajes y los objetos se han usado página de internet como base o como guía, pero en la mayoría de casos no se han usado los assets originales sin modificar.
 
- [Botón menú](../public/assets/elements/button.png) Sprite para botones de GUI. Obtenido de [Mounirtohami](https://mounirtohami.itch.io/pixel-art-gui-elements)
+ Sprite para botones de GUI. Obtenido de [Mounirtohami](https://mounirtohami.itch.io/pixel-art-gui-elements) ![Botón menú](/public/assets/elements/button.png)
 
   
 
-[Cartas de objetos](../public/assets/elements/colmillo_chupasangre_card.png) Cartas para seleccionar el objeto al subir de nivel (todas con misma fuente, incluidas tarjetas de personajes). Basado en [SoulForge](https://soulforge.gold/)
+Cartas para seleccionar el objeto al subir de nivel (todas con misma fuente, incluidas tarjetas de personajes). Basado en [SoulForge](https://soulforge.gold/) ![Cartas de objetos](/public/assets/elements/colmillo_chupasangre_card.png) 
+
+  
+Botón para poner el juego en modo pantalla completa. Obtenido en [DreamStime](https://www.dreamstime.com/full-screen-zoom-arrow-icon-perfect-application-web-logo-game-presentation-template-design-pixel-art-line-style-image176071697) ![Botón de pantalla completa](/public/assets/elements/fullscreen.png)
 
   
 
-[Botón de pantalla completa](../public/assets/elements/fullscreen.png) Botón para poner el juego en modo pantalla completa. Obtenido en [DreamStime](https://www.dreamstime.com/full-screen-zoom-arrow-icon-perfect-application-web-logo-game-presentation-template-design-pixel-art-line-style-image176071697)
+Botón para regresar al menú principal del juego. Obtenido en [Mounirtohami](https://mounirtohami.itch.io/pixel-art-gui-elements) ![Botón volver a menú principal](/public/assets/elements/houseButton.png) 
 
   
 
-[Botón volver a menú principal](../public/assets/elements/houseButton.png) Botón para regresar al menú principal del juego. Obtenido en [Mounirtohami](https://mounirtohami.itch.io/pixel-art-gui-elements)
+Botón para regresar al menú principal del juego. Obtenido en [Mounirtohami](https://mounirtohami.itch.io/pixel-art-gui-elements) ![Botón volver a menú principal](/public/assets/elements/houseButton.png) 
 
   
 
-[Botón volver a menú principal](../public/assets/elements/houseButton.png) Botón para regresar al menú principal del juego. Obtenido en [Mounirtohami](https://mounirtohami.itch.io/pixel-art-gui-elements)
+Fondo para los menús. Obtenido en [Behance](https://www.behance.net/gallery/65290819/Pixel-Art-Backgrounds-Tutorial-Skip) ![Fondo menú](/public/assets/elements/menuBackground.png) 
+Botón para pausar el juego. Obtenido en [Mounirtohami](https://mounirtohami.itch.io/pixel-art-gui-elements) ![Botón pause](/public/assets/elements/pauseButton.png) 
 
   
-
-[Fondo menú](../public/assets/elements/menuBackground.png) Fondo para los menús. Obtenido en [Behance](https://www.behance.net/gallery/65290819/Pixel-Art-Backgrounds-Tutorial-Skip)
-[Botón pause](../public/assets/elements/pauseButton.png) Botón para pausar el juego. Obtenido en [Mounirtohami](https://mounirtohami.itch.io/pixel-art-gui-elements)
-
-  
-
-[Ventana GUI](../public/assets/elements/settingsPanel.png) Ventana para crear menús. Creado desde cero basando estilo en [Mounirtohami](https://mounirtohami.itch.io/pixel-art-gui-elements)
+Ventana para crear menús. Creado desde cero basando estilo en [Mounirtohami](https://mounirtohami.itch.io/pixel-art-gui-elements) 
+![Ventana GUI](/public/assets/elements/settingsPanel.png) 
 
   
-
-[Icono sonido](../public/assets/elements/sound.png) Icono sonido para el menú de ajustes. Obtenido de [PixerArtMaker](http://pixelartmaker.com/art/4f7b7fff8862568)
-
+Icono sonido para el menú de ajustes. Obtenido de [PixerArtMaker](http://pixelartmaker.com/art/4f7b7fff8862568) ![Icono sonido](/public/assets/elements/sound.png)
+ 
 ## 4.6 Efectos y complementos
 
 En esta sección se incluyen tanto los sprites usados para los efectos que producen las pociones, como los iconos que muestran el estado activo de las pociones, los efectos de spawn y de muerte de los enemigos o los sprite de los proyectiles lanzados por los enemigos.
-
-[Proyectil escorpión](../public/assets/elements/Scorpio_Projectile.png) Spritesheet proyectiles que lanzan los escorpiones en nivel 2. Obtenido de [Pimen](https://pimen.itch.io/acid-spell-effect)
-
-  
-
-[Proyectil ventolin](../public/assets/elements/Explosion_gas_circle3.png) Sprite proyectil lanzado por ventolin. Obtenido de [Craftpix](https://craftpix.net/freebies/free-animated-explosion-sprite-pack/?num=1&count=76&sq=fire&pos=6)
-[Escudo efecto poción invencibilidad](../public/assets/elements/shield.png) Sprite espada para mostrar efecto activo de poción invencibilidad. Obtenido de [OpenGameArt](https://opengameart.org/content/shield-effect)
+	
+Spritesheet proyectiles que lanzan los escorpiones en nivel 2. Obtenido de [Pimen](https://pimen.itch.io/acid-spell-effect) 
+![Proyectil escorpión](/public/assets/elements/Scorpio_Projectile.png)
 
   
+Sprite proyectil lanzado por ventolin. Obtenido de [Craftpix](https://craftpix.net/freebies/free-animated-explosion-sprite-pack/?num=1&count=76&sq=fire&pos=6) 
+![Proyectil ventolin](/public/assets/elements/Explosion_gas_circle3.png) 
+	
+Sprite para el efecto de la poción de invencibilidad. Obtenido de [OpenGameArt](https://opengameart.org/content/shield-effect) ![Escudo efecto poción invencibilidad](/public/assets/elements/shield.png) 
 
-[Espada efecto poción daño](../public/assets/elements/damageBuffEffect.png) Sprite espada para mostrar efecto activo de poción fuerza. Obtenido de [PublicDomainVectors](https://publicdomainvectors.org/en/free-clipart/Simple-sword-image/47685.html)
+Sprite espada para mostrar efecto activo de poción fuerza. Obtenido de [PublicDomainVectors](https://publicdomainvectors.org/en/free-clipart/Simple-sword-image/47685.html) ![Espada efecto poción daño](/public/assets/elements/damageBuffEffect.png) 
 
-  
+Sprite ráfaga de aire para mostrar efecto activo de poción velocidad. Obtenido de [Vecteezy](https://www.vecteezy.com/vector-art/2774869-wind-blow-simple-icons-collection) ![Ráfaga de aire efecto poción velocidad](/public/assets/elements/speedBuffEffect.png) 
+ 
+ Sprite del efecto del aura de la poción de curación. Obtenido de [Pimen](https://pimen.itch.io/cutting-and-healing) ![Aura efecto poción vida](/public/assets/elements/Heal_Effect_Sprite_Sheet.png)
 
-[Ráfaga de aire efecto poción velocidad](../public/assets/elements/speedBuffEffect.png) Sprite ráfaga de aire para mostrar efecto activo de poción velocidad. Obtenido de [Vecteezy](https://www.vecteezy.com/vector-art/2774869-wind-blow-simple-icons-collection)
+Spritesheet efecto al spawnear enemigos. Modificado de [Pimen](https://pimen.itch.io/smoke-vfx-1) ![Efecto spawn](/public/assets/elements/spawnEnemyAnimation.png) 
 
-  
-
-[Aura efecto poción vida](../public/assets/elements/Heal_Effect_Sprite_Sheet.png) Sprite espada para mostrar efecto activo de poción fuerza. Obtenido de [Pimen](https://pimen.itch.io/cutting-and-healing)
-
-  
-
-[Efecto spawn](../public/assets/elements/spawnEnemyAnimation.png) Spritesheet efecto al spawnear enemigos. Modificado de [Pimen](https://pimen.itch.io/smoke-vfx-1)
-
-  
-
-[Efecto de muerte](../public/assets/elements/Dark_VFX_2.png) Spritesheet efecto al morir enemigo. Obtenido de [Pimen](https://pimen.itch.io/dark-spell-effect)
+Spritesheet efecto al morir enemigo. Obtenido de [Pimen](https://pimen.itch.io/dark-spell-effect) ![Efecto de muerte](/public/assets/elements/Dark_VFX_2.png) 
 
 ## 4.7 Fuentes
 
 En principio solo se utilizará una fuente para todo el juego.
 
-[Fuente pixel art](../public/assets/fonts/buttonsFont.ttf) Fuente para usar como predeterminada. Obtenido de [Mounirtohami](https://mounirtohami.itch.io/minimalpixel-font)
-  
+[Fuente pixel art](/public/assets/fonts/buttonsFont.ttf) Fuente para usar como predeterminada. Obtenido de [Mounirtohami](https://mounirtohami.itch.io/minimalpixel-font)
 
 # 5. Niveles
 
@@ -346,7 +347,7 @@ Cada vez que se supere un nivel se verá reflejado en el mapa para que el jugado
 
   
 
-![mapa de España](https://raw.githubusercontent.com/castrodaniel18/DVI/master/public/assets/elements/spainMap.png)
+![mapa de España](/public/assets/elements/spainMap.png)
 
   
 
@@ -378,7 +379,7 @@ Los enemigos que aparecenrán serán el culiebre, el tarasca y el urco.
 El juego contará con una canción de fondo que se escuchará desde que cargue el juego en el menú principal.
 Desde el menú de ajustes se podrá regular el volumen y silenciarla.
 
-[Canción de fondo](../public/assets/sounds/music.mp3) Música de fondo general: "Corazón de Guerrero". Obtenido de [FiftySounds](https://www.fiftysounds.com/es/)
+[Canción de fondo](/public/assets/sounds/music.mp3) Música de fondo general: "Corazón de Guerrero". Obtenido de [FiftySounds](https://www.fiftysounds.com/es/)
 
   
 
