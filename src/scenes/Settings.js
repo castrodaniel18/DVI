@@ -18,11 +18,6 @@ export default class Settings extends Phaser.Scene {
     }
   
     create() {
-
-        /*links assets
-        https://mounirtohami.itch.io/pixel-art-gui-elements
-        https://mounirtohami.itch.io/minimalpixel-font
-        */
         
         var background = this.add.image(0, 0, 'background');
         background.setScale(800 / background.width, 600 / background.height);

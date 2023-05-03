@@ -21,10 +21,6 @@ export default class PauseScene extends Phaser.Scene {
   
     create() {
         this.scene.bringToTop();
-        /*links assets
-        https://mounirtohami.itch.io/pixel-art-gui-elements
-        https://mounirtohami.itch.io/minimalpixel-font
-        */
 
         //Fondo
         var background = this.add.image(0, 0, 'settingsPanel');
