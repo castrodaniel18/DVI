@@ -2,7 +2,11 @@
 
 Aquí se detallan los distintos assets que utilizamos dentro del juego, de dónde los hemos obtenido y quiénes son sus autores.
 
-  
+[Piromancer](../public/assets/sprites/piromancer) Spritesheet personaje piromancer. Obtenido de [Craftpix](https://craftpix.net/freebies/free-wizard-sprite-sheets-pixel-art/)
+
+[Electromancer](../public/assets/sprites/electromancer) Spritesheet personaje electromancer. Obtenido de [Craftpix](https://craftpix.net/freebies/free-wizard-sprite-sheets-pixel-art/)
+
+[Luminomancer](../public/assets/sprites/luminomancer) Spritesheet personaje luminomancer. Obtenido de [Craftpix](https://craftpix.net/freebies/free-wizard-sprite-sheets-pixel-art/)
 
 [Goblin](../public/assets/sprites/goblin.png) Spritesheet para el enemigo goblin. Obtenido de [Sanderfrenken](https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator/)
 
@@ -16,29 +20,15 @@ Aquí se detallan los distintos assets que utilizamos dentro del juego, de dónd
 
 [Urco](../public/assets/sprites/Scorpio) Spritesheet perro del nivel 2. Obtenido de [Craftpix](https://craftpix.net/freebies/free-desert-enemy-sprite-sheets-pixel-art/)
 
-[Piromancer](../public/assets/sprites/piromancer) Spritesheet personaje piromancer. Obtenido de [Craftpix](https://craftpix.net/freebies/free-wizard-sprite-sheets-pixel-art/)
-
-[Electromancer](../public/assets/sprites/electromancer) Spritesheet personaje electromancer. Obtenido de [Craftpix](https://craftpix.net/freebies/free-wizard-sprite-sheets-pixel-art/)
-
-[Luminomancer](../public/assets/sprites/luminomancer) Spritesheet personaje luminomancer. Obtenido de [Craftpix](https://craftpix.net/freebies/free-wizard-sprite-sheets-pixel-art/)
-
-[Proyectil ventolin](../public/assets/elements/Explosion_gas_circle3.png) Sprite proyectil lanzado por ventolin. Obtenido de [Craftpix](https://craftpix.net/freebies/free-animated-explosion-sprite-pack/?num=1&count=76&sq=fire&pos=6)
-
-[Escudo efecto poción invencibilidad](../public/assets/elements/shield.png) Sprite espada para mostrar efecto activo de poción invencibilidad. Obtenido de [OpenGameArt](https://opengameart.org/content/shield-effect)
-
 [Pociones](../public/assets/elements/potion_strength.png) Sprite poción fuerza (todas las pociones son de la misma página). Obtenido de [Craftpix](https://craftpix.net/freebies/free-magic-potions-pixel-art-icons/)
 
-[Espada efecto poción daño](../public/assets/elements/damageBuffEffect.png) Sprite espada para mostrar efecto activo de poción fuerza. Obtenido de [PublicDomainVectors](https://publicdomainvectors.org/en/free-clipart/Simple-sword-image/47685.html)
+[Colmillo chupasangre](../public/assets/elements/colmillo_chupasangre.png) objeto para conseguir al subir de nivel. Creado desde cero.
 
-[Ráfaga de aire efecto poción velocidad](../public/assets/elements/speedBuffEffect.png) Sprite ráfaga de aire para mostrar efecto activo de poción velocidad. Obtenido de [Vecteezy](https://www.vecteezy.com/vector-art/2774869-wind-blow-simple-icons-collection)
+[Manto nuberu](../public/assets/elements/manto_nuberu.png) objeto para conseguir al subir de nivel. Creado desde cero.
 
-[Aura efecto poción vida](../public/assets/elements/Heal_Effect_Sprite_Sheet.png) Sprite espada para mostrar efecto activo de poción fuerza. Obtenido de [Pimen](https://pimen.itch.io/cutting-and-healing)
+[Piedra San Pedro](../public/assets/elements/piedra_san_pedro.png) objeto para conseguir al subir de nivel. Creado desde cero.
 
-[Efecto spawn](../public/assets/elements/spawnEnemyAnimation.png) Spritesheet efecto al spawnear enemigos. Modificado de [Pimen](https://pimen.itch.io/smoke-vfx-1)
-
-[Efecto de muerte](../public/assets/elements/Dark_VFX_2.png) Spritesheet efecto al morir enemigo. Obtenido de [Pimen](https://pimen.itch.io/dark-spell-effect)
-
-[Proyectil escorpión](../public/assets/elements/Scorpio_Projectile.png) Spritesheet proyectiles que lanzan los escorpiones en nivel 2. Obtenido de [Pimen](https://pimen.itch.io/acid-spell-effect)
+[Cuchillo sacauntos](../public/assets/elements/cuchillo_sacauntos.png) objeto para conseguir al subir de nivel. Creado desde cero.
 
 [Botón menú](../public/assets/elements/button.png) Sprite para botones de GUI. Obtenido de [Mounirtohami](https://mounirtohami.itch.io/pixel-art-gui-elements)
 
@@ -58,17 +48,25 @@ Aquí se detallan los distintos assets que utilizamos dentro del juego, de dónd
 
 [Icono sonido](../public/assets/elements/sound.png) Icono sonido para el menú de ajustes. Obtenido de [PixerArtMaker](http://pixelartmaker.com/art/4f7b7fff8862568)
 
+[Proyectil escorpión](../public/assets/elements/Scorpio_Projectile.png) Spritesheet proyectiles que lanzan los escorpiones en nivel 2. Obtenido de [Pimen](https://pimen.itch.io/acid-spell-effect)
+
+[Proyectil ventolin](../public/assets/elements/Explosion_gas_circle3.png) Sprite proyectil lanzado por ventolin. Obtenido de [Craftpix](https://craftpix.net/freebies/free-animated-explosion-sprite-pack/?num=1&count=76&sq=fire&pos=6)
+
+[Escudo efecto poción invencibilidad](../public/assets/elements/shield.png) Sprite espada para mostrar efecto activo de poción invencibilidad. Obtenido de [OpenGameArt](https://opengameart.org/content/shield-effect)
+
+[Espada efecto poción daño](../public/assets/elements/damageBuffEffect.png) Sprite espada para mostrar efecto activo de poción fuerza. Obtenido de [PublicDomainVectors](https://publicdomainvectors.org/en/free-clipart/Simple-sword-image/47685.html)
+
+[Ráfaga de aire efecto poción velocidad](../public/assets/elements/speedBuffEffect.png) Sprite ráfaga de aire para mostrar efecto activo de poción velocidad. Obtenido de [Vecteezy](https://www.vecteezy.com/vector-art/2774869-wind-blow-simple-icons-collection)
+
+[Aura efecto poción vida](../public/assets/elements/Heal_Effect_Sprite_Sheet.png) Sprite espada para mostrar efecto activo de poción fuerza. Obtenido de [Pimen](https://pimen.itch.io/cutting-and-healing)
+
+[Efecto spawn](../public/assets/elements/spawnEnemyAnimation.png) Spritesheet efecto al spawnear enemigos. Modificado de [Pimen](https://pimen.itch.io/smoke-vfx-1)
+
+[Efecto de muerte](../public/assets/elements/Dark_VFX_2.png) Spritesheet efecto al morir enemigo. Obtenido de [Pimen](https://pimen.itch.io/dark-spell-effect)
+
 [Fuente pixel art](../public/assets/fonts/buttonsFont.ttf) Fuente para usar como predeterminada. Obtenido de [Mounirtohami](https://mounirtohami.itch.io/minimalpixel-font)
 
 [Canción de fondo](../public/assets/sounds/music.mp3) Música de fondo general: "Corazón de Guerrero". Obtenido de [FiftySounds](https://www.fiftysounds.com/es/)
-
-[Comillo chupsangre]
-
-[Cuchillo sacauntos]
-
-[Manto nuberu]
-
-[Piedra san pedro]
 
 [Icono efecto dash disponible]
 
