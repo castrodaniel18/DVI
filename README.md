@@ -260,7 +260,7 @@ Cuchillo del Sacauntos: objeto para conseguir al subir de nivel. Creado desde ce
 		
  - Cuelebre:  este enemigo aparece en la primera oleada del nivel 2. Son enemigos pequeños y con poca vida, pero al atacar avanzan una gran distancia para intentar morder al jugador.
 
-	![Cuelebre](/public/assets/sprites/Snake/snake.png) 
+	![Cuelebre](/public/assets/sprites/Snake/Snake.png) 
 - Spritesheet serpiente del nivel 2. Obtenido de [Craftpix](https://craftpix.net/freebies/free-desert-enemy-sprite-sheets-pixel-art/)
 	
  - Tarasca: es el enemigo que aparece en la segunda oleada del nivel 2. Son escorpiones que tienen bastante vida. No son muy rápido, pero lanzan ataques de veneno a distancia.
