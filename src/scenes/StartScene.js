@@ -8,10 +8,6 @@ export default class StartScene extends Phaser.Scene {
   
     preload() {
       this.load.css('start', 'web/css/start.css');
-      /*Créditos de la canción para meter al gdd
-      Obra: Corazón de Guerrero
-      Música de https://www.fiftysounds.com/es/
-      */
       this.load.audio('music', 'assets/sounds/music.mp3');
       this.load.image('background', 'assets/elements/menuBackground.png');
       this.load.image('cartel', 'assets/elements/settingsPanel.png');

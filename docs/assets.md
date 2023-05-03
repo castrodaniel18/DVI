@@ -58,6 +58,10 @@ Aquí se detallan los distintos assets que utilizamos dentro del juego, de dónd
 
 [Icono sonido](../public/assets/elements/sound.png) Icono sonido para el menú de ajustes. Obtenido de [PixerArtMaker](http://pixelartmaker.com/art/4f7b7fff8862568)
 
+[Fuente pixel art](../public/assets/fonts/buttonsFont.ttf) Fuente para usar como predeterminada. Obtenido de [Mounirtohami](https://mounirtohami.itch.io/minimalpixel-font)
+
+[Canción de fondo](../public/assets/sounds/music.mp3) Música de fondo general: "Corazón de Guerrero". Obtenido de [FiftySounds](https://www.fiftysounds.com/es/)
+
 [Comillo chupsangre]
 
 [Cuchillo sacauntos]
