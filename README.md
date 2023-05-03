@@ -242,19 +242,24 @@ En el caso de los objetos, algunos de los sprites los hemos conseguido de págin
 	[Diañu](../public/assets/sprites/goblin.png) Spritesheet para el enemigo goblin. Obtenido de [Sanderfrenken](https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator/)
  
  - Ventolín: Este enemigo aparecerá en el nivel 1. Será un enemigo que se moverá más lento pero atacará a distancia.
+
 	[Ventolin](../public/assets/sprites/ventolin.png) Spritesheet para el enemigo ventolin. Obtenido de [Sanderfrenken](https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator/)
 		
  - Centipede: es el boss del nivel 1. Será un enemigo mucho más grande que el resto y con patrones de ataque más impredecibles. Tendrá una gran cantidad de vida y ataque.
+
 	[Centipede](../public/assets/sprites/Centipede) Spritesheet para el boss del nivel 1. Obtenido de [Craftpix](https://craftpix.net/freebies/free-swamp-bosses-pixel-art-character-pack/)
 		
  - Cuelebre:  este enemigo aparece en la primera oleada del nivel 2. Son enemigos pequeños y con poca vida, pero al atacar avanzan una gran distancia para intentar morder al jugador.
+
 	[Cuelebre](../public/assets/sprites/Snake) Spritesheet serpiente del nivel 2. Obtenido de [Craftpix](https://craftpix.net/freebies/free-desert-enemy-sprite-sheets-pixel-art/)
 	
  - Tarasca: es el enemigo que aparece en la segunda oleada del nivel 2. Son escorpiones que tienen bastante vida. No son muy rápido, pero lanzan ataques de veneno a distancia.
+
 	[Tarasca](../public/assets/sprites/Scorpio) Spritesheet escorpión del nivel 2. Obtenido de [Craftpix](https://craftpix.net/freebies/free-desert-enemy-sprite-sheets-pixel-art/)
 	
  - Urco: en otro enemigo que aparece en el nivel 2. Es una especie de perro que cuenta con una gran velocidad y ataque.
 	[Urco](../public/assets/sprites/Scorpio) Spritesheet perro del nivel 2. Obtenido de [Craftpix](https://craftpix.net/freebies/free-desert-enemy-sprite-sheets-pixel-art/)
+
 	
 ## 4.5 Elementos menús
 
