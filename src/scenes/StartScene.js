@@ -45,7 +45,9 @@ export default class StartScene extends Phaser.Scene {
       //Canción de fondo
       this.music = this.sound.add('music');
       if (!this.musicEnabled){
+        this.music.loop=true;
         this.music.play();
+
       }
 
       // Titulo del juego
@@ -73,7 +75,7 @@ export default class StartScene extends Phaser.Scene {
       this.helpButton.setScale(6, 3.5);
       this.add.text(370, 393, 'Help', { fontFamily: 'myFont', fontSize: '26px', color: '#ffffff' });
       this.helpButton.on('pointerdown', () => {
-        //Por hacer
+        window.location.href = "web/views/Instructions.html";
       });
 
     }
