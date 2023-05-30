@@ -89,19 +89,31 @@ Del mismo modo, tanto los objetos que pueda recoger del suelo, como los objetos 
 - Elección de clase: al comienzo de la partida, el jugador tendrá que escoger qué tipo de mago quiere ser:
 
 
-- Piromancer: Un mago de fuego que ataca tirando bolas de fuego, tiene más vida inicial que el resto de personajes. es el personaje más equilibrado.
-  
+	- **Piromancer**: Un mago de fuego que ataca tirando bolas de fuego, tiene más vida inicial que el resto de personajes. Es el personaje más equilibrado. 
+		
+		- Tiene 150 de vida
+		- Hace 40 de daño por proyectil. Solo puede tirar un proyectil a la vez Tarda 0,6 segundos en disparar un bola de fuego.
+		- Tiene 100 de velocidad de movimiento.
+		- Al esquivar ataques especiales de los enemigos se moverá un 50% más rápido durante 3 segundos.
 
-- Electromancer: Un mago de electricidad que ataca tirando bolas de rayos, se mueve más rápido que el resto de personajes y sus ataques hacen más daño, pero tarda más en lanzarlos.
+	- **Electromancer**: Un mago de electricidad que ataca tirando bolas de rayos, se mueve más rápido que el resto de personajes y sus ataques hacen más daño, pero tarda más en lanzarlos.
+		- Tiene 100 de vida
+		- Hace 50 de daño por proyectil. Puede irar varios proyectiles a la vez. Tarda 1,2 segundos en disparar un bola de rayos.
+		- Tiene 150 de velocidad de movimiento.
+		- Al esquivar ataques especiales de los enemigos hará 50% más daño durante 3 segundos.
 
 
-- Luminomancer: Un mago de luz que ataca tirando bolas de luz, tiene más disparos que los demás personajes y hacen menos daño, además dispara más seguido.
+	- **Luminomancer**: Una maga de luz que ataca tirando bolas de luz, tiene más disparos que los demás personajes y hacen menos daño, además dispara más seguido.
+		- Tiene 100 de vida
+		- Hace 20 de daño por proyectil. Puede tirar hasta 20 proyectiles. Tarda 0,2 segundos en disparar un bola de luz.
+		- Tiene 100 de velocidad de movimiento.
+		- Al esquivar ataques especiales de los enemigos se curará 15 puntos de vida.
 
-- Movimiento: el jugador será capaz de desplazarse en ocho direcciones haciendo uso de las teclas w (arriba), a (izquierda), s(abajo) y d (derecha) y pudiendo combinarlas para crear el movimiento en diagonal. El jugador podrá moverse por todo el escenario que vea en ese nivel, pero al llegar a los límites del escenario se chocará y no podrá continuar. También habrá elementos estéticos repartidos por el mapa que no tendrán una utilidad concreta pero que no podrán ser traspasados ni por el jugador ni por los enemigos o los ataques.
+- Movimiento: el jugador será capaz de desplazarse en ocho direcciones haciendo uso de las teclas w (arriba), a (izquierda), s(abajo) y d (derecha) y pudiendo combinarlas para crear el movimiento en diagonal. El jugador podrá moverse por todo el escenario que vea en ese nivel, pero al llegar a los límites del escenario se chocará y no podrá continuar. También habrá elementos estéticos repartidos por el mapa que no tendrán una utilidad concreta pero que no podrán ser traspasados ni por el jugador ni por los enemigos, aunque por los disparos sí. Solamente el boss de cada nivel hace caso omiso a los obstáculos del escenario.
 
-- Disparos: Para apuntar el jugador utilizará el ratón, de forma que los disparos irán dirigidos hacia el punto donde se encuentre el cursor. Para disparar se utilizará el click izquierda de ratón, de forma que cada vez que se pulse se disparará una vez, aunque esto es variable en función al arma que se lleve. Cada tipo de boss contará con un punto débil distinto. En caso de que el jugador consiga golpear ese punto, hará mucho más daño de lo normal.
+- Disparos: Para apuntar el jugador utilizará el ratón, de forma que los disparos irán dirigidos hacia el punto donde se encuentre el cursor. Para disparar se utilizará el click izquierda de ratón, de forma que cada vez que se pulse se disparará una vez, aunque esto es variable en función del personaje que se lleve. Cada tipo de boss contará con un punto débil distinto. En caso de que el jugador consiga golpear ese punto, hará mucho más daño de lo normal.
 
-- Dash: el jugador tendrá la posibilidad de hacer un dash que le permitirá avanzar una pequeña distancia en la dirección en la que esté mirando, lo que le permitirá esquivar algunos ataques. Además, de vez en cuando los enemigos pueden lanzar un ataque especial que el jugador podrá utilizando el dash. Si la consigue esquivar correctamente se le recompensará. Esta recompensará potenciará el siguiente ataque que lance el jugador, que inflingirá más daño.
+- Dash: el jugador tendrá la posibilidad de hacer un dash que le permitirá avanzar una pequeña distancia en la dirección en la que esté mirando, lo que le permitirá esquivar algunos ataques. Además, de vez en cuando los enemigos pueden lanzar un ataque especial que el jugador podrá utilizando el dash. Si la consigue esquivar correctamente se le recompensará. Esta recompensa varía según el tipo de personaje escogido, pudiendose recibir más daño, curación de vida o aumento de velocidad.
 
   
 
@@ -109,23 +121,22 @@ Del mismo modo, tanto los objetos que pueda recoger del suelo, como los objetos 
 
 - Movimiento: los enemigos se moverán constantemente hacia el jugador hasta llegar a la distancia mínima necesaria para dañarle. Todos los enemigos van a tener el mismo tipo de movimiento.
 
-- Ataque: existirán algunos enemigos con ataques cuerpo a cuerpo que tendrán que acercarse a tí para poder dañarte, mientras que otros atacarán a distancia.
+- Ataque: existirán algunos enemigos con ataques cuerpo a cuerpo que tendrán que acercarse a tí para poder dañarte, mientras que otros atacarán a distancia. Los enemigos que atacan a distancia en ocasiones disprarán proyectiles especiales, s el jugador los esquiva en el momento correcto recibirá una recompensa.
 
 ### 2.1.3 Lógica de escenario
 
 - Experiencia: por cada enemigo que el jugador mate, este soltará puntos de experiencia que el jugador tendrá que coger pasando por encima para poder ir subiendo de nivel. En la parte superior de la pantalla habrá un barra de experiencia que muestre cuánto queda hasta llegar al próximo nivel.
 
-- Subida de nivel: cada vez que el jugador consiga subir de nivel se mostrará una caja con 3 objetos aleatorios. El jugador tendrá que escoger uno de estos para mantener durante el resto de la partida. Si el objeto que sale en la caja ya lo había cogido con anterioridad el jugador, lo podrá coger otra vez para mejorar su efecto. Dentro de los objetos que se pueden conseguir al subir de nivel se incluyen tanto mejoras del arma, como consumibles y cambios en las recompensas obtenidas al realizar correctamente los dashes.
+- Subida de nivel: cada vez que el jugador consiga subir de nivel se mostrará una caja con 3 objetos aleatorios. El jugador tendrá que escoger uno de estos para mantener durante el resto de la partida. Si el objeto que sale en la caja ya lo había cogido con anterioridad el jugador, lo podrá coger otra vez para mejorar su efecto. Dentro de los objetos que se pueden conseguir al subir de nivel se incluyen objetos basados en la mitología ibérica. El nivel máximo de los objetos es 5. Si se alcanza el máximo de objetos que se pueden conseguir en un nivel, no se podrán coger objetos diferentes a los que ya se tienen, solo se podrán subir de nivel los ya obtenidos.
 
 - Consumibles: en los escenarios se generarán de forma aleatoria objetos consumibles que darán al enemigo efectos temporales como un aumento de velocidad, de daño, invisibilidad, etc.
-
-  
 
 - Estadísticas personaje: en alguna parte de la pantalla se podrá ver en todo momento una representación de las estadísticas actuales del personaje (vida, velocidad de movimiento, velocidad de ataque, número de bolas de fuego).
 
   
 
 ### 2.1.4 Mecánicas de objetos
+**Pociones consumibles**
 
 - Poción de velocidad: aumenta la velocidad del jugador un 50% durante 10 segundos.
 
@@ -134,6 +145,8 @@ Del mismo modo, tanto los objetos que pueda recoger del suelo, como los objetos 
 - Poción de invencibilidad: vuelve al jugador inmune al daño de los enemigos durante 10 segundos.
 
 - Poción de daño: Duplica el daño del jugador durante 10 segundos.
+
+**Objetos conseguibles al subir de nivel**
 
  - Manto nuberu: incrementa un 1% la velocidad del jugador.
  
@@ -147,7 +160,6 @@ Del mismo modo, tanto los objetos que pueda recoger del suelo, como los objetos 
 
 ### 2.1.5 Mecánicas de jefes
 
-  
 
 - Punto débil: los jefes serán enemigos mucho más grandes que los normales y que contarán con un punto débil en el que los disparos harán muchos más daño.
 
@@ -163,10 +175,10 @@ Del mismo modo, tanto los objetos que pueda recoger del suelo, como los objetos 
 
 - El jugador podrá utilizar el dash para esquivar ataques y poder apuntar con mayor facilidad al punto débil del enemigo y hacerle más daño con el disparo potenciado.
 
-  
 
 - Si el jugador es lo suficientemente hábil podrá utilizar los elementos estéticos del escenario como cubierta para evitar que le den los disparos o para despistar a algún enemigo en un momento dado.
 
+- El desarrollo de cada partida dependerá de los objetos que escoja el jugador al subir de nivel. Así cad apartida será diferente y cada jugador podrá escoger potenciar als características que más le interesan.
   
 
 # 3. Controles
@@ -269,6 +281,7 @@ Cuchillo del Sacauntos: objeto para conseguir al subir de nivel. Creado desde ce
 - Spritesheet escorpión del nivel 2. Obtenido de [Craftpix](https://craftpix.net/freebies/free-desert-enemy-sprite-sheets-pixel-art/)
 	
  - Urco: otro enemigo que aparece en el nivel 2. Es una especie de perro que cuenta con una gran velocidad y ataque.
+
 	![Urco](/public/assets/sprites/Hyena/Hyena.png) 
 - Spritesheet perro del nivel 2. Obtenido de [Craftpix](https://craftpix.net/freebies/free-desert-enemy-sprite-sheets-pixel-art/)
 
@@ -341,7 +354,8 @@ Cada nivel del juego estará basado en una comunidad autónoma de España, lo pr
 
 Antes de empezar el juego se mostrará un mapa de España que servirá como selector de niveles. En cada Comunidad Autónoma habrá un botón para acceder a ese nivel.
 
-Al principio todos los niveles estarán bloqueados salvo el de Galicia, de forma que hasta que no consigas superar ese nivel no podrás desbloquear otro.
+Al principio todos los niveles estarán bloqueados salvo el de 
+Asturias, de forma que hasta que no consigas superar ese nivel no podrás desbloquear otro.
 
 Cada vez que se supere un nivel se verá reflejado en el mapa para que el jugador pueda saber en todo momento el progreso que lleva en el juego.
 
@@ -367,16 +381,22 @@ Respecto a la lógica del juego, en principio en todos los niveles se seguirá e
 
 El primer nivel estará basado en Asturias. El escenario de este nivel tendrá una temática de bosque y los enemigos que aparecerán en este nivel son el Diañu, el ventolin, y el Centipede.
 
+- El **diañu** es un pequeño duende malvado que atacrá al jugador a melé, le hará 10 de daño cada vez que le golpee. EL diañu tiene que esperar 2 segundos antes de poder atacar otra vez aunque esté en el rango para hacerlo. Este enemigo tiene 80 de vida y se ueve con una velocidad de 50.
+- El **ventolín** es un elfo que ataca a distancia. Cada 4 segundos lanzará un proyctil en dirección al jugador. Estos proyectiles tienen un 50% de probabilidad de ser especiales. Un proyectil especial es de color rojo y si el jugador lo esquiva ganará una pequeña recompensa. El ventolin tiene 5 de vida y se mueve a 10 de velocidad. 
+- El **centipede** es el boss final del nivel de Asturias, es un gusano mutante creado por una malvada Guaxa. Este boss tiene 700 de vida por lo que será más difícil matarlo. Cuenta con 3 ataques que realizará aleatoriamente dependiendod e la distancia a la que se encuenter del jugador. Tiene dos ataques de rango cercano y un tercero en el que se lanza corriendo a por el jugador. Matar al boss hará que temrine el nivel si se han matado también al resto de enemigos.
 ## 5.2 Galicia
 
 El segundo nivel estará basado en Galicia. El escenario de este nivel tendrá una temática de agua, con un río o el mar.
-Los enemigos que aparecenrán serán el culiebre, el tarasca y el urco.
+Los enemigos que aparecerán serán el cuelebre, el tarasca y el urco.
   
+  - El **cuelebre** es una serpiente del nivel de Galicia. Este enemigo atacará al jugador lanzandose hacia el. Para poder llegar más lejos, el culebre carga los ataques durante 2 segundos, tiempo en el que estrá parpadeando. Si alcanza al jugador le hará 20 de daño. El cuelebre tien 40 de vida y se muve a 70 e velocidad.
+  - El **tarasca** es un escorpión que ataca a distancia. Tiene 50 de vida y se mueve a 50 de velocidad. Al igual que el cuelebre, este enemigo también carga los ataques antes de lanzarlos, de hecho es tan maligno que si muere mientras está cargando el ataque, se asegura de lanzarlo e intentar dañar al jugador.
+  - El **urco** es un perro que ataca a melé. Este enemigo se mueve más rápido que el resto a 80 de velocidad y tiene más vida, 100. El jugador deberá escoger bien sus movimientos si no quiere que le acaben acorralando una jauría de urcos. 
   
 
 # 6. Sonido
 
-El juego contará con una canción de fondo que se escuchará desde que cargue el juego en el menú principal.
+El juego contará con una canción de fondo que se escuchará desde que cargue el juego en el menú principal. Esta canción sonará a lo alrgo de todo el juego.
 Desde el menú de ajustes se podrá regular el volumen y silenciarla.
 
 [Canción de fondo](/public/assets/sounds/music.mp3) Música de fondo general: "Corazón de Guerrero". Obtenido de [FiftySounds](https://www.fiftysounds.com/es/)
@@ -405,4 +425,4 @@ Desde el menú de ajustes se podrá regular el volumen y silenciarla.
 
   
 
-Hemos tomado como referencia principal el juego Vampire Survivors, siguiendo el mismo estilo de juego y mecánicas básicas. Sin embargo, hemos añadido algunas mecánicas distintas basándonos en el juego Enter the Gungeon y hemos cambiado la temática siguiendo la mitología española que hemos ido recopilando de varias fuentes.
+Hemos tomado como referencia principal el juego Vampire Survivors, siguiendo el mismo estilo de juego y mecánicas básicas. Sin embargo, hemos añadido algunas mecánicas distintas basándonos en el juego Enter the Gungeon para el dash o Bayonetta para las mejoras al esquivar ataques determinados, también hemos cambiado la temática de los niveles y los enemigos siguiendo la mitología española que hemos ido recopilando de varias fuentes.
