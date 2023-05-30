@@ -100,9 +100,6 @@ export default class StartScene extends Phaser.Scene {
         this.load.image(PIROMANCER.PIROMANCER_NAME, PIROMANCER.PIROMANCER_SELECTION);
         this.load.image(ELECTROMANCER.ELECTROMANCER_NAME, ELECTROMANCER.ELECTROMANCER_SELECTION);
         this.load.image(LUMINOMANCER.LUMINOMANCER_NAME, LUMINOMANCER.LUMINOMANCER_SELECTION);
-
-        this.load.spritesheet('healthBar', 'assets/elements/health.png',{frameWidth:640, frameHeight:128});
-
         //load piromancer
         this.load.spritesheet('piromancer_idle', 'assets/sprites/piromancer/Idle.png', {frameWidth: 128, frameHeight: 128});
         this.load.spritesheet('piromancer_dead', 'assets/sprites/piromancer/Dead.png', {frameWidth: 128, frameHeight: 128});

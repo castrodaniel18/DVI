@@ -18,17 +18,17 @@ export default class BossGroup extends Phaser.Physics.Arcade.Group{
             let rectHeight=this.scene.cameras.main.worldView.height;
             let rectWidth=this.scene.cameras.main.worldView.width;
             if (randomBorder === 0) { // Izquierda
-                x = this.scene.cameras.main.worldView.left;
+                x = this.scene.cameras.main.worldView.left+50;
                 y = Math.random() * rectHeight;
               } else if (randomBorder === 1) { // Derecha
-                x = this.scene.cameras.main.worldView.right;
+                x = this.scene.cameras.main.worldView.right-50;
                 y = Math.random() * rectHeight;
               } else if (randomBorder === 2) { // Arriba
                 x = Math.random() * rectWidth;
-                y = this.scene.cameras.main.worldView.top;
+                y = this.scene.cameras.main.worldView.top+50;
               } else { // Abajo
                 x = Math.random() * rectWidth;
-                y = this.scene.cameras.main.worldView.bottom;
+                y = this.scene.cameras.main.worldView.bottom-50;
               }
             const boss = new this.bossType(this.scene, x, y, this.imgKey);
             this.enemies.push(boss);

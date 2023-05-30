@@ -16,7 +16,7 @@ const CRIT_DAMAGE_TEXT_COLOR = '#FFFF00';
 
 const ATTACKS_COOLDOWN = [5000, 2000, 14000]
 
-const ATTACKS_TIME = [1000, 4000, 10000]
+const ATTACKS_TIME = [1000, 4000, 2000]
 
 const ATTACKS_SPEED = [200, 100, 500]
 
@@ -26,15 +26,14 @@ const ATTACKS_DAMAGE = [30, 20, 40]
 export default class Centipede extends Boss {
     constructor(scene, x, y) {
         super(scene, x, y, CENTIPEDE_SPRITE);
-
         this.health = CENTIPEDE_HEALTH;
         this.canMove = false;
-        this.unstoppable=false;
+        this.unstoppable = false;
         this.createAnimations();
-        this.play('centipede');
+        this.body.onWorldBounds = 1;
+        this.play('centipede_walk');
         this.setScale(3);
         this.scene.physics.add.overlap(this.scene.player, this, this.hitPlayer, null, this);
-        this.body.onWorldBounds = true;
         this.body.world.on('worldbounds', this.onWorldBoundsFunction, this);
         this.addCollisions();
         this.attackCooldown = true;
@@ -58,9 +57,9 @@ export default class Centipede extends Boss {
 
     createAnimations() {
         this.scene.anims.create({
-            key: 'centipede',
+            key: 'centipede_walk',
             frames: this.scene.anims.generateFrameNumbers(CENTIPEDE_SPRITE, { start: 0, end: 3 }),
-            frameRate: 5,
+            frameRate: 4,
             repeat: -1
         });
         this.scene.anims.create({
@@ -91,10 +90,11 @@ export default class Centipede extends Boss {
 
 
     checkAnimation() {
-        if (this.scene.player.x > this.x)
-            this.flip = true;
+        if (this.scene.player.x >this.x){
+            this.flipX = true;
+        }
         else
-            this.flip = false;
+            this.flipX = false;
         if (!this.attackCooldown) {
             this.playerDistance = Phaser.Math.Distance.Between(this.scene.player.x, this.scene.player.y, this.x, this.y);
             if (this.playerDistance < 500) {
@@ -103,7 +103,7 @@ export default class Centipede extends Boss {
                 // Reproducir la animación en función de la probabilidad
                 if (rand < 0.3 && this.playerDistance > 40) {
                     this.body.setSize(70, 40);
-                    if (!this.flip)
+                    if (!this.flipX)
                         this.body.offset.set(5, 0);
                     else
                         this.body.offset.set(-2, 0);
@@ -111,7 +111,7 @@ export default class Centipede extends Boss {
                     return 'centipede_attack_1';
                 } else if (rand < 0.6 && this.playerDistance > 50) {
                     this.body.setSize(75, 40);
-                    if (!this.flip)
+                    if (!this.flipX)
                         this.body.offset.set(0, 0);
                     else
                         this.body.offset.set(-2, 0);
@@ -119,25 +119,25 @@ export default class Centipede extends Boss {
                     return 'centipede_attack_2';
                 } else if (this.playerDistance > 80) {
                     this.body.setSize(64, 28);
-                    if (!this.flip)
+                    if (!this.flipX)
                         this.body.offset.set(8, 0);
                     else
                         this.body.offset.set(0, 0);
                     this.attackSelected = 2;
-                    this.unstoppable=true;
+                    this.unstoppable = true;
                     return 'centipede_attack_3';
                 }
             }
         }
         else if (!this.isAttacking) {
-            this.unstoppable=false;
-            if(!this.colliderSet)this.addCollisions();
+            this.unstoppable = false;
+            if (!this.colliderSet) this.addCollisions();
             this.body.setSize(52, 40);
-            if (!this.flip)
+            if (!this.flipX)
                 this.body.offset.set(0, 0);
             else
                 this.body.offset.set(20, 0);
-            return 'centipede';
+            return 'centipede_walk';
         }
         else return null;
     }
@@ -146,7 +146,6 @@ export default class Centipede extends Boss {
         if (!this.attackCooldown) {
             this.body.velocity.x = 0;
             this.body.velocity.y = 0;
-            this.body.bounce.set(0);
             this.hasHitPlayer = false;
             switch (this.attackSelected) {
                 case 0:
@@ -164,9 +163,9 @@ export default class Centipede extends Boss {
                 this.attackCooldown = false;
             }, ATTACKS_COOLDOWN[this.attackSelected]);
             this.isAttacking = true;
-            this.canMove=false;
+            this.canMove = false;
             setTimeout(() => {
-                this.canMove=true;
+                this.canMove = true;
                 this.isAttacking = false;
                 this.setRotation(0);
                 this.flipY = false;
@@ -204,7 +203,6 @@ export default class Centipede extends Boss {
             this.setRotation(this.angle);
 
         this.scene.physics.moveToObject(this, this.scene.player, this.speed);
-        //this.body.bounce.set(1);
     }
 
     onWorldBoundsFunction(body) {
@@ -238,8 +236,8 @@ export default class Centipede extends Boss {
                 this.scene.player.health = this.scene.player.maxHealth;
             }
 
-            
-            if(!this.unstoppable){
+
+            if (!this.unstoppable) {
                 this.velocidad = -5;
                 this.angulo = Phaser.Math.Angle.BetweenPoints(this, projectile);
                 this.body.setVelocity(Math.cos(this.angulo) * this.velocidad, Math.sin(this.angulo) * this.velocidad);
@@ -257,14 +255,14 @@ export default class Centipede extends Boss {
                 },
                 callbackScope: this
             });
+            console.log(this.health)
             if (this.isDead()) {
-                this.body.setSize(64,36);
-                this.body.offset.set(0,40);
+                this.body.setSize(64,40);
                 this.play('centipede_death');
-                this.scene.time.delayedCall(DESTROY_ENEMY_TIME*1.5, () => {
+                this.scene.time.delayedCall(DESTROY_ENEMY_TIME * 1.5, () => {
                     this.destroyEnemyAnim.visible = true;
-                    this.destroyEnemyAnim.x = this.x;
-                    this.destroyEnemyAnim.y = this.y;
+                    this.destroyEnemyAnim.x = this.body.center.x;
+                    this.destroyEnemyAnim.y = this.body.center.y;
                     this.destroyEnemyAnim.play('destroy_enemy_effect');
                     this.setVisible(false);
                 });
@@ -308,9 +306,9 @@ export default class Centipede extends Boss {
             repeat: 0
         });
     }
-    enemyUpdate(){
-        if(!this.isDead())
-        this.attack();
+    enemyUpdate() {
+        if (!this.isDead())
+            this.attack();
 
     }
 }

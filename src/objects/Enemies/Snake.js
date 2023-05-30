@@ -94,7 +94,8 @@ export default class Snake extends Enemy{
             this.clearTint();
             this.charging = false;
             this.blink = true;
-            this.angle = Phaser.Math.Angle.Between(this.x, this.y, scene.player.x, scene.player.y);
+        }, 2000);
+        this.angle = Phaser.Math.Angle.Between(this.x, this.y, this.scene.player.x, this.scene.player.y);
             this.degrees = this.angle * (180 / Math.PI)
             if( this.degrees >= 0){
                 if(this.degrees < 90)
@@ -109,7 +110,6 @@ export default class Snake extends Enemy{
             }
             
             this.scene.physics.moveToObject(this, scene.player, CHARGE_SPEED);
-        }, 2000);
         setTimeout(() => {
             this.canMove = true;
             this.attackAnim = false;

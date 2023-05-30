@@ -12,6 +12,6 @@ export default class Fang extends Item {
 
     apply(){
         const scene = this.scene;
-        this.scene.player.lifesteal += LIFESTEAL_INCREASE_FACTOR;
+        scene.player.lifesteal += LIFESTEAL_INCREASE_FACTOR;
     }
 }

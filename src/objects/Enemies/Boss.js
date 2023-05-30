@@ -1,5 +1,5 @@
 export default class Boss extends Phaser.GameObjects.Sprite {
-    constructor(scene, x, y, sprite){
+    constructor(scene, x, y, sprite) {
         super(scene, x, y, sprite);
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
@@ -22,29 +22,35 @@ export default class Boss extends Phaser.GameObjects.Sprite {
         this.anim = sprite;
     }
 
-    preUpdate(t, dt){
+    preUpdate(t, dt) {
         super.preUpdate(t, dt);
             //Ejecutamos la animación solo si no es la que se estaba ejecutando ya
             if(!this.isDead()){
                 this.anim = this.checkAnimation();
                 if(this.anim !== null && this.anim !== undefined)
-                    this.play(this.anim, true).flipX = this.flip;
+                    this.play(this.anim, true);
                 this.texto.x = this.x - 5;
                 this.texto.y = this.y - 40;
             }
-           else{
-                this.body.velocity.x=0;
-                this.body.velocity.y=0;
-           }
+        else {
+            this.body.velocity.x = 0;
+            this.body.velocity.y = 0;
+        }
+        if (Phaser.Math.Distance.Between(this.body.center.x,this.body.center.y, this.scene.player.x, this.scene.player.y) < 50 && this.isAttacking) {
+            this.isAttacking = false;
+            this.body.velocity.x = 0;
+            this.body.velocity.y = 0;
+            this.setRotation(0);
+        }
     }
 
-    isDead(){
-        return this.health < 0;
+    isDead() {
+        return this.health <= 0;
     }
 
 
-    addCollisions(){
+    addCollisions() {
         this.scene.physics.add.overlap(this.scene.player.weapon, this, this.getHit, null, this);
     }
-    
+
 }

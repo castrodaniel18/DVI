@@ -40,7 +40,7 @@ export default class VentolinProjectile extends Projectile{
         this.scene.anims.create({
             key: 'none_ventolin',
             frames: [ 
-                { key: VENTOLIN_PROJECTILE_IMGKEY_NAME+ '2', frame: VENTOLIN_PROJECTILE_IMGKEY_NAME + '2'}
+                { key: VENTOLIN_PROJECTILE_IMGKEY_NAME+ '2', frame: 0}
               ],
             frameRate: 5,
             repeat: -1
@@ -49,8 +49,8 @@ export default class VentolinProjectile extends Projectile{
         this.scene.anims.create({
             key: 'fire_attack_ventolin',
             frames: [ 
-                { key: VENTOLIN_PROJECTILE_IMGKEY_NAME + '1', frame: VENTOLIN_PROJECTILE_IMGKEY_NAME + '1'},
-                { key: VENTOLIN_PROJECTILE_IMGKEY_NAME + '2', frame: VENTOLIN_PROJECTILE_IMGKEY_NAME + '2'},
+                { key: VENTOLIN_PROJECTILE_IMGKEY_NAME + '1', frame: 0},
+                { key: VENTOLIN_PROJECTILE_IMGKEY_NAME + '2', frame: 1},
               ],
             frameRate: 2,
             repeat: 0,

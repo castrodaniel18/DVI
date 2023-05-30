@@ -146,6 +146,7 @@ export default class Enemy extends Phaser.GameObjects.Sprite {
 
     addCollisions(){
         this.collider=this.scene.physics.add.collider(this.scene.player.weapon, this, this.getHit, null, this);
+        this.scene.physics.add.collider(this.scene.collisionLayer,this)
         this.colliderSet=true;
     }
 }

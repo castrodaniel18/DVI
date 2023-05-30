@@ -4,13 +4,10 @@ import Stone from "../objects/Items/Stone";
 import Cape from "../objects/Items/Cape";
 import Knife from "../objects/Items/Knife";
 import Fang from "../objects/Items/Fang";
-import Items, {ITEMS} from "../objects/Items/Items";
 
 export default class ItemSelectScene extends Phaser.Scene{
     constructor() {
         super({ key: 'ItemSelectScene' });
-        //this.itemArray= ITEMS;
-        //this.itemArray = ['cape', 'fang', 'knife', 'stone'];
 
     }
     preload(){
@@ -23,11 +20,11 @@ export default class ItemSelectScene extends Phaser.Scene{
     }
 
     init(data){
-        this.mainScene = data.mainScene;
+        this.mainScene = this.game.scene.getScene(data.mainScene)
     }
 
     create(){
-        this.scene.bringToTop();
+        this.scene.moveAbove('UIScene');
         //Fondo
         this.levelUpBorder = this.add.image(425, 350, 'levelUpBorder');
         this.levelUpBorder.setScale(2, 2);
@@ -57,11 +54,12 @@ export default class ItemSelectScene extends Phaser.Scene{
         var originalScaleX = this.object1.scaleX;
         var originalScaleY = this.object1.scaleY;
         //Si el objeto no se puede seleccionar le ponemos un filtro rojo
-        if(this.mainScene.playerItems.length < this.mainScene.player.inventorySize || this.mainScene.playerItems.some(item => item.name === elementosAleatorios[0].name)){
+        if(this.mainScene.playerItems.length < this.mainScene.inventorySize || this.mainScene.playerItems.some(item => item.name === elementosAleatorios[0].name)){
             this.object1.on('pointerdown', () => {
                 //Si queda espacio en el inventario o el objeto que se quiere coger ya se tiene
-                if(this.mainScene.playerItems.length < this.mainScene.player.inventorySize || this.mainScene.playerItems.some(item => item.name === elementosAleatorios[0].name)){
-                    this.mainScene.waveController.leveling = false;
+                if(this.mainScene.playerItems.length < this.mainScene.inventorySize || this.mainScene.playerItems.some(item => item.name === elementosAleatorios[0].name)){
+                    this.mainScene.currentLevel.waveController.leveling = false;
+                    this.scene.resume(this.mainScene.currentLevel);
                     this.scene.resume(this.mainScene);
                     this.scene.stop();
                     this.itemSelect(elementosAleatorios[0]);
@@ -81,7 +79,7 @@ export default class ItemSelectScene extends Phaser.Scene{
     
             }, this);
         }else{
-            this.object1.setTint(0xff5252);
+            this.object1.setAlpha(0);
         }
 
         // Agrega un evento de puntero fuera del botón
@@ -101,12 +99,14 @@ export default class ItemSelectScene extends Phaser.Scene{
 
         this.object2 = this.add.image(400, 300, elementosAleatorios[1].name + '_card').setInteractive();
         this.object2.setScale(.25);
-        if(this.mainScene.playerItems.length < this.mainScene.player.inventorySize || this.mainScene.playerItems.some(item => item.name === elementosAleatorios[1].name)){
+        if(this.mainScene.playerItems.length < this.mainScene.inventorySize || this.mainScene.playerItems.some(item => item.name === elementosAleatorios[1].name)){
             originalScaleX = this.object2.scaleX;
             originalScaleY = this.object2.scaleY;
             this.object2.on('pointerdown', () => {
-                if(this.mainScene.playerItems.length < this.mainScene.player.inventorySize || this.mainScene.playerItems.some(item => item.name === elementosAleatorios[1].name)){
-                    this.mainScene.waveController.leveling = false;
+                if(this.mainScene.playerItems.length < this.mainScene.inventorySize || this.mainScene.playerItems.some(item => item.name === elementosAleatorios[1].name)){
+                    this.mainScene.currentLevel.waveController.leveling = false;
+                    this.scene.resume(this.mainScene.currentLevel);
+
                     this.scene.resume(this.mainScene);
                     this.scene.stop();
                     this.itemSelect(elementosAleatorios[1]);
@@ -126,7 +126,7 @@ export default class ItemSelectScene extends Phaser.Scene{
     
             }, this);
         }else{
-            this.object2.setTint(0xff5252);
+            this.object2.setAlpha(0);
         }
 
         // Agrega un evento de puntero fuera del botón
@@ -146,13 +146,15 @@ export default class ItemSelectScene extends Phaser.Scene{
 
         this.object3 = this.add.image(580, 300, elementosAleatorios[2].name + '_card').setInteractive();
         this.object3.setScale(.25);
-        if(this.mainScene.playerItems.length < this.mainScene.player.inventorySize || this.mainScene.playerItems.some(item => item.name === elementosAleatorios[2].name)){
+        if(this.mainScene.playerItems.length < this.mainScene.inventorySize || this.mainScene.playerItems.some(item => item.name === elementosAleatorios[2].name)){
             originalScaleX = this.object3.scaleX;
             originalScaleY = this.object3.scaleY;
             this.object3.on('pointerdown', () => {
-                if(this.mainScene.playerItems.length < this.mainScene.player.inventorySize || this.mainScene.playerItems.some(item => item.name === elementosAleatorios[2].name)){
-                    this.mainScene.waveController.leveling = false;
-                    this.scene.resume(this.mainScene);
+                if(this.mainScene.playerItems.length < this.mainScene.inventorySize || this.mainScene.playerItems.some(item => item.name === elementosAleatorios[2].name)){
+                    this.mainScene.currentLevel.waveController.leveling = false;
+                    this.scene.resume(this.mainScene.currentLevel);
+
+                    this.scene.resume(this.mainScenes);
                     this.scene.stop();
                     this.itemSelect(elementosAleatorios[2]);
                 }
@@ -171,7 +173,7 @@ export default class ItemSelectScene extends Phaser.Scene{
     
             }, this);
         }else{
-            this.object3.setTint(0xff5252);
+            this.object3.setAlpha(0);
         }
 
         // Agrega un evento de puntero fuera del botón
@@ -192,12 +194,6 @@ export default class ItemSelectScene extends Phaser.Scene{
 
     //Selecciona un item o lo sube de nivel, un mismo item solo puede llegar a nivel 5
     itemSelect(objeto){
-        /*if(item.level===0)añadir el item al inventario
-        if(item.level<5){
-            item.apply();
-            item.level+=1;
-        }
-        */
         //Si existe un objeto en el inventario que tenga el nombre del objeto seleccionado solo lo subimos de nivel
         if(this.mainScene.playerItems.some(item => item.name === objeto.name)){
             const objetoEncontrado = this.mainScene.playerItems.find(item => item.name === objeto.name);
@@ -206,6 +202,7 @@ export default class ItemSelectScene extends Phaser.Scene{
             if (indiceObjetoEncontrado !== -1) {
                 this.mainScene.playerItems[indiceObjetoEncontrado].apply();
                 this.mainScene.playerItems[indiceObjetoEncontrado].increaseLevel();
+                
 
                 this.mainScene.itemLevels[indiceObjetoEncontrado].destroy();
                 this.mainScene.itemLevels[indiceObjetoEncontrado] = this.mainScene.add.text(50 * (indiceObjetoEncontrado+1), 60, 'Level: ' + this.mainScene.playerItems[indiceObjetoEncontrado].itemLevel, { fontFamily: 'myFont', fontSize: '10px', fill: '#FFFFFF' });
@@ -216,16 +213,16 @@ export default class ItemSelectScene extends Phaser.Scene{
             let instanciaObjeto;
             switch (objeto.name) {
             case "Fang":
-                instanciaObjeto = new Fang(this.mainScene);
+                instanciaObjeto = new Fang(this.mainScene.currentLevel);
                 break;
             case "Cape":
-                instanciaObjeto = new Cape(this.mainScene);
+                instanciaObjeto = new Cape(this.mainScene.currentLevel);
             break;
             case "Stone":
-                instanciaObjeto = new Stone(this.mainScene);
+                instanciaObjeto = new Stone(this.mainScene.currentLevel);
                 break;
             case "Knife":
-                instanciaObjeto = new Knife(this.mainScene);
+                instanciaObjeto = new Knife(this.mainScene.currentLevel);
                 break;
             default:
                 instanciaObjeto = null;
@@ -235,7 +232,6 @@ export default class ItemSelectScene extends Phaser.Scene{
                 instanciaObjeto.apply();
                 instanciaObjeto.increaseLevel();
                 this.mainScene.playerItems.push(instanciaObjeto);
-
                 let image = this.mainScene.add.image(50 * this.mainScene.playerItems.length, 100, instanciaObjeto.name);
                 image.setScale(.6);
                 this.mainScene.itemImages.push(image);
@@ -246,4 +242,5 @@ export default class ItemSelectScene extends Phaser.Scene{
 
         }
     }
+   
 }

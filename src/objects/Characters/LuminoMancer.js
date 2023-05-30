@@ -26,8 +26,8 @@ export default class Luminomancer extends Mage{
         this.mouseClickAction();
 
         this.scene.anims.create({
-            key:'shoot',
-            frames: this.scene.anims.generateFrameNumbers(this.sprite + '_shoot',{start:0,end:6}),
+            key:LUMINOMANCER_NAME+'shoot',
+            frames: this.scene.anims.generateFrameNumbers(this.sprite + '_shoot',{start:0,end:0}),
             frameRate: 10,
             repeat: -1
         });
@@ -35,14 +35,6 @@ export default class Luminomancer extends Mage{
 
     preUpdate(t,dt){
         super.preUpdate(t, dt);
-
-        this.scene.pauseButton.on('pointerover', () => {
-            cursorOnPauseButton = true;
-        });
-    
-        this.scene.pauseButton.on('pointerout', () => {
-            cursorOnPauseButton = false;
-        });
     }
 
     addWeapon(scene){
@@ -52,7 +44,7 @@ export default class Luminomancer extends Mage{
 
     mouseClickAction(){
         this.scene.input.on('pointerdown', pointer => {
-            if (!cursorOnPauseButton){
+            if (!this.cursorOnPauseButton){
                 this.pointerX = pointer.worldX;
                 this.pointerY = pointer.worldY;
                 this.shoot(this.pointerX, this.pointerY, LUMINOMANCER_CAST_TIME);
@@ -61,15 +53,15 @@ export default class Luminomancer extends Mage{
     }
 
     checkHitBox(){
-        if (this.anims.currentAnim.key == 'idleD'){
+        if (this.anims.currentAnim.key == LUMINOMANCER_NAME+'idleD'){
             this.body.setSize(30, 66);
             this.body.offset.set(37, 63);
         }
-        else if (this.anims.currentAnim.key == 'D'){
+        else if (this.anims.currentAnim.key == LUMINOMANCER_NAME+'D'){
             this.body.setSize(30, 66);
             this.body.offset.set(45, 63);
         }
-        else if (this.anims.currentAnim.key == 'idleA'){
+        else if (this.anims.currentAnim.key == LUMINOMANCER_NAME+'idleA'){
             this.body.setSize(30, 66);
             this.body.offset.set(63, 63);
         }

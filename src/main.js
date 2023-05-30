@@ -8,12 +8,10 @@ import Settings from './scenes/Settings'
 import LevelSelector from './scenes/LevelSelector';
 import PauseScene from './scenes/PauseScene'
 import ItemSelectScene from './scenes/ItemSelectScene'
-import HealthBar from './scenes/HealthBar'
+import UIScene from './scenes/UIScene'
 
 import GameOver from './scenes/GameOver'
 import LevelCompleted from './scenes/LevelCompleted'
-import LevelDemoBosses from './scenes/LevelDemoBosses'
-import LevelDemoPotions from './scenes/LevelDemoPotions'
 const config = {
 	type: Phaser.AUTO,
 	parent: 'game',
@@ -29,13 +27,13 @@ const config = {
 	dom: {
 		createContainer: true
 	},
-	scene: [StartScene, characterSelection, Level1Scene, Level2Scene, Settings, LevelSelector, PauseScene, ItemSelectScene, HealthBar,GameOver, LevelCompleted, LevelDemoBosses, LevelDemoPotions],
+	scene: [StartScene, characterSelection,LevelSelector, Level1Scene, Level2Scene, Settings ,UIScene, PauseScene, ItemSelectScene,GameOver, LevelCompleted],
 	physics: {
 		default: 'arcade',
 		arcade: {
 			gravity: { y: 0 },
 			fps:60,
-			//debug: true
+			debug: false
 		},
 	},
 	transparent:false

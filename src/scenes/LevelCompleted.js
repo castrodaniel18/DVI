@@ -13,10 +13,10 @@ export default class LevelCompleted extends Phaser.Scene {
     init(data) {
         this.difficulty = data.difficulty;
         this.characterName = data.characterName;
+        this.level = data.level
     }
   
     create() {
-        this.scene.bringToTop();
         //Fondo
         var background = this.add.image(0, 0, 'bg');
         background.setScale(800 / background.width, 600 / background.height);
@@ -30,14 +30,20 @@ export default class LevelCompleted extends Phaser.Scene {
         this.levelSelectorButton.setScale(8, 3.5)
         this.add.text(305, 225, 'Level Selector', { fontFamily: 'myFont', fontSize: '26px', color: '#ffffff' });
         this.levelSelectorButton.on('pointerdown', () => {
+            this.scene.stop('UIScene');
+            this.scene.stop(this.level);
             this.scene.start('LevelSelector', { difficulty: this.difficulty, characterName: this.characterName});
+            this.scene.stop('LevelCompleted');
+
         });
         // Boton de volver a main menu
         this.startButton = this.add.image(400, 340, 'button').setInteractive();
         this.startButton.setScale(6, 3.5);
         this.add.text(340, 335, 'Main menu', { fontFamily: 'myFont', fontSize: '26px', color: '#ffffff' });
         this.startButton.on('pointerdown', () => {
-            this.scene.run('StartScene', { difficulty: this.difficulty});
+            this.scene.start('StartScene', { difficulty: this.difficulty});
+            this.scene.stop('LevelCompleted');
+
         });
     }
   }

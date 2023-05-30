@@ -27,7 +27,7 @@ export default class Electromancer extends Mage{
         this.mouseClickAction();
 
         this.scene.anims.create({
-            key:'shoot',
+            key:ELECTROMANCER_NAME+'shoot',
             frames: this.scene.anims.generateFrameNumbers(this.sprite + '_shoot',{start:0,end:15}),
             frameRate: 10,
             repeat: -1
@@ -36,14 +36,6 @@ export default class Electromancer extends Mage{
 
     preUpdate(t,dt){
         super.preUpdate(t, dt);
-
-        this.scene.pauseButton.on('pointerover', () => {
-            cursorOnPauseButton = true;
-        });
-    
-        this.scene.pauseButton.on('pointerout', () => {
-            cursorOnPauseButton = false;
-        });
     }
 
     addWeapon(scene){
@@ -53,7 +45,7 @@ export default class Electromancer extends Mage{
 
     mouseClickAction(){
         this.scene.input.on('pointerdown', pointer => {
-            if (!cursorOnPauseButton){
+            if (!this.cursorOnPauseButton){
                 this.pointerX = pointer.worldX;
                 this.pointerY = pointer.worldY;
                 this.shoot(this.pointerX, this.pointerY, ELECTROMANCER_CAST_TIME);
@@ -62,15 +54,15 @@ export default class Electromancer extends Mage{
     }
 
     checkHitBox(){
-        if (this.anims.currentAnim.key == 'idleD'){
+        if (this.anims.currentAnim.key == ELECTROMANCER_NAME+'idleD'){
             this.body.setSize(35, 70);
             this.body.offset.set(43, 60);
         }
-        else if (this.anims.currentAnim.key == 'D'){
+        else if (this.anims.currentAnim.key == ELECTROMANCER_NAME+'D'){
             this.body.setSize(35, 65);
             this.body.offset.set(35, 65);
         }
-        else if (this.anims.currentAnim.key == 'idleA'){
+        else if (this.anims.currentAnim.key == ELECTROMANCER_NAME+'idleA'){
             this.body.setSize(35, 70);
             this.body.offset.set(50, 60);
         }
@@ -83,7 +75,7 @@ export default class Electromancer extends Mage{
     dashParry(){
         this.damage *= 1.5;
         this.buffDamageAnim.visible = true;
-        this.buffFamageAnim.anims.play('damage_buff', true);
+        this.buffDamageAnim.anims.play('damage_buff', true);
         setTimeout(() => {
             this.damage /= 1.5;
             this.buffDamageAnim.visible = false;

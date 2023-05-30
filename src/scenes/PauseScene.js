@@ -34,9 +34,9 @@ export default class PauseScene extends Phaser.Scene {
         this.houseButton = this.add.image(650, 170, 'houseButton').setInteractive();
         this.houseButton.setScale(3);
         this.houseButton.on('pointerdown', () => {
+            this.scene.stop('UIScene');
             this.scene.stop(this.lastScene);
             this.scene.start('StartScene', { difficulty: this.difficulty });
-            this.scene.setVisible(false,'HealthBar');
             this.scene.stop('PauseScene');
         })
 

@@ -12,6 +12,6 @@ export default class Stone extends Item {
 
     apply(){
         const scene = this.scene;
-        this.scene.player.dmageReduction += DAMAGE_DECREASE_FACTOR;
+        scene.player.dmageReduction += DAMAGE_DECREASE_FACTOR;
     }
 }

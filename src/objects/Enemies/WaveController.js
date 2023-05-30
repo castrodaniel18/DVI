@@ -1,33 +1,29 @@
-import GoblinsGroup from "./GoblinsGroup";
-import VentolinsGroup from "./VentolinGroup";
-import SnakeGroup from "./SnakeGroup";
-import HyenasGroup from "./HyenaGroup";
-import ScorpiosGroup from "./ScorpiosGroup";
-import CentipedeGroup from "./CentipedeGroup";
+import Goblin from "./Goblin";
+import Ventolin from "./Ventolin";
+import Snake from "./Snake";
+import Hyena from "./Hyena";
+import Scorpio from "./Scorpio";
+import Centipede from "./Centipede";
+import EnemyGroup from "./EnemyGroup";
 
-export const LEVEL_1 = [{time: 0, boss: false, groupName: GoblinsGroup, numEnemies: 5}, 
-                         {time: 15000, boss: false, groupName: VentolinsGroup, numEnemies: 3},
-                         {time: 30000, boss: false, groupName: GoblinsGroup, numEnemies: 3},
-                         {time: 45000, boss: false, groupName: GoblinsGroup, numEnemies: 5}, 
-                         {time: 45000, boss: false, groupName: VentolinsGroup, numEnemies: 5},
-                         {time: 80000, boss: false, groupName: GoblinsGroup, numEnemies: 10}, 
-                         {time: 80000, boss: false, groupName: VentolinsGroup, numEnemies: 7},
-                         {time: 140000, boss: true, groupName: CentipedeGroup, numEnemies: 1}]
+export const LEVEL_1 = [{time: 0, enemyType: Goblin, imgKey:'goblin',numEnemies: 5}, 
+                         {time: 15000, enemyType: Ventolin, imgKey:'ventolin',numEnemies: 3},
+                         {time: 30000, enemyType: Goblin, imgKey:'goblin',numEnemies: 3},
+                         {time: 45000, enemyType: Goblin, imgKey:'goblin',numEnemies: 5}, 
+                         {time: 45000, enemyType: Ventolin,imgKey:'ventolin',numEnemies: 5},
+                         {time: 80000, enemyType: Goblin, imgKey:'goblin',numEnemies: 10}, 
+                         {time: 80000, enemyType: Ventolin, imgKey:'ventolin',numEnemies: 7},
+                         {time: 140000, enemyType: Centipede,imgKey:'centipede', numEnemies: 1}]
 
-
-//export const LEVEL_1 = [{time: 0, boss: false, groupName: VentolinsGroup, numEnemies: 20}]
-
-export const LEVEL_2 = [{time: 0, boss: false, groupName: SnakeGroup, numEnemies: 5}, 
-                        {time: 15000, boss: false, groupName: ScorpiosGroup, numEnemies: 3},
-                        {time: 30000, boss: false, groupName: HyenasGroup, numEnemies: 5},
-                        {time: 30000, boss: false, groupName: ScorpiosGroup, numEnemies: 3}, 
-                        {time: 45000, boss: false, groupName: ScorpiosGroup, numEnemies: 5},
-                        {time: 45000, boss: false, groupName: SnakeGroup, numEnemies: 4}, 
-                        {time: 80000, boss: false, groupName: ScorpiosGroup, numEnemies: 3},
-                        {time: 80000, boss: false, groupName: SnakeGroup, numEnemies: 4},
-                        {time: 80000, boss: false, groupName: HyenasGroup, numEnemies: 3}]
-
-export const LEVEL_DEMO_BOSS = [{time: 0, boss: true, groupName: CentipedeGroup, numEnemies: 1}]
+export const LEVEL_2 = [{time: 0, enemyType: Snake,imgKey:'snake', numEnemies: 5}, 
+                        {time: 15000, enemyType: Scorpio, imgKey:'scorpio',numEnemies: 3},
+                        {time: 30000, enemyType: Hyena, imgKey:'hyena',numEnemies: 5},
+                        {time: 30000, enemyType: Scorpio, imgKey:'scorpio',numEnemies: 3}, 
+                        {time: 45000, enemyType: Scorpio, imgKey:'scorpio',numEnemies: 5},
+                        {time: 45000, enemyType: Snake,imgKey:'snake', numEnemies: 4}, 
+                        {time: 80000, enemyType: Scorpio,imgKey:'scorpio', numEnemies: 3},
+                        {time: 80000, enemyType: Snake, imgKey:'snake',numEnemies: 4},
+                        {time: 80000, enemyType: Hyena, imgKey:'hyena',numEnemies: 3}]
 
 
 export default class WaveController{
@@ -48,12 +44,9 @@ export default class WaveController{
             if (!this.pause){
                 if(this.currentWave < this.level.length && this.level[this.currentWave].time <= (Date.now() - this.initialTime)){
                     if(!this.level[this.currentWave].boss){
-                        const group = new this.level[this.currentWave].groupName(this.scene, this.level[this.currentWave].numEnemies);
+                        const group = new EnemyGroup(this.scene,this.level[this.currentWave].imgKey,this.level[this.currentWave
+                        ].enemyType, this.level[this.currentWave].numEnemies);
                         this.addEnemiesGroup(group);
-                    }
-                    else {
-                        const boss = new this.level[this.currentWave].groupName(this.scene,this.level[this.currentWave].numEnemies);
-                        this.addEnemiesGroup(boss);
                     }
                     this.currentWave++;
                 }
@@ -72,14 +65,7 @@ export default class WaveController{
     }
 
 	addEnemiesGroup(group){
-		//this.scene.physics.add.collider(this.enemies, group.enemies);
         this.groups.push(group);
 		this.enemies.push(...group.enemies);
 	}
-
-    addBoss(boss){
-		//this.scene.physics.add.collider(this.enemies, boss);
-		//this.enemies.push(boss);
-	}
-
 }

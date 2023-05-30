@@ -30,21 +30,31 @@ export default class GameOver extends Phaser.Scene {
         this.tryAgainButton.setScale(6, 3.5)
         this.add.text(340, 195, 'Try again', { fontFamily: 'myFont', fontSize: '26px', color: '#ffffff' });
         this.tryAgainButton.on('pointerdown', () => {
+            this.scene.stop(this.level);
             this.scene.start(this.level , { difficulty: this.difficulty, characterName: this.characterName});
+            this.scene.stop('GameOver');
         });
         //Level selector
         this.levelSelectorButton = this.add.image(400, 300, 'button').setInteractive();
         this.levelSelectorButton.setScale(8, 3.5)
         this.add.text(310, 295, 'Level Selector', { fontFamily: 'myFont', fontSize: '26px', color: '#ffffff' });
         this.levelSelectorButton.on('pointerdown', () => {
+            this.game.scene.stop('UIScene');
+            this.scene.stop(this.level);
             this.scene.start('LevelSelector', { difficulty: this.difficulty, characterName: this.characterName});
+            this.scene.stop('GameOver');
+
         });
         // Boton de volver a main menu
         this.startButton = this.add.image(400, 400, 'button').setInteractive();
         this.startButton.setScale(6, 3.5);
         this.add.text(340, 395, 'Main menu', { fontFamily: 'myFont', fontSize: '26px', color: '#ffffff' });
         this.startButton.on('pointerdown', () => {
+            this.scene.stop(this.level);
+            this.scene.stop('UIScene');
             this.scene.start('StartScene', { difficulty: this.difficulty});
+            this.scene.stop('GameOver');
+
         });
 
     }

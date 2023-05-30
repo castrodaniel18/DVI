@@ -12,6 +12,6 @@ export default class Knife extends Item {
 
     apply(){
         const scene = this.scene;
-        this.scene.player.damageIncrease += DAMAGE_INCREASE_FACTOR;
+        scene.player.damageIncrease += DAMAGE_INCREASE_FACTOR;
     }
 }

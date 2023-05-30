@@ -1,7 +1,8 @@
 export default class Projectile extends Phaser.Physics.Arcade.Sprite{
 
-    constructor(scene, x, y, imgKey){
+    constructor(scene, x, y, imgKey,attackName){
         super(scene, x, y, imgKey);
+        this.attackName=attackName;
         this.scene.add.existing(this);
     }
 
@@ -27,7 +28,7 @@ export default class Projectile extends Phaser.Physics.Arcade.Sprite{
         this.setVisible(true);
 
         this.setRotation(this.angle);
-        this.play('fire_attack');
+        this.play(this.attackName);
 
         //Establecemos la velocidad según los valores que obtuvimos con el listener del ratón
         this.setVelocity(this.speed * Math.cos(this.rotation), this.speed * Math.sin(this.rotation));
